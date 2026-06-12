@@ -1,3 +1,5 @@
+Reduce the skills animation to reduce minimalist, make it accurately to the other
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth dark">
 
@@ -841,13 +843,43 @@
 		</section>
 
 		<!-- ============================================================
-     ENHANCED SKILLS SECTION — drop-in replacement
-     Requires: Tailwind CSS, Font Awesome (already in your page)
-     ============================================================ -->
+     ENHANCED SKILLS SECTION — drop-in replacement
+     Requires: Tailwind CSS, Font Awesome (already in your page)
+     ============================================================ -->
 
 		<style>
+
+
+			.dark .sk-glass {
+				background: rgba(255, 255, 255, 0.035);
+			}
+
 			/* ── Snapshot bar ── */
+			.snapshot-bar {
+				background: rgba(255, 255, 255, 0.045);
+				border: 1px solid rgba(255, 255, 255, 0.08);
+				backdrop-filter: blur(20px);
+				-webkit-backdrop-filter: blur(20px);
+				border-radius: 20px;
+			}
+
+			.dark .snapshot-bar {
+				background: rgba(255, 255, 255, 0.03);
+			}
+
+			.light .snapshot-bar,
+			:not(.dark) .snapshot-bar {
+				background: rgba(0, 0, 0, 0.03);
+				border-color: rgba(0, 0, 0, 0.07);
+			}
+
+			/* ── Stat item ── */
 			.snap-stat {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 2px;
+				padding: 10px 20px;
 				position: relative;
 			}
 
@@ -855,542 +887,1515 @@
 				content: '';
 				position: absolute;
 				left: 0;
-				top: 25%;
-				bottom: 25%;
+				top: 20%;
+				bottom: 20%;
 				width: 1px;
-				background: rgba(0, 0, 0, 0.08);
+				background: rgba(255, 255, 255, 0.08);
 			}
 
-			.dark .snap-stat+.snap-stat::before {
-				background: rgba(255, 255, 255, 0.08);
+			:not(.dark) .snap-stat+.snap-stat::before {
+				background: rgba(0, 0, 0, 0.07);
+			}
+
+			.snap-num {
+				font-size: 1.35rem;
+				font-weight: 700;
+				line-height: 1;
+				background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+
+			.snap-label {
+				font-size: 0.65rem;
+				font-weight: 600;
+				letter-spacing: .06em;
+				text-transform: uppercase;
+				color: rgb(148 163 184);
+			}
+
+			/* ── Skill card ── */
+			.skill-card-v2 {
+				position: relative;
+				border-radius: 18px;
+				padding: 1.5rem;
+				overflow: hidden;
+				transition: transform .35s cubic-bezier(.22, 1, .36, 1),
+					box-shadow .35s cubic-bezier(.22, 1, .36, 1);
+				cursor: default;
+			}
+
+			.skill-card-v2:hover {
+				transform: translateY(-4px) scale(1.005);
+			}
+
+			.card-glow-layer {
+				position: absolute;
+				inset: -2px;
+				border-radius: 20px;
+				opacity: 0;
+				transition: opacity .5s ease;
+				pointer-events: none;
+				z-index: 0;
+			}
+
+			.skill-card-v2:hover .card-glow-layer {
+				opacity: 1;
+			}
+
+			/* Radial spotlight that follows cursor */
+			.card-spotlight {
+				position: absolute;
+				inset: 0;
+				border-radius: 18px;
+				pointer-events: none;
+				z-index: 1;
+				opacity: 0;
+				transition: opacity .3s;
+				background: radial-gradient(300px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, .055) 0%, transparent 70%);
+			}
+
+			.skill-card-v2:hover .card-spotlight {
+				opacity: 1;
+			}
+
+			/* ── Card border via pseudo ── */
+			.skill-card-v2::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				border-radius: 18px;
+				border: 1px solid rgba(255, 255, 255, 0.07);
+				transition: border-color .4s;
+				pointer-events: none;
+				z-index: 3;
+			}
+
+			.skill-card-v2:hover::after {
+				border-color: var(--card-accent, rgba(148, 163, 184, .3));
+			}
+
+			/* ── Card header icon ── */
+			.card-icon-wrap {
+				width: 42px;
+				height: 42px;
+				border-radius: 12px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-shrink: 0;
+				position: relative;
+				transition: transform .4s cubic-bezier(.22, 1, .36, 1);
+			}
+
+			.skill-card-v2:hover .card-icon-wrap {
+				transform: rotate(-8deg) scale(1.1);
+			}
+
+			.card-tech-count {
+				font-size: .6rem;
+				font-weight: 600;
+				letter-spacing: .05em;
+				text-transform: uppercase;
+				padding: 2px 7px;
+				border-radius: 999px;
+				background: rgba(255, 255, 255, 0.06);
+				color: rgb(148 163 184);
+				border: 1px solid rgba(255, 255, 255, .07);
+				white-space: nowrap;
+			}
+
+			/* ── Skill row ── */
+			.skill-row {
+				position: relative;
+			}
+
+			.skill-icon {
+				width: 22px;
+				height: 22px;
+				flex-shrink: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 5px;
+				overflow: hidden;
+			}
+
+			.skill-icon img,
+			.skill-icon svg {
+				width: 16px;
+				height: 16px;
+				object-fit: contain;
+			}
+
+			.skill-name {
+				font-size: .72rem;
+				font-weight: 600;
+				color: rgb(203 213 225);
+				transition: color .25s;
+				line-height: 1.1;
+			}
+
+			:not(.dark) .skill-name {
+				color: rgb(51 65 85);
+			}
+
+			.skill-row:hover .skill-name {
+				color: var(--card-color, #38bdf8);
+			}
+
+			.skill-badge {
+				font-size: .55rem;
+				font-weight: 700;
+				letter-spacing: .04em;
+				text-transform: uppercase;
+				padding: 1px 6px;
+				border-radius: 999px;
+				border: 1px solid var(--card-accent-soft, rgba(56, 189, 248, .25));
+				color: var(--card-color, #38bdf8);
+				background: var(--card-accent-bg, rgba(56, 189, 248, .07));
+				white-space: nowrap;
+				flex-shrink: 0;
 			}
 
 			/* ── Progress bar ── */
 			.sk-track {
 				height: 5px;
 				border-radius: 999px;
-				background: rgba(0, 0, 0, 0.05);
-				margin-top: 6px;
-				overflow: hidden;
+				background: rgba(255, 255, 255, 0.06);
+				position: relative;
+				overflow: visible;
 			}
 
-			.dark .sk-track {
-				background: rgba(255, 255, 255, 0.1);
+			:not(.dark) .sk-track {
+				background: rgba(0, 0, 0, 0.07);
 			}
 
 			.sk-fill {
-				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
 				border-radius: 999px;
 				width: 0;
-				transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+				transition: width 1.5s cubic-bezier(.22, 1, .36, 1);
+				background: var(--card-gradient, linear-gradient(90deg, #38bdf8, #818cf8));
+				box-shadow: 0 0 10px rgba(56, 189, 248, .0);
+				transition: width 1.5s cubic-bezier(.22, 1, .36, 1), box-shadow .4s;
+			}
+
+			.sk-fill.animated {
+				box-shadow: 0 0 10px var(--card-glow-color, rgba(56, 189, 248, .4));
+			}
+
+			/* Shine sweep */
+			.sk-fill::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				right: -20px;
+				bottom: 0;
+				width: 40px;
+				background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .45), transparent);
+				animation: sk-shine 2.5s ease-in-out infinite;
+				border-radius: 999px;
+			}
+
+			@keyframes sk-shine {
+				0% {
+					transform: translateX(-30px);
+					opacity: 0;
+				}
+
+				30% {
+					opacity: 1;
+				}
+
+				100% {
+					transform: translateX(30px);
+					opacity: 0;
+				}
+			}
+
+			/* Travelling badge at end of bar */
+			.sk-pill {
+				position: absolute;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				transition: left 1.5s cubic-bezier(.22, 1, .36, 1);
+				left: 0;
+				z-index: 5;
+				opacity: 0;
+				transition: left 1.5s cubic-bezier(.22, 1, .36, 1), opacity .4s;
+			}
+
+			.sk-pill.visible {
+				opacity: 1;
+			}
+
+			.sk-pill-inner {
+				font-size: .55rem;
+				font-weight: 700;
+				padding: 1px 5px;
+				border-radius: 999px;
+				background: rgba(10, 10, 20, .75);
+				border: 1px solid var(--card-accent-soft, rgba(56, 189, 248, .35));
+				color: var(--card-color, #38bdf8);
+				backdrop-filter: blur(6px);
+				white-space: nowrap;
+				box-shadow: 0 0 8px var(--card-glow-color, rgba(56, 189, 248, .3));
+			}
+
+			/* ── Tooltip ── */
+			.sk-tooltip {
+				position: absolute;
+				bottom: calc(100% + 8px);
+				left: 50%;
+				transform: translateX(-50%) translateY(4px);
+				width: 200px;
+				background: rgba(15, 20, 30, .92);
+				border: 1px solid rgba(255, 255, 255, .1);
+				border-radius: 12px;
+				padding: 10px 12px;
+				pointer-events: none;
+				opacity: 0;
+				transition: opacity .2s, transform .2s;
+				z-index: 50;
+				backdrop-filter: blur(16px);
+			}
+
+			.skill-row:hover .sk-tooltip {
+				opacity: 1;
+				transform: translateX(-50%) translateY(0);
+			}
+
+			.sk-tooltip-name {
+				font-size: .7rem;
+				font-weight: 700;
+				color: #fff;
+				margin-bottom: 3px;
+			}
+
+			.sk-tooltip-desc {
+				font-size: .63rem;
+				color: rgb(148 163 184);
+				line-height: 1.45;
+			}
+
+			/* ── AI card specifics ── */
+			.ai-card {
+				--card-color: #22d3ee;
+				--card-accent: rgba(34, 211, 238, .35);
+				--card-accent-soft: rgba(34, 211, 238, .2);
+				--card-accent-bg: rgba(34, 211, 238, .07);
+				--card-glow-color: rgba(34, 211, 238, .4);
+				--card-gradient: linear-gradient(90deg, #22d3ee, #6366f1);
+			}
+
+			.ai-card .card-glow-layer {
+				background: conic-gradient(from 200deg at 50% 110%, #22d3ee22, #6366f122, #22d3ee22);
+			}
+
+			/* Animated border on AI card */
+			.ai-card::before {
+				content: '';
+				position: absolute;
+				inset: -1px;
+				border-radius: 19px;
+				background: linear-gradient(135deg, rgba(34, 211, 238, .35), rgba(99, 102, 241, .25), rgba(34, 211, 238, .35));
+				background-size: 300% 300%;
+				animation: ai-border-anim 4s ease infinite;
+				z-index: 0;
+			}
+
+			@keyframes ai-border-anim {
+
+				0%,
+				100% {
+					background-position: 0% 50%;
+				}
+
+				50% {
+					background-position: 100% 50%;
+				}
+			}
+
+			/* Neural net canvas */
+			.ai-neural-canvas {
+				position: absolute;
+				inset: 0;
+				border-radius: 18px;
+				opacity: .18;
+				pointer-events: none;
+				z-index: 0;
+			}
+
+			/* Floating particles */
+			.ai-particle {
+				position: absolute;
+				border-radius: 50%;
+				background: rgba(34, 211, 238, .6);
+				pointer-events: none;
+				z-index: 0;
+				animation: ai-float var(--dur, 6s) ease-in-out infinite;
+			}
+
+			@keyframes ai-float {
+
+				0%,
+				100% {
+					transform: translate(0, 0) scale(1);
+					opacity: .4;
+				}
+
+				50% {
+					transform: translate(var(--tx, 8px), var(--ty, -12px)) scale(1.3);
+					opacity: .7;
+				}
+			}
+
+			/* ── Responsive: full-width span on odd last card ── */
+			@media (min-width: 768px) and (max-width: 1023px) {
+				.skills-grid>.skill-card-v2:last-child:nth-child(odd) {
+					grid-column: span 2;
+					max-width: 460px;
+					margin: 0 auto;
+				}
+			}
+
+			@media (min-width: 1024px) {
+				.skills-grid>.skill-card-v2.ai-card {
+					grid-column: span 2;
+				}
+			}
+
+			/* ── Reduced motion ── */
+			@media (prefers-reduced-motion: reduce) {
+
+				.sk-fill,
+				.sk-pill,
+				.ai-particle,
+				.card-icon-wrap,
+				.skill-card-v2 {
+					transition: none !important;
+					animation: none !important;
+				}
+			}
+
+			/* ── Entrance animations ── */
+			.sk-reveal {
+				opacity: 0;
+				transform: translateY(24px);
+				transition: opacity .6s cubic-bezier(.22, 1, .36, 1), transform .6s cubic-bezier(.22, 1, .36, 1);
+			}
+
+			.sk-reveal.sk-visible {
+				opacity: 1;
+				transform: translateY(0);
 			}
 		</style>
 
 		<section id="skills" class="py-20 border-t border-black/5 dark:border-white/[0.04]">
 			<div class="max-w-6xl mx-auto px-6">
 
-				<div class="text-center mb-10 reveal">
-					<p class="section-label mb-2.5">Technical Arsenal</p>
+				<!-- Section header -->
+				<div class="text-center mb-10 sk-reveal">
+					<p
+						class="section-label mb-2.5 text-sm font-semibold tracking-wider uppercase text-slate-500 dark:text-slate-400">
+						Technical Arsenal</p>
 					<h2 class="font-display text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">What I
 						Work With</h2>
 				</div>
 
-				<div class="flex flex-wrap justify-center gap-0 mb-12 mx-auto max-w-3xl rounded-2xl reveal p-2"
-					aria-label="Technical summary">
-					<div class="snap-stat px-4 py-2 flex flex-col items-center">
-						<span class="text-xl font-bold text-brand-500 dark:text-brand-400">22+</span>
-						<span
-							class="text-[10px] font-semibold tracking-wider uppercase text-slate-500">Technologies</span>
+				<!-- AI Snapshot bar -->
+				<div class="snapshot-bar flex flex-wrap justify-center gap-0 mb-12 mx-auto max-w-3xl sk-reveal"
+					style="transition-delay:.1s" aria-label="Technical summary">
+					<div class="snap-stat">
+						<span class="snap-num" data-snap-target="22">0</span>
+						<span class="snap-label">Technologies</span>
 					</div>
-					<div class="snap-stat px-4 py-2 flex flex-col items-center">
-						<span class="text-xl font-bold text-brand-500 dark:text-brand-400">4</span>
-						<span
-							class="text-[10px] font-semibold tracking-wider uppercase text-slate-500">Domains</span>
+					<div class="snap-stat">
+						<span class="snap-num" data-snap-target="4">0</span>
+						<span class="snap-label">Skill Domains</span>
 					</div>
-					<div class="snap-stat px-4 py-2 flex flex-col items-center">
-						<span class="text-xl font-bold text-brand-500 dark:text-brand-400">8</span>
-						<span class="text-[10px] font-semibold tracking-wider uppercase text-slate-500">AI
-							Tools</span>
+					<div class="snap-stat">
+						<span class="snap-num" data-snap-target="8">0</span>
+						<span class="snap-label">AI Tools</span>
 					</div>
-					<div class="snap-stat px-4 py-2 flex flex-col items-center">
-						<span
-							class="text-sm mt-1 font-bold text-brand-500 dark:text-brand-400 uppercase tracking-wide">AI-Assisted</span>
-						<span
-							class="text-[10px] font-semibold tracking-wider uppercase text-slate-500">Developer</span>
+					<div class="snap-stat">
+						<span class="snap-num snap-num--ai">AI-Assisted</span>
+						<span class="snap-label">Developer</span>
+					</div>
+					<div class="snap-stat">
+						<span class="snap-num snap-num--stack">Full Stack</span>
+						<span class="snap-label">Capable</span>
 					</div>
 				</div>
 
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+				<!-- Cards grid -->
+				<div class="skills-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
-					<div class="glass rounded-xl p-6 reveal project-card flex flex-col">
-						<div class="flex items-center gap-3 mb-6">
-							<div
-								class="w-10 h-10 bg-sky-100 dark:bg-sky-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-								<i class="fas fa-desktop text-sky-500"></i>
-							</div>
-							<div>
-								<h3
-									class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">
-									Frontend</h3>
-								<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">6
-									Technologies</span>
-							</div>
+					<!-- ── FRONTEND ── -->
+					<div class="skill-card-v2 sk-glass sk-reveal"
+						style="--card-color:#38bdf8;--card-accent:rgba(56,189,248,.3);--card-accent-soft:rgba(56,189,248,.2);--card-accent-bg:rgba(56,189,248,.07);--card-glow-color:rgba(56,189,248,.35);--card-gradient:linear-gradient(90deg,#38bdf8,#818cf8); transition-delay:.15s">
+						<div class="card-glow-layer"
+							style="background:radial-gradient(ellipse at 50% 120%,rgba(56,189,248,.15),transparent 70%)">
 						</div>
-						<div class="space-y-4">
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><img
+						<div class="card-spotlight"></div>
+						<div class="relative z-10">
+							<!-- Header -->
+							<div class="flex items-center justify-between mb-6">
+								<div class="flex items-center gap-3">
+									<div class="card-icon-wrap" style="background:rgba(56,189,248,.12);">
+										<svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+											aria-hidden="true">
+											<path d="M4 4l1.5 15.5L12 21l6.5-1.5L20 4H4z" stroke="#38bdf8"
+												stroke-width="1.6" stroke-linejoin="round" />
+											<path d="M7.5 8h9M8 12h8M9.5 16l2.5.7 2.5-.7" stroke="#38bdf8"
+												stroke-width="1.4" stroke-linecap="round" />
+										</svg>
+									</div>
+									<div>
+										<h3
+											class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">
+											Frontend</h3>
+										<span class="card-tech-count">6 Technologies</span>
+									</div>
+								</div>
+							</div>
+							<!-- Skills -->
+							<div class="space-y-5">
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"><img
 												src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-												alt="HTML5" class="w-4 h-4 object-contain"></div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">HTML5</span>
+												alt="HTML5" loading="lazy"></div>
+										<span class="skill-name flex-1">HTML5</span>
+										<span class="skill-badge">Advanced</span>
 									</div>
-									<span class="text-[10px] text-slate-500">Advanced</span>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="60"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">HTML5</p>
+										<p class="sk-tooltip-desc">Semantic markup, accessibility, forms,
+											media, and canvas elements across all projects.</p>
+									</div>
 								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-sky-400" data-progress="60"></div>
-								</div>
-							</div>
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><img
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"><img
 												src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-												alt="CSS3" class="w-4 h-4 object-contain"></div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">CSS3</span>
+												alt="CSS3" loading="lazy"></div>
+										<span class="skill-name flex-1">CSS3</span>
+										<span class="skill-badge">Proficient</span>
 									</div>
-									<span class="text-[10px] text-slate-500">Proficient</span>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="50"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">CSS3</p>
+										<p class="sk-tooltip-desc">Flexbox, Grid, animations, custom
+											properties, and responsive design patterns.</p>
+									</div>
 								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-sky-400" data-progress="50"></div>
-								</div>
-							</div>
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><img
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"><img
 												src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
-												alt="Tailwind CSS" class="w-4 h-4 object-contain"></div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">Tailwind
-											CSS</span>
+												alt="Tailwind CSS" loading="lazy"></div>
+										<span class="skill-name flex-1">Tailwind CSS</span>
+										<span class="skill-badge">Advanced</span>
 									</div>
-									<span class="text-[10px] text-slate-500">Advanced</span>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="70"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">Tailwind CSS</p>
+										<p class="sk-tooltip-desc">Primary styling framework for rapid UI
+											development, custom configs, and dark mode.</p>
+									</div>
 								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-sky-400" data-progress="70"></div>
-								</div>
-							</div>
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><img
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"><img
 												src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-												alt="JavaScript" class="w-4 h-4 object-contain"></div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">JavaScript</span>
+												alt="JavaScript" loading="lazy"></div>
+										<span class="skill-name flex-1">JavaScript</span>
+										<span class="skill-badge">Proficient</span>
 									</div>
-									<span class="text-[10px] text-slate-500">Proficient</span>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="50"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">JavaScript</p>
+										<p class="sk-tooltip-desc">DOM manipulation, async patterns, ES6+,
+											browser APIs, and event-driven architecture.</p>
+									</div>
 								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-sky-400" data-progress="50"></div>
-								</div>
-							</div>
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><img
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"><img
 												src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-												alt="React" class="w-4 h-4 object-contain"></div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">React</span>
+												alt="React" loading="lazy"></div>
+										<span class="skill-name flex-1">React</span>
+										<span class="skill-badge">Advanced</span>
 									</div>
-									<span class="text-[10px] text-slate-500">Intermediate</span>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="68"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">React</p>
+										<p class="sk-tooltip-desc">Component architecture, hooks, state
+											management, and reusable UI library patterns.</p>
+									</div>
 								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-sky-400" data-progress="48"></div>
-								</div>
-							</div>
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><img
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"><img
 												src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-												alt="TypeScript" class="w-4 h-4 object-contain"></div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">TypeScript</span>
+												alt="TypeScript" loading="lazy"></div>
+										<span class="skill-name flex-1">TypeScript</span>
+										<span class="skill-badge">Proficient</span>
 									</div>
-									<span class="text-[10px] text-slate-500">Proficient</span>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="55"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">TypeScript</p>
+										<p class="sk-tooltip-desc">Static typing, interfaces, generics, and
+											typed API integration in React projects.</p>
+									</div>
 								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-sky-400" data-progress="55"></div>
-								</div>
+
 							</div>
 						</div>
 					</div>
 
-					<div class="glass rounded-xl p-6 reveal project-card flex flex-col">
-						<div class="flex items-center gap-3 mb-6">
-							<div
-								class="w-10 h-10 bg-rose-100 dark:bg-rose-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-								<i class="fas fa-server text-rose-500"></i>
-							</div>
-							<div>
-								<h3
-									class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">
-									Backend</h3>
-								<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">4
-									Technologies</span>
-							</div>
+					<!-- ── BACKEND ── -->
+					<div class="skill-card-v2 sk-glass sk-reveal"
+						style="--card-color:#fb7185;--card-accent:rgba(251,113,133,.3);--card-accent-soft:rgba(251,113,133,.2);--card-accent-bg:rgba(251,113,133,.07);--card-glow-color:rgba(251,113,133,.35);--card-gradient:linear-gradient(90deg,#fb7185,#f97316); transition-delay:.25s">
+						<div class="card-glow-layer"
+							style="background:radial-gradient(ellipse at 50% 120%,rgba(251,113,133,.12),transparent 70%)">
 						</div>
-						<div class="space-y-4">
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><img
+						<div class="card-spotlight"></div>
+						<div class="relative z-10">
+							<div class="flex items-center justify-between mb-6">
+								<div class="flex items-center gap-3">
+									<div class="card-icon-wrap" style="background:rgba(251,113,133,.12);">
+										<svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+											aria-hidden="true">
+											<rect x="3" y="4" width="18" height="4" rx="1.5" stroke="#fb7185"
+												stroke-width="1.6" />
+											<rect x="3" y="10" width="18" height="4" rx="1.5"
+												stroke="#fb7185" stroke-width="1.6" />
+											<rect x="3" y="16" width="18" height="4" rx="1.5"
+												stroke="#fb7185" stroke-width="1.6" />
+											<circle cx="7" cy="6" r=".8" fill="#fb7185" />
+											<circle cx="7" cy="12" r=".8" fill="#fb7185" />
+											<circle cx="7" cy="18" r=".8" fill="#fb7185" />
+										</svg>
+									</div>
+									<div>
+										<h3
+											class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">
+											Backend</h3>
+										<span class="card-tech-count">4 Technologies</span>
+									</div>
+								</div>
+							</div>
+							<div class="space-y-5">
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"><img
 												src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg"
-												alt="Laravel" class="w-4 h-4 object-contain"></div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">Laravel</span>
+												alt="Laravel" loading="lazy"></div>
+										<span class="skill-name flex-1">Laravel</span>
+										<span class="skill-badge">Expert</span>
 									</div>
-									<span class="text-[10px] text-slate-500">Expert</span>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="80"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">Laravel</p>
+										<p class="sk-tooltip-desc">Primary framework for production booking
+											systems, REST APIs, auth, and admin dashboards.</p>
+									</div>
 								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-rose-400" data-progress="80"></div>
-								</div>
-							</div>
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><img
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"><img
 												src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
-												alt="PHP" class="w-4 h-4 object-contain"></div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">PHP</span>
+												alt="PHP" loading="lazy"></div>
+										<span class="skill-name flex-1">PHP</span>
+										<span class="skill-badge">Advanced</span>
 									</div>
-									<span class="text-[10px] text-slate-500">Advanced</span>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="75"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">PHP</p>
+										<p class="sk-tooltip-desc">OOP, PSR standards, Composer packages, and
+											custom middleware development.</p>
+									</div>
 								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-rose-400" data-progress="75"></div>
-								</div>
-							</div>
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><img
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"><img
 												src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg"
-												alt="Django" class="w-4 h-4 object-contain"></div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">Django</span>
+												alt="Django" loading="lazy"></div>
+										<span class="skill-name flex-1">Django</span>
+										<span class="skill-badge">Learning</span>
 									</div>
-									<span class="text-[10px] text-slate-500">Learning</span>
-								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-rose-400" data-progress="25"></div>
-								</div>
-							</div>
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><i
-												class="fas fa-network-wired text-[13px] text-rose-500"></i>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="25"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
 										</div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">REST
-											API Dev</span>
 									</div>
-									<span class="text-[10px] text-slate-500">Proficient</span>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">Django</p>
+										<p class="sk-tooltip-desc">Exploring Python web development with
+											Django's MVT pattern and admin framework.</p>
+									</div>
 								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-rose-400" data-progress="50"></div>
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"
+											style="background:rgba(251,113,133,.1); border-radius:4px;">
+											<svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+												aria-hidden="true">
+												<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+													stroke="#fb7185" stroke-width="1.8"
+													stroke-linecap="round" stroke-linejoin="round" />
+											</svg>
+										</div>
+										<span class="skill-name flex-1">REST API Dev</span>
+										<span class="skill-badge">Proficient</span>
+									</div>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="50"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">REST API Dev</p>
+										<p class="sk-tooltip-desc">Designing and consuming RESTful APIs with
+											proper versioning, auth, and documentation.</p>
+									</div>
 								</div>
+
 							</div>
 						</div>
 					</div>
 
-					<div class="glass rounded-xl p-6 reveal project-card flex flex-col">
-						<div class="flex items-center gap-3 mb-6">
-							<div
-								class="w-10 h-10 bg-violet-100 dark:bg-violet-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-								<i class="fas fa-database text-violet-500"></i>
-							</div>
-							<div>
-								<h3
-									class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">
-									Database</h3>
-								<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">4
-									Technologies</span>
-							</div>
+					<!-- ── DATABASE ── -->
+					<div class="skill-card-v2 sk-glass sk-reveal"
+						style="--card-color:#a78bfa;--card-accent:rgba(167,139,250,.3);--card-accent-soft:rgba(167,139,250,.2);--card-accent-bg:rgba(167,139,250,.07);--card-glow-color:rgba(167,139,250,.35);--card-gradient:linear-gradient(90deg,#a78bfa,#ec4899); transition-delay:.35s">
+						<div class="card-glow-layer"
+							style="background:radial-gradient(ellipse at 50% 120%,rgba(167,139,250,.12),transparent 70%)">
 						</div>
-						<div class="space-y-4">
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><img
+						<div class="card-spotlight"></div>
+						<div class="relative z-10">
+							<div class="flex items-center justify-between mb-6">
+								<div class="flex items-center gap-3">
+									<div class="card-icon-wrap" style="background:rgba(167,139,250,.12);">
+										<svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+											aria-hidden="true">
+											<ellipse cx="12" cy="6" rx="9" ry="3" stroke="#a78bfa"
+												stroke-width="1.6" />
+											<path d="M3 6v5c0 1.66 4.03 3 9 3s9-1.34 9-3V6" stroke="#a78bfa"
+												stroke-width="1.6" />
+											<path d="M3 11v5c0 1.66 4.03 3 9 3s9-1.34 9-3v-5"
+												stroke="#a78bfa" stroke-width="1.6" />
+										</svg>
+									</div>
+									<div>
+										<h3
+											class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">
+											Database</h3>
+										<span class="card-tech-count">4 Technologies</span>
+									</div>
+								</div>
+							</div>
+							<div class="space-y-5">
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"><img
 												src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-												alt="MySQL" class="w-4 h-4 object-contain"></div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">MySQL</span>
+												alt="MySQL" loading="lazy"></div>
+										<span class="skill-name flex-1">MySQL</span>
+										<span class="skill-badge">Expert</span>
 									</div>
-									<span class="text-[10px] text-slate-500">Expert</span>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="85"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">MySQL</p>
+										<p class="sk-tooltip-desc">Relational schema design, indexing, stored
+											procedures, and production database management.</p>
+									</div>
 								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-violet-400" data-progress="85"></div>
-								</div>
-							</div>
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><img
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"><img
 												src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg"
-												alt="SQLite" class="w-4 h-4 object-contain"></div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">SQLite</span>
+												alt="SQLite" loading="lazy"></div>
+										<span class="skill-name flex-1">SQLite</span>
+										<span class="skill-badge">Advanced</span>
 									</div>
-									<span class="text-[10px] text-slate-500">Advanced</span>
-								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-violet-400" data-progress="60"></div>
-								</div>
-							</div>
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><i
-												class="fas fa-project-diagram text-[13px] text-violet-500"></i>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="60"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
 										</div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">Database
-											Design</span>
 									</div>
-									<span class="text-[10px] text-slate-500">Expert</span>
-								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-violet-400" data-progress="90"></div>
-								</div>
-							</div>
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><i
-												class="fas fa-search text-[13px] text-violet-500"></i></div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">Query
-											Optimization</span>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">SQLite</p>
+										<p class="sk-tooltip-desc">Lightweight database for local dev
+											environments, testing, and small-scale applications.</p>
 									</div>
-									<span class="text-[10px] text-slate-500">Advanced</span>
 								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-violet-400" data-progress="80"></div>
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"
+											style="background:rgba(167,139,250,.1);border-radius:4px;">
+											<svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+												aria-hidden="true">
+												<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16v-6H7l5-8v6h4l-5 8z"
+													fill="#a78bfa" />
+											</svg>
+										</div>
+										<span class="skill-name flex-1">Database Design</span>
+										<span class="skill-badge">Expert</span>
+									</div>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="90"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">Database Design</p>
+										<p class="sk-tooltip-desc">Normalization, ERD modeling, foreign keys,
+											pivot tables, and relational integrity.</p>
+									</div>
 								</div>
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"
+											style="background:rgba(167,139,250,.1);border-radius:4px;">
+											<svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+												aria-hidden="true">
+												<path d="M3 3h18M3 9h18M3 15h12M3 21h8" stroke="#a78bfa"
+													stroke-width="2" stroke-linecap="round" />
+											</svg>
+										</div>
+										<span class="skill-name flex-1">Query Optimization</span>
+										<span class="skill-badge">Advanced</span>
+									</div>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="80"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">Query Optimization</p>
+										<p class="sk-tooltip-desc">Execution plan analysis, composite indexes,
+											eager loading, and N+1 query elimination.</p>
+									</div>
+								</div>
+
 							</div>
 						</div>
 					</div>
 
-					<div class="glass rounded-xl p-6 reveal project-card flex flex-col">
-						<div class="flex items-center gap-3 mb-6">
-							<div
-								class="w-10 h-10 bg-emerald-100 dark:bg-emerald-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-								<i class="fas fa-tools text-emerald-500"></i>
-							</div>
-							<div>
-								<h3
-									class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">
-									Tools & DevOps</h3>
-								<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">5
-									Technologies</span>
-							</div>
+					<!-- ── TOOLS & DEVOPS ── -->
+					<div class="skill-card-v2 sk-glass sk-reveal"
+						style="--card-color:#34d399;--card-accent:rgba(52,211,153,.3);--card-accent-soft:rgba(52,211,153,.2);--card-accent-bg:rgba(52,211,153,.07);--card-glow-color:rgba(52,211,153,.35);--card-gradient:linear-gradient(90deg,#34d399,#06b6d4); transition-delay:.45s">
+						<div class="card-glow-layer"
+							style="background:radial-gradient(ellipse at 50% 120%,rgba(52,211,153,.12),transparent 70%)">
 						</div>
-						<div class="space-y-4">
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><img
+						<div class="card-spotlight"></div>
+						<div class="relative z-10">
+							<div class="flex items-center justify-between mb-6">
+								<div class="flex items-center gap-3">
+									<div class="card-icon-wrap" style="background:rgba(52,211,153,.12);">
+										<svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+											aria-hidden="true">
+											<path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"
+												stroke="#34d399" stroke-width="1.6" stroke-linecap="round"
+												stroke-linejoin="round" />
+										</svg>
+									</div>
+									<div>
+										<h3
+											class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">
+											Tools & DevOps</h3>
+										<span class="card-tech-count">5 Technologies</span>
+									</div>
+								</div>
+							</div>
+							<div class="space-y-5">
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"><img
 												src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-												alt="Git" class="w-4 h-4 object-contain"></div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">Git</span>
+												alt="Git" loading="lazy"></div>
+										<span class="skill-name flex-1">Git</span>
+										<span class="skill-badge">Advanced</span>
 									</div>
-									<span class="text-[10px] text-slate-500">Advanced</span>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="60"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">Git</p>
+										<p class="sk-tooltip-desc">Branching strategies, rebase, conflict
+											resolution, and collaborative workflows.</p>
+									</div>
 								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-emerald-400" data-progress="60"></div>
-								</div>
-							</div>
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><img
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"><img
 												src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-												alt="GitHub" class="w-4 h-4 object-contain dark:invert">
-										</div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">GitHub</span>
+												alt="GitHub" loading="lazy"
+												style="filter:invert(1) brightness(2);"></div>
+										<span class="skill-name flex-1">GitHub</span>
+										<span class="skill-badge">Proficient</span>
 									</div>
-									<span class="text-[10px] text-slate-500">Proficient</span>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="55"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">GitHub</p>
+										<p class="sk-tooltip-desc">Pull requests, code reviews, GitHub Actions
+											basics, and repo management.</p>
+									</div>
 								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-emerald-400" data-progress="55"></div>
-								</div>
-							</div>
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><img
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"><img
 												src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
-												alt="VS Code" class="w-4 h-4 object-contain"></div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">VS
-											Code</span>
+												alt="VS Code" loading="lazy"></div>
+										<span class="skill-name flex-1">VS Code</span>
+										<span class="skill-badge">Expert</span>
 									</div>
-									<span class="text-[10px] text-slate-500">Expert</span>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="85"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">VS Code</p>
+										<p class="sk-tooltip-desc">Extensions, custom snippets, debugger,
+											multi-cursor editing, and workspace configs.</p>
+									</div>
 								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-emerald-400" data-progress="85"></div>
-								</div>
-							</div>
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><img
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"><img
 												src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
-												alt="Figma" class="w-4 h-4 object-contain"></div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">Figma</span>
+												alt="Figma" loading="lazy"></div>
+										<span class="skill-name flex-1">Figma</span>
+										<span class="skill-badge">Proficient</span>
 									</div>
-									<span class="text-[10px] text-slate-500">Proficient</span>
-								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-emerald-400" data-progress="35"></div>
-								</div>
-							</div>
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><i
-												class="fas fa-globe text-[13px] text-emerald-500"></i></div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">ngrok</span>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="55"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
 									</div>
-									<span class="text-[10px] text-slate-500">Intermediate</span>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">Figma</p>
+										<p class="sk-tooltip-desc">Wireframing, component design, prototype
+											flows, and design-to-code handoff.</p>
+									</div>
 								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-emerald-400" data-progress="20"></div>
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"
+											style="background:rgba(52,211,153,.1);border-radius:4px;">
+											<svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+												aria-hidden="true">
+												<path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm3.5 6l-5 5-2-2-1.5 1.5 3.5 3.5 6.5-6.5L15.5 8z"
+													fill="#34d399" />
+											</svg>
+										</div>
+										<span class="skill-name flex-1">ngrok</span>
+										<span class="skill-badge">Intermediate</span>
+									</div>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="40"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">ngrok</p>
+										<p class="sk-tooltip-desc">Secure tunneling for local dev, webhook
+											testing, and client demos without deployment.</p>
+									</div>
 								</div>
+
 							</div>
 						</div>
 					</div>
 
-					<div class="glass rounded-xl p-6 reveal project-card flex flex-col lg:col-span-2">
-						<div class="flex items-center justify-between mb-6">
-							<div class="flex items-center gap-3">
-								<div
-									class="w-10 h-10 bg-cyan-100 dark:bg-cyan-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-									<i class="fas fa-brain text-cyan-500"></i>
-								</div>
-								<div>
-									<h3
-										class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">
-										AI & Modern Development</h3>
-									<span
-										class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">8
-										Technologies</span>
-								</div>
-							</div>
-							<span
-								class="text-[10px] font-semibold px-2 py-1 rounded border border-cyan-500/30 text-cyan-500 uppercase tracking-wider">AI-Native</span>
+					<!-- ── AI & MODERN DEVELOPMENT (spans 2 cols on lg) ── -->
+					<div class="skill-card-v2 ai-card sk-glass sk-reveal" style="transition-delay:.55s">
+						<!-- Neural network canvas -->
+						<canvas class="ai-neural-canvas" id="ai-neural-canvas" aria-hidden="true"></canvas>
+						<!-- Floating particles -->
+						<div class="ai-particle"
+							style="width:4px;height:4px;top:18%;left:12%;--dur:5.5s;--tx:10px;--ty:-14px;"></div>
+						<div class="ai-particle"
+							style="width:3px;height:3px;top:72%;left:85%;--dur:7s;--tx:-8px;--ty:10px;background:rgba(99,102,241,.7)">
 						</div>
+						<div class="ai-particle"
+							style="width:5px;height:5px;top:45%;left:92%;--dur:6.2s;--tx:-12px;--ty:-8px;"></div>
+						<div class="ai-particle"
+							style="width:3px;height:3px;top:85%;left:20%;--dur:8s;--tx:6px;--ty:-16px;background:rgba(99,102,241,.5)">
+						</div>
+						<div class="ai-particle"
+							style="width:4px;height:4px;top:10%;left:75%;--dur:5s;--tx:-10px;--ty:8px;"></div>
 
-						<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><i
-												class="fas fa-robot text-[13px] text-cyan-500"></i></div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">ChatGPT</span>
+						<div class="card-glow-layer"
+							style="background:radial-gradient(ellipse at 50% 120%,rgba(34,211,238,.2),transparent 70%)">
+						</div>
+						<div class="card-spotlight"></div>
+
+						<div class="relative z-10">
+							<div class="flex items-center justify-between mb-6">
+								<div class="flex items-center gap-3">
+									<div class="card-icon-wrap" style="background:rgba(34,211,238,.12);">
+										<!-- Brain/AI icon -->
+										<svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+											aria-hidden="true">
+											<path d="M9.5 2a4.5 4.5 0 014.5 4.5v1a4.5 4.5 0 01-4.5 4.5A4.5 4.5 0 015 7.5v-1A4.5 4.5 0 019.5 2z"
+												stroke="#22d3ee" stroke-width="1.5" />
+											<path d="M14.5 12h1a4.5 4.5 0 014.5 4.5v1a4.5 4.5 0 01-9 0v-1a4.5 4.5 0 013.5-4.4"
+												stroke="#22d3ee" stroke-width="1.5"
+												stroke-linecap="round" />
+											<path d="M9.5 12A4.5 4.5 0 005 16.5v1a4.5 4.5 0 009 0v-1A4.5 4.5 0 009.5 12z"
+												stroke="#6366f1" stroke-width="1.5" />
+											<circle cx="9.5" cy="7.5" r="1" fill="#22d3ee" />
+											<circle cx="14.5" cy="17.5" r="1" fill="#22d3ee" />
+											<circle cx="9.5" cy="17.5" r="1" fill="#6366f1" />
+										</svg>
 									</div>
-									<span class="text-[10px] text-slate-500">Expert</span>
+									<div>
+										<h3
+											class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">
+											AI & Modern Development</h3>
+										<span class="card-tech-count">8 Technologies</span>
+									</div>
 								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-cyan-400" data-progress="60"></div>
-								</div>
+								<!-- Premium badge -->
+								<span
+									style="font-size:.55rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background:linear-gradient(90deg,rgba(34,211,238,.15),rgba(99,102,241,.15));border:1px solid rgba(34,211,238,.25);color:#22d3ee;white-space:nowrap;">AI-Native</span>
 							</div>
 
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><i
-												class="fas fa-code-branch text-[13px] text-cyan-500"></i>
+							<!-- 2-column layout on wider screens -->
+							<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5">
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"
+											style="background:rgba(16,163,127,.15);border-radius:4px;">
+											<svg width="14" height="14" viewBox="0 0 41 41" fill="none"
+												aria-hidden="true">
+												<path d="M21.67 2.5a18.67 18.67 0 100 37.33 18.67 18.67 0 000-37.33z"
+													fill="#10a37f" />
+												<path d="M28.73 14.5H14.6a1.6 1.6 0 00-1.6 1.6v9.6a1.6 1.6 0 001.6 1.6h14.13a1.6 1.6 0 001.6-1.6V16.1a1.6 1.6 0 00-1.6-1.6zm-7.06 10.4a4 4 0 110-8 4 4 0 010 8z"
+													fill="#fff" />
+											</svg>
 										</div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">GitHub
-											Copilot</span>
+										<span class="skill-name flex-1">ChatGPT</span>
+										<span class="skill-badge">Expert</span>
 									</div>
-									<span class="text-[10px] text-slate-500">Intermediate</span>
-								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-cyan-400" data-progress="45"></div>
-								</div>
-							</div>
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><i
-												class="fas fa-microchip text-[13px] text-cyan-500"></i>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="90"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
 										</div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">Claude
-											AI</span>
 									</div>
-									<span class="text-[10px] text-slate-500">Proficient</span>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">ChatGPT</p>
+										<p class="sk-tooltip-desc">Daily driver for code review,
+											documentation, debugging strategies, and content drafting.</p>
+									</div>
 								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-cyan-400" data-progress="40"></div>
-								</div>
-							</div>
-							<div class="skill-row">
-								<div class="flex items-center justify-between mb-1">
-									<div class="flex items-center gap-2">
-										<div class="w-5 h-5 flex items-center justify-center"><i
-												class="fas fa-laptop-code text-[13px] text-cyan-500"></i>
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"
+											style="background:rgba(34,211,238,.1);border-radius:4px;">
+											<!-- Cursor AI logo-like icon -->
+											<svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+												aria-hidden="true">
+												<rect x="3" y="3" width="18" height="18" rx="3"
+													fill="#22d3ee" opacity=".15" />
+												<path d="M8 16l2-8 2 8M9 13h3" stroke="#22d3ee"
+													stroke-width="1.6" stroke-linecap="round"
+													stroke-linejoin="round" />
+												<circle cx="16" cy="16" r="2" fill="#22d3ee" />
+											</svg>
 										</div>
-										<span
-											class="text-xs font-semibold text-slate-700 dark:text-slate-300">Gemini</span>
+										<span class="skill-name flex-1">Cursor AI</span>
+										<span class="skill-badge">Expert</span>
 									</div>
-									<span class="text-[10px] text-slate-500">Proficient</span>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="88"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">Cursor AI</p>
+										<p class="sk-tooltip-desc">AI-first IDE for accelerated development,
+											inline code suggestions, and refactoring workflows.</p>
+									</div>
 								</div>
-								<div class="sk-track">
-									<div class="sk-fill bg-cyan-400" data-progress="50"></div>
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"
+											style="background:rgba(34,197,94,.1);border-radius:4px;">
+											<svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+												aria-hidden="true">
+												<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.85 0 3.58-.5 5.07-1.38L20 22l-1.38-2.93A9.94 9.94 0 0022 12c0-5.52-4.48-10-10-10z"
+													fill="rgba(34,197,94,.8)" />
+												<circle cx="12" cy="12" r="3" fill="white" opacity=".9" />
+											</svg>
+										</div>
+										<span class="skill-name flex-1">GitHub Copilot</span>
+										<span class="skill-badge">Advanced</span>
+									</div>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="82"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">GitHub Copilot</p>
+										<p class="sk-tooltip-desc">Inline completions, test generation, and
+											commit message assistance across all codebases.</p>
+									</div>
 								</div>
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"
+											style="background:rgba(204,120,92,.15);border-radius:4px;">
+											<!-- Claude icon -->
+											<svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+												aria-hidden="true">
+												<circle cx="12" cy="12" r="9" stroke="#cc785c"
+													stroke-width="1.5" />
+												<path d="M8 14s.5-4 4-4 4 4 4 4" stroke="#cc785c"
+													stroke-width="1.5" stroke-linecap="round" />
+												<circle cx="9" cy="10" r=".8" fill="#cc785c" />
+												<circle cx="15" cy="10" r=".8" fill="#cc785c" />
+											</svg>
+										</div>
+										<span class="skill-name flex-1">Claude AI</span>
+										<span class="skill-badge">Expert</span>
+									</div>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="92"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">Claude AI</p>
+										<p class="sk-tooltip-desc">Architecture planning, complex reasoning
+											tasks, code analysis, and technical writing assistance.</p>
+									</div>
+								</div>
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"
+											style="background:rgba(251,191,36,.1);border-radius:4px;">
+											<svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+												aria-hidden="true">
+												<path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z"
+													fill="#fbbf24" opacity=".85" />
+											</svg>
+										</div>
+										<span class="skill-name flex-1">Prompt Engineering</span>
+										<span class="skill-badge">Advanced</span>
+									</div>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="85"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">Prompt Engineering</p>
+										<p class="sk-tooltip-desc">Structured prompts for code generation, UI
+											design, debugging, and content optimization.</p>
+									</div>
+								</div>
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"
+											style="background:rgba(99,102,241,.12);border-radius:4px;">
+											<svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+												aria-hidden="true">
+												<path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"
+													stroke="#6366f1" stroke-width="1.6"
+													stroke-linecap="round" stroke-linejoin="round" />
+											</svg>
+										</div>
+										<span class="skill-name flex-1">AI-Assisted Dev</span>
+										<span class="skill-badge">Expert</span>
+									</div>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="90"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">AI-Assisted Development</p>
+										<p class="sk-tooltip-desc">Integrating AI into the full dev cycle:
+											planning, scaffolding, review, and deployment.</p>
+									</div>
+								</div>
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"
+											style="background:rgba(34,211,238,.1);border-radius:4px;">
+											<svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+												aria-hidden="true">
+												<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="#22d3ee"
+													opacity=".8" />
+											</svg>
+										</div>
+										<span class="skill-name flex-1">Vibe Coding</span>
+										<span class="skill-badge">Advanced</span>
+									</div>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="87"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">Vibe Coding</p>
+										<p class="sk-tooltip-desc">Rapid prototyping via natural language
+											prompts, translating intent into working code quickly.</p>
+									</div>
+								</div>
+
+								<div class="skill-row group relative" tabindex="0">
+									<div class="flex items-center gap-2 mb-1.5">
+										<div class="skill-icon"
+											style="background:rgba(99,102,241,.12);border-radius:4px;">
+											<svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+												aria-hidden="true">
+												<path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"
+													stroke="#6366f1" stroke-width="1.4" />
+												<path d="M8 12h4l2-4 2 8 2-4h2" stroke="#6366f1"
+													stroke-width="1.4" stroke-linecap="round"
+													stroke-linejoin="round" />
+											</svg>
+										</div>
+										<span class="skill-name flex-1">AI Workflow Automation</span>
+										<span class="skill-badge">Proficient</span>
+									</div>
+									<div class="sk-track relative">
+										<div class="sk-fill" data-progress="78"></div>
+										<div class="sk-pill">
+											<div class="sk-pill-inner"><span class="counter-val">0</span>%
+											</div>
+										</div>
+									</div>
+									<div class="sk-tooltip" role="tooltip">
+										<p class="sk-tooltip-name">AI Workflow Automation</p>
+										<p class="sk-tooltip-desc">Automating repetitive tasks, content
+											pipelines, and code scaffolding with AI integrations.</p>
+									</div>
+								</div>
+
 							</div>
 						</div>
 					</div>
 
-				</div>
+				</div><!-- /grid -->
 			</div>
 		</section>
 
 		<script>
-			// Minimal observer to fill the progress bars when they scroll into view
-			document.addEventListener('DOMContentLoaded', () => {
-				const barObserver = new IntersectionObserver((entries, obs) => {
-					entries.forEach(entry => {
-						if (entry.isIntersecting) {
-							entry.target.querySelectorAll('.sk-fill').forEach(fill => {
-								fill.style.width = fill.getAttribute('data-progress') + '%';
+				(function () {
+					const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+					/* ─── Badge level helper ─── */
+					function badgeLevel(pct) {
+						if (pct >= 88) return 'Expert';
+						if (pct >= 70) return 'Advanced';
+						if (pct >= 50) return 'Proficient';
+						if (pct >= 30) return 'Intermediate';
+						return 'Learning';
+					}
+
+					/* ─── Animate a single progress bar ─── */
+					function animateBar(fill, delay) {
+						const target = parseInt(fill.getAttribute('data-progress'), 10);
+						const row = fill.closest('.skill-row');
+						const pill = row ? row.querySelector('.sk-pill') : null;
+						const counterEl = row ? row.querySelector('.counter-val') : null;
+						const track = fill.parentElement;
+						const trackW = track ? track.offsetWidth : 200;
+
+						if (prefersReducedMotion) {
+							fill.style.width = target + '%';
+							fill.classList.add('animated');
+							if (pill) { pill.style.left = target + '%'; pill.classList.add('visible'); }
+							if (counterEl) counterEl.textContent = target;
+							return;
+						}
+
+						setTimeout(function () {
+							fill.style.width = target + '%';
+							fill.classList.add('animated');
+							if (pill) {
+								pill.style.left = target + '%';
+								setTimeout(function () { pill.classList.add('visible'); }, 200);
+							}
+
+							// Counter
+							const dur = 1400;
+							const start = performance.now();
+							function tick(now) {
+								const p = Math.min((now - start) / dur, 1);
+								const ease = 1 - Math.pow(1 - p, 4);
+								if (counterEl) counterEl.textContent = Math.floor(ease * target);
+								if (p < 1) requestAnimationFrame(tick);
+								else if (counterEl) counterEl.textContent = target;
+							}
+							requestAnimationFrame(tick);
+						}, delay || 0);
+					}
+
+					/* ─── Card intersection observer ─── */
+					const cardObserver = new IntersectionObserver(function (entries, obs) {
+						entries.forEach(function (entry) {
+							if (!entry.isIntersecting) return;
+							const card = entry.target;
+							card.querySelectorAll('.sk-fill').forEach(function (fill, i) {
+								animateBar(fill, 80 + i * 110);
+							});
+							obs.unobserve(card);
+						});
+					}, { threshold: 0.15 });
+
+					/* ─── Reveal observer ─── */
+					const revealObserver = new IntersectionObserver(function (entries, obs) {
+						entries.forEach(function (entry) {
+							if (!entry.isIntersecting) return;
+							entry.target.classList.add('sk-visible');
+							obs.unobserve(entry.target);
+						});
+					}, { threshold: 0.1 });
+
+					/* ─── Snapshot counter ─── */
+					const snapObserver = new IntersectionObserver(function (entries, obs) {
+						entries.forEach(function (entry) {
+							if (!entry.isIntersecting) return;
+							entry.target.querySelectorAll('[data-snap-target]').forEach(function (el) {
+								const target = parseInt(el.getAttribute('data-snap-target'), 10);
+								if (prefersReducedMotion) { el.textContent = target + '+'; return; }
+								const dur = 1200;
+								const start = performance.now();
+								function tick(now) {
+									const p = Math.min((now - start) / dur, 1);
+									const ease = 1 - Math.pow(1 - p, 3);
+									el.textContent = Math.floor(ease * target) + (p >= 1 ? '+' : '');
+									if (p < 1) requestAnimationFrame(tick);
+								}
+								requestAnimationFrame(tick);
 							});
 							obs.unobserve(entry.target);
-						}
-					});
-				}, { threshold: 0.15 });
+						});
+					}, { threshold: 0.5 });
 
-				document.querySelectorAll('.skill-card-v2, .project-card').forEach(card => {
-					barObserver.observe(card);
-				});
-			});
+					/* ─── Cursor spotlight on cards ─── */
+					document.querySelectorAll('.skill-card-v2').forEach(function (card) {
+						card.addEventListener('mousemove', function (e) {
+							const rect = card.getBoundingClientRect();
+							const x = ((e.clientX - rect.left) / rect.width) * 100;
+							const y = ((e.clientY - rect.top) / rect.height) * 100;
+							card.style.setProperty('--mx', x + '%');
+							card.style.setProperty('--my', y + '%');
+						});
+					});
+
+					/* ─── Neural network canvas ─── */
+					function initNeural() {
+						const canvas = document.getElementById('ai-neural-canvas');
+						if (!canvas) return;
+						const ctx = canvas.getContext('2d');
+						let w, h, nodes, raf;
+
+						function resize() {
+							const card = canvas.parentElement;
+							w = canvas.width = card.offsetWidth;
+							h = canvas.height = card.offsetHeight;
+						}
+
+						function makeNodes(n) {
+							return Array.from({ length: n }, function () {
+								return {
+									x: Math.random() * w, y: Math.random() * h,
+									vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35,
+									r: 1.5 + Math.random() * 2
+								};
+							});
+						}
+
+						function draw() {
+							ctx.clearRect(0, 0, w, h);
+							nodes.forEach(function (n) {
+								n.x += n.vx; n.y += n.vy;
+								if (n.x < 0 || n.x > w) n.vx *= -1;
+								if (n.y < 0 || n.y > h) n.vy *= -1;
+							});
+							// Connections
+							for (let i = 0; i < nodes.length; i++) {
+								for (let j = i + 1; j < nodes.length; j++) {
+									const dx = nodes[i].x - nodes[j].x;
+									const dy = nodes[i].y - nodes[j].y;
+									const dist = Math.sqrt(dx * dx + dy * dy);
+									if (dist < 90) {
+										ctx.beginPath();
+										ctx.moveTo(nodes[i].x, nodes[i].y);
+										ctx.lineTo(nodes[j].x, nodes[j].y);
+										ctx.strokeStyle = 'rgba(34,211,238,' + (1 - dist / 90) * .6 + ')';
+										ctx.lineWidth = .8;
+										ctx.stroke();
+									}
+								}
+							}
+							// Dots
+							nodes.forEach(function (n) {
+								ctx.beginPath();
+								ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+								ctx.fillStyle = 'rgba(34,211,238,.8)';
+								ctx.fill();
+							});
+							raf = requestAnimationFrame(draw);
+						}
+
+						resize();
+						nodes = makeNodes(22);
+						if (!prefersReducedMotion) draw();
+						window.addEventListener('resize', function () {
+							resize();
+							nodes = makeNodes(22);
+						});
+					}
+
+					/* ─── Init ─── */
+					document.querySelectorAll('.sk-reveal').forEach(function (el) {
+						revealObserver.observe(el);
+					});
+					document.querySelectorAll('.skill-card-v2').forEach(function (card) {
+						cardObserver.observe(card);
+					});
+					const snapBar = document.querySelector('.snapshot-bar');
+					if (snapBar) snapObserver.observe(snapBar);
+
+					initNeural();
+				})();
 		</script>
 
 		<section id="projects" class="py-16 border-t border-black/5 dark:border-white/[0.04]">
