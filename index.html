@@ -4,13 +4,16 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="description" content="Richter Mayandoc — Graduating BSIT student and Full-Stack Developer from Ilagan City, specializing in Laravel, PHP, MySQL, JavaScript, Tailwind CSS, Livewire and REST APIs." />
-	<meta name="keywords" content="Full-Stack Developer, Laravel, PHP, MySQL, Livewire, JavaScript, Tailwind CSS, REST API, Web Developer Philippines, BSIT, Ilagan City" />
+	<meta name="description"
+		content="Richter Mayandoc — Graduating BSIT student and Full-Stack Developer from Ilagan City, specializing in Laravel, PHP, MySQL, JavaScript, Tailwind CSS, Livewire and REST APIs." />
+	<meta name="keywords"
+		content="Full-Stack Developer, Laravel, PHP, MySQL, Livewire, JavaScript, Tailwind CSS, REST API, Web Developer Philippines, BSIT, Ilagan City" />
 	<meta name="author" content="Richter Mayandoc" />
 	<meta name="robots" content="index, follow" />
 	<meta name="theme-color" id="theme-color-meta" content="#000000" />
 	<meta property="og:title" content="Richter Mayandoc | Full-Stack Developer" />
-	<meta property="og:description" content="Graduating BSIT student building modern, scalable web applications with Laravel, PHP and MySQL." />
+	<meta property="og:description"
+		content="Graduating BSIT student building modern, scalable web applications with Laravel, PHP and MySQL." />
 	<meta property="og:type" content="website" />
 	<title>Richter Mayandoc | Full-Stack Developer</title>
 
@@ -18,7 +21,9 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<script src="https://cdn.tailwindcss.com"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+		rel="stylesheet" />
 	<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 	<script>
@@ -56,8 +61,12 @@
 	</script>
 
 	<style>
+		/* ── Reduced motion ── */
 		@media (prefers-reduced-motion: reduce) {
-			*, *::before, *::after {
+
+			*,
+			*::before,
+			*::after {
 				animation-duration: 0.001ms !important;
 				animation-iteration-count: 1 !important;
 				transition-duration: 0.001ms !important;
@@ -65,34 +74,66 @@
 			}
 		}
 
-		::selection { background: #6366F1; color: #fff; }
-		::-webkit-scrollbar { width: 5px; }
-		::-webkit-scrollbar-track { background: #f1f5f9; }
-		.dark ::-webkit-scrollbar-track { background: #000000; }
-		::-webkit-scrollbar-thumb { background: #818CF8; border-radius: 99px; }
-		.dark ::-webkit-scrollbar-thumb { background: #312e81; }
+		/* ── Scroll & Selection ── */
+		::selection {
+			background: #6366F1;
+			color: #fff;
+		}
 
+		::-webkit-scrollbar {
+			width: 5px;
+		}
+
+		::-webkit-scrollbar-track {
+			background: #f1f5f9;
+		}
+
+		.dark ::-webkit-scrollbar-track {
+			background: #000000;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: #818CF8;
+			border-radius: 99px;
+		}
+
+		.dark ::-webkit-scrollbar-thumb {
+			background: #312e81;
+		}
+
+		/* ── Background ── */
 		body {
 			background-color: #f8fafc;
 			background-image:
-				radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99,102,241,0.08) 0%, transparent 70%),
-				linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-				linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+				radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.08) 0%, transparent 70%),
+				linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+				linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
 			background-size: 100% 100%, 48px 48px, 48px 48px;
 			background-attachment: fixed;
 			transition: background-color 0.3s ease;
 		}
+
 		.dark body {
 			background-color: #000000;
 			background-image:
-				radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99,102,241,0.15) 0%, transparent 70%),
-				linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-				linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+				radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.15) 0%, transparent 70%),
+				linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+				linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 		}
 
-		.glass { background: rgba(255,255,255,0.7); border: 1px solid rgba(0,0,0,0.05); backdrop-filter: blur(8px); }
-		.dark .glass { background: #111111; border: 1px solid rgba(255,255,255,0.05); }
+		/* ── Glassmorphism ── */
+		.glass {
+			background: rgba(255, 255, 255, 0.7);
+			border: 1px solid rgba(0, 0, 0, 0.05);
+			backdrop-filter: blur(8px);
+		}
 
+		.dark .glass {
+			background: #111111;
+			border: 1px solid rgba(255, 255, 255, 0.05);
+		}
+
+		/* ── Gradient text ── */
 		.gradient-text {
 			background: linear-gradient(135deg, #818CF8 0%, #34D399 100%);
 			-webkit-background-clip: text;
@@ -100,301 +141,668 @@
 			background-clip: text;
 		}
 
-		.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; will-change: opacity, transform; }
-		.reveal.visible { opacity: 1; transform: none; }
+		/* ── Reveal animations ── */
+		.reveal {
+			opacity: 0;
+			transform: translateY(22px);
+			transition: opacity 0.6s ease, transform 0.6s ease;
+			will-change: opacity, transform;
+		}
 
-		.reveal-stagger > * { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
-		.reveal-stagger.visible > * { opacity: 1; transform: none; }
-		.reveal-stagger.visible > *:nth-child(1) { transition-delay: 0ms; }
-		.reveal-stagger.visible > *:nth-child(2) { transition-delay: 70ms; }
-		.reveal-stagger.visible > *:nth-child(3) { transition-delay: 140ms; }
-		.reveal-stagger.visible > *:nth-child(4) { transition-delay: 210ms; }
-		.reveal-stagger.visible > *:nth-child(5) { transition-delay: 280ms; }
-		.reveal-stagger.visible > *:nth-child(6) { transition-delay: 350ms; }
+		.reveal.visible {
+			opacity: 1;
+			transform: none;
+		}
 
-		.nav-link { position: relative; }
-		.nav-link::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 2px; background: #818CF8; border-radius: 99px; transition: width 0.25s ease; }
-		.nav-link:hover::after, .nav-link.active::after { width: 100%; }
-		.nav-link:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid #818CF8; outline-offset: 3px; border-radius: 4px; }
+		.reveal-stagger>* {
+			opacity: 0;
+			transform: translateY(18px);
+			transition: opacity 0.5s ease, transform 0.5s ease;
+		}
 
-		#navbar { transition: background 0.3s, box-shadow 0.3s; }
-		#navbar.scrolled { background: #ffffff; box-shadow: 0 1px 0 rgba(0,0,0,0.05); }
-		.dark #navbar.scrolled { background: #000000; box-shadow: 0 1px 0 rgba(255,255,255,0.05); }
+		.reveal-stagger.visible>* {
+			opacity: 1;
+			transform: none;
+		}
 
-		#mobileMenu { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s ease, opacity 0.25s ease; }
-		#mobileMenu.open { max-height: 32rem; opacity: 1; }
+		.reveal-stagger.visible>*:nth-child(1) {
+			transition-delay: 0ms;
+		}
 
-		.skill-badge { transition: transform 0.2s, box-shadow 0.2s; }
-		.skill-badge:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(99,102,241,0.2); }
+		.reveal-stagger.visible>*:nth-child(2) {
+			transition-delay: 70ms;
+		}
 
-		.project-card { position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-		.project-card:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(0,0,0,0.1); }
-		.dark .project-card:hover { box-shadow: 0 20px 44px rgba(0,0,0,0.45); }
+		.reveal-stagger.visible>*:nth-child(3) {
+			transition-delay: 140ms;
+		}
+
+		.reveal-stagger.visible>*:nth-child(4) {
+			transition-delay: 210ms;
+		}
+
+		.reveal-stagger.visible>*:nth-child(5) {
+			transition-delay: 280ms;
+		}
+
+		.reveal-stagger.visible>*:nth-child(6) {
+			transition-delay: 350ms;
+		}
+
+		/* ── Nav ── */
+		.nav-link {
+			position: relative;
+		}
+
+		.nav-link::after {
+			content: '';
+			position: absolute;
+			bottom: -3px;
+			left: 0;
+			width: 0;
+			height: 2px;
+			background: #818CF8;
+			border-radius: 99px;
+			transition: width 0.25s ease;
+		}
+
+		.nav-link:hover::after,
+		.nav-link.active::after {
+			width: 100%;
+		}
+
+		.nav-link:focus-visible,
+		a:focus-visible,
+		button:focus-visible,
+		input:focus-visible,
+		textarea:focus-visible {
+			outline: 2px solid #818CF8;
+			outline-offset: 3px;
+			border-radius: 4px;
+		}
+
+		#navbar {
+			transition: background 0.3s, box-shadow 0.3s;
+		}
+
+		#navbar.scrolled {
+			background: #ffffff;
+			box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+		}
+
+		.dark #navbar.scrolled {
+			background: #000000;
+			box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+		}
+
+		/* ── Mobile menu ── */
+		#mobileMenu {
+			max-height: 0;
+			overflow: hidden;
+			opacity: 0;
+			transition: max-height 0.3s ease, opacity 0.25s ease;
+		}
+
+		#mobileMenu.open {
+			max-height: 26rem;
+			opacity: 1;
+		}
+
+		/* ── Skill badges ── */
+		.skill-badge {
+			transition: transform 0.2s, box-shadow 0.2s;
+		}
+
+		.skill-badge:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 6px 20px rgba(99, 102, 241, 0.2);
+		}
+
+		/* ── Project card ── */
+		.project-card {
+			position: relative;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		.project-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 20px 44px rgba(0, 0, 0, 0.1);
+		}
+
+		.dark .project-card:hover {
+			box-shadow: 0 20px 44px rgba(0, 0, 0, 0.45);
+		}
+
 		.project-card::before {
 			content: '';
-			position: absolute; inset: 0;
-			border-radius: inherit; padding: 1px;
-			background: linear-gradient(135deg, rgba(129,140,248,0.55), rgba(52,211,153,0.35));
+			position: absolute;
+			inset: 0;
+			border-radius: inherit;
+			padding: 1px;
+			background: linear-gradient(135deg, rgba(129, 140, 248, 0.55), rgba(52, 211, 153, 0.35));
 			-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-			-webkit-mask-composite: xor; mask-composite: exclude;
-			opacity: 0; transition: opacity 0.3s ease;
-			pointer-events: none; z-index: 1;
-		}
-		.project-card:hover::before { opacity: 1; }
-		.project-img { overflow: hidden; }
-		.project-img img { transition: transform 0.55s ease; will-change: transform; }
-		.project-card:hover .project-img img { transform: scale(1.05); }
-
-		.timeline-dot { width: 13px; height: 13px; border-radius: 50%; background: #6366F1; border: 3px solid #ffffff; box-shadow: 0 0 0 2px #6366F1, 0 0 14px rgba(99,102,241,0.45); }
-		.dark .timeline-dot { border: 3px solid #000000; }
-
-		.stat-card { transition: box-shadow 0.25s, transform 0.25s; }
-		.stat-card:hover { box-shadow: 0 0 28px rgba(99,102,241,0.18); transform: translateY(-2px); }
-
-		.btn-primary { position: relative; overflow: hidden; }
-		.btn-primary::after { content: ''; position: absolute; top: -50%; left: -75%; width: 50%; height: 200%; background: rgba(255,255,255,0.1); transform: skewX(-20deg); transition: left 0.4s; }
-		.btn-primary:hover::after { left: 120%; }
-		.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
-
-		.form-input { background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.1); color: #1e293b; transition: border-color 0.2s, box-shadow 0.2s; }
-		.dark .form-input { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #e2e8f0; }
-		.form-input:focus { outline: none; border-color: #6366F1; box-shadow: 0 0 0 3px rgba(99,102,241,0.12); }
-		.form-input::placeholder { color: #94a3b8; }
-		.dark .form-input::placeholder { color: #3d4a5c; }
-		.form-input.error { border-color: #f87171; }
-		.field-error { color: #f87171; font-size: 0.72rem; margin-top: 0.3rem; display: none; }
-		.field-error.show { display: block; }
-
-		#backToTop { opacity: 0; visibility: hidden; transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s; transform: translateY(6px); }
-		#backToTop.show { opacity: 1; visibility: visible; transform: translateY(0); }
-
-		.spinner { width: 15px; height: 15px; border: 2px solid rgba(255,255,255,0.25); border-top-color: #fff; border-radius: 50%; animation: spin 0.55s linear infinite; display: inline-block; }
-		@keyframes spin { to { transform: rotate(360deg); } }
-
-		.exp-entry { position: relative; padding-left: 1.1rem; border-left: 1px solid rgba(0,0,0,0.1); transition: border-color 0.2s; }
-		.dark .exp-entry { border-left: 1px solid rgba(255,255,255,0.07); }
-		.exp-entry:hover { border-color: rgba(99,102,241,0.35); }
-		.exp-dot { position: absolute; left: -5px; top: 4px; width: 9px; height: 9px; border-radius: 50%; background: #6366F1; border: 2px solid #ffffff; box-shadow: 0 0 0 1px #6366F1, 0 0 9px rgba(99,102,241,0.4); }
-		.dark .exp-dot { border: 2px solid #000000; }
-
-		.section-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #818CF8; }
-
-		.cert-btn { transition: background 0.15s; }
-		.cert-btn:hover { background: rgba(0,0,0,0.03); }
-		.dark .cert-btn:hover { background: rgba(255,255,255,0.04); }
-
-		.skill-card { transition: border-color 0.2s, transform 0.2s; }
-		.skill-card:hover { transform: translateY(-2px); }
-
-		/* Progress bars */
-		.sk-track { height: 5px; border-radius: 999px; background: rgba(0,0,0,0.05); margin-top: 6px; overflow: hidden; }
-		.dark .sk-track { background: rgba(255,255,255,0.1); }
-		.sk-fill { height: 100%; border-radius: 999px; width: 0; transition: width 1.2s cubic-bezier(0.22,1,0.36,1); }
-
-		/* Snap stat bar dividers */
-		.snap-stat { position: relative; }
-		.snap-stat + .snap-stat::before { content: ''; position: absolute; left: 0; top: 25%; bottom: 25%; width: 1px; background: rgba(0,0,0,0.08); }
-		.dark .snap-stat + .snap-stat::before { background: rgba(255,255,255,0.08); }
-
-		/* ── MOBILE CERT TABS ── */
-		.cert-tab-scroll { display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-		.cert-tab-scroll::-webkit-scrollbar { display: none; }
-
-		/* ── SAFE AREA INSETS (notched phones) ── */
-		@supports (padding: max(0px)) {
-			#navbar .nav-inner { padding-left: max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right)); }
-			footer { padding-bottom: max(2.5rem, env(safe-area-inset-bottom)); }
-			#backToTop { bottom: max(1.5rem, env(safe-area-inset-bottom)); right: max(1rem, env(safe-area-inset-right)); }
+			-webkit-mask-composite: xor;
+			mask-composite: exclude;
+			opacity: 0;
+			transition: opacity 0.3s ease;
+			pointer-events: none;
+			z-index: 1;
 		}
 
-		/* ── Touch target minimum ── */
-		@media (max-width: 768px) {
-			.cert-btn { min-height: 48px; }
-			#submitBtn { min-height: 48px; }
-			#menuBtn { min-width: 44px; min-height: 44px; }
+		.project-card:hover::before {
+			opacity: 1;
 		}
 
-		/* Hero image — constrain height on small portrait phones */
-		@media (max-width: 400px) {
-			.hero-photo-wrap { max-height: 300px; }
+		.project-img {
+			overflow: hidden;
+		}
+
+		.project-img img {
+			transition: transform 0.55s ease;
+			will-change: transform;
+		}
+
+		.project-card:hover .project-img img {
+			transform: scale(1.05);
+		}
+
+		/* ── Timeline dot ── */
+		.timeline-dot {
+			width: 13px;
+			height: 13px;
+			border-radius: 50%;
+			background: #6366F1;
+			border: 3px solid #ffffff;
+			box-shadow: 0 0 0 2px #6366F1, 0 0 14px rgba(99, 102, 241, 0.45);
+		}
+
+		.dark .timeline-dot {
+			border: 3px solid #000000;
+		}
+
+		/* ── Stat card ── */
+		.stat-card {
+			transition: box-shadow 0.25s, transform 0.25s;
+		}
+
+		.stat-card:hover {
+			box-shadow: 0 0 28px rgba(99, 102, 241, 0.18);
+			transform: translateY(-2px);
+		}
+
+		/* ── Button shine ── */
+		.btn-primary {
+			position: relative;
+			overflow: hidden;
+		}
+
+		.btn-primary::after {
+			content: '';
+			position: absolute;
+			top: -50%;
+			left: -75%;
+			width: 50%;
+			height: 200%;
+			background: rgba(255, 255, 255, 0.1);
+			transform: skewX(-20deg);
+			transition: left 0.4s;
+		}
+
+		.btn-primary:hover::after {
+			left: 120%;
+		}
+
+		.btn-primary:disabled {
+			opacity: 0.6;
+			cursor: not-allowed;
+		}
+
+		/* ── Contact form ── */
+		.form-input {
+			background: rgba(0, 0, 0, 0.02);
+			border: 1px solid rgba(0, 0, 0, 0.1);
+			color: #1e293b;
+			transition: border-color 0.2s, box-shadow 0.2s;
+		}
+
+		.dark .form-input {
+			background: rgba(255, 255, 255, 0.04);
+			border: 1px solid rgba(255, 255, 255, 0.08);
+			color: #e2e8f0;
+		}
+
+		.form-input:focus {
+			outline: none;
+			border-color: #6366F1;
+			box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+		}
+
+		.form-input::placeholder {
+			color: #94a3b8;
+		}
+
+		.dark .form-input::placeholder {
+			color: #3d4a5c;
+		}
+
+		.form-input.error {
+			border-color: #f87171;
+		}
+
+		.field-error {
+			color: #f87171;
+			font-size: 0.72rem;
+			margin-top: 0.3rem;
+			display: none;
+		}
+
+		.field-error.show {
+			display: block;
+		}
+
+		/* ── Availability dot ── */
+		@keyframes ping-green {
+			0% {
+				transform: scale(1);
+				opacity: 0.8;
+			}
+
+			75%,
+			100% {
+				transform: scale(2.2);
+				opacity: 0;
+			}
+		}
+
+		/* ── Back to top ── */
+		#backToTop {
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+			transform: translateY(6px);
+		}
+
+		#backToTop.show {
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
+
+		/* ── Spinner ── */
+		.spinner {
+			width: 15px;
+			height: 15px;
+			border: 2px solid rgba(255, 255, 255, 0.25);
+			border-top-color: #fff;
+			border-radius: 50%;
+			animation: spin 0.55s linear infinite;
+			display: inline-block;
+		}
+
+		@keyframes spin {
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		/* ── About exp entries ── */
+		.exp-entry {
+			position: relative;
+			padding-left: 1.1rem;
+			border-left: 1px solid rgba(0, 0, 0, 0.1);
+			transition: border-color 0.2s;
+		}
+
+		.dark .exp-entry {
+			border-left: 1px solid rgba(255, 255, 255, 0.07);
+		}
+
+		.exp-entry:hover {
+			border-color: rgba(99, 102, 241, 0.35);
+		}
+
+		.exp-dot {
+			position: absolute;
+			left: -5px;
+			top: 4px;
+			width: 9px;
+			height: 9px;
+			border-radius: 50%;
+			background: #6366F1;
+			border: 2px solid #ffffff;
+			box-shadow: 0 0 0 1px #6366F1, 0 0 9px rgba(99, 102, 241, 0.4);
+		}
+
+		.dark .exp-dot {
+			border: 2px solid #000000;
+		}
+
+		/* ── Section label ── */
+		.section-label {
+			font-size: 0.65rem;
+			font-weight: 600;
+			letter-spacing: 0.18em;
+			text-transform: uppercase;
+			color: #818CF8;
+		}
+
+		/* ── Cert panel ── */
+		.cert-btn {
+			transition: background 0.15s;
+		}
+
+		.cert-btn:hover {
+			background: rgba(0, 0, 0, 0.03);
+		}
+
+		.dark .cert-btn:hover {
+			background: rgba(255, 255, 255, 0.04);
+		}
+
+		/* ── Skill card hover border ── */
+		.skill-card {
+			transition: border-color 0.2s, transform 0.2s;
+		}
+
+		.skill-card:hover {
+			transform: translateY(-2px);
 		}
 	</style>
 </head>
 
 <body class="text-slate-700 dark:text-slate-300 font-sans antialiased leading-relaxed">
 
-	<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-brand-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">
+	<a href="#main"
+		class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-brand-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">
 		Skip to content
 	</a>
 
-	<!-- ═══════════════════════ NAV ═══════════════════════ -->
-	<nav id="navbar" class="fixed w-full top-0 z-50 py-3 sm:py-4" aria-label="Primary">
-		<div class="nav-inner max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center">
+	<nav id="navbar" class="fixed w-full top-0 z-50 py-4" aria-label="Primary">
+		<div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
 			<a href="#hero" class="font-display font-bold text-slate-900 dark:text-white text-base tracking-tight">
 				RM<span class="text-brand-400">.</span>
 			</a>
 
-			<div class="hidden md:flex items-center gap-5 lg:gap-8 text-[11px] font-semibold tracking-[0.12em] uppercase text-slate-500 dark:text-slate-400">
+			<div
+				class="hidden md:flex items-center gap-8 text-[11px] font-semibold tracking-[0.12em] uppercase text-slate-500 dark:text-slate-400">
 				<a href="#about" class="nav-link hover:text-brand-600 dark:hover:text-white transition-colors">About</a>
-				<a href="#skills" class="nav-link hover:text-brand-600 dark:hover:text-white transition-colors">Skills</a>
-				<a href="#projects" class="nav-link hover:text-brand-600 dark:hover:text-white transition-colors">Projects</a>
-				<a href="#experience" class="nav-link hover:text-brand-600 dark:hover:text-white transition-colors">Experience</a>
-				<a href="#certification" class="nav-link hover:text-brand-600 dark:hover:text-white transition-colors">Certifications</a>
-				<a href="#contact" class="nav-link hover:text-brand-600 dark:hover:text-white transition-colors">Contact</a>
+				<a href="#skills"
+					class="nav-link hover:text-brand-600 dark:hover:text-white transition-colors">Skills</a>
+				<a href="#projects"
+					class="nav-link hover:text-brand-600 dark:hover:text-white transition-colors">Projects</a>
+				<a href="#experience"
+					class="nav-link hover:text-brand-600 dark:hover:text-white transition-colors">Experience</a>
+				<a href="#certification"
+					class="nav-link hover:text-brand-600 dark:hover:text-white transition-colors">Certifications</a>
+				<a href="#contact"
+					class="nav-link hover:text-brand-600 dark:hover:text-white transition-colors">Contact</a>
 			</div>
 
-			<div class="hidden md:flex items-center gap-3 lg:gap-4">
-				<button id="themeToggle" class="text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-white transition-colors" aria-label="Toggle theme">
+			<div class="hidden md:flex items-center gap-4">
+				<button id="themeToggle"
+					class="text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-white transition-colors"
+					aria-label="Toggle theme">
 					<i class="fas fa-moon dark:hidden text-lg"></i>
 					<i class="fas fa-sun hidden dark:inline text-lg"></i>
 				</button>
-				<a href="resume.pdf" download class="inline-flex items-center gap-1.5 px-3 py-2 text-[11px] font-semibold tracking-wider uppercase text-brand-500 dark:text-brand-400 border border-brand-500/35 rounded-lg hover:bg-brand-500/10 transition-colors">
+
+				<a href="resume.pdf" download
+					class="inline-flex items-center gap-1.5 px-3.5 py-2 text-[11px] font-semibold tracking-wider uppercase text-brand-500 dark:text-brand-400 border border-brand-500/35 rounded-lg hover:bg-brand-500/10 transition-colors">
 					<i class="fas fa-download text-[10px]" aria-hidden="true"></i> Resume
 				</a>
 			</div>
 
-			<div class="md:hidden flex items-center gap-2">
-				<button id="themeToggleMobile" class="p-2 text-slate-600 hover:text-brand-600 dark:text-slate-400 dark:hover:text-white transition-colors" aria-label="Toggle theme">
+			<div class="md:hidden flex items-center gap-4">
+				<button id="themeToggleMobile"
+					class="text-slate-600 hover:text-brand-600 dark:text-slate-400 dark:hover:text-white transition-colors"
+					aria-label="Toggle theme">
 					<i class="fas fa-moon dark:hidden text-lg"></i>
 					<i class="fas fa-sun hidden dark:inline text-lg"></i>
 				</button>
-				<button id="menuBtn" class="p-2 text-slate-900 dark:text-white" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+				<button id="menuBtn" class="text-slate-900 dark:text-white p-1" aria-label="Toggle menu"
+					aria-expanded="false" aria-controls="mobileMenu">
 					<i class="fas fa-bars text-lg" aria-hidden="true"></i>
 				</button>
 			</div>
 		</div>
 
-		<div id="mobileMenu" class="md:hidden absolute top-full left-0 w-full glass px-4 sm:px-6">
-			<div class="py-5 flex flex-col gap-1">
-				<a href="#about" class="py-2 text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white transition-colors" data-close-menu>About</a>
-				<a href="#skills" class="py-2 text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white transition-colors" data-close-menu>Skills</a>
-				<a href="#projects" class="py-2 text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white transition-colors" data-close-menu>Projects</a>
-				<a href="#experience" class="py-2 text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white transition-colors" data-close-menu>Experience</a>
-				<a href="#certification" class="py-2 text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white transition-colors" data-close-menu>Certifications</a>
-				<a href="#contact" class="py-2 text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white transition-colors" data-close-menu>Contact</a>
-				<div class="pt-3 mt-2 border-t border-black/5 dark:border-white/[0.05]">
-					<a href="resume.pdf" download class="inline-flex items-center gap-2 text-sm font-semibold text-brand-500 dark:text-brand-400">
-						<i class="fas fa-download text-xs"></i> Download Resume
-					</a>
-				</div>
+		<div id="mobileMenu"
+			class="md:hidden absolute top-full left-0 w-full glass px-6 flex flex-col gap-4 text-sm font-semibold uppercase tracking-wider">
+			<div class="py-5 flex flex-col gap-4">
+				<a href="#about" class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white"
+					data-close-menu>About</a>
+				<a href="#skills" class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white"
+					data-close-menu>Skills</a>
+				<a href="#projects"
+					class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white"
+					data-close-menu>Projects</a>
+				<a href="#experience"
+					class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white"
+					data-close-menu>Experience</a>
+				<a href="#certification"
+					class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white"
+					data-close-menu>Certifications</a>
+				<a href="#contact" class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white"
+					data-close-menu>Contact</a>
+				<a href="resume.pdf" download class="text-brand-500 dark:text-brand-400">↓
+					Download Resume</a>
 			</div>
 		</div>
 	</nav>
 
 	<main id="main">
+		<section id="hero" class="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden">
 
-		<!-- ═══════════════════════ HERO ═══════════════════════ -->
-		<section id="hero" class="relative min-h-screen flex items-center pt-20 sm:pt-24 pb-12 overflow-hidden">
 			<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
-				<div class="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-500/10 dark:bg-brand-500/20 rounded-full blur-[100px]"></div>
-				<div class="absolute top-1/4 right-1/4 w-80 h-80 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-[100px]"></div>
-				<div class="absolute bottom-1/4 right-1/3 w-96 h-96 bg-teal-500/5 dark:bg-teal-500/10 rounded-full blur-[100px]"></div>
+				<div
+					class="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-500/10 dark:bg-brand-500/20 rounded-full blur-[100px]">
+				</div>
+				<div
+					class="absolute top-1/4 right-1/4 w-80 h-80 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-[100px]">
+				</div>
+				<div
+					class="absolute bottom-1/4 right-1/3 w-96 h-96 bg-teal-500/5 dark:bg-teal-500/10 rounded-full blur-[100px]">
+				</div>
 			</div>
 
-			<div class="container mx-auto px-4 sm:px-6 relative z-10 flex flex-col-reverse lg:flex-row items-center justify-between gap-8 lg:gap-12 mt-4 sm:mt-10">
+			<div
+				class="container mx-auto px-6 relative z-10 flex flex-col-reverse lg:flex-row items-center justify-between gap-12 mt-10">
 
-				<!-- Left: text -->
-				<div class="flex flex-col items-center lg:items-start text-center lg:text-left max-w-2xl w-full lg:w-1/2">
+				<div
+					class="flex flex-col items-center lg:items-start text-center lg:text-left max-w-2xl fade-in-up w-full lg:w-1/2">
 
-					<p class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-200/50 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 text-sm font-medium text-slate-700 dark:text-slate-300 mb-5 sm:mb-6 shadow-sm">
-						<span class="w-2 h-2 rounded-full bg-brand-500 dark:bg-brand-400 animate-pulse" aria-hidden="true"></span>
+					<p class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-200/50 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 text-sm font-medium text-slate-700 dark:text-slate-300 mb-6 shadow-sm"
+						aria-label="Role: Full-Stack Developer">
+						<span class="w-2 h-2 rounded-full bg-brand-500 dark:bg-brand-400 animate-pulse"
+							aria-hidden="true"></span>
 						Full-Stack Developer
 					</p>
 
-					<h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-5 sm:mb-6">
-						<span class="block text-xl sm:text-2xl md:text-3xl text-slate-600 dark:text-slate-300 font-medium tracking-normal mb-2">Hello, I'm</span>
+					<!-- Heading: Scales from 4xl on mobile to 7xl on large screens -->
+					<h1
+						class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4 sm:mb-6">
+						<span
+							class="block text-xl sm:text-2xl md:text-3xl text-slate-600 dark:text-slate-300 font-medium tracking-normal mb-1 sm:mb-2">
+							Hello, I'm
+						</span>
 						Richter <span class="gradient-text">Mayandoc.</span>
 					</h1>
 
-					<p class="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-8 sm:mb-10 max-w-xl leading-relaxed">
+					<!-- Subtitle: Adjusted margin and line-height for better mobile flow -->
+					<p
+						class="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-8 sm:mb-10 max-w-xl leading-relaxed">
 						Building fast, accessible web apps — from pixel-perfect interfaces to robust back-end APIs.
 					</p>
 
-					<div class="flex items-center gap-6 sm:gap-8 mb-10 sm:mb-16" role="list" aria-label="Social profiles">
-						<a href="https://github.com/nmrjustme" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-2xl transition-all transform hover:scale-110 hover:-translate-y-1" aria-label="GitHub profile" role="listitem">
+					<!-- Socials: Centered on mobile, left-aligned on tablet+ -->
+					<div class="flex justify-center sm:justify-start items-center gap-6 sm:gap-8 mb-12 sm:mb-16"
+						role="list" aria-label="Social profiles">
+						<a href="https://github.com/nmrjustme" target="_blank" rel="noopener noreferrer"
+							class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-2xl transition-all transform hover:scale-110 hover:-translate-y-1"
+							aria-label="GitHub profile" role="listitem">
 							<i class="fab fa-github" aria-hidden="true"></i>
 						</a>
-						<a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-[#0A66C2] dark:text-slate-400 text-2xl transition-all transform hover:scale-110 hover:-translate-y-1" aria-label="LinkedIn profile" role="listitem">
+						<a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank"
+							rel="noopener noreferrer"
+							class="text-slate-500 hover:text-[#0A66C2] dark:text-slate-400 text-2xl transition-all transform hover:scale-110 hover:-translate-y-1"
+							aria-label="LinkedIn profile" role="listitem">
 							<i class="fab fa-linkedin-in" aria-hidden="true"></i>
 						</a>
-						<a href="mailto:rmayandoc0625@gmail.com" class="text-slate-500 hover:text-red-500 dark:hover:text-red-400 dark:text-slate-400 text-2xl transition-all transform hover:scale-110 hover:-translate-y-1" aria-label="Send email" role="listitem">
+						<a href="mailto:rmayandoc0625@gmail.com"
+							class="text-slate-500 hover:text-red-500 dark:hover:text-red-400 dark:text-slate-400 text-2xl transition-all transform hover:scale-110 hover:-translate-y-1"
+							aria-label="Send email" role="listitem">
 							<i class="fas fa-envelope" aria-hidden="true"></i>
 						</a>
 					</div>
 
-					<!-- Stats: 2-col on phones, 3-col on sm+ -->
-					<div class="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-6 w-full pt-8 border-t border-slate-200 dark:border-slate-800/80" role="list" aria-label="Career highlights">
-						<div class="flex flex-col items-center lg:items-start" role="listitem">
-							<p class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-1">3+</p>
-							<p class="text-xs sm:text-sm font-medium text-slate-500 uppercase tracking-wider">Years Coding</p>
-							<p class="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400 text-center lg:text-left max-w-[180px]">Including strong proficiency in Laravel, TypeScript, and modern frameworks.</p>
+					<div class="grid grid-cols-3 gap-3 md:gap-8 w-full pt-8 border-t border-slate-200 dark:border-slate-800/80"
+						role="list" aria-label="Career highlights">
+
+						<!-- Highlight Item 1 -->
+						<div class="flex flex-col text-left" role="listitem">
+							<p class="text-xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-0.5 md:mb-1">
+								3+
+							<p class="text-[10px] md:text-sm font-medium text-slate-500 uppercase tracking-wider">Years
+								Coding</p>
+							<p
+								class="mt-1 md:mt-2 text-[10px] md:text-sm text-slate-600 dark:text-slate-400 leading-tight md:leading-normal break-words">
+								Proficient in Laravel, Typescript, and modern frameworks.
+							</p>
 						</div>
-						<div class="flex flex-col items-center lg:items-start" role="listitem">
-							<p class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-1">4</p>
-							<p class="text-xs sm:text-sm font-medium text-slate-500 uppercase tracking-wider">Projects</p>
-							<p class="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400 text-center lg:text-left max-w-[180px]">Delivering scalable, end-to-end web applications and robust APIs.</p>
+
+						<!-- Highlight Item 2 -->
+						<div class="flex flex-col text-left" role="listitem">
+							<p class="text-xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-0.5 md:mb-1">
+								4</p>
+							<p class="text-[10px] md:text-sm font-medium text-slate-500 uppercase tracking-wider">
+								Projects</p>
+							<p
+								class="mt-1 md:mt-2 text-[10px] md:text-sm text-slate-600 dark:text-slate-400 leading-tight md:leading-normal break-words">
+								Delivering scalable, end-to-end web apps and robust APIs.
+							</p>
 						</div>
-						<div class="flex flex-col items-center lg:items-start col-span-2 sm:col-span-1" role="listitem">
-							<p class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-1">5</p>
-							<p class="text-xs sm:text-sm font-medium text-slate-500 uppercase tracking-wider">Certifications</p>
-							<p class="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400 text-center lg:text-left max-w-[180px]">Validating expertise and a commitment to continuous learning.</p>
+
+						<!-- Highlight Item 3 -->
+						<div class="flex flex-col text-left" role="listitem">
+							<p class="text-xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-0.5 md:mb-1">
+								5</p>
+							<p class="text-[10px] md:text-sm font-medium text-slate-500 uppercase tracking-wider">
+								Certifications</p>
+							<p
+								class="mt-1 md:mt-2 text-[10px] md:text-sm text-slate-600 dark:text-slate-400 leading-tight md:leading-normal break-words">
+								Validating expertise and commitment to learning.
+							</p>
 						</div>
 					</div>
 
 				</div>
 
-				<!-- Right: photo -->
-				<div class="w-full lg:w-1/2 flex justify-center lg:justify-end">
-					<div class="hero-photo-wrap relative w-full max-w-[260px] sm:max-w-sm md:max-w-md lg:max-w-lg aspect-[4/5] group">
-						<div class="absolute inset-0 bg-gradient-to-tr from-brand-500 via-indigo-500 to-teal-400 rounded-3xl blur-2xl opacity-20 dark:opacity-10 group-hover:opacity-0 transition-opacity duration-700"></div>
-						<div class="relative w-full h-full rounded-3xl p-1 bg-gradient-to-tr from-brand-500 via-indigo-500 to-teal-400 shadow-2xl shadow-brand-500/20">
+				<div class="w-full lg:w-1/2 flex justify-center lg:justify-end fade-in-up relative">
+
+					<div class="relative w-full max-w-sm md:max-w-md lg:max-w-lg aspect-[4/5] group">
+
+						<div
+							class="absolute inset-0 bg-gradient-to-tr from-brand-500 via-indigo-500 to-teal-400 rounded-3xl blur-2xl opacity-20 dark:opacity-10 group-hover:opacity-0 transition-opacity duration-700">
+						</div>
+
+						<div
+							class="relative w-full h-full rounded-3xl p-1 bg-gradient-to-tr from-brand-500 via-indigo-500 to-teal-400 shadow-2xl shadow-brand-500/20">
 							<div class="w-full h-full bg-slate-100 dark:bg-black rounded-3xl overflow-hidden relative">
-								<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="my_profile.png" alt="Richter Mayandoc — Full-Stack Developer" loading="eager" />
-								<img class="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 group-hover:opacity-100 group-hover:scale-105" src="make_smile.png" alt="Richter Mayandoc — Smiling" loading="lazy" />
-								<span class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 z-10 flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-white/90 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-full shadow-xl" aria-label="Available for work">
+
+								<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+									src="my_profile.png" alt="Richter Mayandoc — Full-Stack Developer"
+									loading="eager" />
+
+								<img class="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 group-hover:opacity-100 group-hover:scale-105"
+									src="make_smile.png" alt="Richter Mayandoc — Smiling" loading="lazy" />
+
+								<span
+									class="absolute bottom-6 left-6 z-10 flex items-center gap-2 px-4 py-2 bg-white/90 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-full shadow-xl"
+									title="Available for work" aria-label="Available for work">
 									<span class="relative flex h-3 w-3">
-										<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+										<span
+											class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
 										<span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
 									</span>
-									<span class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">Available for work</span>
+									<span class="text-sm font-semibold text-slate-900 dark:text-white">Available
+										for work</span>
 								</span>
+
 							</div>
 						</div>
+
 					</div>
 				</div>
 
 			</div>
 		</section>
 
-		<!-- ═══════════════════════ ABOUT ═══════════════════════ -->
-		<section id="about" class="py-12 sm:py-16 border-t border-black/5 dark:border-white/[0.04]">
-			<div class="max-w-6xl mx-auto px-4 sm:px-6">
-				<div class="grid md:grid-cols-2 gap-8 items-start">
+		<section id="about" class="py-16 border-t border-black/5 dark:border-white/[0.04]">
+			<div class="max-w-6xl mx-auto px-6">
+				<div class="grid md:grid-cols-2 gap-8 items-center">
 
 					<div class="reveal">
 						<p class="section-label mb-3">Who I Am</p>
-						<h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-5 leading-tight">
+						<h2
+							class="font-display text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-5 leading-tight">
 							Building for the web,<br />
-							<span class="gradient-text">one commit at a time.</span>
+							<span class="gradient-text">one commit at a
+								time.</span>
 						</h2>
 						<div class="space-y-3.5 text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-							<p>I'm a full-stack developer with a track record of building data-heavy, scalable applications — including custom reservation systems and secure management platforms. I specialize in <span class="text-slate-800 dark:text-slate-300 font-medium">Laravel, PHP, MySQL, JavaScript, Tailwind CSS,</span> and <span class="text-slate-800 dark:text-slate-300 font-medium">REST APIs</span>.</p>
-							<p>My focus is on sustainable user interfaces, clean database architecture, and stable workflows that remove bottlenecks while improving the experience for everyone using the system.</p>
+							<p>
+								I'm a full-stack developer with a track
+								record of building data-heavy, scalable
+								applications — including custom
+								reservation systems and secure
+								management
+								platforms.
+								I specialize in <span class="text-slate-800 dark:text-slate-300 font-medium">Laravel,
+									PHP, MySQL,
+									JavaScript, Tailwind
+									CSS,</span> and <span class="text-slate-800 dark:text-slate-300 font-medium">REST
+									APIs</span>.
+							</p>
+							<p>
+								My focus is on sustainable user
+								interfaces, clean database architecture,
+								and
+								stable workflows that remove bottlenecks
+								while improving the experience for
+								everyone using the system.
+							</p>
 						</div>
 					</div>
 
 					<div class="reveal space-y-5">
 						<div>
 							<p class="section-label mb-3">Education</p>
-							<div class="glass rounded-xl p-4 sm:p-5">
-								<div class="flex items-start gap-3 sm:gap-3.5">
-									<div class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+							<div class="glass rounded-xl p-5">
+								<div class="flex items-start gap-3.5">
+									<div
+										class="w-16 h-16 bg-white rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
 										<img src="isu_logo.png" alt="ISU Logo" class="w-full h-full object-contain" />
 									</div>
 									<div>
-										<h3 class="text-slate-900 dark:text-white font-semibold text-sm mb-0.5">BS Information Technology</h3>
-										<p class="text-xs text-slate-500 dark:text-slate-400 mb-2">Isabela State University &nbsp;·&nbsp; Ilagan City</p>
-										<span class="text-[11px] font-mono bg-slate-200 dark:bg-slate-800/80 text-brand-600 dark:text-brand-400 px-2.5 py-1 rounded-full">2022 – 2026 (Expected)</span>
+										<h3 class="text-slate-900 dark:text-white font-semibold text-sm mb-0.5">
+											BS
+											Information
+											Technology
+										</h3>
+										<p class="text-xs text-slate-500 dark:text-slate-400 mb-2">
+											Isabela
+											State
+											University
+											&nbsp;·&nbsp;
+											Ilagan
+											City
+										</p>
+										<span
+											class="text-[11px] font-mono bg-slate-200 dark:bg-slate-800/80 text-brand-600 dark:text-brand-400 px-2.5 py-1 rounded-full">
+											2022 –
+											2026
+											(Expected)
+										</span>
 									</div>
 								</div>
 							</div>
@@ -404,19 +812,36 @@
 							<p class="section-label mb-3">Experience</p>
 							<div class="space-y-4">
 								<div class="exp-entry">
-									<div class="exp-dot" aria-hidden="true"></div>
-									<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1 gap-1">
-										<h3 class="text-slate-900 dark:text-white font-semibold text-sm">Full-Stack Developer Intern</h3>
-										<span class="text-[11px] font-mono text-brand-600 dark:text-brand-400 bg-brand-100 dark:bg-brand-500/10 px-2 py-0.5 rounded-full whitespace-nowrap self-start sm:self-auto">Mar – Jun 2026</span>
+									<div class="exp-dot" aria-hidden="true">
 									</div>
-									<p class="text-xs text-slate-500 mb-2">City of Ilagan Medical Center</p>
+									<div
+										class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1 gap-1">
+										<h3 class="text-slate-900 dark:text-white font-semibold text-sm">
+											Full-Stack
+											Developer
+											Intern
+										</h3>
+										<span
+											class="text-[11px] font-mono text-brand-600 dark:text-brand-400 bg-brand-100 dark:bg-brand-500/10 px-2 py-0.5 rounded-full whitespace-nowrap self-start sm:self-auto">
+											Mar – Jun
+											2026
+										</span>
+									</div>
+									<p class="text-xs text-slate-500 mb-2">
+										City of Ilagan
+										Medical Center</p>
 								</div>
+
 							</div>
+
 							<div class="mt-5">
-								<a href="#experience" class="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium text-slate-600 dark:text-slate-300">
+								<a href="#experience"
+									class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-2 text-xs font-medium text-slate-600 dark:text-slate-300">
 									More Info
-									<svg class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-										<path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+									<svg class="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300 group-hover:translate-x-0.5 transition-transform"
+										fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+										<path stroke-linecap="round" stroke-linejoin="round"
+											d="M14 5l7 7m0 0l-7 7m7-7H3" />
 									</svg>
 								</a>
 							</div>
@@ -427,123 +852,571 @@
 			</div>
 		</section>
 
-		<!-- ═══════════════════════ SKILLS ═══════════════════════ -->
-		<section id="skills" class="py-14 sm:py-20 border-t border-black/5 dark:border-white/[0.04]">
-			<div class="max-w-6xl mx-auto px-4 sm:px-6">
+		<!-- ============================================================
+     ENHANCED SKILLS SECTION — drop-in replacement
+     Requires: Tailwind CSS, Font Awesome (already in your page)
+     ============================================================ -->
 
-				<div class="text-center mb-8 sm:mb-10 reveal">
+		<style>
+			/* ── Snapshot bar ── */
+			.snap-stat {
+				position: relative;
+			}
+
+			.snap-stat+.snap-stat::before {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 25%;
+				bottom: 25%;
+				width: 1px;
+				background: rgba(0, 0, 0, 0.08);
+			}
+
+			.dark .snap-stat+.snap-stat::before {
+				background: rgba(255, 255, 255, 0.08);
+			}
+
+			/* ── Progress bar ── */
+			.sk-track {
+				height: 5px;
+				border-radius: 999px;
+				background: rgba(0, 0, 0, 0.05);
+				margin-top: 6px;
+				overflow: hidden;
+			}
+
+			.dark .sk-track {
+				background: rgba(255, 255, 255, 0.1);
+			}
+
+			.sk-fill {
+				height: 100%;
+				border-radius: 999px;
+				width: 0;
+				transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+			}
+		</style>
+
+		<section id="skills" class="py-20 border-t border-black/5 dark:border-white/[0.04]">
+			<div class="max-w-6xl mx-auto px-6">
+
+				<div class="text-center mb-10 reveal">
 					<p class="section-label mb-2.5">Technical Arsenal</p>
-					<h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
-						<span class="gradient-text">The Technologies and Tools</span> I Use to Build Modern Digital Solutions
+					<h2 class="font-display text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
+						<span class="gradient-text">The Technologies and
+							Tools</span> I Use to Build Modern
+						Digital Solutions
 					</h2>
 				</div>
 
-				<div class="flex flex-wrap justify-center gap-0 mb-10 sm:mb-12 mx-auto max-w-3xl rounded-2xl reveal p-2" aria-label="Technical summary">
-					<div class="snap-stat px-4 py-2 flex flex-col items-center">
-						<span class="text-xl font-bold text-brand-500 dark:text-brand-400">22+</span>
-						<span class="text-[10px] font-semibold tracking-wider uppercase text-slate-500">Technologies</span>
+				<div class="grid grid-cols-3 gap-1 mb-12 mx-auto max-w-3xl rounded-2xl reveal p-2"
+					aria-label="Technical summary">
+
+					<!-- Stat 1 -->
+					<div class="flex flex-col items-center justify-center text-center px-1">
+						<span class="text-base md:text-xl font-bold text-brand-500 dark:text-brand-400">22+</span>
+						<span
+							class="text-[10px] md:text-[10px] font-semibold tracking-wider uppercase text-slate-500">Technologies</span>
 					</div>
-					<div class="snap-stat px-4 py-2 flex flex-col items-center">
-						<span class="text-xl font-bold text-brand-500 dark:text-brand-400">4</span>
-						<span class="text-[10px] font-semibold tracking-wider uppercase text-slate-500">AI Tools</span>
+
+					<!-- Stat 2 -->
+					<div class="flex flex-col items-center justify-center text-center px-1">
+						<span class="text-base md:text-xl font-bold text-brand-500 dark:text-brand-400">4</span>
+						<span
+							class="text-[10px] md:text-[10px] font-semibold tracking-wider uppercase text-slate-500">AI
+							Tools</span>
 					</div>
-					<div class="snap-stat px-4 py-2 flex flex-col items-center">
-						<span class="text-xl font-bold text-brand-500 dark:text-brand-400">AI-Assisted</span>
-						<span class="text-[10px] font-semibold tracking-wider uppercase text-slate-500">Developer</span>
+
+					<!-- Stat 3 -->
+					<div class="flex flex-col items-center justify-center text-center px-1">
+						<span
+							class="text-base md:text-xl font-bold text-brand-500 dark:text-brand-400 leading-tight">AI-Assisted</span>
+						<span
+							class="text-[10px] md:text-[10px] font-semibold tracking-wider uppercase text-slate-500">Developer</span>
 					</div>
 				</div>
 
-				<!-- Skills grid: 1 col mobile, 2 col sm, 3 col lg -->
-				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
-					<!-- Frontend -->
-					<div class="glass rounded-xl p-5 sm:p-6 reveal project-card flex flex-col">
-						<div class="flex items-center gap-3 mb-5 sm:mb-6">
-							<div class="w-10 h-10 bg-sky-100 dark:bg-sky-500/10 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-desktop text-sky-500"></i></div>
+					<div class="glass rounded-xl p-6 reveal project-card flex flex-col">
+						<div class="flex items-center gap-3 mb-6">
+							<div
+								class="w-10 h-10 bg-sky-100 dark:bg-sky-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+								<i class="fas fa-desktop text-sky-500"></i>
+							</div>
 							<div>
-								<h3 class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">Frontend</h3>
-								<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">6 Technologies</span>
+								<h3
+									class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">
+									Frontend</h3>
+								<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">6
+									Technologies</span>
 							</div>
 						</div>
 						<div class="space-y-4">
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="w-4 h-4 object-contain"><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">HTML5</span></div><span class="text-[10px] text-slate-500">Advanced</span></div><div class="sk-track"><div class="sk-fill bg-sky-400" data-progress="60"></div></div></div>
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="w-4 h-4 object-contain"><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">CSS3</span></div><span class="text-[10px] text-slate-500">Proficient</span></div><div class="sk-track"><div class="sk-fill bg-sky-400" data-progress="50"></div></div></div>
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" class="w-4 h-4 object-contain"><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Tailwind CSS</span></div><span class="text-[10px] text-slate-500">Advanced</span></div><div class="sk-track"><div class="sk-fill bg-sky-400" data-progress="70"></div></div></div>
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-4 h-4 object-contain"><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">JavaScript</span></div><span class="text-[10px] text-slate-500">Proficient</span></div><div class="sk-track"><div class="sk-fill bg-sky-400" data-progress="50"></div></div></div>
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="w-4 h-4 object-contain"><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">React</span></div><span class="text-[10px] text-slate-500">Intermediate</span></div><div class="sk-track"><div class="sk-fill bg-sky-400" data-progress="48"></div></div></div>
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" class="w-4 h-4 object-contain"><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">TypeScript</span></div><span class="text-[10px] text-slate-500">Proficient</span></div><div class="sk-track"><div class="sk-fill bg-sky-400" data-progress="55"></div></div></div>
-						</div>
-					</div>
-
-					<!-- Backend -->
-					<div class="glass rounded-xl p-5 sm:p-6 reveal project-card flex flex-col">
-						<div class="flex items-center gap-3 mb-5 sm:mb-6">
-							<div class="w-10 h-10 bg-rose-100 dark:bg-rose-500/10 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-server text-rose-500"></i></div>
-							<div>
-								<h3 class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">Backend</h3>
-								<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">4 Technologies</span>
-							</div>
-						</div>
-						<div class="space-y-4">
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" alt="Laravel" class="w-4 h-4 object-contain"><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Laravel</span></div><span class="text-[10px] text-slate-500">Expert</span></div><div class="sk-track"><div class="sk-fill bg-rose-400" data-progress="80"></div></div></div>
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" class="w-4 h-4 object-contain"><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">PHP</span></div><span class="text-[10px] text-slate-500">Advanced</span></div><div class="sk-track"><div class="sk-fill bg-rose-400" data-progress="75"></div></div></div>
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" class="w-4 h-4 object-contain"><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Django</span></div><span class="text-[10px] text-slate-500">Learning</span></div><div class="sk-track"><div class="sk-fill bg-rose-400" data-progress="25"></div></div></div>
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><i class="fas fa-network-wired text-[13px] text-rose-500 w-4"></i><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">REST API Dev</span></div><span class="text-[10px] text-slate-500">Proficient</span></div><div class="sk-track"><div class="sk-fill bg-rose-400" data-progress="50"></div></div></div>
-						</div>
-					</div>
-
-					<!-- Database -->
-					<div class="glass rounded-xl p-5 sm:p-6 reveal project-card flex flex-col">
-						<div class="flex items-center gap-3 mb-5 sm:mb-6">
-							<div class="w-10 h-10 bg-violet-100 dark:bg-violet-500/10 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-database text-violet-500"></i></div>
-							<div>
-								<h3 class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">Database</h3>
-								<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">4 Technologies</span>
-							</div>
-						</div>
-						<div class="space-y-4">
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="w-4 h-4 object-contain"><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">MySQL</span></div><span class="text-[10px] text-slate-500">Expert</span></div><div class="sk-track"><div class="sk-fill bg-violet-400" data-progress="85"></div></div></div>
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" alt="SQLite" class="w-4 h-4 object-contain"><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">SQLite</span></div><span class="text-[10px] text-slate-500">Advanced</span></div><div class="sk-track"><div class="sk-fill bg-violet-400" data-progress="60"></div></div></div>
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><i class="fas fa-project-diagram text-[13px] text-violet-500 w-4"></i><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Database Design</span></div><span class="text-[10px] text-slate-500">Expert</span></div><div class="sk-track"><div class="sk-fill bg-violet-400" data-progress="90"></div></div></div>
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><i class="fas fa-search text-[13px] text-violet-500 w-4"></i><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Query Optimization</span></div><span class="text-[10px] text-slate-500">Advanced</span></div><div class="sk-track"><div class="sk-fill bg-violet-400" data-progress="80"></div></div></div>
-						</div>
-					</div>
-
-					<!-- Tools -->
-					<div class="glass rounded-xl p-5 sm:p-6 reveal project-card flex flex-col">
-						<div class="flex items-center gap-3 mb-5 sm:mb-6">
-							<div class="w-10 h-10 bg-emerald-100 dark:bg-emerald-500/10 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-tools text-emerald-500"></i></div>
-							<div>
-								<h3 class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">Tools & DevOps</h3>
-								<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">5 Technologies</span>
-							</div>
-						</div>
-						<div class="space-y-4">
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="w-4 h-4 object-contain"><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Git</span></div><span class="text-[10px] text-slate-500">Proficient</span></div><div class="sk-track"><div class="sk-fill bg-emerald-400" data-progress="50"></div></div></div>
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="w-4 h-4 object-contain dark:invert"><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">GitHub</span></div><span class="text-[10px] text-slate-500">Proficient</span></div><div class="sk-track"><div class="sk-fill bg-emerald-400" data-progress="55"></div></div></div>
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" class="w-4 h-4 object-contain"><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">VS Code</span></div><span class="text-[10px] text-slate-500">Expert</span></div><div class="sk-track"><div class="sk-fill bg-emerald-400" data-progress="85"></div></div></div>
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" class="w-4 h-4 object-contain"><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Figma</span></div><span class="text-[10px] text-slate-500">Proficient</span></div><div class="sk-track"><div class="sk-fill bg-emerald-400" data-progress="35"></div></div></div>
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><i class="fas fa-globe text-[13px] text-emerald-500 w-4"></i><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">ngrok</span></div><span class="text-[10px] text-slate-500">Intermediate</span></div><div class="sk-track"><div class="sk-fill bg-emerald-400" data-progress="20"></div></div></div>
-						</div>
-					</div>
-
-					<!-- AI — spans 2 cols on sm+ -->
-					<div class="glass rounded-xl p-5 sm:p-6 reveal project-card flex flex-col sm:col-span-2 lg:col-span-2">
-						<div class="flex items-center justify-between mb-5 sm:mb-6">
-							<div class="flex items-center gap-3">
-								<div class="w-10 h-10 bg-cyan-100 dark:bg-cyan-500/10 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-brain text-cyan-500"></i></div>
-								<div>
-									<h3 class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">AI & Modern Development</h3>
-									<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">8 Technologies</span>
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+												alt="HTML5" class="w-4 h-4 object-contain">
+										</div>
+										<span
+											class="text-xs font-semibold text-slate-700 dark:text-slate-300">HTML5</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Advanced</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-sky-400" data-progress="60">
+									</div>
 								</div>
 							</div>
-							<span class="text-[10px] font-semibold px-2 py-1 rounded border border-cyan-500/30 text-cyan-500 uppercase tracking-wider flex-shrink-0">AI-Native</span>
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+												alt="CSS3" class="w-4 h-4 object-contain">
+										</div>
+										<span
+											class="text-xs font-semibold text-slate-700 dark:text-slate-300">CSS3</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Proficient</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-sky-400" data-progress="50">
+									</div>
+								</div>
+							</div>
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
+												alt="Tailwind CSS" class="w-4 h-4 object-contain">
+										</div>
+										<span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Tailwind
+											CSS</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Advanced</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-sky-400" data-progress="70">
+									</div>
+								</div>
+							</div>
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+												alt="JavaScript" class="w-4 h-4 object-contain">
+										</div>
+										<span
+											class="text-xs font-semibold text-slate-700 dark:text-slate-300">JavaScript</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Proficient</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-sky-400" data-progress="50">
+									</div>
+								</div>
+							</div>
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+												alt="React" class="w-4 h-4 object-contain">
+										</div>
+										<span
+											class="text-xs font-semibold text-slate-700 dark:text-slate-300">React</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Intermediate</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-sky-400" data-progress="48">
+									</div>
+								</div>
+							</div>
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+												alt="TypeScript" class="w-4 h-4 object-contain">
+										</div>
+										<span
+											class="text-xs font-semibold text-slate-700 dark:text-slate-300">TypeScript</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Proficient</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-sky-400" data-progress="55">
+									</div>
+								</div>
+							</div>
 						</div>
+					</div>
+
+					<div class="glass rounded-xl p-6 reveal project-card flex flex-col">
+						<div class="flex items-center gap-3 mb-6">
+							<div
+								class="w-10 h-10 bg-rose-100 dark:bg-rose-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+								<i class="fas fa-server text-rose-500"></i>
+							</div>
+							<div>
+								<h3
+									class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">
+									Backend</h3>
+								<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">4
+									Technologies</span>
+							</div>
+						</div>
+						<div class="space-y-4">
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg"
+												alt="Laravel" class="w-4 h-4 object-contain">
+										</div>
+										<span
+											class="text-xs font-semibold text-slate-700 dark:text-slate-300">Laravel</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Expert</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-rose-400" data-progress="80">
+									</div>
+								</div>
+							</div>
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+												alt="PHP" class="w-4 h-4 object-contain">
+										</div>
+										<span
+											class="text-xs font-semibold text-slate-700 dark:text-slate-300">PHP</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Advanced</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-rose-400" data-progress="75">
+									</div>
+								</div>
+							</div>
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg"
+												alt="Django" class="w-4 h-4 object-contain">
+										</div>
+										<span
+											class="text-xs font-semibold text-slate-700 dark:text-slate-300">Django</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Learning</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-rose-400" data-progress="25">
+									</div>
+								</div>
+							</div>
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<i class="fas fa-network-wired text-[13px] text-rose-500"></i>
+										</div>
+										<span class="text-xs font-semibold text-slate-700 dark:text-slate-300">REST
+											API
+											Dev</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Proficient</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-rose-400" data-progress="50">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="glass rounded-xl p-6 reveal project-card flex flex-col">
+						<div class="flex items-center gap-3 mb-6">
+							<div
+								class="w-10 h-10 bg-violet-100 dark:bg-violet-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+								<i class="fas fa-database text-violet-500"></i>
+							</div>
+							<div>
+								<h3
+									class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">
+									Database</h3>
+								<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">4
+									Technologies</span>
+							</div>
+						</div>
+						<div class="space-y-4">
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+												alt="MySQL" class="w-4 h-4 object-contain">
+										</div>
+										<span
+											class="text-xs font-semibold text-slate-700 dark:text-slate-300">MySQL</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Expert</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-violet-400" data-progress="85">
+									</div>
+								</div>
+							</div>
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg"
+												alt="SQLite" class="w-4 h-4 object-contain">
+										</div>
+										<span
+											class="text-xs font-semibold text-slate-700 dark:text-slate-300">SQLite</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Advanced</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-violet-400" data-progress="60">
+									</div>
+								</div>
+							</div>
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<i class="fas fa-project-diagram text-[13px] text-violet-500"></i>
+										</div>
+										<span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Database
+											Design</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Expert</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-violet-400" data-progress="90">
+									</div>
+								</div>
+							</div>
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<i class="fas fa-search text-[13px] text-violet-500"></i>
+										</div>
+										<span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Query
+											Optimization</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Advanced</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-violet-400" data-progress="80">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="glass rounded-xl p-6 reveal project-card flex flex-col">
+						<div class="flex items-center gap-3 mb-6">
+							<div
+								class="w-10 h-10 bg-emerald-100 dark:bg-emerald-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+								<i class="fas fa-tools text-emerald-500"></i>
+							</div>
+							<div>
+								<h3
+									class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">
+									Tools & DevOps</h3>
+								<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">5
+									Technologies</span>
+							</div>
+						</div>
+						<div class="space-y-4">
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+												alt="Git" class="w-4 h-4 object-contain">
+										</div>
+										<span
+											class="text-xs font-semibold text-slate-700 dark:text-slate-300">Git</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Proficient</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-emerald-400" data-progress="50">
+									</div>
+								</div>
+							</div>
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+												alt="GitHub" class="w-4 h-4 object-contain dark:invert">
+										</div>
+										<span
+											class="text-xs font-semibold text-slate-700 dark:text-slate-300">GitHub</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Proficient</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-emerald-400" data-progress="55">
+									</div>
+								</div>
+							</div>
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
+												alt="VS Code" class="w-4 h-4 object-contain">
+										</div>
+										<span class="text-xs font-semibold text-slate-700 dark:text-slate-300">VS
+											Code</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Expert</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-emerald-400" data-progress="85">
+									</div>
+								</div>
+							</div>
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+												alt="Figma" class="w-4 h-4 object-contain">
+										</div>
+										<span
+											class="text-xs font-semibold text-slate-700 dark:text-slate-300">Figma</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Proficient</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-emerald-400" data-progress="35">
+									</div>
+								</div>
+							</div>
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<i class="fas fa-globe text-[13px] text-emerald-500"></i>
+										</div>
+										<span
+											class="text-xs font-semibold text-slate-700 dark:text-slate-300">ngrok</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Intermediate</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-emerald-400" data-progress="20">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="glass rounded-xl p-6 reveal project-card flex flex-col lg:col-span-2">
+						<div class="flex items-center justify-between mb-6">
+							<div class="flex items-center gap-3">
+								<div
+									class="w-10 h-10 bg-cyan-100 dark:bg-cyan-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+									<i class="fas fa-brain text-cyan-500"></i>
+								</div>
+								<div>
+									<h3
+										class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">
+										AI & Modern
+										Development</h3>
+									<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">8
+										Technologies</span>
+								</div>
+							</div>
+							<span
+								class="text-[10px] font-semibold px-2 py-1 rounded border border-cyan-500/30 text-cyan-500 uppercase tracking-wider">AI-Native</span>
+						</div>
+
 						<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><i class="fas fa-robot text-[13px] text-cyan-500 w-4"></i><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">ChatGPT</span></div><span class="text-[10px] text-slate-500">Expert</span></div><div class="sk-track"><div class="sk-fill bg-cyan-400" data-progress="60"></div></div></div>
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><i class="fas fa-code-branch text-[13px] text-cyan-500 w-4"></i><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">GitHub Copilot</span></div><span class="text-[10px] text-slate-500">Intermediate</span></div><div class="sk-track"><div class="sk-fill bg-cyan-400" data-progress="45"></div></div></div>
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><i class="fas fa-microchip text-[13px] text-cyan-500 w-4"></i><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Claude AI</span></div><span class="text-[10px] text-slate-500">Proficient</span></div><div class="sk-track"><div class="sk-fill bg-cyan-400" data-progress="40"></div></div></div>
-							<div class="skill-row"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2"><i class="fas fa-laptop-code text-[13px] text-cyan-500 w-4"></i><span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Gemini</span></div><span class="text-[10px] text-slate-500">Proficient</span></div><div class="sk-track"><div class="sk-fill bg-cyan-400" data-progress="50"></div></div></div>
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<i class="fas fa-robot text-[13px] text-cyan-500"></i>
+										</div>
+										<span
+											class="text-xs font-semibold text-slate-700 dark:text-slate-300">ChatGPT</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Expert</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-cyan-400" data-progress="60">
+									</div>
+								</div>
+							</div>
+
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<i class="fas fa-code-branch text-[13px] text-cyan-500"></i>
+										</div>
+										<span class="text-xs font-semibold text-slate-700 dark:text-slate-300">GitHub
+											Copilot</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Intermediate</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-cyan-400" data-progress="45">
+									</div>
+								</div>
+							</div>
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<i class="fas fa-microchip text-[13px] text-cyan-500"></i>
+										</div>
+										<span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Claude
+											AI</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Proficient</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-cyan-400" data-progress="40">
+									</div>
+								</div>
+							</div>
+							<div class="skill-row">
+								<div class="flex items-center justify-between mb-1">
+									<div class="flex items-center gap-2">
+										<div class="w-5 h-5 flex items-center justify-center">
+											<i class="fas fa-laptop-code text-[13px] text-cyan-500"></i>
+										</div>
+										<span
+											class="text-xs font-semibold text-slate-700 dark:text-slate-300">Gemini</span>
+									</div>
+									<span class="text-[10px] text-slate-500">Proficient</span>
+								</div>
+								<div class="sk-track">
+									<div class="sk-fill bg-cyan-400" data-progress="50">
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 
@@ -552,6 +1425,7 @@
 		</section>
 
 		<script>
+			// Minimal observer to fill the progress bars when they scroll into view
 			document.addEventListener('DOMContentLoaded', () => {
 				const barObserver = new IntersectionObserver((entries, obs) => {
 					entries.forEach(entry => {
@@ -563,89 +1437,182 @@
 						}
 					});
 				}, { threshold: 0.15 });
-				document.querySelectorAll('.skill-card-v2, .project-card').forEach(card => barObserver.observe(card));
+
+				document.querySelectorAll('.skill-card-v2, .project-card').forEach(card => {
+					barObserver.observe(card);
+				});
 			});
 		</script>
 
-		<!-- ═══════════════════════ PROJECTS ═══════════════════════ -->
-		<section id="projects" class="py-12 sm:py-16 border-t border-black/5 dark:border-white/[0.04]">
-			<div class="max-w-6xl mx-auto px-4 sm:px-6">
-				<div class="text-center mb-8 sm:mb-10 reveal">
+		<section id="projects" class="py-16 border-t border-black/5 dark:border-white/[0.04]">
+			<div class="max-w-6xl mx-auto px-6">
+
+				<div class="text-center mb-10 reveal">
 					<p class="section-label mb-2.5">What I've Built</p>
-					<h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-2.5">Showcased <span class="gradient-text">Collection of Projects</span></h2>
-					<p class="text-slate-500 text-sm max-w-sm mx-auto">A collection of systems and applications brought from idea to reality.</p>
+					<h2 class="font-display text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-2.5">
+						Showcased <span class="gradient-text">Collection of
+							Projects</span>
+					</h2>
+					<p class="text-slate-500 text-sm max-w-sm mx-auto">A collection of
+						systems and
+						applications brought from idea to reality.</p>
 				</div>
 
-				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 					<div class="project-card glass rounded-xl overflow-hidden reveal flex flex-col">
-						<div class="project-img h-44 sm:h-48 bg-slate-200 dark:bg-slate-800"><img src="projects/claram.png" alt="Mt. Claramuel booking system" class="w-full h-full object-cover object-top" loading="lazy" /></div>
-						<div class="p-4 sm:p-5 flex flex-col flex-grow">
-							<span class="section-label mb-1.5 block">Booking Management</span>
-							<h3 class="font-display text-lg font-bold text-slate-900 dark:text-white mb-1.5">Mt. Claramuel Resorts</h3>
-							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-4 flex-grow">A reservation platform with real-time availability, Maya payment integration, and automated PhilSMS confirmations — eliminating double-bookings entirely.</p>
+						<div class="project-img h-48 bg-slate-200 dark:bg-slate-800">
+							<img src="projects/claram.png" alt="Mt. Claramuel booking system"
+								class="w-full h-full object-cover object-top" loading="lazy" />
+						</div>
+						<div class="p-5 flex flex-col flex-grow">
+							<span class="section-label mb-1.5 block">Booking
+								Management</span>
+							<h3 class="font-display text-lg font-bold text-slate-900 dark:text-white mb-1.5">
+								Mt.
+								Claramuel Resorts</h3>
+							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-4 flex-grow">
+								A reservation platform with real-time
+								availability, Maya payment integration,
+								and automated PhilSMS confirmations —
+								eliminating double-bookings entirely.
+							</p>
 							<div class="flex flex-wrap gap-1.5 mb-4">
-								<span class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">Laravel</span>
-								<span class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">MySQL</span>
-								<span class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">Tailwind</span>
-								<span class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">Maya API</span>
+								<span
+									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">Laravel</span>
+								<span
+									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">MySQL</span>
+								<span
+									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">Tailwind</span>
+								<span
+									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">Maya
+									API</span>
 							</div>
 							<div class="flex gap-4 pt-3 border-t border-black/5 dark:border-white/[0.05] mt-auto">
-								<a href="https://mtclaramuelhotelresort.com/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-xs font-semibold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"><i class="fas fa-external-link-alt text-[10px]"></i> Live Site</a>
-								<a href="https://github.com/nmrjustme/claramuel_project" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fab fa-github text-[10px]"></i> Source</a>
+								<a href="https://mtclaramuelhotelresort.com/" target="_blank" rel="noopener noreferrer"
+									class="flex items-center gap-1.5 text-xs font-semibold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+									<i class="fas fa-external-link-alt text-[10px]"></i>
+									Live Site
+								</a>
+								<a href="https://github.com/nmrjustme/claramuel_project" target="_blank"
+									rel="noopener noreferrer"
+									class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
+									<i class="fab fa-github text-[10px]"></i>
+									Source
+								</a>
 							</div>
 						</div>
 					</div>
 
 					<div class="project-card glass rounded-xl overflow-hidden reveal flex flex-col">
-						<div class="project-img h-44 sm:h-48 bg-slate-200 dark:bg-slate-800"><img src="projects/cimc.png" alt="CIMC record viewer" class="w-full h-full object-cover object-top" loading="lazy" /></div>
-						<div class="p-4 sm:p-5 flex flex-col flex-grow">
-							<span class="section-label mb-1.5 block">Digital Archive</span>
-							<h3 class="font-display text-lg font-bold text-slate-900 dark:text-white mb-1.5">CIMC Record Viewer</h3>
-							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-4 flex-grow">Secure patient record management with complex backend logic, a custom PDF viewer, and live image-appending tools for medical staff.</p>
+						<div class="project-img h-48 bg-slate-200 dark:bg-slate-800">
+							<img src="projects/cimc.png" alt="CIMC record viewer"
+								class="w-full h-full object-cover object-top" loading="lazy" />
+						</div>
+						<div class="p-5 flex flex-col flex-grow">
+							<span class="section-label mb-1.5 block">Digital
+								Archive</span>
+							<h3 class="font-display text-lg font-bold text-slate-900 dark:text-white mb-1.5">
+								CIMC
+								Record Viewer</h3>
+							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-4 flex-grow">
+								Secure patient record management with
+								complex backend logic, a custom PDF
+								viewer, and live image-appending tools
+								for medical staff.
+							</p>
 							<div class="flex flex-wrap gap-1.5 mb-4">
-								<span class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">Laravel</span>
-								<span class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">Typescript</span>
-								<span class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">Tailwind</span>
-								<span class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">SQL Server</span>
+								<span
+									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">Laravel</span>
+								<span
+									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">Typescript</span>
+								<span
+									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">Tailwind</span>
+								<span
+									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">SQL
+									Server</span>
 							</div>
 							<div class="flex gap-4 pt-3 border-t border-black/5 dark:border-white/[0.05] mt-auto">
-								<a href="https://github.com/nmrjustme/cimc-record-viewer" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fab fa-github text-[10px]"></i> Source</a>
+								<a href="https://github.com/nmrjustme/cimc-record-viewer" target="_blank"
+									rel="noopener noreferrer"
+									class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
+									<i class="fab fa-github text-[10px]"></i>
+									Source
+								</a>
 							</div>
 						</div>
 					</div>
 
 					<div class="project-card glass rounded-xl overflow-hidden reveal flex flex-col">
-						<div class="project-img h-44 sm:h-48 bg-slate-200 dark:bg-slate-800"><img src="projects/abuan.png" alt="Abuan booking system" class="w-full h-full object-cover object-top" loading="lazy" /></div>
-						<div class="p-4 sm:p-5 flex flex-col flex-grow">
-							<span class="section-label mb-1.5 block">Academic Project</span>
-							<h3 class="font-display text-lg font-bold text-slate-900 dark:text-white mb-1.5">Abuan Booking System</h3>
-							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-4 flex-grow">Efficient reservation dashboard with secure authentication, an admin panel, and real-time CRUD operations for managing availability.</p>
+						<div class="project-img h-48 bg-slate-200 dark:bg-slate-800">
+							<img src="projects/abuan.png" alt="Abuan booking system"
+								class="w-full h-full object-cover object-top" loading="lazy" />
+						</div>
+						<div class="p-5 flex flex-col flex-grow">
+							<span class="section-label mb-1.5 block">Academic
+								Project</span>
+							<h3 class="font-display text-lg font-bold text-slate-900 dark:text-white mb-1.5">
+								Abuan Booking System</h3>
+							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-4 flex-grow">
+								Efficient reservation dashboard with
+								secure authentication, an admin panel,
+								and
+								real-time CRUD operations for managing
+								availability.
+							</p>
 							<div class="flex flex-wrap gap-1.5 mb-4">
-								<span class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">PHP</span>
-								<span class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">MySQL</span>
-								<span class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">HTML/CSS</span>
+								<span
+									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">PHP</span>
+								<span
+									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">MySQL</span>
+								<span
+									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">HTML/CSS</span>
 							</div>
 							<div class="flex gap-4 pt-3 border-t border-black/5 dark:border-white/[0.05] mt-auto">
-								<a href="https://github.com/nmrjustme/abuan_cottage_reservation" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fab fa-github text-[10px]"></i> Source</a>
+								<a href="https://github.com/nmrjustme/abuan_cottage_reservation" target="_blank"
+									rel="noopener noreferrer"
+									class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
+									<i class="fab fa-github text-[10px]"></i>
+									Source
+								</a>
 							</div>
 						</div>
 					</div>
 
 					<div class="project-card glass rounded-xl overflow-hidden reveal flex flex-col">
-						<div class="project-img h-44 sm:h-48 bg-slate-200 dark:bg-slate-800"><img src="projects/tabulation.png" alt="Pageant Tabulation System" class="w-full h-full object-cover object-top" loading="lazy" /></div>
-						<div class="p-4 sm:p-5 flex flex-col flex-grow">
-							<span class="section-label mb-1.5 block">Event System (2023)</span>
-							<h3 class="font-display text-lg font-bold text-slate-900 dark:text-white mb-1.5">Pageant Tabulation</h3>
-							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-4 flex-grow">A real-time scoring platform featuring secure judge dashboards, automated score calculations, and live leaderboards to ensure fast and transparent results.</p>
+						<div class="project-img h-48 bg-slate-200 dark:bg-slate-800">
+							<img src="projects/tabulation.png" alt="Pageant Tabulation System"
+								class="w-full h-full object-cover object-top" loading="lazy" />
+						</div>
+						<div class="p-5 flex flex-col flex-grow">
+							<span class="section-label mb-1.5 block">Event
+								System (2023)</span>
+							<h3 class="font-display text-lg font-bold text-slate-900 dark:text-white mb-1.5">
+								Pageant Tabulation</h3>
+							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-4 flex-grow">
+								A real-time scoring platform featuring
+								secure judge dashboards, automated
+								score calculations, and live
+								leaderboards to ensure fast and
+								transparent
+								results.
+							</p>
 							<div class="flex flex-wrap gap-1.5 mb-4">
-								<span class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">PHP</span>
-								<span class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">MySQL</span>
-								<span class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">Bootstrap</span>
-								<span class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">HTML/CSS</span>
+								<span
+									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">PHP</span>
+								<span
+									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">MySql</span>
+								<span
+									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">Bootstrap</span>
+								<span
+									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">HTML/CSS</span>
 							</div>
 							<div class="flex gap-4 pt-3 border-t border-black/5 dark:border-white/[0.05] mt-auto">
-								<a href="https://github.com/nmrjustme/pageant-tabulation" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fab fa-github text-[10px]"></i> Source</a>
+								<a href="https://github.com/nmrjustme/pageant-tabulation" target="_blank"
+									rel="noopener noreferrer"
+									class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
+									<i class="fab fa-github text-[10px]"></i>
+									Source
+								</a>
 							</div>
 						</div>
 					</div>
@@ -654,258 +1621,607 @@
 			</div>
 		</section>
 
-		<!-- ═══════════════════════ EXPERIENCE ═══════════════════════ -->
-		<section id="experience" class="py-12 sm:py-16 border-t border-black/5 dark:border-white/[0.04]">
-			<div class="max-w-6xl mx-auto px-4 sm:px-6">
-				<div class="text-center mb-8 sm:mb-10 reveal">
+		<section id="experience" class="py-16 border-t border-black/5 dark:border-white/[0.04]">
+			<div class="max-w-6xl mx-auto px-6">
+
+				<div class="text-center mb-10 reveal">
 					<p class="section-label mb-2.5">My Journey</p>
-					<h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-2.5">Work <span class="gradient-text">Experience and Background</span></h2>
-					<p class="text-slate-500 text-sm max-w-sm mx-auto">A summary of real-world applications of my technical skills through development projects, collaborations, and practical implementations.</p>
+					<h2 class="font-display text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-2.5">
+						Work <span class="gradient-text">Experience and
+							Background</span></h2>
+					<p class="text-slate-500 text-sm max-w-sm mx-auto">A summary of
+						real-world applications of my
+						technical skills through development projects,
+						collaborations, and practical
+						implementations.</p>
 				</div>
+
 				<div class="max-w-2xl mx-auto">
-					<div class="relative border-l border-black/10 dark:border-white/[0.08] ml-3 sm:ml-4 space-y-8">
-						<div class="relative pl-7 sm:pl-9 reveal">
+					<div class="relative border-l border-black/10 dark:border-white/[0.08] ml-4 space-y-8">
+
+						<div class="relative pl-9 reveal">
 							<div class="timeline-dot absolute -left-[7px] top-1.5" aria-hidden="true"></div>
-							<div class="glass rounded-xl p-4 sm:p-6">
-								<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1 gap-2">
-									<h3 class="font-display text-base font-bold text-slate-900 dark:text-white">Full-Stack Developer Intern</h3>
-									<span class="text-[11px] font-mono text-brand-600 dark:text-brand-400 bg-brand-100 dark:bg-brand-500/10 px-2.5 py-0.5 rounded-full whitespace-nowrap self-start sm:self-auto">March 2026 – June 2026</span>
+							<div class="glass rounded-xl p-6">
+								<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1 gap-1">
+									<h3 class="font-display text-base font-bold text-slate-900 dark:text-white">
+										Full-Stack Developer
+										Intern</h3>
+									<span
+										class="text-[11px] font-mono text-brand-600 dark:text-brand-400 bg-brand-100 dark:bg-brand-500/10 px-2.5 py-0.5 rounded-full whitespace-nowrap">March
+										2026 – June
+										2026</span>
 								</div>
-								<p class="text-xs text-slate-500 mb-4 font-medium">City of Ilagan Medical Center &nbsp;·&nbsp; Ilagan City</p>
-								<ul class="space-y-2.5 text-xs text-slate-600 dark:text-slate-400">
+								<p class="text-xs text-slate-500 mb-4 font-medium">
+									City of Ilagan Medical Center
+									&nbsp;·&nbsp; Ilagan City</p>
+								<ul class="space-y-2 text-xs text-slate-600 dark:text-slate-400">
 									<li class="flex items-start gap-2">
-										<i class="fas fa-chevron-right text-brand-500 text-[9px] mt-0.5 flex-shrink-0" aria-hidden="true"></i>
-										<span>Developed the <strong class="text-slate-900 dark:text-white font-medium">CIMC Record Viewer</strong>, a secure digital archive system for patient records using <strong class="text-slate-900 dark:text-white font-medium">Laravel, React (TSX), and Tailwind CSS</strong>, improving the accessibility and organization of medical records.</span>
+										<i class="fas fa-chevron-right text-brand-500 text-[9px] mt-0.5 flex-shrink-0"
+											aria-hidden="true"></i>
+										<span>Developed the
+											<strong class="text-slate-900 dark:text-white font-medium">CIMC
+												Record
+												Viewer</strong>,
+											a secure digital archive system for patient records using
+											<strong class="text-slate-900 dark:text-white font-medium">Laravel,
+												React
+												(TSX),
+												and
+												Tailwind
+												CSS,</strong>
+											improving the accessibility and organization of medical records.</span>
+
 									</li>
 									<li class="flex items-start gap-2">
-										<i class="fas fa-chevron-right text-brand-500 text-[9px] mt-0.5 flex-shrink-0" aria-hidden="true"></i>
-										<span>Collaborated with IT professionals to identify inefficiencies in paper-based record management and support the transition toward digital patient record-keeping during a 486-hour internship.</span>
+										<i class="fas fa-chevron-right text-brand-500 text-[9px] mt-0.5 flex-shrink-0"
+											aria-hidden="true"></i>
+										<span>Collaborated with IT professionals to identify inefficiencies in
+											paper-based record management and support the transition toward digital
+											patient record-keeping during a 486-hour internship.
 									</li>
 									<li class="flex items-start gap-2">
-										<i class="fas fa-chevron-right text-brand-500 text-[9px] mt-0.5 flex-shrink-0" aria-hidden="true"></i>
-										<span>Authored comprehensive technical documentation and system summaries, ensuring effective knowledge transfer and supporting future system maintenance by the hospital's IT team.</span>
+										<i class="fas fa-chevron-right text-brand-500 text-[9px] mt-0.5 flex-shrink-0"
+											aria-hidden="true"></i>
+										<span>
+											Authored comprehensive technical documentation and system summaries
+											throughout a <strong
+												class="text-slate-900 dark:text-white font-medium">486-hour</strong>
+											internship, ensuring effective knowledge transfer and supporting future
+											system maintenance by the hospital's IT team.</span>
 									</li>
 								</ul>
 							</div>
 						</div>
+
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- ═══════════════════════ CERTIFICATIONS ═══════════════════════ -->
-		<section id="certification" class="py-12 sm:py-16 border-t border-black/5 dark:border-white/[0.04]" aria-label="Licenses and certifications">
-			<div class="max-w-6xl mx-auto px-4 sm:px-6">
-				<div class="text-center mb-8 sm:mb-10 reveal">
+		<section id="certification" class="py-16 border-t border-black/5 dark:border-white/[0.04]"
+			aria-label="Licenses and certifications">
+			<div class="max-w-6xl mx-auto px-6">
+
+				<div class="text-center mb-10 reveal">
 					<p class="section-label mb-2.5">Credentials</p>
-					<h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-3">Licenses &amp; <span class="gradient-text">Certifications</span></h2>
-					<p class="text-slate-500 text-sm max-w-md mx-auto">A collection of certifications that reflect my technical knowledge, hands-on experience, and commitment to continuous learning.</p>
+					<h2 class="font-display text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-3">
+						Licenses &
+						<span class="gradient-text">Certifications</span>
+					</h2>
+					<p class="text-slate-500 text-sm max-w-md mx-auto">A collection of
+						certifications that reflect
+						my technical knowledge, hands-on experience, and commitment
+						to continuous learning.</p>
 				</div>
 
-				<div class="reveal max-w-4xl mx-auto glass rounded-xl overflow-hidden">
+				<div class="reveal max-w-4xl mx-auto grid md:grid-cols-5 gap-0 glass rounded-xl overflow-hidden">
 
-					<!-- Mobile: horizontal scrollable tab strip -->
-					<div class="cert-tab-scroll md:hidden border-b border-black/5 dark:border-white/[0.05]">
-						<button onclick="selectCert(0)" id="mob-cert-0" class="cert-btn flex-shrink-0 px-4 py-3 text-left border-r border-black/5 dark:border-white/[0.05] bg-black/5 dark:bg-white/[0.05]">
-							<p class="text-brand-600 dark:text-brand-400 text-xs font-semibold whitespace-nowrap">IT Specialist DB</p>
-							<p class="text-slate-500 text-[10px]">Certiport</p>
+					<div
+						class="md:col-span-2 border-b md:border-b-0 md:border-r border-black/5 dark:border-white/[0.05]">
+						<button onclick="selectCert(0)" id="cert-btn-0"
+							class="cert-btn w-full text-left px-4 py-3.5 flex items-center gap-3 border-b border-black/5 dark:border-white/[0.05] bg-black/5 dark:bg-white/[0.05]">
+							<div
+								class="w-7 h-7 bg-yellow-100 dark:bg-yellow-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+								<i class="fas fa-award text-yellow-500 dark:text-yellow-400 text-xs"
+									aria-hidden="true"></i>
+							</div>
+							<div class="min-w-0">
+								<p class="text-brand-600 dark:text-brand-400 text-xs font-semibold truncate cert-title">
+									IT Specialist in Database</p>
+								<p class="text-slate-500 text-[10px] truncate">
+									Certiport</p>
+							</div>
 						</button>
-						<button onclick="selectCert(1)" id="mob-cert-1" class="cert-btn flex-shrink-0 px-4 py-3 text-left border-r border-black/5 dark:border-white/[0.05]">
-							<p class="text-slate-900 dark:text-white text-xs font-semibold whitespace-nowrap">Presenter</p>
-							<p class="text-slate-500 text-[10px]">1st Int. Conf.</p>
+
+						<button onclick="selectCert(1)" id="cert-btn-1"
+							class="cert-btn w-full text-left px-4 py-3.5 flex items-center gap-3 border-b border-black/5 dark:border-white/[0.05]">
+							<div
+								class="w-7 h-7 bg-yellow-100 dark:bg-yellow-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+								<i class="fas fa-microphone-alt text-yellow-500 dark:text-yellow-400 text-xs"
+									aria-hidden="true"></i>
+							</div>
+							<div class="min-w-0">
+								<p class="text-slate-900 dark:text-white text-xs font-semibold truncate cert-title">
+									Research Presenter</p>
+								<p class="text-slate-500 text-[10px] truncate">
+									1st Int. Conference</p>
+							</div>
 						</button>
-						<button onclick="selectCert(2)" id="mob-cert-2" class="cert-btn flex-shrink-0 px-4 py-3 text-left border-r border-black/5 dark:border-white/[0.05]">
-							<p class="text-slate-900 dark:text-white text-xs font-semibold whitespace-nowrap">Excellence</p>
-							<p class="text-slate-500 text-[10px]">DICT Region II</p>
+
+						<button onclick="selectCert(2)" id="cert-btn-2"
+							class="cert-btn w-full text-left px-4 py-3.5 flex items-center gap-3 border-b border-black/5 dark:border-white/[0.05]">
+							<div
+								class="w-7 h-7 bg-yellow-100 dark:bg-yellow-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+								<i class="fas fa-trophy text-yellow-500 dark:text-yellow-400 text-xs"
+									aria-hidden="true"></i>
+							</div>
+							<div class="min-w-0">
+								<p class="text-slate-900 dark:text-white text-xs font-semibold truncate cert-title">
+									Excellence in Assessment</p>
+								<p class="text-slate-500 text-[10px] truncate">
+									DICT Region II</p>
+							</div>
 						</button>
-						<button onclick="selectCert(3)" id="mob-cert-3" class="cert-btn flex-shrink-0 px-4 py-3 text-left border-r border-black/5 dark:border-white/[0.05]">
-							<p class="text-slate-900 dark:text-white text-xs font-semibold whitespace-nowrap">Relational DB</p>
-							<p class="text-slate-500 text-[10px]">Microsoft</p>
+
+						<button onclick="selectCert(3)" id="cert-btn-3"
+							class="cert-btn w-full text-left px-4 py-3.5 flex items-center gap-3 border-b border-black/5 dark:border-white/[0.05]">
+							<div
+								class="w-7 h-7 bg-yellow-100 dark:bg-yellow-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+								<i class="fas fa-certificate text-yellow-500 dark:text-yellow-400 text-xs"
+									aria-hidden="true"></i>
+							</div>
+							<div class="min-w-0">
+								<p class="text-slate-900 dark:text-white text-xs font-semibold truncate cert-title">
+									Relational DB Design</p>
+								<p class="text-slate-500 text-[10px] truncate">
+									Microsoft & Coursera</p>
+							</div>
 						</button>
-						<button onclick="selectCert(4)" id="mob-cert-4" class="cert-btn flex-shrink-0 px-4 py-3 text-left">
-							<p class="text-slate-900 dark:text-white text-xs font-semibold whitespace-nowrap">SQL Foundations</p>
-							<p class="text-slate-500 text-[10px]">Microsoft</p>
+
+						<button onclick="selectCert(4)" id="cert-btn-4"
+							class="cert-btn w-full text-left px-4 py-3.5 flex items-center gap-3">
+							<div
+								class="w-7 h-7 bg-yellow-100 dark:bg-yellow-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+								<i class="fas fa-certificate text-yellow-500 dark:text-yellow-400 text-xs"
+									aria-hidden="true"></i>
+							</div>
+							<div class="min-w-0">
+								<p class="text-slate-900 dark:text-white text-xs font-semibold truncate cert-title">
+									SQL Foundations</p>
+								<p class="text-slate-500 text-[10px] truncate">
+									Microsoft & Coursera</p>
+							</div>
 						</button>
 					</div>
 
-					<!-- Desktop: sidebar + panel -->
-					<div class="flex flex-col md:flex-row">
-						<div class="hidden md:block md:w-[40%] border-r border-black/5 dark:border-white/[0.05] flex-shrink-0">
-							<button onclick="selectCert(0)" id="desk-cert-0" class="cert-btn w-full text-left px-4 py-3.5 flex items-center gap-3 border-b border-black/5 dark:border-white/[0.05] bg-black/5 dark:bg-white/[0.05]">
-								<div class="w-7 h-7 bg-yellow-100 dark:bg-yellow-500/10 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-award text-yellow-500 dark:text-yellow-400 text-xs"></i></div>
-								<div class="min-w-0"><p class="text-brand-600 dark:text-brand-400 text-xs font-semibold truncate">IT Specialist in Database</p><p class="text-slate-500 text-[10px] truncate">Certiport</p></div>
-							</button>
-							<button onclick="selectCert(1)" id="desk-cert-1" class="cert-btn w-full text-left px-4 py-3.5 flex items-center gap-3 border-b border-black/5 dark:border-white/[0.05]">
-								<div class="w-7 h-7 bg-yellow-100 dark:bg-yellow-500/10 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-microphone-alt text-yellow-500 dark:text-yellow-400 text-xs"></i></div>
-								<div class="min-w-0"><p class="text-slate-900 dark:text-white text-xs font-semibold truncate">Research Presenter</p><p class="text-slate-500 text-[10px] truncate">1st Int. Conference</p></div>
-							</button>
-							<button onclick="selectCert(2)" id="desk-cert-2" class="cert-btn w-full text-left px-4 py-3.5 flex items-center gap-3 border-b border-black/5 dark:border-white/[0.05]">
-								<div class="w-7 h-7 bg-yellow-100 dark:bg-yellow-500/10 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-trophy text-yellow-500 dark:text-yellow-400 text-xs"></i></div>
-								<div class="min-w-0"><p class="text-slate-900 dark:text-white text-xs font-semibold truncate">Excellence in Assessment</p><p class="text-slate-500 text-[10px] truncate">DICT Region II</p></div>
-							</button>
-							<button onclick="selectCert(3)" id="desk-cert-3" class="cert-btn w-full text-left px-4 py-3.5 flex items-center gap-3 border-b border-black/5 dark:border-white/[0.05]">
-								<div class="w-7 h-7 bg-yellow-100 dark:bg-yellow-500/10 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-certificate text-yellow-500 dark:text-yellow-400 text-xs"></i></div>
-								<div class="min-w-0"><p class="text-slate-900 dark:text-white text-xs font-semibold truncate">Relational DB Design</p><p class="text-slate-500 text-[10px] truncate">Microsoft &amp; Coursera</p></div>
-							</button>
-							<button onclick="selectCert(4)" id="desk-cert-4" class="cert-btn w-full text-left px-4 py-3.5 flex items-center gap-3">
-								<div class="w-7 h-7 bg-yellow-100 dark:bg-yellow-500/10 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-certificate text-yellow-500 dark:text-yellow-400 text-xs"></i></div>
-								<div class="min-w-0"><p class="text-slate-900 dark:text-white text-xs font-semibold truncate">SQL Foundations</p><p class="text-slate-500 text-[10px] truncate">Microsoft &amp; Coursera</p></div>
-							</button>
+					<div class="md:col-span-3 p-7 flex flex-col justify-center min-h-[280px]">
+
+						<div id="cert-panel-0" class="cert-panel">
+							<div class="flex flex-col lg:flex-row gap-5 mb-5 items-start">
+								<div class="flex-1">
+									<div
+										class="w-10 h-10 bg-yellow-100 dark:bg-yellow-500/10 rounded-xl flex items-center justify-center mb-4">
+										<i class="fas fa-award text-yellow-500 dark:text-yellow-400 text-lg"
+											aria-hidden="true"></i>
+									</div>
+									<span
+										class="text-[10px] font-mono bg-slate-200 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded-full">June
+										2024</span>
+									<h3
+										class="font-display text-lg font-bold text-slate-900 dark:text-white mt-3 mb-0.5">
+										IT Specialist in
+										Database</h3>
+									<p class="text-xs text-brand-600 dark:text-brand-400 font-medium">
+										Issued by
+										Certiport</p>
+								</div>
+								<div class="w-full lg:w-44 flex-shrink-0 cursor-zoom-in group"
+									onclick="openCertModal('certificate/it_specialist_db.jpg')">
+									<div
+										class="relative overflow-hidden rounded-lg border border-black/5 dark:border-white/10 shadow-lg aspect-[4/3] bg-slate-200 dark:bg-slate-800/50">
+										<img src="certificate/it_specialist_db.jpg" alt="IT Specialist Certificate"
+											class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+										<div
+											class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+											<i
+												class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 transition-opacity text-xl drop-shadow-lg"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
+								Internationally
+								recognized certification validating deep
+								proficiency in database fundamentals —
+								data modeling, SQL querying,
+								normalization, and relational design.
+								Earned
+								through a rigorous proctored Certiport
+								exam.</p>
 						</div>
 
-						<!-- Panel area -->
-						<div class="flex-1 p-5 sm:p-7 flex flex-col justify-center min-h-[260px]">
-
-							<div id="cert-panel-0" class="cert-panel">
-								<div class="flex flex-col sm:flex-row gap-4 sm:gap-5 mb-4 items-start">
-									<div class="flex-1">
-										<div class="w-10 h-10 bg-yellow-100 dark:bg-yellow-500/10 rounded-xl flex items-center justify-center mb-3"><i class="fas fa-award text-yellow-500 dark:text-yellow-400 text-lg"></i></div>
-										<span class="text-[10px] font-mono bg-slate-200 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded-full">June 2024</span>
-										<h3 class="font-display text-base sm:text-lg font-bold text-slate-900 dark:text-white mt-3 mb-0.5">IT Specialist in Database</h3>
-										<p class="text-xs text-brand-600 dark:text-brand-400 font-medium">Issued by Certiport</p>
+						<div id="cert-panel-1" class="cert-panel hidden">
+							<div class="flex flex-col lg:flex-row gap-5 mb-5 items-start">
+								<div class="flex-1">
+									<div
+										class="w-10 h-10 bg-yellow-100 dark:bg-yellow-500/10 rounded-xl flex items-center justify-center mb-4">
+										<i class="fas fa-microphone-alt text-yellow-500 dark:text-yellow-400 text-lg"
+											aria-hidden="true"></i>
 									</div>
-									<div class="w-full sm:w-40 flex-shrink-0 cursor-zoom-in group" onclick="openCertModal('certificate/it_specialist_db.jpg')">
-										<div class="relative overflow-hidden rounded-lg border border-black/5 dark:border-white/10 shadow-lg aspect-[4/3] bg-slate-200 dark:bg-slate-800/50"><img src="certificate/it_specialist_db.jpg" alt="IT Specialist Certificate" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" /><div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center"><i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 transition-opacity text-xl drop-shadow-lg"></i></div></div>
+									<span
+										class="text-[10px] font-mono bg-slate-200 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded-full">Sep
+										2025</span>
+									<h3
+										class="font-display text-lg font-bold text-slate-900 dark:text-white mt-3 mb-0.5">
+										Research Presenter
+									</h3>
+									<p class="text-xs text-brand-600 dark:text-brand-400 font-medium">
+										"ReserveMate: A
+										Web-Based System"
+									</p>
+								</div>
+								<div class="w-full lg:w-44 flex-shrink-0 cursor-zoom-in group"
+									onclick="openCertModal('certificate/inter_conference.jpg')">
+									<div
+										class="relative overflow-hidden rounded-lg border border-black/5 dark:border-white/10 shadow-lg aspect-[3/4] bg-slate-200 dark:bg-slate-800/50">
+										<img src="certificate/inter_conference.jpg" alt="Research Presenter Certificate"
+											class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+										<div
+											class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+											<i
+												class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 transition-opacity text-xl drop-shadow-lg"></i>
+										</div>
 									</div>
 								</div>
-								<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">Internationally recognized certification validating deep proficiency in database fundamentals — data modeling, SQL querying, normalization, and relational design. Earned through a rigorous proctored Certiport exam.</p>
 							</div>
-
-							<div id="cert-panel-1" class="cert-panel hidden">
-								<div class="flex flex-col sm:flex-row gap-4 sm:gap-5 mb-4 items-start">
-									<div class="flex-1">
-										<div class="w-10 h-10 bg-yellow-100 dark:bg-yellow-500/10 rounded-xl flex items-center justify-center mb-3"><i class="fas fa-microphone-alt text-yellow-500 dark:text-yellow-400 text-lg"></i></div>
-										<span class="text-[10px] font-mono bg-slate-200 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded-full">Sep 2025</span>
-										<h3 class="font-display text-base sm:text-lg font-bold text-slate-900 dark:text-white mt-3 mb-0.5">Research Presenter</h3>
-										<p class="text-xs text-brand-600 dark:text-brand-400 font-medium">"ReserveMate: A Web-Based System"</p>
-									</div>
-									<div class="w-full sm:w-40 flex-shrink-0 cursor-zoom-in group" onclick="openCertModal('certificate/inter_conference.jpg')">
-										<div class="relative overflow-hidden rounded-lg border border-black/5 dark:border-white/10 shadow-lg aspect-[3/4] bg-slate-200 dark:bg-slate-800/50"><img src="certificate/inter_conference.jpg" alt="Research Presenter Certificate" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" /><div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center"><i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 transition-opacity text-xl drop-shadow-lg"></i></div></div>
-									</div>
-								</div>
-								<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">Research paper selected and presented at the 1st International Conference (September 2025), documenting the architecture, methodology, and outcomes of ReserveMate — a full-stack hospitality booking platform.</p>
-							</div>
-
-							<div id="cert-panel-2" class="cert-panel hidden">
-								<div class="flex flex-col sm:flex-row gap-4 sm:gap-5 mb-4 items-start">
-									<div class="flex-1">
-										<div class="w-10 h-10 bg-yellow-100 dark:bg-yellow-500/10 rounded-xl flex items-center justify-center mb-3"><i class="fas fa-trophy text-yellow-500 dark:text-yellow-400 text-lg"></i></div>
-										<span class="text-[10px] font-mono bg-slate-200 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded-full">Top Performer</span>
-										<h3 class="font-display text-base sm:text-lg font-bold text-slate-900 dark:text-white mt-3 mb-0.5">Excellence in Assessment</h3>
-										<p class="text-xs text-brand-600 dark:text-brand-400 font-medium">DICT Region II Python Essentials</p>
-									</div>
-									<div class="w-full sm:w-40 flex-shrink-0 cursor-zoom-in group" onclick="openCertModal('certificate/dict.jpg')">
-										<div class="relative overflow-hidden rounded-lg border border-black/5 dark:border-white/10 shadow-lg aspect-[4/3] bg-slate-200 dark:bg-slate-800/50"><img src="certificate/dict.jpg" alt="DICT Assessment Certificate" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" /><div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center"><i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 transition-opacity text-xl drop-shadow-lg"></i></div></div>
-									</div>
-								</div>
-								<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">Top performer in the DICT Region II Python Essentials program — a government-led ICT training initiative. Achieved the highest assessment score in the cohort, demonstrating command of Python fundamentals and problem-solving.</p>
-							</div>
-
-							<div id="cert-panel-3" class="cert-panel hidden">
-								<div class="flex flex-col sm:flex-row gap-4 sm:gap-5 mb-4 items-start">
-									<div class="flex-1">
-										<div class="w-10 h-10 bg-yellow-100 dark:bg-yellow-500/10 rounded-xl flex items-center justify-center mb-3"><i class="fas fa-certificate text-yellow-500 dark:text-yellow-400 text-lg"></i></div>
-										<span class="text-[10px] font-mono bg-slate-200 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded-full">Mar 2026</span>
-										<h3 class="font-display text-base sm:text-lg font-bold text-slate-900 dark:text-white mt-3 mb-0.5">Relational Database Design</h3>
-										<p class="text-xs text-brand-600 dark:text-brand-400 font-medium">Microsoft &amp; Coursera</p>
-									</div>
-									<div class="w-full sm:w-40 flex-shrink-0 cursor-zoom-in group" onclick="openCertModal('certificate/relational_db.png')">
-										<div class="relative overflow-hidden rounded-lg border border-black/5 dark:border-white/10 shadow-lg aspect-[4/3] bg-slate-200 dark:bg-slate-800/50"><img src="certificate/relational_db.png" alt="Database Design Certificate" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" /><div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center"><i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 transition-opacity text-xl drop-shadow-lg"></i></div></div>
-									</div>
-								</div>
-								<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">Microsoft's structured course on relational database design via Coursera — covering ER modeling, schema normalization (1NF–3NF), referential integrity, and best practices for scalable database systems.</p>
-							</div>
-
-							<div id="cert-panel-4" class="cert-panel hidden">
-								<div class="flex flex-col sm:flex-row gap-4 sm:gap-5 mb-4 items-start">
-									<div class="flex-1">
-										<div class="w-10 h-10 bg-yellow-100 dark:bg-yellow-500/10 rounded-xl flex items-center justify-center mb-3"><i class="fas fa-certificate text-yellow-500 dark:text-yellow-400 text-lg"></i></div>
-										<span class="text-[10px] font-mono bg-slate-200 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded-full">Mar 2026</span>
-										<h3 class="font-display text-base sm:text-lg font-bold text-slate-900 dark:text-white mt-3 mb-0.5">SQL Foundations</h3>
-										<p class="text-xs text-brand-600 dark:text-brand-400 font-medium">Microsoft &amp; Coursera</p>
-									</div>
-									<div class="w-full sm:w-40 flex-shrink-0 cursor-zoom-in group" onclick="openCertModal('certificate/sql_foundation.png')">
-										<div class="relative overflow-hidden rounded-lg border border-black/5 dark:border-white/10 shadow-lg aspect-[4/3] bg-slate-200 dark:bg-slate-800/50"><img src="certificate/sql_foundation.png" alt="SQL Foundations Certificate" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" /><div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center"><i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 transition-opacity text-xl drop-shadow-lg"></i></div></div>
-									</div>
-								</div>
-								<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">Microsoft's SQL Foundations course on Coursera — covering core query writing, joins, subqueries, aggregation, filtering, and database interaction patterns essential for data-driven applications.</p>
-							</div>
-
+							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
+								Research paper
+								selected and presented at the 1st
+								International Conference (September
+								2025),
+								documenting the architecture,
+								methodology, and outcomes of ReserveMate
+								— a
+								full-stack hospitality booking platform.
+							</p>
 						</div>
+
+						<div id="cert-panel-2" class="cert-panel hidden">
+							<div class="flex flex-col lg:flex-row gap-5 mb-5 items-start">
+								<div class="flex-1">
+									<div
+										class="w-10 h-10 bg-yellow-100 dark:bg-yellow-500/10 rounded-xl flex items-center justify-center mb-4">
+										<i class="fas fa-trophy text-yellow-500 dark:text-yellow-400 text-lg"
+											aria-hidden="true"></i>
+									</div>
+									<span
+										class="text-[10px] font-mono bg-slate-200 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded-full">Top
+										Performer</span>
+									<h3
+										class="font-display text-lg font-bold text-slate-900 dark:text-white mt-3 mb-0.5">
+										Excellence in
+										Assessment</h3>
+									<p class="text-xs text-brand-600 dark:text-brand-400 font-medium">
+										DICT
+										Region II Python
+										Essentials</p>
+								</div>
+								<div class="w-full lg:w-44 flex-shrink-0 cursor-zoom-in group"
+									onclick="openCertModal('certificate/dict.jpg')">
+									<div
+										class="relative overflow-hidden rounded-lg border border-black/5 dark:border-white/10 shadow-lg aspect-[4/3] bg-slate-200 dark:bg-slate-800/50">
+										<img src="certificate/dict.jpg" alt="DICT Assessment Certificate"
+											class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+										<div
+											class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+											<i
+												class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 transition-opacity text-xl drop-shadow-lg"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
+								Top performer
+								in the DICT Region II Python Essentials
+								program — a government-led ICT training
+								initiative. Achieved the highest
+								assessment score in the cohort,
+								demonstrating
+								command of Python fundamentals and
+								problem-solving.</p>
+						</div>
+
+						<div id="cert-panel-3" class="cert-panel hidden">
+							<div class="flex flex-col lg:flex-row gap-5 mb-5 items-start">
+								<div class="flex-1">
+									<div
+										class="w-10 h-10 bg-yellow-100 dark:bg-yellow-500/10 rounded-xl flex items-center justify-center mb-4">
+										<i class="fas fa-certificate text-yellow-500 dark:text-yellow-400 text-lg"
+											aria-hidden="true"></i>
+									</div>
+									<span
+										class="text-[10px] font-mono bg-slate-200 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded-full">Mar
+										2026</span>
+									<h3
+										class="font-display text-lg font-bold text-slate-900 dark:text-white mt-3 mb-0.5">
+										Relational Database
+										Design</h3>
+									<p class="text-xs text-brand-600 dark:text-brand-400 font-medium">
+										Microsoft
+										& Coursera</p>
+								</div>
+								<div class="w-full lg:w-44 flex-shrink-0 cursor-zoom-in group"
+									onclick="openCertModal('certificate/relational_db.png')">
+									<div
+										class="relative overflow-hidden rounded-lg border border-black/5 dark:border-white/10 shadow-lg aspect-[4/3] bg-slate-200 dark:bg-slate-800/50">
+										<img src="certificate/relational_db.png" alt="Database Design Certificate"
+											class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+										<div
+											class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+											<i
+												class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 transition-opacity text-xl drop-shadow-lg"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
+								Microsoft's
+								structured course on relational database
+								design via Coursera — covering ER
+								modeling, schema normalization
+								(1NF–3NF), referential integrity, and
+								best
+								practices for scalable database systems.
+							</p>
+						</div>
+
+						<div id="cert-panel-4" class="cert-panel hidden">
+							<div class="flex flex-col lg:flex-row gap-5 mb-5 items-start">
+								<div class="flex-1">
+									<div
+										class="w-10 h-10 bg-yellow-100 dark:bg-yellow-500/10 rounded-xl flex items-center justify-center mb-4">
+										<i class="fas fa-certificate text-yellow-500 dark:text-yellow-400 text-lg"
+											aria-hidden="true"></i>
+									</div>
+									<span
+										class="text-[10px] font-mono bg-slate-200 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded-full">Mar
+										2026</span>
+									<h3
+										class="font-display text-lg font-bold text-slate-900 dark:text-white mt-3 mb-0.5">
+										SQL Foundations</h3>
+									<p class="text-xs text-brand-600 dark:text-brand-400 font-medium">
+										Microsoft
+										& Coursera</p>
+								</div>
+								<div class="w-full lg:w-44 flex-shrink-0 cursor-zoom-in group"
+									onclick="openCertModal('certificate/sql_foundation.png')">
+									<div
+										class="relative overflow-hidden rounded-lg border border-black/5 dark:border-white/10 shadow-lg aspect-[4/3] bg-slate-200 dark:bg-slate-800/50">
+										<img src="certificate/sql_foundation.png" alt="SQL Foundations Certificate"
+											class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+										<div
+											class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+											<i
+												class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 transition-opacity text-xl drop-shadow-lg"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
+								Microsoft's SQL
+								Foundations course on Coursera —
+								covering core query writing, joins,
+								subqueries,
+								aggregation, filtering, and database
+								interaction patterns essential for
+								data-driven applications.</p>
+						</div>
+
 					</div>
 				</div>
 
-				<!-- Zoom modal -->
-				<div id="certZoomModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm p-4 md:p-12 opacity-0 transition-opacity duration-300" onclick="closeCertModal()">
+				<div id="certZoomModal"
+					class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm p-4 md:p-12 opacity-0 transition-opacity duration-300"
+					onclick="closeCertModal()">
 					<div class="relative max-w-5xl w-full flex items-center justify-center">
-						<button onclick="closeCertModal()" class="absolute -top-10 right-0 md:-right-10 md:-top-10 text-white/40 hover:text-white text-4xl p-2 transition-colors">&times;</button>
-						<img id="zoomedCertImg" src="" alt="Zoomed Certificate" class="max-h-[85vh] max-w-full rounded-lg shadow-2xl border border-white/10 object-contain" onclick="event.stopPropagation()" />
+						<button onclick="closeCertModal()"
+							class="absolute -top-10 right-0 md:-right-10 md:-top-10 text-white/40 hover:text-white text-4xl p-2 transition-colors">&times;</button>
+						<img id="zoomedCertImg" src="" alt="Zoomed Certificate"
+							class="max-h-[85vh] max-w-full rounded-lg shadow-2xl border border-white/10 object-contain"
+							onclick="event.stopPropagation()" />
 					</div>
 				</div>
+
 			</div>
 		</section>
 
-		<!-- ═══════════════════════ CONTACT ═══════════════════════ -->
-		<section id="contact" class="py-12 sm:py-16 border-t border-black/5 dark:border-white/[0.04]">
-			<div class="max-w-5xl mx-auto px-4 sm:px-6">
-				<div class="text-center mb-8 sm:mb-10 reveal">
+		<script>
+			function selectCert(index) {
+				const total = 5;
+
+				for (let i = 0; i < total; i++) {
+					const btn = document.getElementById('cert-btn-' + i);
+					const panel = document.getElementById('cert-panel-' + i);
+					const title = btn.querySelector('.cert-title');
+
+					if (i === index) {
+						// Add active state styling
+						btn.classList.add('bg-black/5', 'dark:bg-white/[0.05]');
+						if (title) {
+							title.classList.add('text-brand-600', 'dark:text-brand-400');
+							title.classList.remove('text-slate-900', 'dark:text-white');
+						}
+						panel.classList.remove('hidden');
+					} else {
+						// Remove active state styling
+						btn.classList.remove('bg-black/5', 'dark:bg-white/[0.05]');
+						if (title) {
+							title.classList.add('text-slate-900', 'dark:text-white');
+							title.classList.remove('text-brand-600', 'dark:text-brand-400');
+						}
+						panel.classList.add('hidden');
+					}
+				}
+			}
+
+			function openCertModal(src) {
+				const modal = document.getElementById('certZoomModal');
+				document.getElementById('zoomedCertImg').src = src;
+				modal.classList.remove('hidden');
+				modal.classList.add('flex');
+				setTimeout(() => { modal.classList.remove('opacity-0'); modal.classList.add('opacity-100'); }, 10);
+			}
+
+			function closeCertModal() {
+				const modal = document.getElementById('certZoomModal');
+				modal.classList.remove('opacity-100');
+				modal.classList.add('opacity-0');
+				setTimeout(() => {
+					modal.classList.add('hidden');
+					modal.classList.remove('flex');
+					document.getElementById('zoomedCertImg').src = '';
+				}, 300);
+			}
+		</script>
+
+		<section id="contact" class="py-16 border-t border-black/5 dark:border-white/[0.04]">
+			<div class="max-w-5xl mx-auto px-6">
+
+				<div class="text-center mb-10 reveal">
 					<p class="section-label mb-2.5">Let's Connect</p>
-					<h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-3">Get In Touch</h2>
-					<p class="text-slate-500 text-sm max-w-sm mx-auto">I am ready for any discussion related to web systems, technical collaboration, and software solutions.</p>
+					<h2 class="font-display text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-3">
+						Get
+						In Touch</h2>
+					<p class="text-slate-500 text-sm max-w-sm mx-auto">I am ready for any
+						discussion related to web
+						systems, technical collaboration, and software solutions.
+					</p>
 				</div>
 
-				<div class="grid grid-cols-1 md:grid-cols-5 gap-6 sm:gap-8">
+				<div class="grid md:grid-cols-5 gap-8">
 
-					<!-- Contact links: 2-col on sm, 1-col on md sidebar -->
-					<div class="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-3 reveal">
-						<a href="mailto:rmayandoc0625@gmail.com" class="flex items-center gap-3 glass rounded-xl p-3.5 sm:p-4 hover:border-brand-500/35 transition-colors group border border-transparent">
-							<div class="w-9 h-9 bg-brand-100 dark:bg-brand-600/15 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0"><i class="fas fa-envelope text-brand-600 dark:text-brand-400 text-xs"></i></div>
-							<div class="min-w-0"><p class="text-[10px] text-slate-500 mb-0.5">Email</p><p class="text-sm text-slate-900 dark:text-white font-medium truncate">rmayandoc0625@gmail.com</p></div>
+					<div class="md:col-span-2 space-y-3 reveal">
+						<a href="mailto:rmayandoc0625@gmail.com"
+							class="flex items-center gap-3.5 glass rounded-xl p-4 hover:border-brand-500/35 transition-colors group border border-transparent">
+							<div
+								class="w-9 h-9 bg-brand-100 dark:bg-brand-600/15 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
+								<i class="fas fa-envelope text-brand-600 dark:text-brand-400 text-xs"
+									aria-hidden="true"></i>
+							</div>
+							<div>
+								<p class="text-[10px] text-slate-500 mb-0.5">
+									Email</p>
+								<p class="text-sm text-slate-900 dark:text-white font-medium">
+									rmayandoc0625@gmail.com</p>
+							</div>
 						</a>
-						<a href="tel:+639169824195" class="flex items-center gap-3 glass rounded-xl p-3.5 sm:p-4 hover:border-brand-500/35 transition-colors group border border-transparent">
-							<div class="w-9 h-9 bg-brand-100 dark:bg-brand-600/15 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0"><i class="fas fa-phone text-brand-600 dark:text-brand-400 text-xs"></i></div>
-							<div class="min-w-0"><p class="text-[10px] text-slate-500 mb-0.5">Phone</p><p class="text-sm text-slate-900 dark:text-white font-medium">+63 916 982 4195</p></div>
+
+						<a href="tel:+639169824195"
+							class="flex items-center gap-3.5 glass rounded-xl p-4 hover:border-brand-500/35 transition-colors group border border-transparent">
+							<div
+								class="w-9 h-9 bg-brand-100 dark:bg-brand-600/15 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
+								<i class="fas fa-phone text-brand-600 dark:text-brand-400 text-xs"
+									aria-hidden="true"></i>
+							</div>
+							<div>
+								<p class="text-[10px] text-slate-500 mb-0.5">
+									Phone</p>
+								<p class="text-sm text-slate-900 dark:text-white font-medium">
+									+63 916 982 4195
+								</p>
+							</div>
 						</a>
-						<a href="https://github.com/nmrjustme" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 glass rounded-xl p-3.5 sm:p-4 hover:border-brand-500/35 transition-colors group border border-transparent">
-							<div class="w-9 h-9 bg-brand-100 dark:bg-brand-600/15 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0"><i class="fab fa-github text-brand-600 dark:text-brand-400 text-xs"></i></div>
-							<div class="min-w-0"><p class="text-[10px] text-slate-500 mb-0.5">GitHub</p><p class="text-sm text-slate-900 dark:text-white font-medium">github.com/nmrjustme</p></div>
+
+						<a href="https://github.com/nmrjustme" target="_blank" rel="noopener noreferrer"
+							class="flex items-center gap-3.5 glass rounded-xl p-4 hover:border-brand-500/35 transition-colors group border border-transparent">
+							<div
+								class="w-9 h-9 bg-brand-100 dark:bg-brand-600/15 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
+								<i class="fab fa-github text-brand-600 dark:text-brand-400 text-xs"
+									aria-hidden="true"></i>
+							</div>
+							<div>
+								<p class="text-[10px] text-slate-500 mb-0.5">
+									GitHub</p>
+								<p class="text-sm text-slate-900 dark:text-white font-medium">
+									github.com/nmrjustme</p>
+							</div>
 						</a>
-						<a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 glass rounded-xl p-3.5 sm:p-4 hover:border-brand-500/35 transition-colors group border border-transparent">
-							<div class="w-9 h-9 bg-brand-100 dark:bg-brand-600/15 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0"><i class="fab fa-linkedin-in text-brand-600 dark:text-brand-400 text-xs"></i></div>
-							<div class="min-w-0"><p class="text-[10px] text-slate-500 mb-0.5">LinkedIn</p><p class="text-sm text-slate-900 dark:text-white font-medium">Richter Mayandoc</p></div>
+
+						<a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank"
+							rel="noopener noreferrer"
+							class="flex items-center gap-3.5 glass rounded-xl p-4 hover:border-brand-500/35 transition-colors group border border-transparent">
+							<div
+								class="w-9 h-9 bg-brand-100 dark:bg-brand-600/15 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
+								<i class="fab fa-linkedin-in text-brand-600 dark:text-brand-400 text-xs"
+									aria-hidden="true"></i>
+							</div>
+							<div>
+								<p class="text-[10px] text-slate-500 mb-0.5">
+									LinkedIn</p>
+								<p class="text-sm text-slate-900 dark:text-white font-medium">
+									Richter Mayandoc
+								</p>
+							</div>
 						</a>
 					</div>
 
 					<div class="md:col-span-3 reveal">
-						<form id="contactForm" class="glass rounded-xl p-5 sm:p-6 space-y-4" novalidate>
-							<div class="hidden" aria-hidden="true"><label for="company">Company</label><input type="text" id="company" name="company" tabindex="-1" autocomplete="off" /></div>
-							<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+						<form id="contactForm" class="glass rounded-xl p-6 space-y-4" novalidate>
+							<div class="hidden" aria-hidden="true">
+								<label for="company">Company</label>
+								<input type="text" id="company" name="company" tabindex="-1" autocomplete="off" />
+							</div>
+
+							<div class="grid sm:grid-cols-2 gap-4">
 								<div>
-									<label for="name" class="block text-[10px] text-slate-500 uppercase tracking-wider mb-1.5">Name</label>
-									<input id="name" name="name" type="text" placeholder="Your name" required class="form-input w-full px-3.5 py-2.5 rounded-lg text-sm" />
-									<p class="field-error" id="nameError">Please enter your name.</p>
+									<label for="name"
+										class="block text-[10px] text-slate-500 uppercase tracking-wider mb-1.5">Name</label>
+									<input id="name" name="name" type="text" placeholder="Your name" required
+										class="form-input w-full px-3.5 py-2.5 rounded-lg text-sm" />
+									<p class="field-error" id="nameError">
+										Please enter your
+										name.</p>
 								</div>
 								<div>
-									<label for="email" class="block text-[10px] text-slate-500 uppercase tracking-wider mb-1.5">Email</label>
-									<input id="email" name="email" type="email" placeholder="your@email.com" required class="form-input w-full px-3.5 py-2.5 rounded-lg text-sm" />
-									<p class="field-error" id="emailError">Please enter a valid email.</p>
+									<label for="email"
+										class="block text-[10px] text-slate-500 uppercase tracking-wider mb-1.5">Email</label>
+									<input id="email" name="email" type="email" placeholder="your@email.com" required
+										class="form-input w-full px-3.5 py-2.5 rounded-lg text-sm" />
+									<p class="field-error" id="emailError">
+										Please enter a valid
+										email.</p>
 								</div>
 							</div>
+
 							<div>
-								<label for="subject" class="block text-[10px] text-slate-500 uppercase tracking-wider mb-1.5">Subject</label>
-								<input id="subject" name="subject" type="text" placeholder="What's this about?" required class="form-input w-full px-3.5 py-2.5 rounded-lg text-sm" />
-								<p class="field-error" id="subjectError">Please enter a subject.</p>
+								<label for="subject"
+									class="block text-[10px] text-slate-500 uppercase tracking-wider mb-1.5">Subject</label>
+								<input id="subject" name="subject" type="text" placeholder="What's this about?" required
+									class="form-input w-full px-3.5 py-2.5 rounded-lg text-sm" />
+								<p class="field-error" id="subjectError">Please enter
+									a subject.</p>
 							</div>
+
 							<div>
-								<label for="message" class="block text-[10px] text-slate-500 uppercase tracking-wider mb-1.5">Message</label>
-								<textarea id="message" name="message" rows="4" placeholder="Tell me about your project or opportunity..." required class="form-input w-full px-3.5 py-2.5 rounded-lg text-sm resize-none"></textarea>
-								<p class="field-error" id="messageError">Message should be at least 10 characters.</p>
+								<label for="message"
+									class="block text-[10px] text-slate-500 uppercase tracking-wider mb-1.5">Message</label>
+								<textarea id="message" name="message" rows="4"
+									placeholder="Tell me about your project or opportunity..." required
+									class="form-input w-full px-3.5 py-2.5 rounded-lg text-sm resize-none"></textarea>
+								<p class="field-error" id="messageError">Message
+									should be at least 10
+									characters.</p>
 							</div>
-							<button type="submit" id="submitBtn" class="btn-primary w-full py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm rounded-xl transition-colors shadow-lg shadow-brand-600/20 flex items-center justify-center gap-2">
-								<span id="submitBtnText">Send Message</span>
+
+							<button type="submit" id="submitBtn"
+								class="btn-primary w-full py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm rounded-xl transition-colors shadow-lg shadow-brand-600/20 flex items-center justify-center gap-2">
+								<span id="submitBtnText">Send
+									Message</span>
 								<i class="fas fa-paper-plane text-xs" id="submitBtnIcon" aria-hidden="true"></i>
 							</button>
-							<p id="formMsg" class="text-center text-xs hidden" role="status" aria-live="polite"></p>
+
+							<p id="formMsg" class="text-center text-xs hidden" role="status" aria-live="polite">
+							</p>
 						</form>
 					</div>
 
@@ -915,24 +2231,45 @@
 
 	</main>
 
-	<footer class="border-t border-black/5 dark:border-white/[0.04] py-8 sm:py-10">
-		<div class="max-w-6xl mx-auto px-4 sm:px-6">
-			<div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-				<div>
-					<p class="font-display font-bold text-slate-900 dark:text-white text-base mb-0.5">Richter Mayandoc</p>
-					<p class="text-[11px] text-slate-500 dark:text-slate-600">Full-Stack Developer · Ilagan City, PH</p>
+	<footer class="border-t border-black/5 dark:border-white/[0.04] py-10">
+		<div class="max-w-6xl mx-auto px-6">
+			<div class="flex flex-col md:flex-row items-center justify-between gap-5">
+
+				<div class="text-center md:text-left">
+					<p class="font-display font-bold text-slate-900 dark:text-white text-base mb-0.5">
+						Richter
+						Mayandoc</p>
+					<p class="text-[11px] text-slate-500 dark:text-slate-600">Full-Stack
+						Developer · Ilagan City,
+						PH</p>
 				</div>
+
 				<div class="flex gap-3">
-					<a href="https://github.com/nmrjustme" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" class="w-8 h-8 glass rounded-lg flex items-center justify-center text-slate-500 hover:text-slate-900 dark:hover:text-white transition-all hover:-translate-y-0.5 text-sm"><i class="fab fa-github" aria-hidden="true"></i></a>
-					<a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="w-8 h-8 glass rounded-lg flex items-center justify-center text-slate-500 hover:text-[#0A66C2] transition-all hover:-translate-y-0.5 text-sm"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
-					<a href="mailto:rmayandoc0625@gmail.com" aria-label="Send email" class="w-8 h-8 glass rounded-lg flex items-center justify-center text-slate-500 hover:text-red-500 dark:hover:text-red-400 transition-all hover:-translate-y-0.5 text-sm"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+					<a href="https://github.com/nmrjustme" target="_blank" rel="noopener noreferrer"
+						aria-label="GitHub profile"
+						class="w-8 h-8 glass rounded-lg flex items-center justify-center text-slate-500 hover:text-slate-900 dark:hover:text-white transition-all hover:-translate-y-0.5 text-sm">
+						<i class="fab fa-github" aria-hidden="true"></i>
+					</a>
+					<a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank"
+						rel="noopener noreferrer" aria-label="LinkedIn profile"
+						class="w-8 h-8 glass rounded-lg flex items-center justify-center text-slate-500 hover:text-[#0A66C2] transition-all hover:-translate-y-0.5 text-sm">
+						<i class="fab fa-linkedin-in" aria-hidden="true"></i>
+					</a>
+					<a href="mailto:rmayandoc0625@gmail.com" aria-label="Send email"
+						class="w-8 h-8 glass rounded-lg flex items-center justify-center text-slate-500 hover:text-red-500 dark:hover:text-red-400 transition-all hover:-translate-y-0.5 text-sm">
+						<i class="fas fa-envelope" aria-hidden="true"></i>
+					</a>
 				</div>
-				<p class="text-[11px] text-slate-500 dark:text-slate-700 tracking-wide">&copy; 2026 Richter Mayandoc. Designed &amp; built from scratch.</p>
+
+				<p class="text-[11px] text-slate-500 dark:text-slate-700 tracking-wide">
+					&copy; 2026 Richter Mayandoc. Designed & built from scratch.
+				</p>
 			</div>
 		</div>
 	</footer>
 
-	<button id="backToTop" aria-label="Back to top" class="fixed bottom-6 right-4 sm:right-6 z-50 w-10 h-10 glass rounded-xl flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:-translate-y-0.5 transition-all text-sm">
+	<button id="backToTop" aria-label="Back to top"
+		class="fixed bottom-6 right-6 z-50 w-10 h-10 glass rounded-xl flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:-translate-y-0.5 transition-all text-sm">
 		<i class="fas fa-arrow-up" aria-hidden="true"></i>
 	</button>
 
@@ -940,20 +2277,34 @@
 		const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
 		const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
 		const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-		if (window.emailjs && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
-		/* Theme */
+		if (window.emailjs && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
+			emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+		}
+
+		/* Theme Toggle JS */
 		const themeToggleBtns = document.querySelectorAll('#themeToggle, #themeToggleMobile');
 		const htmlEl = document.documentElement;
 		const themeMeta = document.getElementById('theme-color-meta');
-		themeToggleBtns.forEach(btn => btn.addEventListener('click', () => {
-			htmlEl.classList.toggle('dark');
-			const isDark = htmlEl.classList.contains('dark');
-			localStorage.setItem('theme', isDark ? 'dark' : 'light');
-			themeMeta.setAttribute('content', isDark ? '#000000' : '#f8fafc');
-		}));
 
-		/* Nav scroll + back to top */
+		themeToggleBtns.forEach(btn => {
+			btn.addEventListener('click', () => {
+				htmlEl.classList.toggle('dark');
+				const isDark = htmlEl.classList.contains('dark');
+				localStorage.setItem('theme', isDark ? 'dark' : 'light');
+				themeMeta.setAttribute('content', isDark ? '#000000' : '#f8fafc');
+
+				// Optional: Trigger a reflow for cert tab colors if needed
+				const activeBtnIndex = Array.from(document.querySelectorAll('.cert-btn')).findIndex(b => !b.classList.contains('bg-black/5') && !b.classList.contains('bg-white/[0.05]'));
+				if (typeof selectCert === 'function' && activeBtnIndex !== -1) {
+					// We just call selectCert on the currently active tab to refresh colors
+					const currentlyActive = Array.from(document.querySelectorAll('.cert-panel')).findIndex(p => !p.classList.contains('hidden'));
+					if (currentlyActive >= 0) selectCert(currentlyActive);
+				}
+			});
+		});
+
+		/* Nav scroll */
 		const navbar = document.getElementById('navbar');
 		const backToTop = document.getElementById('backToTop');
 		window.addEventListener('scroll', () => {
@@ -970,93 +2321,146 @@
 			menuBtn.setAttribute('aria-expanded', isOpen);
 			menuBtn.querySelector('i').className = isOpen ? 'fas fa-xmark text-lg' : 'fas fa-bars text-lg';
 		});
-		document.querySelectorAll('[data-close-menu]').forEach(link => link.addEventListener('click', () => {
-			mobileMenu.classList.remove('open');
-			menuBtn.setAttribute('aria-expanded', 'false');
-			menuBtn.querySelector('i').className = 'fas fa-bars text-lg';
-		}));
+		document.querySelectorAll('[data-close-menu]').forEach(link => {
+			link.addEventListener('click', () => {
+				mobileMenu.classList.remove('open');
+				menuBtn.setAttribute('aria-expanded', 'false');
+				menuBtn.querySelector('i').className = 'fas fa-bars text-lg';
+			});
+		});
 
-		/* Reveal */
-		const revealObserver = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } }), { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+		/* Reveal on scroll */
+		const revealObserver = new IntersectionObserver((entries) => {
+			entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+		}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 		document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-		/* Active nav */
+		/* Active nav link */
 		const sections = document.querySelectorAll('main section[id]');
 		const navLinks = document.querySelectorAll('.nav-link');
-		const linkObserver = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { navLinks.forEach(l => l.classList.remove('active')); const link = document.querySelector('.nav-link[href="#' + e.target.id + '"]'); if (link) link.classList.add('active'); } }), { threshold: 0.45 });
+		const linkObserver = new IntersectionObserver((entries) => {
+			entries.forEach(e => {
+				if (e.isIntersecting) {
+					navLinks.forEach(l => l.classList.remove('active'));
+					const link = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+					if (link) link.classList.add('active');
+				}
+			});
+		}, { threshold: 0.45 });
 		sections.forEach(s => linkObserver.observe(s));
 
-		/* Certifications — handles both mobile strip & desktop sidebar */
-		function selectCert(index) {
-			for (let i = 0; i < 5; i++) {
-				const panel = document.getElementById('cert-panel-' + i);
-				const mobBtn  = document.getElementById('mob-cert-' + i);
-				const deskBtn = document.getElementById('desk-cert-' + i);
-				const active = i === index;
-				panel.classList.toggle('hidden', !active);
-				[mobBtn, deskBtn].forEach(btn => {
-					if (!btn) return;
-					btn.classList.toggle('bg-black/5', active);
-					btn.classList.toggle('dark:bg-white/[0.05]', active);
-					const title = btn.querySelector('p:first-child');
-					if (title) {
-						title.classList.toggle('text-brand-600', active);
-						title.classList.toggle('dark:text-brand-400', active);
-						title.classList.toggle('text-slate-900', !active);
-						title.classList.toggle('dark:text-white', !active);
-					}
-				});
-			}
-		}
-
-		function openCertModal(src) {
-			const modal = document.getElementById('certZoomModal');
-			document.getElementById('zoomedCertImg').src = src;
-			modal.classList.remove('hidden'); modal.classList.add('flex');
-			setTimeout(() => { modal.classList.remove('opacity-0'); modal.classList.add('opacity-100'); }, 10);
-		}
-		function closeCertModal() {
-			const modal = document.getElementById('certZoomModal');
-			modal.classList.remove('opacity-100'); modal.classList.add('opacity-0');
-			setTimeout(() => { modal.classList.add('hidden'); modal.classList.remove('flex'); document.getElementById('zoomedCertImg').src = ''; }, 300);
-		}
+		/* Count-up */
+		const countEls = document.querySelectorAll('.count-up');
+		const countObserver = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (!entry.isIntersecting) return;
+				const el = entry.target;
+				const target = parseInt(el.dataset.target, 10);
+				const start = performance.now();
+				const duration = 1100;
+				function tick(now) {
+					const progress = Math.min((now - start) / duration, 1);
+					const eased = 1 - Math.pow(1 - progress, 3);
+					el.textContent = Math.round(eased * target);
+					if (progress < 1) requestAnimationFrame(tick);
+					else el.textContent = target;
+				}
+				requestAnimationFrame(tick);
+				countObserver.unobserve(el);
+			});
+		}, { threshold: 0.5 });
+		countEls.forEach(el => countObserver.observe(el));
 
 		/* Contact form */
 		const form = document.getElementById('contactForm');
 		const submitBtn = document.getElementById('submitBtn');
 		const submitBtnText = document.getElementById('submitBtnText');
 		const formMsg = document.getElementById('formMsg');
+
 		const fields = {
-			name:    { el: document.getElementById('name'),    error: document.getElementById('nameError'),    validate: v => v.trim().length > 0 },
-			email:   { el: document.getElementById('email'),   error: document.getElementById('emailError'),   validate: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
+			name: { el: document.getElementById('name'), error: document.getElementById('nameError'), validate: v => v.trim().length > 0 },
+			email: { el: document.getElementById('email'), error: document.getElementById('emailError'), validate: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
 			subject: { el: document.getElementById('subject'), error: document.getElementById('subjectError'), validate: v => v.trim().length > 0 },
 			message: { el: document.getElementById('message'), error: document.getElementById('messageError'), validate: v => v.trim().length >= 10 },
 		};
-		function validateField(key) { const {el,error,validate} = fields[key]; const valid = validate(el.value); el.classList.toggle('error',!valid); error.classList.toggle('show',!valid); return valid; }
-		Object.keys(fields).forEach(key => { fields[key].el.addEventListener('blur', () => validateField(key)); fields[key].el.addEventListener('input', () => { if (fields[key].el.classList.contains('error')) validateField(key); }); });
-		function showFormMsg(text, type) { formMsg.textContent = text; formMsg.className = 'text-center text-xs ' + (type === 'success' ? 'text-emerald-500 dark:text-accent-400' : 'text-red-500 dark:text-red-400'); formMsg.classList.remove('hidden'); }
-		function setSubmitting(on) { submitBtn.disabled = on; submitBtnText.textContent = on ? 'Sending…' : 'Send Message'; const icon = document.getElementById('submitBtnIcon'); if (on) { icon.outerHTML = '<span class="spinner" id="submitBtnIcon" aria-hidden="true"></span>'; } else { document.getElementById('submitBtnIcon').outerHTML = '<i class="fas fa-paper-plane text-xs" id="submitBtnIcon" aria-hidden="true"></i>'; } }
+
+		function validateField(key) {
+			const { el, error, validate } = fields[key];
+			const valid = validate(el.value);
+			el.classList.toggle('error', !valid);
+			error.classList.toggle('show', !valid);
+			return valid;
+		}
+
+		Object.keys(fields).forEach(key => {
+			fields[key].el.addEventListener('blur', () => validateField(key));
+			fields[key].el.addEventListener('input', () => {
+				if (fields[key].el.classList.contains('error')) validateField(key);
+			});
+		});
+
+		function showFormMsg(text, type) {
+			formMsg.textContent = text;
+			formMsg.className = `text-center text-xs ${type === 'success' ? 'text-emerald-500 dark:text-accent-400' : 'text-red-500 dark:text-red-400'}`;
+			formMsg.classList.remove('hidden');
+		}
+
+		function setSubmitting(on) {
+			submitBtn.disabled = on;
+			submitBtnText.textContent = on ? 'Sending…' : 'Send Message';
+			const icon = document.getElementById('submitBtnIcon');
+			if (on) {
+				icon.outerHTML = '<span class="spinner" id="submitBtnIcon" aria-hidden="true"></span>';
+			} else {
+				document.getElementById('submitBtnIcon').outerHTML = '<i class="fas fa-paper-plane text-xs" id="submitBtnIcon" aria-hidden="true"></i>';
+			}
+		}
+
 		let lastSubmit = 0;
-		form.addEventListener('submit', async e => {
-			e.preventDefault(); formMsg.classList.add('hidden');
-			if (document.getElementById('company').value.trim() !== '') { showFormMsg('Thanks! Message sent.', 'success'); form.reset(); return; }
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			formMsg.classList.add('hidden');
+
+			if (document.getElementById('company').value.trim() !== '') {
+				showFormMsg('✓ Thanks! Your message has been sent.', 'success');
+				form.reset(); return;
+			}
+
 			const allValid = Object.keys(fields).every(validateField);
 			if (!allValid) { showFormMsg('Please fix the highlighted fields.', 'error'); return; }
+
 			const now = Date.now();
 			if (now - lastSubmit < 30000) { showFormMsg('Please wait a moment before sending again.', 'error'); return; }
+
 			setSubmitting(true);
-			const params = { from_name: fields.name.el.value.trim(), from_email: fields.email.el.value.trim(), subject: fields.subject.el.value.trim(), message: fields.message.el.value.trim() };
+
+			const params = {
+				from_name: fields.name.el.value.trim(),
+				from_email: fields.email.el.value.trim(),
+				subject: fields.subject.el.value.trim(),
+				message: fields.message.el.value.trim(),
+			};
+
 			try {
 				if (window.emailjs && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
 					await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
-					showFormMsg("Message sent — I'll reply within a day.", 'success'); form.reset(); lastSubmit = now;
+					showFormMsg("✓ Message sent — I'll reply within a day.", 'success');
+					form.reset(); lastSubmit = now;
 				} else {
-					const mailto = 'mailto:rmayandoc0625@gmail.com?subject=' + encodeURIComponent(params.subject) + '&body=' + encodeURIComponent('Name: ' + params.from_name + '\nEmail: ' + params.from_email + '\n\n' + params.message);
-					window.location.href = mailto; showFormMsg('Opening your email client…', 'success'); form.reset(); lastSubmit = now;
+					const mailto = `mailto:rmayandoc0625@gmail.com?subject=${encodeURIComponent(params.subject)}&body=${encodeURIComponent(`Name: ${params.from_name}\nEmail: ${params.from_email}\n\n${params.message}`)}`;
+					window.location.href = mailto;
+					showFormMsg('✓ Opening your email client…', 'success');
+					form.reset(); lastSubmit = now;
 				}
-			} catch(err) { console.error('EmailJS error:', err); showFormMsg('Something went wrong. Email me at rmayandoc0625@gmail.com.', 'error'); }
-			finally { setSubmitting(false); }
+			} catch (err) {
+				console.error('EmailJS error:', err);
+				showFormMsg('Something went wrong. Please email me directly at rmayandoc0625@gmail.com.', 'error');
+			} finally {
+				setSubmitting(false);
+			}
 		});
 	</script>
+
 </body>
+
 </html>
