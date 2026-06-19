@@ -1,151 +1,265 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="description"
-		content="Richter Mayandoc — Full-Stack Developer and Software Engineer from Ilagan City, specializing in Laravel, PHP, MySQL, JavaScript, React, TypeScript, and database-driven web applications." />
+		content="Richter Mayandoc — Full-Stack Developer building secure, scalable web applications with Laravel, React, TypeScript, and MySQL. Helping organizations across hospitality, education, government, and healthcare streamline operations through custom software." />
 	<meta name="keywords"
-		content="Full-Stack Developer, Software Engineer, Backend Developer, Web Developer, Database Management, Laravel, PHP, MySQL, React, JavaScript, TypeScript, REST API, Web Developer Philippines, BSIT, Ilagan City" />
+		content="Full-Stack Developer, Software Engineer, Laravel Developer, React Developer, Database Design, REST API, Business Automation, Web Developer Philippines, Ilagan City" />
 	<meta name="author" content="Richter Mayandoc" />
 	<meta name="robots" content="index, follow" />
-	<meta name="theme-color" id="theme-color-meta" content="#000000" />
-	<meta property="og:title" content="Richter Mayandoc | Full-Stack Developer & Software Engineer" />
+	<meta name="theme-color" content="#0F172A" />
+	<meta property="og:title" content="Richter Mayandoc | Full-Stack Developer" />
 	<meta property="og:description"
-		content="Full-Stack Developer building scalable web applications, RESTful APIs, and relational database systems with Laravel, React, and MySQL." />
+		content="Building digital solutions that solve real business problems — Laravel, React, TypeScript, MySQL." />
 	<meta property="og:type" content="website" />
-	<title>Richter Mayandoc | Full-Stack Developer & Software Engineer</title>
+	<title>Richter Mayandoc | Full-Stack Developer</title>
+
+	<!-- Theme init: runs before paint to prevent flash of wrong theme -->
+	<script>
+		(function () {
+			try {
+				var saved = localStorage.getItem('theme');
+				var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+				document.documentElement.setAttribute('data-theme', theme);
+			} catch (e) { document.documentElement.setAttribute('data-theme', 'light'); }
+		})();
+	</script>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-		rel="stylesheet" />
 	<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-	<script>
-		if (localStorage.getItem('theme') === 'light' || (!('theme' in localStorage) && !window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-			document.documentElement.classList.remove('dark');
-			document.getElementById('theme-color-meta').setAttribute('content', '#f8fafc');
-		} else {
-			document.documentElement.classList.add('dark');
-		}
-	</script>
-
-	<script>
-		tailwind.config = {
-			darkMode: 'class',
-			theme: {
-				extend: {
-					fontFamily: {
-						sans: ['Inter', 'sans-serif'],
-						display: ['Space Grotesk', 'sans-serif'],
-					},
-					colors: {
-						brand: { 400: '#818CF8', 500: '#6366F1', 600: '#4F46E5', 700: '#4338CA' },
-						accent: { 400: '#34D399', 500: '#10B981' },
-					},
-					animation: {
-						'float': 'float 6s ease-in-out infinite',
-						'pulse-slow': 'pulse 4s ease-in-out infinite',
-					},
-					keyframes: {
-						float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
-					},
-				}
-			}
-		}
-	</script>
-
 	<style>
-		/* ── Reduced motion ── */
+		/* ============================================================
+             TOKENS
+          ============================================================ */
+		:root {
+			--bg: #ffffff;
+			--bg-soft: #F6F7FB;
+			--surface: #ffffff;
+			--surface-raised: #ffffff;
+			--ink: #0B1220;
+			--ink-soft: #4C5567;
+			--ink-faint: #8B93A6;
+			--line: #E5E8EF;
+			--line-strong: #D7DBE4;
+			--accent: #2954E5;
+			--accent-ink: #1E3FBD;
+			--accent-soft: #EEF1FE;
+			--success: #178A4C;
+			--danger: #D33E3E;
+			--shadow-sm: 0 1px 2px rgba(15, 23, 42, .04);
+			--shadow-md: 0 10px 28px rgba(15, 23, 42, .07);
+			--shadow-lg: 0 18px 44px rgba(15, 23, 42, .10);
+
+			--font-display: 'Space Grotesk', sans-serif;
+			--font-body: 'Inter', sans-serif;
+			--font-mono: 'JetBrains Mono', monospace;
+
+			--container: 1160px;
+			--pad-inline: clamp(20px, 5vw, 32px);
+			--section-pad: clamp(64px, 9vw, 116px);
+			--radius-sm: 8px;
+			--radius-md: 12px;
+			--radius-lg: 18px;
+			color-scheme: light;
+		}
+
+		html[data-theme="dark"] {
+			--bg: #0F172A;
+			--bg-soft: #131D33;
+			--surface: #16213A;
+			--surface-raised: #19253F;
+			--ink: #F2F5F9;
+			--ink-soft: #AEB7CC;
+			--ink-faint: #707CA1;
+			--line: #25304B;
+			--line-strong: #324066;
+			--accent: #5C84FF;
+			--accent-ink: #87A4FF;
+			--accent-soft: rgba(92, 132, 255, .14);
+			--success: #34D399;
+			--danger: #FF7575;
+			--shadow-sm: 0 1px 0 rgba(255, 255, 255, .03);
+			--shadow-md: 0 10px 28px rgba(0, 0, 0, .35);
+			--shadow-lg: 0 22px 50px rgba(0, 0, 0, .45);
+			color-scheme: dark;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
 		@media (prefers-reduced-motion: reduce) {
+
+			html {
+				scroll-behavior: auto;
+			}
 
 			*,
 			*::before,
 			*::after {
-				animation-duration: 0.001ms !important;
-				animation-iteration-count: 1 !important;
-				transition-duration: 0.001ms !important;
+				animation-duration: .001ms !important;
+				transition-duration: .001ms !important;
 				scroll-behavior: auto !important;
 			}
 		}
 
-		/* ── Scroll & Selection ── */
+		body {
+			margin: 0;
+			background: var(--bg);
+			color: var(--ink);
+			font-family: var(--font-body);
+			font-size: 16px;
+			line-height: 1.65;
+			-webkit-font-smoothing: antialiased;
+			transition: background-color .35s ease, color .35s ease;
+		}
+
+		h1,
+		h2,
+		h3,
+		h4 {
+			font-family: var(--font-display);
+			color: var(--ink);
+			line-height: 1.15;
+			margin: 0;
+			letter-spacing: -0.015em;
+			font-weight: 600;
+		}
+
+		p {
+			margin: 0;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		img {
+			max-width: 100%;
+			display: block;
+		}
+
+		button {
+			font-family: inherit;
+		}
+
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
 		::selection {
-			background: #6366F1;
+			background: var(--accent);
 			color: #fff;
 		}
 
 		::-webkit-scrollbar {
-			width: 5px;
+			width: 9px;
 		}
 
 		::-webkit-scrollbar-track {
-			background: #f1f5f9;
-		}
-
-		.dark ::-webkit-scrollbar-track {
-			background: #000000;
+			background: var(--bg);
 		}
 
 		::-webkit-scrollbar-thumb {
-			background: #818CF8;
+			background: var(--line-strong);
 			border-radius: 99px;
 		}
 
-		.dark ::-webkit-scrollbar-thumb {
-			background: #312e81;
+		a:focus-visible,
+		button:focus-visible,
+		input:focus-visible,
+		textarea:focus-visible {
+			outline: 2px solid var(--accent);
+			outline-offset: 3px;
+			border-radius: 3px;
 		}
 
-		/* ── Background ── */
-		body {
-			background-color: #f8fafc;
-			background-image:
-				radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.08) 0%, transparent 70%),
-				linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-				linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
-			background-size: 100% 100%, 48px 48px, 48px 48px;
-			background-attachment: fixed;
-			transition: background-color 0.3s ease;
+		.container {
+			max-width: var(--container);
+			margin: 0 auto;
+			padding-inline: var(--pad-inline);
 		}
 
-		.dark body {
-			background-color: #000000;
-			background-image:
-				radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.15) 0%, transparent 70%),
-				linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-				linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+		.section {
+			padding-block: var(--section-pad);
+			position: relative;
 		}
 
-		/* ── Glassmorphism ── */
-		.glass {
-			background: rgba(255, 255, 255, 0.7);
-			border: 1px solid rgba(0, 0, 0, 0.05);
-			backdrop-filter: blur(8px);
+		.section--soft {
+			background: var(--bg-soft);
+			transition: background-color .35s ease;
 		}
 
-		.dark .glass {
-			background: #111111;
-			border: 1px solid rgba(255, 255, 255, 0.05);
+		.section--bordered {
+			border-top: 1px solid var(--line);
+			transition: border-color .35s ease;
 		}
 
-		/* ── Gradient text ── */
-		.gradient-text {
-			background: linear-gradient(135deg, #818CF8 0%, #34D399 100%);
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			background-clip: text;
+		.surface {
+			background: var(--surface);
+			border: 1px solid var(--line);
+			transition: background-color .35s ease, border-color .35s ease, box-shadow .2s ease, transform .2s ease;
 		}
 
-		/* ── Reveal animations ── */
+		.eyebrow {
+			font-family: var(--font-mono);
+			font-size: 12px;
+			font-weight: 600;
+			letter-spacing: .12em;
+			text-transform: uppercase;
+			color: var(--accent);
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 14px;
+		}
+
+		.eyebrow::before {
+			content: '';
+			width: 16px;
+			height: 1.5px;
+			background: var(--accent);
+			display: inline-block;
+		}
+
+		.section-head {
+			max-width: 620px;
+			margin-bottom: 44px;
+		}
+
+		.section-head h2 {
+			font-size: clamp(26px, 3.4vw, 36px);
+			margin-bottom: 12px;
+			font-weight: 700;
+		}
+
+		.section-head p {
+			color: var(--ink-soft);
+			font-size: 16px;
+		}
+
+		/* ============================================================
+             REVEAL / MOTION
+          ============================================================ */
 		.reveal {
 			opacity: 0;
-			transform: translateY(22px);
-			transition: opacity 0.6s ease, transform 0.6s ease;
-			will-change: opacity, transform;
+			transform: translateY(16px);
+			transition: opacity .6s ease, transform .6s ease;
 		}
 
 		.reveal.visible {
@@ -155,8 +269,8 @@
 
 		.reveal-stagger>* {
 			opacity: 0;
-			transform: translateY(18px);
-			transition: opacity 0.5s ease, transform 0.5s ease;
+			transform: translateY(12px);
+			transition: opacity .5s ease, transform .5s ease;
 		}
 
 		.reveal-stagger.visible>* {
@@ -169,40 +283,92 @@
 		}
 
 		.reveal-stagger.visible>*:nth-child(2) {
-			transition-delay: 70ms;
+			transition-delay: 60ms;
 		}
 
 		.reveal-stagger.visible>*:nth-child(3) {
-			transition-delay: 140ms;
+			transition-delay: 120ms;
 		}
 
 		.reveal-stagger.visible>*:nth-child(4) {
-			transition-delay: 210ms;
+			transition-delay: 180ms;
 		}
 
 		.reveal-stagger.visible>*:nth-child(5) {
-			transition-delay: 280ms;
+			transition-delay: 240ms;
 		}
 
 		.reveal-stagger.visible>*:nth-child(6) {
-			transition-delay: 350ms;
+			transition-delay: 300ms;
 		}
 
-		/* ── Nav ── */
+		/* ============================================================
+             NAVBAR
+          ============================================================ */
+		#navbar {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 60;
+			background: color-mix(in srgb, var(--bg) 86%, transparent);
+			backdrop-filter: saturate(180%) blur(10px);
+			-webkit-backdrop-filter: saturate(180%) blur(10px);
+			border-bottom: 1px solid transparent;
+			transition: border-color .25s ease, background-color .35s ease;
+		}
+
+		#navbar.scrolled {
+			border-bottom-color: var(--line);
+		}
+
+		.nav-inner {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			height: 70px;
+		}
+
+		.logo {
+			font-family: var(--font-display);
+			font-weight: 700;
+			font-size: 16.5px;
+			color: var(--ink);
+		}
+
+		.logo span {
+			color: var(--accent);
+		}
+
+		.nav-links {
+			display: flex;
+			align-items: center;
+			gap: 30px;
+			font-size: 13.5px;
+			font-weight: 500;
+			color: var(--ink-soft);
+		}
+
 		.nav-link {
 			position: relative;
+			padding: 4px 0;
+			transition: color .2s ease;
 		}
 
 		.nav-link::after {
 			content: '';
 			position: absolute;
-			bottom: -3px;
 			left: 0;
+			bottom: -3px;
 			width: 0;
-			height: 2px;
-			background: #818CF8;
-			border-radius: 99px;
-			transition: width 0.25s ease;
+			height: 1.5px;
+			background: var(--accent);
+			transition: width .2s ease;
+		}
+
+		.nav-link:hover,
+		.nav-link.active {
+			color: var(--ink);
 		}
 
 		.nav-link:hover::after,
@@ -210,188 +376,1073 @@
 			width: 100%;
 		}
 
-		.nav-link:focus-visible,
-		a:focus-visible,
-		button:focus-visible,
-		input:focus-visible,
-		textarea:focus-visible {
-			outline: 2px solid #818CF8;
-			outline-offset: 3px;
-			border-radius: 4px;
+		.nav-right {
+			display: flex;
+			align-items: center;
+			gap: 14px;
 		}
 
-		#navbar {
-			transition: background 0.3s, box-shadow 0.3s;
+		.btn-resume-nav {
+			font-size: 13px;
+			font-weight: 600;
+			color: var(--accent);
+			border: 1px solid var(--line);
+			padding: 8px 16px;
+			border-radius: var(--radius-sm);
+			transition: border-color .2s ease, background-color .2s ease;
 		}
 
-		#navbar.scrolled {
-			background: #ffffff;
-			box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+		.btn-resume-nav:hover {
+			border-color: var(--accent);
+			background: var(--accent-soft);
 		}
 
-		.dark #navbar.scrolled {
-			background: #000000;
-			box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+		.theme-toggle {
+			width: 38px;
+			height: 38px;
+			border-radius: 9px;
+			border: 1px solid var(--line);
+			background: var(--surface);
+			color: var(--ink-soft);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			font-size: 14px;
+			transition: border-color .2s ease, color .2s ease, background-color .35s ease;
 		}
 
-		/* ── Mobile menu ── */
+		.theme-toggle:hover {
+			color: var(--accent);
+			border-color: var(--accent);
+		}
+
+		.icon-moon {
+			display: none;
+		}
+
+		html[data-theme="dark"] .icon-sun {
+			display: none;
+		}
+
+		html[data-theme="dark"] .icon-moon {
+			display: inline;
+		}
+
+		#menuBtn {
+			display: flex;
+			width: 38px;
+			height: 38px;
+			align-items: center;
+			justify-content: center;
+			background: none;
+			border: 1px solid var(--line);
+			border-radius: 9px;
+			font-size: 16px;
+			color: var(--ink);
+			cursor: pointer;
+		}
+
 		#mobileMenu {
-			max-height: 0;
-			overflow: hidden;
-			opacity: 0;
-			transition: max-height 0.3s ease, opacity 0.25s ease;
+			display: none;
+			position: fixed;
+			top: 70px;
+			left: 0;
+			right: 0;
+			background: var(--bg);
+			border-bottom: 1px solid var(--line);
+			z-index: 59;
+			padding: 6px var(--pad-inline) 18px;
+			max-height: calc(100vh - 70px);
+			overflow-y: auto;
 		}
 
 		#mobileMenu.open {
-			max-height: 26rem;
-			opacity: 1;
+			display: block;
 		}
 
-		/* ── Skill badges ── */
-		.skill-badge {
-			transition: transform 0.2s, box-shadow 0.2s;
+		#mobileMenu a {
+			display: block;
+			padding: 13px 0;
+			font-size: 15px;
+			font-weight: 500;
+			color: var(--ink);
+			border-bottom: 1px solid var(--line);
 		}
 
-		.skill-badge:hover {
-			transform: translateY(-2px);
-			box-shadow: 0 6px 20px rgba(99, 102, 241, 0.2);
+		#mobileMenu a:last-child {
+			border-bottom: none;
 		}
 
-		/* ── Project card ── */
-		.project-card {
+		@media (min-width: 880px) {
+
+			#menuBtn,
+			#mobileMenu {
+				display: none !important;
+			}
+
+			.nav-links {
+				display: flex;
+			}
+
+			.btn-resume-nav {
+				display: inline-flex;
+				align-items: center;
+			}
+		}
+
+		@media (max-width: 879px) {
+
+			.nav-links,
+			.btn-resume-nav {
+				display: none;
+			}
+		}
+
+		/* ============================================================
+             BUTTONS
+          ============================================================ */
+		.btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 9px;
+			font-family: var(--font-body);
+			font-weight: 600;
+			font-size: 14.5px;
+			padding: 13px 23px;
+			border-radius: var(--radius-sm);
+			border: 1px solid transparent;
+			cursor: pointer;
+			transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .15s ease, box-shadow .2s ease;
+			white-space: nowrap;
+		}
+
+		.btn:active {
+			transform: translateY(0);
+		}
+
+		.btn:hover {
+			transform: translateY(-1px);
+		}
+
+		.btn-primary {
+			background: var(--accent);
+			color: #fff;
+			box-shadow: var(--shadow-sm);
+		}
+
+		.btn-primary:hover {
+			background: var(--accent-ink);
+			box-shadow: var(--shadow-md);
+		}
+
+		.btn-outline {
+			background: transparent;
+			color: var(--ink);
+			border-color: var(--line-strong);
+		}
+
+		.btn-outline:hover {
+			border-color: var(--accent);
+			color: var(--accent);
+		}
+
+		.btn-ghost {
+			background: transparent;
+			color: var(--ink-soft);
+		}
+
+		.btn-ghost:hover {
+			color: var(--accent);
+		}
+
+		.btn-sm {
+			padding: 9px 16px;
+			font-size: 13px;
+		}
+
+		/* ============================================================
+             HERO
+          ============================================================ */
+		#hero {
+			padding-top: clamp(124px, 16vw, 168px);
+			padding-bottom: var(--section-pad);
+			overflow: hidden;
+		}
+
+		.hero-bg {
+			position: absolute;
+			inset: 0;
+			z-index: -1;
+			pointer-events: none;
+			background-image: radial-gradient(var(--line-strong) 1px, transparent 1px);
+			background-size: 26px 26px;
+			-webkit-mask-image: radial-gradient(ellipse 58% 50% at 78% 22%, #000 0%, transparent 72%);
+			mask-image: radial-gradient(ellipse 58% 50% at 78% 22%, #000 0%, transparent 72%);
+			opacity: .7;
+		}
+
+		.hero-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 44px;
+			align-items: center;
+		}
+
+		.status-pill {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			font-family: var(--font-mono);
+			font-size: 12px;
+			font-weight: 500;
+			color: var(--ink-soft);
+			border: 1px solid var(--line);
+			padding: 7px 13px 7px 11px;
+			border-radius: 99px;
+			margin-bottom: 22px;
+			background: var(--surface);
+		}
+
+		.status-dot {
+			width: 7px;
+			height: 7px;
+			border-radius: 50%;
+			background: var(--success);
+			flex-shrink: 0;
+			box-shadow: 0 0 0 3px color-mix(in srgb, var(--success) 18%, transparent);
+		}
+
+		.hero-kicker {
+			font-family: var(--font-mono);
+			font-size: 13px;
+			font-weight: 600;
+			letter-spacing: .08em;
+			text-transform: uppercase;
+			color: var(--accent);
+			margin-bottom: 10px;
+		}
+
+		h1.hero-name {
+			font-size: clamp(36px, 6vw, 56px);
+			font-weight: 700;
+			letter-spacing: -.02em;
+			margin-bottom: 14px;
+		}
+
+		.hero-headline {
+			font-size: clamp(19px, 2.4vw, 24px);
+			font-weight: 500;
+			color: var(--ink-soft);
+			max-width: 600px;
+			margin-bottom: 18px;
+			font-family: var(--font-display);
+		}
+
+		.hero-summary {
+			font-size: 15.5px;
+			color: var(--ink-soft);
+			max-width: 540px;
+			margin-bottom: 32px;
+		}
+
+		.hero-ctas {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 12px;
+			margin-bottom: 36px;
+		}
+
+		.hero-meta {
+			font-family: var(--font-mono);
+			font-size: 12.5px;
+			color: var(--ink-faint);
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px 20px;
+			border-top: 1px solid var(--line);
+			padding-top: 22px;
+		}
+
+		.hero-meta b {
+			color: var(--ink-soft);
+			font-weight: 600;
+		}
+
+		.hero-photo-col {
+			display: flex;
+			justify-content: center;
+		}
+
+		.hero-photo-wrap {
 			position: relative;
-			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			width: min(320px, 78vw);
+			aspect-ratio: 4/5;
+			border-radius: var(--radius-lg);
+			overflow: hidden;
+			background: var(--bg-soft);
+			border: 1px solid var(--line);
+			box-shadow: var(--shadow-lg);
+		}
+
+		.hero-photo-wrap img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.corner {
+			position: absolute;
+			width: 22px;
+			height: 22px;
+			border: 2px solid var(--accent);
+			pointer-events: none;
+			opacity: .9;
+		}
+
+		.corner-tl {
+			top: -8px;
+			left: -8px;
+			border-right: none;
+			border-bottom: none;
+			border-radius: 4px 0 0 0;
+		}
+
+		.corner-tr {
+			top: -8px;
+			right: -8px;
+			border-left: none;
+			border-bottom: none;
+			border-radius: 0 4px 0 0;
+		}
+
+		.corner-bl {
+			bottom: -8px;
+			left: -8px;
+			border-right: none;
+			border-top: none;
+			border-radius: 0 0 0 4px;
+		}
+
+		.corner-br {
+			bottom: -8px;
+			right: -8px;
+			border-left: none;
+			border-top: none;
+			border-radius: 0 0 4px 0;
+		}
+
+		@media (min-width: 880px) {
+			.hero-grid {
+				grid-template-columns: 1.2fr .8fr;
+				gap: 56px;
+			}
+
+			.hero-photo-col {
+				justify-content: flex-end;
+			}
+
+			.hero-photo-wrap {
+				width: 100%;
+				max-width: 360px;
+			}
+		}
+
+		/* ============================================================
+             INDUSTRIES
+          ============================================================ */
+		.industry-intro {
+			max-width: 640px;
+			color: var(--ink-soft);
+			margin-bottom: 36px;
+			font-size: 15.5px;
+		}
+
+		.industry-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 12px;
+		}
+
+		.industry-item {
+			background: var(--surface);
+			border: 1px solid var(--line);
+			border-radius: var(--radius-md);
+			padding: 20px 20px;
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			font-weight: 600;
+			font-size: 14.5px;
+			transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+		}
+
+		.industry-item:hover {
+			border-color: var(--accent);
+			transform: translateY(-2px);
+			box-shadow: var(--shadow-md);
+		}
+
+		.industry-icon {
+			width: 38px;
+			height: 38px;
+			border-radius: 9px;
+			background: var(--accent-soft);
+			color: var(--accent);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 15px;
+			flex-shrink: 0;
+		}
+
+		@media (min-width: 560px) {
+			.industry-grid {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+
+		@media (min-width: 880px) {
+			.industry-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+
+		/* ============================================================
+             SERVICES
+          ============================================================ */
+		.services-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 18px;
+		}
+
+		.service-card {
+			border: 1px solid var(--line);
+			border-radius: var(--radius-md);
+			padding: 26px 22px;
+			background: var(--surface);
+			transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+		}
+
+		.service-card:hover {
+			box-shadow: var(--shadow-md);
+			transform: translateY(-2px);
+			border-color: var(--line-strong);
+		}
+
+		.service-icon {
+			width: 40px;
+			height: 40px;
+			border-radius: 10px;
+			background: var(--accent-soft);
+			color: var(--accent);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 16px;
+			margin-bottom: 18px;
+		}
+
+		.service-card h3 {
+			font-size: 16.5px;
+			font-weight: 700;
+			margin-bottom: 8px;
+		}
+
+		.service-card p {
+			font-size: 13.5px;
+			color: var(--ink-soft);
+		}
+
+		@media (min-width: 600px) {
+			.services-grid {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+
+		@media (min-width: 1000px) {
+			.services-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+
+		/* ============================================================
+             PROCESS
+          ============================================================ */
+		.process-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 0;
+			position: relative;
+		}
+
+		.process-step {
+			position: relative;
+			display: flex;
+			gap: 20px;
+			padding: 26px 0;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.process-step:last-child {
+			border-bottom: none;
+		}
+
+		.process-num {
+			flex-shrink: 0;
+			width: 52px;
+			height: 52px;
+			border-radius: 50%;
+			border: 2px solid var(--accent);
+			background: var(--accent-soft);
+			color: var(--accent);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-family: var(--font-display);
+			font-weight: 700;
+			font-size: 18px;
+		}
+
+		.process-body {
+			flex: 1;
+			padding-top: 4px;
+		}
+
+		.process-body h3 {
+			font-size: 17px;
+			font-weight: 700;
+			margin-bottom: 6px;
+		}
+
+		.process-body p {
+			font-size: 13.5px;
+			color: var(--ink-soft);
+			max-width: 520px;
+		}
+
+		.process-arrow {
+			display: none;
+			position: absolute;
+			left: 26px;
+			bottom: -2px;
+			transform: translateY(50%);
+			width: 18px;
+			height: 18px;
+			align-items: center;
+			justify-content: center;
+			color: var(--accent);
+			font-size: 12px;
+			background: var(--bg-soft);
+			z-index: 2;
+		}
+
+		.process-step:not(:last-child) .process-arrow {
+			display: flex;
+		}
+
+		@media (min-width: 760px) {
+			.process-grid {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				gap: 18px;
+			}
+
+			.process-step {
+				flex-direction: column;
+				gap: 16px;
+				padding: 0;
+				border-bottom: none;
+			}
+
+			.process-num {
+				width: 48px;
+				height: 48px;
+				font-size: 17px;
+			}
+
+			.process-arrow {
+				display: flex;
+				left: auto;
+				right: -22px;
+				top: 22px;
+				bottom: auto;
+				transform: none;
+				width: 22px;
+				height: 22px;
+				background: transparent;
+			}
+
+			.process-step:not(:last-child) .process-arrow {
+				display: flex;
+			}
+
+			.process-step:last-child .process-arrow {
+				display: none;
+			}
+
+			.process-body p {
+				max-width: none;
+			}
+		}
+
+		/* ============================================================
+             PROJECTS
+          ============================================================ */
+		.project-list {
+			display: flex;
+			flex-direction: column;
+			gap: 22px;
+		}
+
+		.project-card {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 22px;
+			border: 1px solid var(--line);
+			border-radius: var(--radius-lg);
+			padding: 22px;
+			background: var(--surface);
+			transition: box-shadow .25s ease, border-color .2s ease;
 		}
 
 		.project-card:hover {
-			transform: translateY(-5px);
-			box-shadow: 0 20px 44px rgba(0, 0, 0, 0.1);
+			box-shadow: var(--shadow-lg);
 		}
 
-		.dark .project-card:hover {
-			box-shadow: 0 20px 44px rgba(0, 0, 0, 0.45);
+		.project-card.featured {
+			border-color: var(--accent);
+			background: linear-gradient(180deg, var(--accent-soft), var(--surface) 38%);
 		}
 
-		.project-card::before {
-			content: '';
-			position: absolute;
-			inset: 0;
-			border-radius: inherit;
-			padding: 1px;
-			background: linear-gradient(135deg, rgba(129, 140, 248, 0.55), rgba(52, 211, 153, 0.35));
-			-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-			-webkit-mask-composite: xor;
-			mask-composite: exclude;
-			opacity: 0;
-			transition: opacity 0.3s ease;
-			pointer-events: none;
-			z-index: 1;
+		.featured-tag {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			font-family: var(--font-mono);
+			font-size: 11px;
+			font-weight: 600;
+			letter-spacing: .08em;
+			text-transform: uppercase;
+			color: var(--accent);
+			background: var(--accent-soft);
+			padding: 5px 10px;
+			border-radius: 99px;
+			margin-bottom: 12px;
 		}
 
-		.project-card:hover::before {
-			opacity: 1;
-		}
-
-		.project-img {
+		.project-thumb {
+			position: relative;
+			border-radius: var(--radius-md);
 			overflow: hidden;
+			background: var(--bg-soft);
+			border: 1px solid var(--line);
+			aspect-ratio: 16/10;
 		}
 
-		.project-img img {
-			transition: transform 0.55s ease;
-			will-change: transform;
+		.project-thumb img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform .4s ease;
 		}
 
-		.project-card:hover .project-img img {
-			transform: scale(1.05);
+		.project-card:hover .project-thumb img {
+			transform: scale(1.035);
 		}
 
-		/* ── Timeline dot ── */
-		.timeline-dot {
-			width: 13px;
-			height: 13px;
-			border-radius: 50%;
-			background: #6366F1;
-			border: 3px solid #ffffff;
-			box-shadow: 0 0 0 2px #6366F1, 0 0 14px rgba(99, 102, 241, 0.45);
+		.project-top {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			gap: 12px;
+			margin-bottom: 8px;
+			flex-wrap: wrap;
 		}
 
-		.dark .timeline-dot {
-			border: 3px solid #000000;
+		.project-card h3 {
+			font-size: 19px;
+			font-weight: 700;
 		}
 
-		/* ── Stat card ── */
-		.stat-card {
-			transition: box-shadow 0.25s, transform 0.25s;
+		.project-dates {
+			font-family: var(--font-mono);
+			font-size: 11.5px;
+			color: var(--ink-faint);
+			white-space: nowrap;
 		}
 
-		.stat-card:hover {
-			box-shadow: 0 0 28px rgba(99, 102, 241, 0.18);
+		.project-desc {
+			color: var(--ink-soft);
+			font-size: 14px;
+			margin-bottom: 14px;
+		}
+
+		.tech-row {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 7px;
+			margin-bottom: 14px;
+		}
+
+		.tech-tag {
+			font-family: var(--font-mono);
+			font-size: 11px;
+			font-weight: 500;
+			color: var(--ink-soft);
+			border: 1px solid var(--line);
+			padding: 4px 9px;
+			border-radius: 5px;
+			background: var(--bg-soft);
+		}
+
+		.result-line {
+			display: flex;
+			gap: 9px;
+			align-items: baseline;
+			border-left: 2px solid var(--accent);
+			padding-left: 11px;
+			font-size: 13px;
+			margin-bottom: 18px;
+		}
+
+		.result-line .result-label {
+			font-family: var(--font-mono);
+			font-size: 10.5px;
+			text-transform: uppercase;
+			letter-spacing: .06em;
+			color: var(--accent);
+			font-weight: 600;
+			white-space: nowrap;
+		}
+
+		.result-line p {
+			color: var(--ink);
+			font-weight: 500;
+		}
+
+		.project-links {
+			display: flex;
+			gap: 10px;
+			flex-wrap: wrap;
+		}
+
+		@media (min-width: 760px) {
+			.project-card {
+				grid-template-columns: 280px 1fr;
+				padding: 26px;
+			}
+
+			.project-card.reverse {
+				grid-template-columns: 1fr 280px;
+			}
+
+			.project-card.reverse .project-thumb {
+				order: 2;
+			}
+		}
+
+		/* ============================================================
+             ABOUT
+          ============================================================ */
+		.about-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 40px;
+		}
+
+		.about-copy p {
+			color: var(--ink-soft);
+			margin-bottom: 14px;
+			font-size: 15.5px;
+		}
+
+		.focus-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 16px;
+			margin-top: 26px;
+		}
+
+		.focus-item {
+			border-left: 2px solid var(--accent);
+			padding-left: 14px;
+		}
+
+		.focus-item h4 {
+			font-size: 14.5px;
+			font-weight: 700;
+			margin-bottom: 4px;
+		}
+
+		.focus-item p {
+			font-size: 13.5px;
+			color: var(--ink-soft);
+		}
+
+		.about-side-card {
+			border-radius: var(--radius-md);
+			padding: 26px;
+			background: var(--surface);
+			border: 1px solid var(--line);
+		}
+
+		.fact-row {
+			display: flex;
+			justify-content: space-between;
+			gap: 16px;
+			padding: 12px 0;
+			border-bottom: 1px solid var(--line);
+			font-size: 14px;
+		}
+
+		.fact-row:first-child {
+			padding-top: 0;
+		}
+
+		.fact-row:last-child {
+			border-bottom: none;
+		}
+
+		.fact-label {
+			color: var(--ink-faint);
+			font-family: var(--font-mono);
+			font-size: 11px;
+			text-transform: uppercase;
+			letter-spacing: .06em;
+			padding-top: 2px;
+		}
+
+		.fact-value {
+			font-weight: 600;
+			text-align: right;
+		}
+
+		.cred-block {
+			margin-top: 22px;
+			padding-top: 22px;
+			border-top: 1px solid var(--line);
+		}
+
+		.cred-block h4 {
+			font-size: 12.5px;
+			font-weight: 700;
+			margin-bottom: 12px;
+			color: var(--ink-faint);
+			font-family: var(--font-mono);
+			text-transform: uppercase;
+			letter-spacing: .06em;
+		}
+
+		.cred-chips {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+		}
+
+		.cred-chip {
+			font-size: 12px;
+			font-weight: 500;
+			color: var(--ink-soft);
+			background: var(--bg-soft);
+			border: 1px solid var(--line);
+			padding: 6px 11px;
+			border-radius: 99px;
+			cursor: default;
+			transition: border-color .2s ease, color .2s ease;
+		}
+
+		.cred-chip:hover {
+			border-color: var(--accent);
+			color: var(--accent);
+		}
+
+		@media (min-width: 880px) {
+			.about-grid {
+				grid-template-columns: 1.15fr .85fr;
+				gap: 60px;
+			}
+
+			.focus-grid {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+
+		/* ============================================================
+             SKILLS
+          ============================================================ */
+		.skills-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 30px 22px;
+		}
+
+		.skill-col h4 {
+			font-family: var(--font-mono);
+			font-size: 11.5px;
+			letter-spacing: .08em;
+			text-transform: uppercase;
+			color: var(--ink-faint);
+			font-weight: 600;
+			margin-bottom: 14px;
+			padding-bottom: 12px;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.skill-badges {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+		}
+
+		.skill-badge {
+			font-size: 13.5px;
+			font-weight: 500;
+			color: var(--ink);
+			background: var(--surface);
+			border: 1px solid var(--line);
+			padding: 8px 13px;
+			border-radius: 8px;
+			transition: border-color .2s ease, transform .15s ease, background-color .2s ease;
+		}
+
+		.skill-badge:hover {
+			border-color: var(--accent);
+			color: var(--accent);
 			transform: translateY(-2px);
 		}
 
-		/* ── Button shine ── */
-		.btn-primary {
-			position: relative;
-			overflow: hidden;
+		@media (min-width: 1000px) {
+			.skills-grid {
+				grid-template-columns: repeat(4, 1fr);
+			}
 		}
 
-		.btn-primary::after {
-			content: '';
-			position: absolute;
-			top: -50%;
-			left: -75%;
-			width: 50%;
-			height: 200%;
-			background: rgba(255, 255, 255, 0.1);
-			transform: skewX(-20deg);
-			transition: left 0.4s;
+		/* ============================================================
+             CONTACT
+          ============================================================ */
+		.contact-cta {
+			text-align: center;
+			max-width: 640px;
+			margin: 0 auto 52px;
 		}
 
-		.btn-primary:hover::after {
-			left: 120%;
+		.contact-cta h2 {
+			font-size: clamp(26px, 3.6vw, 38px);
+			font-weight: 700;
+			margin-bottom: 14px;
 		}
 
-		.btn-primary:disabled {
-			opacity: 0.6;
-			cursor: not-allowed;
+		.contact-cta p {
+			color: var(--ink-soft);
+			font-size: 16px;
 		}
 
-		/* ── Contact form ── */
+		.contact-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 36px;
+		}
+
+		.contact-links {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+		}
+
+		.contact-link {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			border: 1px solid var(--line);
+			border-radius: 10px;
+			padding: 16px 18px;
+			background: var(--surface);
+			transition: border-color .2s ease, transform .2s ease;
+		}
+
+		.contact-link:hover {
+			border-color: var(--accent);
+			transform: translateY(-1px);
+		}
+
+		.contact-link i {
+			width: 17px;
+			text-align: center;
+			color: var(--accent);
+			font-size: 15px;
+			flex-shrink: 0;
+		}
+
+		.contact-link .cl-label {
+			font-size: 11px;
+			color: var(--ink-faint);
+			font-family: var(--font-mono);
+			margin-bottom: 2px;
+			display: block;
+		}
+
+		.contact-link .cl-value {
+			font-size: 14.5px;
+			font-weight: 600;
+		}
+
+		.contact-form-card {
+			border: 1px solid var(--line);
+			border-radius: var(--radius-lg);
+			padding: 28px;
+			background: var(--surface);
+		}
+
+		.form-group {
+			margin-bottom: 18px;
+		}
+
+		.form-row {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 18px;
+		}
+
+		label {
+			display: block;
+			font-size: 12px;
+			font-weight: 600;
+			color: var(--ink-soft);
+			margin-bottom: 7px;
+		}
+
 		.form-input {
-			background: rgba(0, 0, 0, 0.02);
-			border: 1px solid rgba(0, 0, 0, 0.1);
-			color: #1e293b;
-			transition: border-color 0.2s, box-shadow 0.2s;
-		}
-
-		.dark .form-input {
-			background: rgba(255, 255, 255, 0.04);
-			border: 1px solid rgba(255, 255, 255, 0.08);
-			color: #e2e8f0;
+			width: 100%;
+			background: var(--bg);
+			border: 1px solid var(--line);
+			border-radius: 8px;
+			padding: 12px 14px;
+			font-family: var(--font-body);
+			font-size: 14.5px;
+			color: var(--ink);
+			transition: border-color .2s ease, background-color .2s ease;
 		}
 
 		.form-input:focus {
 			outline: none;
-			border-color: #6366F1;
-			box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+			border-color: var(--accent);
 		}
 
 		.form-input::placeholder {
-			color: #94a3b8;
-		}
-
-		.dark .form-input::placeholder {
-			color: #3d4a5c;
+			color: var(--ink-faint);
 		}
 
 		.form-input.error {
-			border-color: #f87171;
+			border-color: var(--danger);
 		}
 
 		.field-error {
-			color: #f87171;
-			font-size: 0.72rem;
-			margin-top: 0.3rem;
+			color: var(--danger);
+			font-size: 11.5px;
+			margin-top: 5px;
 			display: none;
 		}
 
@@ -399,42 +1450,28 @@
 			display: block;
 		}
 
-		/* ── Availability dot ── */
-		@keyframes ping-green {
-			0% {
-				transform: scale(1);
-				opacity: 0.8;
-			}
-
-			75%,
-			100% {
-				transform: scale(2.2);
-				opacity: 0;
-			}
+		textarea.form-input {
+			resize: vertical;
+			min-height: 110px;
 		}
 
-		/* ── Back to top ── */
-		#backToTop {
-			opacity: 0;
-			visibility: hidden;
-			transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
-			transform: translateY(6px);
+		#formMsg {
+			font-size: 13px;
+			margin-top: 14px;
+			display: none;
 		}
 
-		#backToTop.show {
-			opacity: 1;
-			visibility: visible;
-			transform: translateY(0);
+		#formMsg.show {
+			display: block;
 		}
 
-		/* ── Spinner ── */
 		.spinner {
-			width: 15px;
-			height: 15px;
-			border: 2px solid rgba(255, 255, 255, 0.25);
+			width: 14px;
+			height: 14px;
+			border: 2px solid rgba(255, 255, 255, .3);
 			border-top-color: #fff;
 			border-radius: 50%;
-			animation: spin 0.55s linear infinite;
+			animation: spin .6s linear infinite;
 			display: inline-block;
 		}
 
@@ -444,1597 +1481,669 @@
 			}
 		}
 
-		/* ── About exp entries ── */
-		.exp-entry {
-			position: relative;
-			padding-left: 1.1rem;
-			border-left: 1px solid rgba(0, 0, 0, 0.1);
-			transition: border-color 0.2s;
+		@media (min-width: 600px) {
+			.form-row {
+				grid-template-columns: 1fr 1fr;
+			}
 		}
 
-		.dark .exp-entry {
-			border-left: 1px solid rgba(255, 255, 255, 0.07);
+		@media (min-width: 980px) {
+			.contact-grid {
+				grid-template-columns: .85fr 1.15fr;
+				gap: 56px;
+			}
 		}
 
-		.exp-entry:hover {
-			border-color: rgba(99, 102, 241, 0.35);
+		/* ============================================================
+             FOOTER
+          ============================================================ */
+		footer {
+			border-top: 1px solid var(--line);
+			padding-block: 34px;
 		}
 
-		.exp-dot {
-			position: absolute;
-			left: -5px;
-			top: 4px;
-			width: 9px;
-			height: 9px;
-			border-radius: 50%;
-			background: #6366F1;
-			border: 2px solid #ffffff;
-			box-shadow: 0 0 0 1px #6366F1, 0 0 9px rgba(99, 102, 241, 0.4);
+		.footer-inner {
+			display: flex;
+			flex-direction: column;
+			gap: 18px;
+			align-items: flex-start;
 		}
 
-		.dark .exp-dot {
-			border: 2px solid #000000;
+		.footer-name {
+			font-family: var(--font-display);
+			font-weight: 700;
+			font-size: 14.5px;
 		}
 
-		/* ── Section label ── */
-		.section-label {
-			font-size: 0.65rem;
-			font-weight: 600;
-			letter-spacing: 0.18em;
-			text-transform: uppercase;
-			color: #818CF8;
+		.footer-tag {
+			font-size: 12.5px;
+			color: var(--ink-faint);
+			margin-top: 2px;
 		}
 
-		/* ── Cert panel ── */
-		.cert-btn {
-			transition: background 0.15s;
+		.footer-social {
+			display: flex;
+			gap: 18px;
 		}
 
-		.cert-btn:hover {
-			background: rgba(0, 0, 0, 0.03);
+		.footer-social a {
+			color: var(--ink-faint);
+			font-size: 15px;
+			transition: color .2s ease;
 		}
 
-		.dark .cert-btn:hover {
-			background: rgba(255, 255, 255, 0.04);
+		.footer-social a:hover {
+			color: var(--accent);
 		}
 
-		/* ── Skill card hover border ── */
-		.skill-card {
-			transition: border-color 0.2s, transform 0.2s;
+		.footer-copy {
+			font-size: 12px;
+			color: var(--ink-faint);
 		}
 
-		.skill-card:hover {
-			transform: translateY(-2px);
-		}
-
-		/* ── Impact chip ── */
-		.impact-chip {
-			display: inline-flex;
-			align-items: center;
-			gap: 0.4rem;
-			font-size: 10.5px;
-			font-weight: 600;
-			color: #059669;
-			background: rgba(16, 185, 129, 0.1);
-			border: 1px solid rgba(16, 185, 129, 0.25);
-			padding: 0.35rem 0.6rem;
-			border-radius: 0.5rem;
-			line-height: 1.2;
-		}
-
-		.dark .impact-chip {
-			color: #34D399;
-			background: rgba(52, 211, 153, 0.08);
-			border: 1px solid rgba(52, 211, 153, 0.2);
+		@media (min-width: 700px) {
+			.footer-inner {
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+			}
 		}
 	</style>
 </head>
 
-<body class="text-slate-700 dark:text-slate-300 font-sans antialiased leading-relaxed">
+<body>
 
 	<a href="#main"
-		class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-brand-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">
-		Skip to content
-	</a>
+		style="position:absolute; left:-9999px; top:0; background:#2954E5; color:#fff; padding:10px 16px; border-radius:6px; z-index:200;"
+		onfocus="this.style.left='16px'; this.style.top='16px';" onblur="this.style.left='-9999px';">Skip to
+		content</a>
 
-	<nav id="navbar" class="fixed w-full top-0 z-50 py-4" aria-label="Primary">
-		<div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
-			<a href="#hero" class="font-display font-bold text-slate-900 dark:text-white text-base tracking-tight">
-				RM<span class="text-brand-400">.</span>
-			</a>
+	<nav id="navbar" aria-label="Primary">
+		<div class="container nav-inner">
+			<a href="#hero" class="logo">Richter Mayandoc<span>.</span></a>
 
-			<div
-				class="hidden md:flex items-center gap-8 text-[11px] font-semibold tracking-[0.12em] uppercase text-slate-500 dark:text-slate-400">
-				<a href="#about"
-					class="nav-link hover:text-brand-600 dark:hover:text-white transition-colors">About</a>
-				<a href="#experience"
-					class="nav-link hover:text-brand-600 dark:hover:text-white transition-colors">Experience</a>
-				<a href="#skills"
-					class="nav-link hover:text-brand-600 dark:hover:text-white transition-colors">Skills</a>
-				<a href="#projects"
-					class="nav-link hover:text-brand-600 dark:hover:text-white transition-colors">Projects</a>
-
-				<a href="#certification"
-					class="nav-link hover:text-brand-600 dark:hover:text-white transition-colors">Certifications</a>
-				<a href="#contact"
-					class="nav-link hover:text-brand-600 dark:hover:text-white transition-colors">Contact</a>
+			<div class="nav-links">
+				<a href="#about" class="nav-link">About</a>
+				<a href="#services" class="nav-link">Services</a>
+				<a href="#process" class="nav-link">Process</a>
+				<a href="#projects" class="nav-link">Projects</a>
+				<a href="#skills" class="nav-link">Skills</a>
+				<a href="#contact" class="nav-link">Contact</a>
 			</div>
 
-			<div class="hidden md:flex items-center gap-4">
-				<button id="themeToggle"
-					class="text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-white transition-colors"
-					aria-label="Toggle theme">
-					<i class="fas fa-moon dark:hidden text-lg"></i>
-					<i class="fas fa-sun hidden dark:inline text-lg"></i>
+			<div class="nav-right">
+				<button id="themeToggle" class="theme-toggle" aria-label="Switch to dark theme"
+					aria-pressed="false">
+					<i class="fas fa-sun icon-sun"></i>
+					<i class="fas fa-moon icon-moon"></i>
 				</button>
-
-				<a href="resume.pdf" download
-					class="inline-flex items-center gap-1.5 px-3.5 py-2 text-[11px] font-semibold tracking-wider uppercase text-brand-500 dark:text-brand-400 border border-brand-500/35 rounded-lg hover:bg-brand-500/10 transition-colors">
-					<i class="fas fa-download text-[10px]" aria-hidden="true"></i> Resume
-				</a>
-			</div>
-
-			<div class="md:hidden flex items-center gap-4">
-				<button id="themeToggleMobile"
-					class="text-slate-600 hover:text-brand-600 dark:text-slate-400 dark:hover:text-white transition-colors"
-					aria-label="Toggle theme">
-					<i class="fas fa-moon dark:hidden text-lg"></i>
-					<i class="fas fa-sun hidden dark:inline text-lg"></i>
-				</button>
-				<button id="menuBtn" class="text-slate-900 dark:text-white p-1" aria-label="Toggle menu"
-					aria-expanded="false" aria-controls="mobileMenu">
-					<i class="fas fa-bars text-lg" aria-hidden="true"></i>
+				<a href="resume.pdf" download class="btn-resume-nav">Resume</a>
+				<button id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+					<i class="fas fa-bars"></i>
 				</button>
 			</div>
 		</div>
-
-		<div id="mobileMenu"
-			class="md:hidden absolute top-full left-0 w-full glass px-6 flex flex-col gap-4 text-sm font-semibold uppercase tracking-wider">
-			<div class="py-5 flex flex-col gap-4">
-				<a href="#about"
-					class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white"
-					data-close-menu>About</a>
-				<a href="#experience"
-					class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white"
-					data-close-menu>Experience</a>
-				<a href="#skills"
-					class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white"
-					data-close-menu>Skills</a>
-				<a href="#projects"
-					class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white"
-					data-close-menu>Projects</a>
-				<a href="#certification"
-					class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white"
-					data-close-menu>Certifications</a>
-				<a href="#contact"
-					class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white"
-					data-close-menu>Contact</a>
-				<a href="resume.pdf" download class="text-brand-500 dark:text-brand-400">↓
-					Download Resume</a>
-			</div>
+		<div id="mobileMenu">
+			<a href="#about" data-close>About</a>
+			<a href="#services" data-close>Services</a>
+			<a href="#process" data-close>Process</a>
+			<a href="#projects" data-close>Projects</a>
+			<a href="#skills" data-close>Skills</a>
+			<a href="#contact" data-close>Contact</a>
+			<a href="resume.pdf" download data-close>Download Resume</a>
 		</div>
 	</nav>
 
 	<main id="main">
-		<section id="hero" class="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden">
 
-			<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
-				<div
-					class="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-500/10 dark:bg-brand-500/20 rounded-full blur-[100px]">
+		<!-- ================= HERO ================= -->
+		<section id="hero">
+			<div class="hero-bg" aria-hidden="true"></div>
+			<div class="container hero-grid">
+				<div class="reveal">
+					
+
+					<p class="hero-kicker">Full&#8209;Stack Developer</p>
+					<h1 class="hero-name">Richter Mayandoc</h1>
+					<p class="hero-headline">Building digital solutions that solve real business problems.</p>
+
+					<p class="hero-summary">I design and ship secure, scalable web applications with Laravel,
+						React, TypeScript, and MySQL — helping organizations streamline operations through
+						custom software, not off‑the‑shelf workarounds.</p>
+
+					<div class="hero-ctas">
+						<a href="#projects" class="btn btn-primary">View Projects</a>
+						<a href="resume.pdf" download class="btn btn-outline"><i class="fas fa-download"
+								style="font-size:12px;"></i>Download Resume</a>
+						<a href="#contact" class="btn btn-ghost">Contact Me <i class="fas fa-arrow-right"
+								style="font-size:12px;"></i></a>
+					</div>
+
+					<div class="hero-meta">
+						<span><b>3+ yrs</b> coding</span>
+						<span><b>4</b> production projects</span>
+						<span><b>BSIT</b> · Isabela State University</span>
+						<span><b>Based in</b> Ilagan City, PH</span>
+					</div>
 				</div>
-				<div
-					class="absolute top-1/4 right-1/4 w-80 h-80 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-[100px]">
-				</div>
-				<div
-					class="absolute bottom-1/4 right-1/3 w-96 h-96 bg-teal-500/5 dark:bg-teal-500/10 rounded-full blur-[100px]">
+
+				<div class="reveal hero-photo-col">
+					<div class="hero-photo-wrap">
+						<span class="corner corner-tl" aria-hidden="true"></span>
+						<span class="corner corner-tr" aria-hidden="true"></span>
+						<span class="corner corner-bl" aria-hidden="true"></span>
+						<span class="corner corner-br" aria-hidden="true"></span>
+						<img src="my_profile.png" alt="Richter Mayandoc, Full-Stack Developer" loading="eager" />
+					</div>
 				</div>
 			</div>
+		</section>
 
-			<div
-				class="container mx-auto px-6 relative z-10 flex flex-col-reverse lg:flex-row items-center justify-between gap-12 mt-10">
+		<!-- ================= INDUSTRIES ================= -->
+		<section id="industries" class="section section--bordered">
+			<div class="container">
+				<div class="reveal">
+					<p class="eyebrow">Industries I Help</p>
+					<p class="industry-intro">I develop custom web applications that automate workflows, improve
+						operational efficiency, and support digital transformation across these industries.</p>
+				</div>
 
-				<div
-					class="flex flex-col items-center lg:items-start text-center lg:text-left max-w-2xl fade-in-up w-full lg:w-1/2">
+				<div class="industry-grid reveal-stagger reveal">
+					<div class="industry-item"><span class="industry-icon"><i
+								class="fas fa-hotel"></i></span>Hospitality
+						& Hotels</div>
+					<div class="industry-item"><span class="industry-icon"><i
+								class="fas fa-graduation-cap"></i></span>Education & Universities</div>
+					<div class="industry-item"><span class="industry-icon"><i
+								class="fas fa-landmark"></i></span>Local
+						Government Units</div>
+					<div class="industry-item"><span class="industry-icon"><i
+								class="fas fa-heart-pulse"></i></span>Healthcare & Clinics</div>
+					<div class="industry-item"><span class="industry-icon"><i
+								class="fas fa-briefcase"></i></span>Small
+						& Medium Businesses</div>
+					<div class="industry-item"><span class="industry-icon"><i
+								class="fas fa-building"></i></span>Administrative
+						& Office Operations</div>
+				</div>
+			</div>
+		</section>
 
-					<p class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-200/50 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 text-sm font-medium text-slate-700 dark:text-slate-300 mb-6 shadow-sm"
-						aria-label="Role: Full-Stack Developer">
-						<span class="w-2 h-2 rounded-full bg-brand-500 dark:bg-brand-400 animate-pulse"
-							aria-hidden="true"></span>
-						Full-Stack Developer
-					</p>
+		<!-- ================= SERVICES ================= -->
+		<section id="services" class="section section--bordered section--soft">
+			<div class="container">
+				<div class="section-head reveal">
+					<p class="eyebrow">Services</p>
+					<h2>How I can help</h2>
+					<p>Practical engineering services for teams that need software to do real work.</p>
+				</div>
 
-					<h1
-						class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4 sm:mb-6">
-						<span
-							class="block text-xl sm:text-2xl md:text-3xl text-slate-600 dark:text-slate-300 font-medium tracking-normal mb-1 sm:mb-2">
-							Hello, I'm
-						</span>
-						Richter <span class="gradient-text">Mayandoc.</span>
-					</h1>
+				<div class="services-grid reveal-stagger reveal">
+					<div class="service-card">
+						<div class="service-icon"><i class="fas fa-code"></i></div>
+						<h3>Web Application Development</h3>
+						<p>End-to-end web applications built with Laravel, React, and TypeScript — from database
+							design to production deployment.</p>
+					</div>
+					<div class="service-card">
+						<div class="service-icon"><i class="fas fa-gears"></i></div>
+						<h3>Business Process Automation</h3>
+						<p>Replacing manual, paper-based workflows with structured systems that reduce errors and
+							save staff time.</p>
+					</div>
+					<div class="service-card">
+						<div class="service-icon"><i class="fas fa-database"></i></div>
+						<h3>Database Design & Management</h3>
+						<p>Relational database architecture and query optimization for systems that stay fast as
+							data grows.</p>
+					</div>
+					<div class="service-card">
+						<div class="service-icon"><i class="fas fa-network-wired"></i></div>
+						<h3>REST API Development</h3>
+						<p>Secure, well-documented APIs that connect your systems, mobile apps, and third-party
+							services.</p>
+					</div>
+					<div class="service-card">
+						<div class="service-icon"><i class="fas fa-wrench"></i></div>
+						<h3>System Maintenance & Optimization</h3>
+						<p>Ongoing debugging, performance tuning, and support for systems already in production.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
 
-					<p
-						class="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-5 max-w-xl leading-relaxed">
-						Building scalable web applications and resilient backend
-						systems — from relational database architecture to
-						production-ready REST APIs.
-					</p>
+		<!-- ================= PROCESS ================= -->
+		<section id="process" class="section section--bordered">
+			<div class="container">
+				<div class="section-head reveal">
+					<p class="eyebrow">Process</p>
+					<h2>How a project comes together</h2>
+					<p>A clear, repeatable process from first conversation to a system running in production.</p>
+				</div>
 
-					<div class="flex justify-center sm:justify-start items-center gap-6 sm:gap-8 mb-12 sm:mb-16"
-						role="list" aria-label="Social profiles">
-						<a href="https://github.com/nmrjustme" target="_blank" rel="noopener noreferrer"
-							class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-2xl transition-all transform hover:scale-110 hover:-translate-y-1"
-							aria-label="GitHub profile" role="listitem">
-							<i class="fab fa-github" aria-hidden="true"></i>
-						</a>
-						<a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank"
-							rel="noopener noreferrer"
-							class="text-slate-500 hover:text-[#0A66C2] dark:text-slate-400 text-2xl transition-all transform hover:scale-110 hover:-translate-y-1"
-							aria-label="LinkedIn profile" role="listitem">
-							<i class="fab fa-linkedin-in" aria-hidden="true"></i>
-						</a>
-						<a href="mailto:richter.p.maya@gmail.com"
-							class="text-slate-500 hover:text-red-500 dark:hover:text-red-400 dark:text-slate-400 text-2xl transition-all transform hover:scale-110 hover:-translate-y-1"
-							aria-label="Send email" role="listitem">
-							<i class="fas fa-envelope" aria-hidden="true"></i>
-						</a>
+				<div class="process-grid reveal-stagger reveal">
+					<div class="process-step">
+						<div class="process-num">01</div>
+						<div class="process-body">
+							<h3>Discovery</h3>
+							<p>Understanding the operational problem, current workflows, and goals before any
+								code is written.</p>
+						</div>
+
+					</div>
+					<div class="process-step">
+						<div class="process-num">02</div>
+						<div class="process-body">
+							<h3>Planning & Design</h3>
+							<p>Mapping the data model, system architecture, and interface before development
+								begins.</p>
+						</div>
+					</div>
+					<div class="process-step">
+						<div class="process-num">03</div>
+						<div class="process-body">
+							<h3>Implementation</h3>
+							<p>Building the application in focused iterations, with regular check-ins along the
+								way.</p>
+						</div>
+					</div>
+					<div class="process-step">
+						<div class="process-num">04</div>
+						<div class="process-body">
+							<h3>Testing & Launch</h3>
+							<p>Validating functionality and performance, then deploying with monitoring and
+								support in place.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================= PROJECTS ================= -->
+		<section id="projects" class="section section--bordered section--soft">
+			<div class="container">
+				<div class="section-head reveal">
+					<p class="eyebrow">Featured Projects</p>
+					<h2>Selected work</h2>
+					<p>Systems built end to end, with measurable operational results.</p>
+				</div>
+
+				<div class="project-list">
+
+					<div class="project-card featured reveal">
+						<div class="project-thumb">
+							<span class="corner corner-tl" aria-hidden="true"></span>
+							<span class="corner corner-br" aria-hidden="true"></span>
+							<img src="projects/claram.png" alt="Mt. ClaRamuel Resorts reservation system"
+								loading="lazy" />
+						</div>
+						<div>
+							<span class="featured-tag"><i class="fas fa-star" style="font-size:9px;"></i>Live in
+								production</span>
+							<div class="project-top">
+								<h3>Mt. ClaRamuel Resorts Reservation System</h3>
+								<span class="project-dates">Jun 2025 – Mar 2026</span>
+							</div>
+							<p class="project-desc">Full-stack hospitality reservation platform with a RESTful
+								API
+								backend, role-based access control, and secure server-side validation.
+								Integrated
+								the Maya payment gateway and PhilSMS for end-to-end transaction processing and
+								automated booking confirmations, plus an admin dashboard for reporting.</p>
+							<div class="tech-row">
+								<span class="tech-tag">Laravel</span><span class="tech-tag">MySQL</span><span
+									class="tech-tag">Tailwind</span><span class="tech-tag">Maya API</span><span
+									class="tech-tag">PhilSMS</span>
+							</div>
+							<div class="result-line">
+								<span class="result-label">Result</span>
+								<p>Eliminated double-bookings; currently live in production.</p>
+							</div>
+							<div class="project-links">
+								<a href="https://mtclaramuelhotelresort.com/" target="_blank"
+									rel="noopener noreferrer" class="btn btn-outline btn-sm">Live Site <i
+										class="fas fa-arrow-up-right-from-square"
+										style="font-size:10px;"></i></a>
+								<a href="https://github.com/nmrjustme/claramuel_project" target="_blank"
+									rel="noopener noreferrer" class="btn btn-ghost btn-sm"><i
+										class="fab fa-github"></i> Source</a>
+							</div>
+						</div>
+					</div>
+					<div class="project-card reverse reveal">
+						<div class="project-thumb">
+							<img src="projects/cimc.png" alt="Abuan booking system" loading="lazy" />
+						</div>
+						<div>
+							<div class="project-top">
+								<h3>CIMC Patient Record Viewer</h3>
+								<span class="project-dates">Mar 2026 – Apr 2026</span>
+							</div>
+							<p class="project-desc">Digital archiving system for medical staff to efficiently
+								manage and retrieve patient records. Features include advanced search
+								functionality and integrated PDF manipulation tools for streamlined health
+								information management.</p>
+							<div class="tech-row">
+								<span class="tech-tag">Laravel</span><span class="tech-tag">MySQL</span><span
+									class="tech-tag">PHP</span>
+							</div>
+							<div class="result-line">
+								<span class="result-label">Result</span>
+								<p>Significantly reduced record retrieval time for hospital staff.</p>
+							</div>
+							<div class="project-links">
+								<a href="#" target="_blank" rel="noopener noreferrer"
+									class="btn btn-ghost btn-sm"><i class="fab fa-github"></i> Source</a>
+							</div>
+						</div>
+					</div>
+					
+					<div class="project-card reveal">
+						<div class="project-thumb">
+							<img src="projects/credential.png"
+								alt="Credential and academic verification platform" loading="lazy" />
+						</div>
+						<div>
+							<div class="project-top">
+								<h3>Credential & Academic Verification System</h3>
+								<span class="project-dates">May 2026 – Jun 2026</span>
+							</div>
+							<p class="project-desc">Secure document-verification platform for validating academic
+								and professional credentials, with automated validation workflows and
+								tamper-proof reporting logic to streamline authentication.</p>
+							<div class="tech-row">
+								<span class="tech-tag">Laravel</span><span
+									class="tech-tag">TypeScript</span><span
+									class="tech-tag">Tailwind</span><span class="tech-tag">SQL Server</span>
+							</div>
+							<div class="result-line">
+								<span class="result-label">Result</span>
+								<p>Reduced fraudulent submissions through tamper-proof reporting.</p>
+							</div>
+							<div class="project-links">
+								<a href="https://github.com/nmrjustme/" target="_blank"
+									rel="noopener noreferrer" class="btn btn-ghost btn-sm"><i
+										class="fab fa-github"></i> Source</a>
+							</div>
+						</div>
 					</div>
 
-					<div class="grid grid-cols-3 gap-3 md:gap-8 w-full pt-8 border-t border-slate-200 dark:border-slate-800/80"
-						role="list" aria-label="Career highlights">
 
-						<div class="flex flex-col text-left" role="listitem">
-							<p
-								class="text-xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-0.5 md:mb-1">
-								3+
-							</p>
-							<p
-								class="text-[10px] md:text-sm font-medium text-slate-500 uppercase tracking-wider">
-								Years Coding
-							</p>
-							<p
-								class="mt-1 md:mt-2 text-[10px] md:text-sm text-slate-600 dark:text-slate-400 leading-tight md:leading-normal break-words">
-								Proficient in Laravel, Typescript, and modern frameworks.
-							</p>
+
+					<div class="project-card reverse reveal">
+						<div class="project-thumb">
+							<img src="projects/abuan.png" alt="Abuan booking system" loading="lazy" />
 						</div>
-
-						<div class="flex flex-col text-left" role="listitem">
-							<p
-								class="text-xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-0.5 md:mb-1">
-								4
-							</p>
-							<p
-								class="text-[10px] md:text-sm font-medium text-slate-500 uppercase tracking-wider">
-								Projects
-							</p>
-							<p
-								class="mt-1 md:mt-2 text-[10px] md:text-sm text-slate-600 dark:text-slate-400 leading-tight md:leading-normal break-words">
-								Delivering scalable, end-to-end web apps and robust APIs.
-							</p>
+						<div>
+							<div class="project-top">
+								<h3>Abuan Booking System</h3>
+								<span class="project-dates">Aug 2024 – Dec 2024</span>
+							</div>
+							<p class="project-desc">Full-stack facility-management application built with
+								CRUD-based REST APIs, secure authentication, an admin panel, and role-based
+								access
+								control to manage availability and protect booking data.</p>
+							<div class="tech-row">
+								<span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span
+									class="tech-tag">HTML/CSS</span>
+							</div>
+							<div class="result-line">
+								<span class="result-label">Result</span>
+								<p>Strengthened secure access to facility booking data.</p>
+							</div>
+							<div class="project-links">
+								<a href="https://github.com/nmrjustme/abuan_cottage_reservation" target="_blank"
+									rel="noopener noreferrer" class="btn btn-ghost btn-sm"><i
+										class="fab fa-github"></i> Source</a>
+							</div>
 						</div>
+					</div>
 
-						<div class="flex flex-col text-left" role="listitem">
-							<p
-								class="text-xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-0.5 md:mb-1">
-								5
-							</p>
-							<p
-								class="text-[10px] md:text-sm font-medium text-slate-500 uppercase tracking-wider">
-								Certifications
-							</p>
-							<p
-								class="mt-1 md:mt-2 text-[10px] md:text-sm text-slate-600 dark:text-slate-400 leading-tight md:leading-normal break-words">
-								Validating expertise and commitment to
-								learning.
-							</p>
+					<div class="project-card reveal">
+						<div class="project-thumb">
+							<img src="projects/tabulation.png" alt="Pageant Tabulation System" loading="lazy" />
+						</div>
+						<div>
+							<div class="project-top">
+								<h3>Pageant Tabulation System</h3>
+								<span class="project-dates">Aug 2023 – Dec 2023</span>
+							</div>
+							<p class="project-desc">Real-time scoring platform for live competition events, with
+								a
+								data synchronization engine handling concurrent score submissions from multiple
+								judges and automated calculations driving live leaderboards.</p>
+							<div class="tech-row">
+								<span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span
+									class="tech-tag">Bootstrap</span><span class="tech-tag">HTML/CSS</span>
+							</div>
+							<div class="result-line">
+								<span class="result-label">Result</span>
+								<p>100% data accuracy maintained under high concurrency.</p>
+							</div>
+							<div class="project-links">
+								<a href="https://github.com/nmrjustme/pageant-tabulation" target="_blank"
+									rel="noopener noreferrer" class="btn btn-ghost btn-sm"><i
+										class="fab fa-github"></i> Source</a>
+							</div>
 						</div>
 					</div>
 
 				</div>
+			</div>
+		</section>
 
-				<div class="w-full lg:w-1/2 flex justify-center lg:justify-end fade-in-up relative">
+		<!-- ================= ABOUT ================= -->
+		<section id="about" class="section section--bordered">
+			<div class="container about-grid">
 
-					<div class="relative w-full max-w-sm md:max-w-md lg:max-w-lg aspect-[4/5] group">
+				<div class="reveal">
+					<p class="eyebrow">About</p>
+					<h2 style="font-size:clamp(24px,3vw,32px); font-weight:700; margin-bottom:16px;">Full-stack
+						development with a focus on business outcomes.</h2>
+					<div class="about-copy">
+						<p>I'm a full-stack developer who builds web applications end to end — from database
+							architecture and REST APIs to the interfaces people actually use. My focus is
+							practical engineering: understand the operational problem, design a system that
+							solves it, and ship something reliable.</p>
+					</div>
 
-						<div
-							class="absolute inset-0 bg-gradient-to-tr from-brand-500 via-indigo-500 to-teal-400 rounded-3xl blur-2xl opacity-20 dark:opacity-10 group-hover:opacity-0 transition-opacity duration-700">
+					<div class="focus-grid">
+						<div class="focus-item">
+							<h4>Full-Stack Development</h4>
+							<p>Laravel, React, and TypeScript across the entire application stack.</p>
+						</div>
+						<div class="focus-item">
+							<h4>Problem Solving</h4>
+							<p>Translating operational pain points into clear technical requirements.</p>
+						</div>
+						<div class="focus-item">
+							<h4>System Design</h4>
+							<p>Relational data modeling and architecture that scales with real usage.</p>
+						</div>
+						<div class="focus-item">
+							<h4>Business Impact</h4>
+							<p>Measuring success in efficiency gained, not just features shipped.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="reveal">
+					<div class="about-side-card surface">
+						<div class="fact-row">
+							<span class="fact-label">Location</span>
+							<span class="fact-value">Ilagan City, Philippines</span>
+						</div>
+						<div class="fact-row">
+							<span class="fact-label">Availability</span>
+							<span class="fact-value">Open to opportunities</span>
+						</div>
+						<div class="fact-row">
+							<span class="fact-label">Focus</span>
+							<span class="fact-value">Full-Stack / Backend roles</span>
 						</div>
 
-						<div
-							class="relative w-full h-full rounded-3xl p-1 bg-gradient-to-tr from-brand-500 via-indigo-500 to-teal-400 shadow-2xl shadow-brand-500/20">
-							<div
-								class="w-full h-full bg-slate-100 dark:bg-black rounded-3xl overflow-hidden relative">
-
-								<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-									src="my_profile.png" alt="Richter Mayandoc — Full-Stack Developer"
-									loading="eager" />
-
-								<img class="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 group-hover:opacity-100 group-hover:scale-105"
-									src="make_smile.png" alt="Richter Mayandoc — Smiling" loading="lazy" />
-
-								<span class="absolute bottom-6 left-6 z-10 flex items-center gap-2 px-4 py-2 bg-white/90 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-full shadow-xl"
-									title="Available for work" aria-label="Available for work">
-									<span class="relative flex h-3 w-3">
-										<span
-											class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-										<span
-											class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-									</span>
-									<span class="text-sm font-semibold text-slate-900 dark:text-white">Available
-										for work</span>
-								</span>
-
+						<div class="cred-block">
+							<h4>Certifications</h4>
+							<div class="cred-chips">
+								<span class="cred-chip" title="Certiport">IT Specialist in Database</span>
+								<span class="cred-chip" title="Microsoft / Coursera">Relational Database
+									Design</span>
+								<span class="cred-chip" title="Microsoft / Coursera">SQL Foundations</span>
+								<span class="cred-chip" title="DICT Region II">Python, Excellence in
+									Assessment</span>
+								<span class="cred-chip" title="1st Int'l Conference">Research Presenter</span>
 							</div>
 						</div>
-
 					</div>
 				</div>
 
 			</div>
 		</section>
 
-		<section id="about" class="py-16 border-t border-black/5 dark:border-white/[0.04]">
-			<div class="max-w-6xl mx-auto px-6">
-				<div class="grid md:grid-cols-2 gap-8 items-center">
+		<!-- ================= SKILLS ================= -->
+		<section id="skills" class="section section--bordered section--soft">
+			<div class="container">
+				<div class="section-head reveal">
+					<p class="eyebrow">Skills</p>
+					<h2>Tools & technologies</h2>
+					<p>The core stack I use to design, build, and ship production software.</p>
+				</div>
+
+				<div class="skills-grid reveal-stagger reveal">
+					<div class="skill-col">
+						<h4>Frontend</h4>
+						<div class="skill-badges">
+							<span class="skill-badge">React</span>
+							<span class="skill-badge">TypeScript</span>
+							<span class="skill-badge">JavaScript</span>
+							<span class="skill-badge">HTML</span>
+							<span class="skill-badge">CSS</span>
+						</div>
+					</div>
+					<div class="skill-col">
+						<h4>Backend</h4>
+						<div class="skill-badges">
+							<span class="skill-badge">Laravel</span>
+							<span class="skill-badge">PHP</span>
+							<span class="skill-badge">Python</span>
+							<span class="skill-badge">Django</span>
+						</div>
+					</div>
+					<div class="skill-col">
+						<h4>Database</h4>
+						<div class="skill-badges">
+							<span class="skill-badge">MySQL</span>
+							<span class="skill-badge">SQL Server</span>
+						</div>
+					</div>
+					<div class="skill-col">
+						<h4>Tools</h4>
+						<div class="skill-badges">
+							<span class="skill-badge">Git</span>
+							<span class="skill-badge">GitHub</span>
+							<span class="skill-badge">VSCode</span>
+							<span class="skill-badge">Figma</span>
+							<span class="skill-badge">Composer</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================= CONTACT ================= -->
+		<section id="contact" class="section">
+			<div class="container">
+
+				<div class="contact-cta reveal">
+					<p class="eyebrow" style="justify-content:center;">Contact</p>
+					<h2>Let's build something impactful together.</h2>
+					<p>Open to Full-Stack Developer, Software Engineer, and Backend Developer roles — or a direct
+						conversation about a system you need built.</p>
+				</div>
+
+				<div class="contact-grid">
+
+					<div class="reveal contact-links">
+						<a href="mailto:richter.p.maya@gmail.com" class="contact-link">
+							<i class="fas fa-envelope"></i>
+							<span><span class="cl-label">Email</span><span
+									class="cl-value">richter.p.maya@gmail.com</span></span>
+						</a>
+						<a href="https://github.com/nmrjustme" target="_blank" rel="noopener noreferrer"
+							class="contact-link">
+							<i class="fab fa-github"></i>
+							<span><span class="cl-label">GitHub</span><span
+									class="cl-value">github.com/nmrjustme</span></span>
+						</a>
+						<a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank"
+							rel="noopener noreferrer" class="contact-link">
+							<i class="fab fa-linkedin-in"></i>
+							<span><span class="cl-label">LinkedIn</span><span class="cl-value">Richter
+									Mayandoc</span></span>
+						</a>
+						<a href="tel:+639169824195" class="contact-link">
+							<i class="fas fa-phone"></i>
+							<span><span class="cl-label">Phone</span><span class="cl-value">+63 916 982
+									4195</span></span>
+						</a>
+						<a href="resume.pdf" download class="contact-link">
+							<i class="fas fa-download"></i>
+							<span><span class="cl-label">Resume</span><span class="cl-value">Download
+									PDF</span></span>
+						</a>
+					</div>
 
 					<div class="reveal">
-						<p class="section-label mb-3">Who I Am</p>
-						<h2
-							class="font-display text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-5 leading-tight">
-							Building for the web,<br />
-							<span class="gradient-text">one commit at a
-								time.</span>
-						</h2>
-						<div
-							class="space-y-8 text-base md:text-lg text-slate-600 dark:text-slate-400 leading-relaxed text-justify hyphens-auto">
-							<p>
-								Analytical and adaptable Information Technology professional with experience in
-								web application development, database management, system optimization, and
-								information management. Demonstrated ability to improve workflow efficiency,
-								enhance data accessibility, and support business operations through
-								technology-driven solutions. Experienced in collaborating with cross-functional
-								teams to analyze requirements, resolve technical challenges, and maintain
-								reliable systems. Strong problem-solving, communication, and organizational
-								skills, with a commitment to continuous learning and professional growth.
-							</p>
-						</div>
-					</div>
+						<div class="contact-form-card">
+							<form id="contactForm" novalidate>
+								<div style="position:absolute; left:-9999px;" aria-hidden="true">
+									<label for="company">Company</label>
+									<input type="text" id="company" name="company" tabindex="-1"
+										autocomplete="off" />
+								</div>
 
-					<!-- Education & Achievements Column -->
-					<div class="reveal space-y-8">
-						<!-- Education -->
-						<div>
-							<p class="section-label mb-3">Education</p>
-							<div class="glass rounded-xl p-5">
-								<div class="flex items-start gap-3.5">
-									<div
-										class="w-16 h-16 bg-white rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 overflow-hidden">
-										<img src="isu_logo.png" alt="ISU Logo"
-											class="w-full h-full object-contain" />
+								<div class="form-row">
+									<div class="form-group">
+										<label for="name">Name</label>
+										<input id="name" name="name" type="text" placeholder="Your name"
+											required class="form-input" />
+										<p class="field-error" id="nameError">Please enter your name.</p>
 									</div>
-									<div>
-										<h3
-											class="text-slate-900 dark:text-white font-semibold text-sm mb-0.5">
-											BS
-											Information
-											Technology
-										</h3>
-										<p class="text-xs text-slate-500 dark:text-slate-400 mb-2">
-											Isabela
-											State
-											University
-											&nbsp;·&nbsp;
-											Ilagan
-											City</p>
-										<span
-											class="text-[11px] font-mono bg-slate-200 dark:bg-slate-800/80 text-brand-600 dark:text-brand-400 px-2.5 py-1 rounded-full">
-											Aug 2022 –
-											Jul 2026
-											(Expected)
-										</span>
+									<div class="form-group">
+										<label for="email">Email</label>
+										<input id="email" name="email" type="email"
+											placeholder="your@email.com" required class="form-input" />
+										<p class="field-error" id="emailError">Please enter a valid email.</p>
 									</div>
 								</div>
-							</div>
-						</div>
 
-						<!-- Key Achievement -->
-						<div>
-							<p class="section-label mb-3">Key Achievement</p>
-							<div class="glass rounded-xl p-5">
-								<div class="flex items-start gap-3.5">
-									<!-- Matching logo size/style to Education -->
-									<div
-										class="w-16 h-16 bg-white dark:bg-slate-800 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 border border-slate-200 dark:border-slate-700">
-										<i class="fas fa-medal text-accent-500 text-lg"></i>
-									</div>
-									<div>
-										<h3 class="text-slate-900 dark:text-white font-semibold text-sm mb-1">
-											Database Performance
-											Optimization
-										</h3>
-										<p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-											Re-architected a
-											centralized medical-records
-											database during a 486-hour
-											hospital internship —
-											improving query performance
-											by 20% and cutting the
-											storage footprint by 20%.
-										</p>
-									</div>
+								<div class="form-group">
+									<label for="subject">Subject</label>
+									<input id="subject" name="subject" type="text"
+										placeholder="What's this about?" required class="form-input" />
+									<p class="field-error" id="subjectError">Please enter a subject.</p>
 								</div>
-							</div>
-						</div>
-					</div>
 
-				</div>
-			</div>
-		</section>
-
-		<section id="experience" class="py-16 border-t border-black/5 dark:border-white/[0.04]">
-			<div class="max-w-6xl mx-auto px-6">
-
-				<div class="text-center mb-10 reveal">
-					<p class="section-label mb-2.5">My Journey</p>
-					<h2 class="font-display text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-2.5">
-						Work <span class="gradient-text">Experience and
-							Background</span></h2>
-					<p class="text-slate-500 text-sm max-w-sm mx-auto">A summary of
-						real-world applications of my
-						technical skills through database engineering,
-						software development, and practical
-						implementations.</p>
-				</div>
-
-				<div class="max-w-2xl mx-auto">
-					<div class="relative border-l border-black/10 dark:border-white/[0.08] ml-4 space-y-8">
-
-						<div class="relative pl-9 reveal">
-							<div class="timeline-dot absolute -left-[7px] top-1.5" aria-hidden="true"></div>
-							<div class="glass rounded-xl p-6">
-								<div
-									class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1 gap-1">
-									<h3
-										class="font-display text-base font-bold text-slate-900 dark:text-white">
-										Full-Stack Developer
-										Intern</h3>
-									<span
-										class="text-[11px] font-mono text-brand-600 dark:text-brand-400 bg-brand-100 dark:bg-brand-500/10 px-2.5 py-0.5 rounded-full whitespace-nowrap">March
-										2026 – June
-										2026</span>
+								<div class="form-group">
+									<label for="message">Message</label>
+									<textarea id="message" name="message"
+										placeholder="Tell me about your project or opportunity..." required
+										class="form-input"></textarea>
+									<p class="field-error" id="messageError">Message should be at least 10
+										characters.</p>
 								</div>
-								<p class="text-xs text-slate-500 mb-4 font-medium">
-									City of Ilagan Medical Center
-									&nbsp;·&nbsp; Ilagan City</p>
-								<ul class="space-y-2 text-xs text-slate-600 dark:text-slate-400">
-									<li class="flex items-start gap-2">
-										<i class="fas fa-chevron-right text-brand-500 text-[9px] mt-0.5 flex-shrink-0"
-											aria-hidden="true"></i>
-										<span>Designed and
-											optimized a
-											<strong
-												class="text-slate-900 dark:text-white font-medium">relational
-												database
-												architecture
-												(MySQL)</strong>
-											for a centralized
-											enterprise
-											medical-records
-											system, applying
-											sound data-modeling
-											principles to
-											improve query
-											performance and
-											reduce storage
-											footprint by
-											<strong
-												class="text-slate-900 dark:text-white font-medium">20%</strong>.</span>
-									</li>
-									<li class="flex items-start gap-2">
-										<i class="fas fa-chevron-right text-brand-500 text-[9px] mt-0.5 flex-shrink-0"
-											aria-hidden="true"></i>
-										<span>Migrated and
-											structured
-											large-scale patient
-											data into a
-											relational database
-											during a <strong
-												class="text-slate-900 dark:text-white font-medium">486-hour
-												internship</strong>,
-											reducing physical
-											record volume by
-											20% and improving
-											cross-system data
-											accessibility.</span>
-									</li>
-									<li class="flex items-start gap-2">
-										<i class="fas fa-chevron-right text-brand-500 text-[9px] mt-0.5 flex-shrink-0"
-											aria-hidden="true"></i>
-										<span>Debugged and
-											resolved application
-											and database
-											performance issues in
-											a live production
-											environment,
-											collaborating with
-											hospital IT engineers
-											to improve system
-											stability and
-											reliability.</span>
-									</li>
-									<li class="flex items-start gap-2">
-										<i class="fas fa-chevron-right text-brand-500 text-[9px] mt-0.5 flex-shrink-0"
-											aria-hidden="true"></i>
-										<span>
-											Authored clear
-											technical
-											documentation and
-											system architecture
-											manuals, supporting
-											knowledge transfer
-											and onboarding for
-											cross-functional IT
-											teams.</span>
-									</li>
-								</ul>
-							</div>
+
+								<button type="submit" id="submitBtn" class="btn btn-primary"
+									style="width:100%;">
+									<span id="submitBtnText">Send Message</span>
+									<i class="fas fa-paper-plane" id="submitBtnIcon"
+										style="font-size:12px;"></i>
+								</button>
+
+								<p id="formMsg" role="status" aria-live="polite"></p>
+							</form>
 						</div>
-
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- ============================================================
-     ENHANCED SKILLS SECTION — drop-in replacement
-     Requires: Tailwind CSS, Font Awesome (already in your page)
-     ============================================================ -->
-
-		<style>
-			/* ── Snapshot bar ── */
-			.snap-stat {
-				position: relative;
-			}
-
-			.snap-stat+.snap-stat::before {
-				content: '';
-				position: absolute;
-				left: 0;
-				top: 25%;
-				bottom: 25%;
-				width: 1px;
-				background: rgba(0, 0, 0, 0.08);
-			}
-
-			.dark .snap-stat+.snap-stat::before {
-				background: rgba(255, 255, 255, 0.08);
-			}
-
-			/* ── Progress bar ── */
-			.sk-track {
-				height: 5px;
-				border-radius: 999px;
-				background: rgba(0, 0, 0, 0.05);
-				margin-top: 6px;
-				overflow: hidden;
-			}
-
-			.dark .sk-track {
-				background: rgba(255, 255, 255, 0.1);
-			}
-
-			.sk-fill {
-				height: 100%;
-				border-radius: 999px;
-				width: 0;
-				transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-			}
-		</style>
-
-		<section id="skills" class="py-20 border-t border-black/5 dark:border-white/[0.04]">
-			<div class="max-w-6xl mx-auto px-6">
-
-				<div class="text-center mb-10 reveal">
-					<p class="section-label mb-2.5">Technical Arsenal</p>
-					<h2 class="font-display text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
-						<span class="gradient-text">The Technologies and
-							Tools</span> I Use to Build Modern
-						Digital
-						Solutions
-					</h2>
-				</div>
-
-				<div class="grid grid-cols-3 gap-1 mb-12 mx-auto max-w-3xl rounded-2xl reveal p-2"
-					aria-label="Technical summary">
-
-					<div class="flex flex-col items-center justify-center text-center px-1">
-						<span class="text-base md:text-xl font-bold text-brand-500 dark:text-brand-400">30+</span>
-						<span
-							class="text-[10px] md:text-[10px] font-semibold tracking-wider uppercase text-slate-500">Technologies</span>
-					</div>
-
-					<div class="flex flex-col items-center justify-center text-center px-1">
-						<span class="text-base md:text-xl font-bold text-brand-500 dark:text-brand-400">6</span>
-						<span
-							class="text-[10px] md:text-[10px] font-semibold tracking-wider uppercase text-slate-500">Core
-							Areas</span>
-					</div>
-
-					<div class="flex flex-col items-center justify-center text-center px-1">
-						<span
-							class="text-base md:text-xl font-bold text-brand-500 dark:text-brand-400 leading-tight">Full-Stack</span>
-						<span
-							class="text-[10px] md:text-[10px] font-semibold tracking-wider uppercase text-slate-500">Developer</span>
-					</div>
-				</div>
-
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-
-					<div class="glass rounded-xl p-6 reveal project-card flex flex-col">
-						<div class="flex items-center gap-3 mb-6">
-							<div
-								class="w-10 h-10 bg-sky-100 dark:bg-sky-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-								<i class="fas fa-code text-sky-500"></i>
-							</div>
-							<div>
-								<h3
-									class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">
-									Languages</h3>
-							</div>
-						</div>
-						<div class="flex flex-wrap gap-2 mt-auto">
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">JavaScript</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">TypeScript</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">Python</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">SQL</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">PHP</span>
-						</div>
-					</div>
-
-					<div class="glass rounded-xl p-6 reveal project-card flex flex-col">
-						<div class="flex items-center gap-3 mb-6">
-							<div
-								class="w-10 h-10 bg-rose-100 dark:bg-rose-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-								<i class="fas fa-layer-group text-rose-500"></i>
-							</div>
-							<div>
-								<h3
-									class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">
-									Frontend</h3>
-							</div>
-						</div>
-						<div class="flex flex-wrap gap-2 mt-auto">
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
-								React
-							</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
-								Bootstrap
-							</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
-								Tailwind CSS
-							</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
-								HTML/CSS
-							</span>
-						</div>
-					</div>
-
-					<div class="glass rounded-xl p-6 reveal project-card flex flex-col">
-						<div class="flex items-center gap-3 mb-6">
-							<div
-								class="w-10 h-10 bg-emerald-100 dark:bg-emerald-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-								<i class="fas fa-network-wired text-emerald-500"></i>
-							</div>
-							<div>
-								<h3
-									class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">
-									Backend & Architecture</h3>
-							</div>
-						</div>
-						<div class="flex flex-wrap gap-2 mt-auto">
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">Laravel</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">Django (Learning)</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">RESTful
-								APIs</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">MVC
-								Architecture</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">RBAC</span>
-						</div>
-					</div>
-
-					<div class="glass rounded-xl p-6 reveal project-card flex flex-col">
-						<div class="flex items-center gap-3 mb-6">
-							<div
-								class="w-10 h-10 bg-violet-100 dark:bg-violet-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-								<i class="fas fa-database text-violet-500"></i>
-							</div>
-							<div>
-								<h3
-									class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">
-									Databases</h3>
-							</div>
-						</div>
-						<div class="flex flex-wrap gap-2 mt-auto">
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">MySQL</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">MS
-								SQL Server</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">SQLite</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">Query
-								Optimization</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">Database
-								Design</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">Data
-								Modeling</span>
-						</div>
-					</div>
-
-					<div class="glass rounded-xl p-6 reveal project-card flex flex-col">
-						<div class="flex items-center gap-3 mb-6">
-							<div
-								class="w-10 h-10 bg-amber-100 dark:bg-amber-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-								<i class="fas fa-tools text-amber-500"></i>
-							</div>
-							<div>
-								<h3
-									class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">
-									Tools & Platforms</h3>
-							</div>
-						</div>
-						<div class="flex flex-wrap gap-2 mt-auto">
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">Git</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">GitHub</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">VS
-								Code</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">Composer</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">Figma</span>
-						</div>
-					</div>
-
-					<div class="glass rounded-xl p-6 reveal project-card flex flex-col">
-						<div class="flex items-center gap-3 mb-6">
-							<div
-								class="w-10 h-10 bg-indigo-100 dark:bg-indigo-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-								<i class="fas fa-project-diagram text-indigo-500"></i>
-							</div>
-							<div>
-								<h3
-									class="font-display text-base font-semibold text-slate-900 dark:text-white leading-tight">
-									Practices</h3>
-							</div>
-						</div>
-						<div class="flex flex-wrap gap-2 mt-auto">
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">Debugging
-								& Troubleshooting</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">Agile
-								Collaboration</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">Technical
-								Documentation</span>
-							<span
-								class="px-3 py-1.5 text-[11px] font-semibold rounded-md bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">Performance
-								Optimization</span>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</section>
-
-		<script>
-			// Minimal observer to fill the progress bars when they scroll into view
-			document.addEventListener('DOMContentLoaded', () => {
-				const barObserver = new IntersectionObserver((entries, obs) => {
-					entries.forEach(entry => {
-						if (entry.isIntersecting) {
-							entry.target.querySelectorAll('.sk-fill').forEach(fill => {
-								fill.style.width = fill.getAttribute('data-progress') + '%';
-							});
-							obs.unobserve(entry.target);
-						}
-					});
-				}, { threshold: 0.15 });
-
-				document.querySelectorAll('.skill-card-v2, .project-card').forEach(card => {
-					barObserver.observe(card);
-				});
-			});
-		</script>
-
-		<section id="projects" class="py-16 border-t border-black/5 dark:border-white/[0.04]">
-			<div class="max-w-6xl mx-auto px-6">
-
-				<div class="text-center mb-10 reveal">
-					<p class="section-label mb-2.5">What I've Built</p>
-					<h2 class="font-display text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-2.5">
-						Showcased <span class="gradient-text">Collection of
-							Projects</span>
-					</h2>
-					<p class="text-slate-500 text-sm max-w-sm mx-auto">A collection of
-						systems and
-						applications brought from idea to reality.</p>
-				</div>
-
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-
-					<div class="project-card glass rounded-xl overflow-hidden reveal flex flex-col">
-						<div class="project-img h-52 bg-slate-200 dark:bg-slate-800">
-							<img src="projects/claram.png" alt="Mt. ClaRamuel Resorts reservation system"
-								class="w-full h-full object-cover object-top" loading="lazy" />
-						</div>
-						<div class="p-5 flex flex-col flex-grow">
-							<div class="flex items-center justify-between mb-1.5">
-								<span class="section-label block">Booking
-									Management · Live</span>
-								<span
-									class="text-[10px] font-mono text-slate-500 bg-slate-200/70 dark:bg-slate-800/70 px-2 py-0.5 rounded-full whitespace-nowrap">Jun
-									2025 – Mar 2026</span>
-							</div>
-							<h3 class="font-display text-lg font-bold text-slate-900 dark:text-white mb-1.5">
-								Mt. ClaRamuel Resorts Reservation
-								System</h3>
-							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-3 flex-grow">
-								Full-stack hospitality reservation
-								platform with a RESTful API backend
-								and role-based access control. Designed
-								and developed secure authentication and
-								server-side validation to protect data
-								integrity, then integrated the Maya
-								payment gateway and PhilSMS for
-								end-to-end transaction processing and
-								automated booking confirmations, plus an
-								admin dashboard for reporting.
-							</p>
-							<span class="impact-chip mb-4 self-start">
-								<i class="fas fa-arrow-trend-up" aria-hidden="true"></i>
-								Eliminated double-bookings; live in production
-							</span>
-							<div class="flex flex-wrap gap-1.5 mb-4">
-								<span
-									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">Laravel</span>
-								<span
-									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">MySQL</span>
-								<span
-									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">Tailwind</span>
-								<span
-									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">Maya
-									API</span>
-								<span
-									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">PhilSMS</span>
-							</div>
-							<div
-								class="flex gap-4 pt-3 border-t border-black/5 dark:border-white/[0.05] mt-auto">
-								<a href="https://mtclaramuelhotelresort.com/" target="_blank"
-									rel="noopener noreferrer"
-									class="flex items-center gap-1.5 text-xs font-semibold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-									<i class="fas fa-external-link-alt text-[10px]"></i>
-									Live Site
-								</a>
-								<a href="https://github.com/nmrjustme/claramuel_project" target="_blank"
-									rel="noopener noreferrer"
-									class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
-									<i class="fab fa-github text-[10px]"></i>
-									Source
-								</a>
-							</div>
-						</div>
-					</div>
-
-					<div class="project-card glass rounded-xl overflow-hidden reveal flex flex-col">
-						<div class="project-img h-52 bg-slate-200 dark:bg-slate-800">
-							<img src="projects/credential.png"
-								alt="Credential and academic verification platform"
-								class="w-full h-full object-cover object-top" loading="lazy" />
-						</div>
-						<div class="p-5 flex flex-col flex-grow">
-							<div class="flex items-center justify-between mb-1.5">
-								<span class="section-label block">Security
-									& Validation</span>
-								<span
-									class="text-[10px] font-mono text-slate-500 bg-slate-200/70 dark:bg-slate-800/70 px-2 py-0.5 rounded-full whitespace-nowrap">May
-									2026 – Jun 2026</span>
-							</div>
-							<h3 class="font-display text-lg font-bold text-slate-900 dark:text-white mb-1.5">
-								Credential & Academic Verification System</h3>
-							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-3 flex-grow">
-								Secure document-verification platform for
-								validating academic and professional
-								credentials. Architected automated
-								validation workflows and tamper-proof
-								reporting logic, applying sound software
-								design principles to streamline
-								authentication and reduce fraudulent
-								submissions.
-							</p>
-							<span class="impact-chip mb-4 self-start">
-								<i class="fas fa-shield-halved" aria-hidden="true"></i>
-								Reduced fraudulent submissions via tamper-proof reporting
-							</span>
-							<div class="flex flex-wrap gap-1.5 mb-4">
-								<span
-									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">Laravel</span>
-								<span
-									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">TypeScript</span>
-								<span
-									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">Tailwind</span>
-								<span
-									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">SQL
-									Server</span>
-							</div>
-							<div
-								class="flex gap-4 pt-3 border-t border-black/5 dark:border-white/[0.05] mt-auto">
-								<a href="https://github.com/nmrjustme/" target="_blank"
-									rel="noopener noreferrer"
-									class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
-									<i class="fab fa-github text-[10px]"></i>
-									Source
-								</a>
-							</div>
-						</div>
-					</div>
-
-					<div class="project-card glass rounded-xl overflow-hidden reveal flex flex-col">
-						<div class="project-img h-52 bg-slate-200 dark:bg-slate-800">
-							<img src="projects/abuan.png" alt="Abuan booking system"
-								class="w-full h-full object-cover object-top" loading="lazy" />
-						</div>
-						<div class="p-5 flex flex-col flex-grow">
-							<div class="flex items-center justify-between mb-1.5">
-								<span class="section-label block">Facility
-									Management</span>
-								<span
-									class="text-[10px] font-mono text-slate-500 bg-slate-200/70 dark:bg-slate-800/70 px-2 py-0.5 rounded-full whitespace-nowrap">Aug
-									2024 – Dec 2024</span>
-							</div>
-							<h3 class="font-display text-lg font-bold text-slate-900 dark:text-white mb-1.5">
-								Abuan Booking System</h3>
-							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-3 flex-grow">
-								Full-stack facility-management application
-								built with CRUD-based REST APIs. Implemented
-								secure authentication, an admin panel, and
-								role-based access control to manage
-								availability and protect sensitive booking
-								data.
-							</p>
-							<span class="impact-chip mb-4 self-start">
-								<i class="fas fa-lock" aria-hidden="true"></i>
-								Strengthened secure access to booking data
-							</span>
-							<div class="flex flex-wrap gap-1.5 mb-4">
-								<span
-									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">PHP</span>
-								<span
-									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">MySQL</span>
-								<span
-									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">HTML/CSS</span>
-							</div>
-							<div
-								class="flex gap-4 pt-3 border-t border-black/5 dark:border-white/[0.05] mt-auto">
-								<a href="https://github.com/nmrjustme/abuan_cottage_reservation" target="_blank"
-									rel="noopener noreferrer"
-									class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
-									<i class="fab fa-github text-[10px]"></i>
-									Source
-								</a>
-							</div>
-						</div>
-					</div>
-
-					<div class="project-card glass rounded-xl overflow-hidden reveal flex flex-col">
-						<div class="project-img h-52 bg-slate-200 dark:bg-slate-800">
-							<img src="projects/tabulation.png" alt="Pageant Tabulation System"
-								class="w-full h-full object-cover object-top" loading="lazy" />
-						</div>
-						<div class="p-5 flex flex-col flex-grow">
-							<div class="flex items-center justify-between mb-1.5">
-								<span class="section-label block">Real-Time
-									Systems</span>
-								<span
-									class="text-[10px] font-mono text-slate-500 bg-slate-200/70 dark:bg-slate-800/70 px-2 py-0.5 rounded-full whitespace-nowrap">Aug
-									2023 – Dec 2023</span>
-							</div>
-							<h3 class="font-display text-lg font-bold text-slate-900 dark:text-white mb-1.5">
-								Pageant Tabulation System</h3>
-							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-3 flex-grow">
-								Real-time scoring platform for live
-								competition events. Developed a data
-								synchronization engine to handle
-								concurrent score submissions from multiple
-								judges, with secure judge dashboards and
-								automated score calculations driving live
-								leaderboards.
-							</p>
-							<span class="impact-chip mb-4 self-start">
-								<i class="fas fa-check-double" aria-hidden="true"></i>
-								100% data accuracy under high concurrency
-							</span>
-							<div class="flex flex-wrap gap-1.5 mb-4">
-								<span
-									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">PHP</span>
-								<span
-									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">MySql</span>
-								<span
-									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">Bootstrap</span>
-								<span
-									class="px-2 py-0.5 glass rounded-md text-[10px] text-slate-600 dark:text-slate-400">HTML/CSS</span>
-							</div>
-							<div
-								class="flex gap-4 pt-3 border-t border-black/5 dark:border-white/[0.05] mt-auto">
-								<a href="https://github.com/nmrjustme/pageant-tabulation" target="_blank"
-									rel="noopener noreferrer"
-									class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
-									<i class="fab fa-github text-[10px]"></i>
-									Source
-								</a>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</section>
-
-		<section id="certification" class="py-16 border-t border-black/5 dark:border-white/[0.04]"
-			aria-label="Licenses and certifications">
-			<div class="max-w-6xl mx-auto px-6">
-
-				<div class="text-center mb-10 reveal">
-					<p class="section-label mb-2.5">Credentials</p>
-					<h2 class="font-display text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-3">
-						Licenses &
-						<span class="gradient-text">Certifications</span>
-					</h2>
-					<p class="text-slate-500 text-sm max-w-md mx-auto">A collection of
-						certifications that reflect
-						my technical knowledge, hands-on experience, and commitment
-						to continuous learning.</p>
-				</div>
-
-				<div class="reveal max-w-4xl mx-auto grid md:grid-cols-5 gap-0 glass rounded-xl overflow-hidden">
-
-					<div
-						class="md:col-span-2 border-b md:border-b-0 md:border-r border-black/5 dark:border-white/[0.05]">
-						<button onclick="selectCert(0)" id="cert-btn-0"
-							class="cert-btn w-full text-left px-4 py-3.5 flex items-center gap-3 border-b border-black/5 dark:border-white/[0.05] bg-black/5 dark:bg-white/[0.05]">
-							<div
-								class="w-7 h-7 bg-yellow-100 dark:bg-yellow-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-								<i class="fas fa-award text-yellow-500 dark:text-yellow-400 text-xs"
-									aria-hidden="true"></i>
-							</div>
-							<div class="min-w-0">
-								<p
-									class="text-brand-600 dark:text-brand-400 text-xs font-semibold truncate cert-title">
-									IT Specialist in Database</p>
-								<p class="text-slate-500 text-[10px] truncate">
-									Certiport</p>
-							</div>
-						</button>
-
-						<button onclick="selectCert(1)" id="cert-btn-1"
-							class="cert-btn w-full text-left px-4 py-3.5 flex items-center gap-3 border-b border-black/5 dark:border-white/[0.05]">
-							<div
-								class="w-7 h-7 bg-yellow-100 dark:bg-yellow-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-								<i class="fas fa-microphone-alt text-yellow-500 dark:text-yellow-400 text-xs"
-									aria-hidden="true"></i>
-							</div>
-							<div class="min-w-0">
-								<p
-									class="text-slate-900 dark:text-white text-xs font-semibold truncate cert-title">
-									Research Presenter</p>
-								<p class="text-slate-500 text-[10px] truncate">
-									1st Int. Conference</p>
-							</div>
-						</button>
-
-						<button onclick="selectCert(2)" id="cert-btn-2"
-							class="cert-btn w-full text-left px-4 py-3.5 flex items-center gap-3 border-b border-black/5 dark:border-white/[0.05]">
-							<div
-								class="w-7 h-7 bg-yellow-100 dark:bg-yellow-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-								<i class="fas fa-trophy text-yellow-500 dark:text-yellow-400 text-xs"
-									aria-hidden="true"></i>
-							</div>
-							<div class="min-w-0">
-								<p
-									class="text-slate-900 dark:text-white text-xs font-semibold truncate cert-title">
-									Excellence in Assessment</p>
-								<p class="text-slate-500 text-[10px] truncate">
-									DICT Region II</p>
-							</div>
-						</button>
-
-						<button onclick="selectCert(3)" id="cert-btn-3"
-							class="cert-btn w-full text-left px-4 py-3.5 flex items-center gap-3 border-b border-black/5 dark:border-white/[0.05]">
-							<div
-								class="w-7 h-7 bg-yellow-100 dark:bg-yellow-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-								<i class="fas fa-certificate text-yellow-500 dark:text-yellow-400 text-xs"
-									aria-hidden="true"></i>
-							</div>
-							<div class="min-w-0">
-								<p
-									class="text-slate-900 dark:text-white text-xs font-semibold truncate cert-title">
-									Relational DB Design</p>
-								<p class="text-slate-500 text-[10px] truncate">
-									Microsoft & Coursera</p>
-							</div>
-						</button>
-
-						<button onclick="selectCert(4)" id="cert-btn-4"
-							class="cert-btn w-full text-left px-4 py-3.5 flex items-center gap-3">
-							<div
-								class="w-7 h-7 bg-yellow-100 dark:bg-yellow-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-								<i class="fas fa-certificate text-yellow-500 dark:text-yellow-400 text-xs"
-									aria-hidden="true"></i>
-							</div>
-							<div class="min-w-0">
-								<p
-									class="text-slate-900 dark:text-white text-xs font-semibold truncate cert-title">
-									SQL Foundations</p>
-								<p class="text-slate-500 text-[10px] truncate">
-									Microsoft & Coursera</p>
-							</div>
-						</button>
-					</div>
-
-					<div class="md:col-span-3 p-7 flex flex-col justify-center min-h-[280px]">
-
-						<div id="cert-panel-0" class="cert-panel">
-							<div class="flex flex-col lg:flex-row gap-5 mb-5 items-start">
-								<div class="flex-1">
-									<div
-										class="w-10 h-10 bg-yellow-100 dark:bg-yellow-500/10 rounded-xl flex items-center justify-center mb-4">
-										<i class="fas fa-award text-yellow-500 dark:text-yellow-400 text-lg"
-											aria-hidden="true"></i>
-									</div>
-									<span
-										class="text-[10px] font-mono bg-slate-200 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded-full">June
-										2024</span>
-									<h3
-										class="font-display text-lg font-bold text-slate-900 dark:text-white mt-3 mb-0.5">
-										IT Specialist in
-										Database</h3>
-									<p class="text-xs text-brand-600 dark:text-brand-400 font-medium">
-										Issued by
-										Certiport</p>
-								</div>
-								<div class="w-full lg:w-44 flex-shrink-0 cursor-zoom-in group"
-									onclick="openCertModal('certificate/it_specialist_db.jpg')">
-									<div
-										class="relative overflow-hidden rounded-lg border border-black/5 dark:border-white/10 shadow-lg aspect-[4/3] bg-slate-200 dark:bg-slate-800/50">
-										<img src="certificate/it_specialist_db.jpg"
-											alt="IT Specialist Certificate"
-											class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-										<div
-											class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-											<i
-												class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 transition-opacity text-xl drop-shadow-lg"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
-								Internationally
-								recognized certification validating deep
-								proficiency in database fundamentals —
-								data modeling, SQL querying,
-								normalization, and relational design.
-								Earned
-								through a rigorous proctored Certiport
-								exam.</p>
-						</div>
-
-						<div id="cert-panel-1" class="cert-panel hidden">
-							<div class="flex flex-col lg:flex-row gap-5 mb-5 items-start">
-								<div class="flex-1">
-									<div
-										class="w-10 h-10 bg-yellow-100 dark:bg-yellow-500/10 rounded-xl flex items-center justify-center mb-4">
-										<i class="fas fa-microphone-alt text-yellow-500 dark:text-yellow-400 text-lg"
-											aria-hidden="true"></i>
-									</div>
-									<span
-										class="text-[10px] font-mono bg-slate-200 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded-full">Sep
-										2025</span>
-									<h3
-										class="font-display text-lg font-bold text-slate-900 dark:text-white mt-3 mb-0.5">
-										Research Presenter
-									</h3>
-									<p class="text-xs text-brand-600 dark:text-brand-400 font-medium">
-										"ReserveMate: A
-										Web-Based System"
-									</p>
-								</div>
-								<div class="w-full lg:w-44 flex-shrink-0 cursor-zoom-in group"
-									onclick="openCertModal('certificate/inter_conference.jpg')">
-									<div
-										class="relative overflow-hidden rounded-lg border border-black/5 dark:border-white/10 shadow-lg aspect-[3/4] bg-slate-200 dark:bg-slate-800/50">
-										<img src="certificate/inter_conference.jpg"
-											alt="Research Presenter Certificate"
-											class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-										<div
-											class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-											<i
-												class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 transition-opacity text-xl drop-shadow-lg"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
-								Research paper
-								selected and presented at the 1st
-								International Conference (September
-								2025),
-								documenting the architecture,
-								methodology, and outcomes of ReserveMate
-								— a
-								full-stack hospitality booking platform.
-							</p>
-						</div>
-
-						<div id="cert-panel-2" class="cert-panel hidden">
-							<div class="flex flex-col lg:flex-row gap-5 mb-5 items-start">
-								<div class="flex-1">
-									<div
-										class="w-10 h-10 bg-yellow-100 dark:bg-yellow-500/10 rounded-xl flex items-center justify-center mb-4">
-										<i class="fas fa-trophy text-yellow-500 dark:text-yellow-400 text-lg"
-											aria-hidden="true"></i>
-									</div>
-									<span
-										class="text-[10px] font-mono bg-slate-200 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded-full">Top
-										Performer</span>
-									<h3
-										class="font-display text-lg font-bold text-slate-900 dark:text-white mt-3 mb-0.5">
-										Excellence in
-										Assessment</h3>
-									<p class="text-xs text-brand-600 dark:text-brand-400 font-medium">
-										DICT
-										Region II Python
-										Essentials</p>
-								</div>
-								<div class="w-full lg:w-44 flex-shrink-0 cursor-zoom-in group"
-									onclick="openCertModal('certificate/dict.jpg')">
-									<div
-										class="relative overflow-hidden rounded-lg border border-black/5 dark:border-white/10 shadow-lg aspect-[4/3] bg-slate-200 dark:bg-slate-800/50">
-										<img src="certificate/dict.jpg" alt="DICT Assessment Certificate"
-											class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-										<div
-											class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-											<i
-												class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 transition-opacity text-xl drop-shadow-lg"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
-								Top performer
-								in the DICT Region II Python Essentials
-								program — a government-led ICT training
-								initiative. Achieved the highest
-								assessment score in the cohort,
-								demonstrating
-								command of Python fundamentals and
-								problem-solving.</p>
-						</div>
-
-						<div id="cert-panel-3" class="cert-panel hidden">
-							<div class="flex flex-col lg:flex-row gap-5 mb-5 items-start">
-								<div class="flex-1">
-									<div
-										class="w-10 h-10 bg-yellow-100 dark:bg-yellow-500/10 rounded-xl flex items-center justify-center mb-4">
-										<i class="fas fa-certificate text-yellow-500 dark:text-yellow-400 text-lg"
-											aria-hidden="true"></i>
-									</div>
-									<span
-										class="text-[10px] font-mono bg-slate-200 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded-full">Mar
-										2026</span>
-									<h3
-										class="font-display text-lg font-bold text-slate-900 dark:text-white mt-3 mb-0.5">
-										Relational Database
-										Design</h3>
-									<p class="text-xs text-brand-600 dark:text-brand-400 font-medium">
-										Microsoft
-										& Coursera</p>
-								</div>
-								<div class="w-full lg:w-44 flex-shrink-0 cursor-zoom-in group"
-									onclick="openCertModal('certificate/relational_db.png')">
-									<div
-										class="relative overflow-hidden rounded-lg border border-black/5 dark:border-white/10 shadow-lg aspect-[4/3] bg-slate-200 dark:bg-slate-800/50">
-										<img src="certificate/relational_db.png"
-											alt="Database Design Certificate"
-											class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-										<div
-											class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-											<i
-												class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 transition-opacity text-xl drop-shadow-lg"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
-								Microsoft's
-								structured course on relational database
-								design via Coursera — covering ER
-								modeling, schema normalization
-								(1NF–3NF), referential integrity, and
-								best
-								practices for scalable database systems.
-							</p>
-						</div>
-
-						<div id="cert-panel-4" class="cert-panel hidden">
-							<div class="flex flex-col lg:flex-row gap-5 mb-5 items-start">
-								<div class="flex-1">
-									<div
-										class="w-10 h-10 bg-yellow-100 dark:bg-yellow-500/10 rounded-xl flex items-center justify-center mb-4">
-										<i class="fas fa-certificate text-yellow-500 dark:text-yellow-400 text-lg"
-											aria-hidden="true"></i>
-									</div>
-									<span
-										class="text-[10px] font-mono bg-slate-200 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded-full">Mar
-										2026</span>
-									<h3
-										class="font-display text-lg font-bold text-slate-900 dark:text-white mt-3 mb-0.5">
-										SQL Foundations</h3>
-									<p class="text-xs text-brand-600 dark:text-brand-400 font-medium">
-										Microsoft
-										& Coursera</p>
-								</div>
-								<div class="w-full lg:w-44 flex-shrink-0 cursor-zoom-in group"
-									onclick="openCertModal('certificate/sql_foundation.png')">
-									<div
-										class="relative overflow-hidden rounded-lg border border-black/5 dark:border-white/10 shadow-lg aspect-[4/3] bg-slate-200 dark:bg-slate-800/50">
-										<img src="certificate/sql_foundation.png"
-											alt="SQL Foundations Certificate"
-											class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-										<div
-											class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-											<i
-												class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 transition-opacity text-xl drop-shadow-lg"></i>
-										</div>
-									</div>
-								</div>
-							</div>
-							<p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
-								Microsoft's SQL
-								Foundations course on Coursera —
-								covering core query writing, joins,
-								subqueries,
-								aggregation, filtering, and database
-								interaction patterns essential for
-								data-driven applications.</p>
-						</div>
-
-					</div>
-				</div>
-
-				<div id="certZoomModal"
-					class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm p-4 md:p-12 opacity-0 transition-opacity duration-300"
-					onclick="closeCertModal()">
-					<div class="relative max-w-5xl w-full flex items-center justify-center">
-						<button onclick="closeCertModal()"
-							class="absolute -top-10 right-0 md:-right-10 md:-top-10 text-white/40 hover:text-white text-4xl p-2 transition-colors">&times;</button>
-						<img id="zoomedCertImg" src="" alt="Zoomed Certificate"
-							class="max-h-[85vh] max-w-full rounded-lg shadow-2xl border border-white/10 object-contain"
-							onclick="event.stopPropagation()" />
-					</div>
-				</div>
-
-			</div>
-		</section>
-
-		<script>
-			function selectCert(index) {
-				const total = 5;
-
-				for (let i = 0; i < total; i++) {
-					const btn = document.getElementById('cert-btn-' + i);
-					const panel = document.getElementById('cert-panel-' + i);
-					const title = btn.querySelector('.cert-title');
-
-					if (i === index) {
-						// Add active state styling
-						btn.classList.add('bg-black/5', 'dark:bg-white/[0.05]');
-						if (title) {
-							title.classList.add('text-brand-600', 'dark:text-brand-400');
-							title.classList.remove('text-slate-900', 'dark:text-white');
-						}
-						panel.classList.remove('hidden');
-					} else {
-						// Remove active state styling
-						btn.classList.remove('bg-black/5', 'dark:bg-white/[0.05]');
-						if (title) {
-							title.classList.add('text-slate-900', 'dark:text-white');
-							title.classList.remove('text-brand-600', 'dark:text-brand-400');
-						}
-						panel.classList.add('hidden');
-					}
-				}
-			}
-
-			function openCertModal(src) {
-				const modal = document.getElementById('certZoomModal');
-				document.getElementById('zoomedCertImg').src = src;
-				modal.classList.remove('hidden');
-				modal.classList.add('flex');
-				setTimeout(() => { modal.classList.remove('opacity-0'); modal.classList.add('opacity-100'); }, 10);
-			}
-
-			function closeCertModal() {
-				const modal = document.getElementById('certZoomModal');
-				modal.classList.remove('opacity-100');
-				modal.classList.add('opacity-0');
-				setTimeout(() => {
-					modal.classList.add('hidden');
-					modal.classList.remove('flex');
-					document.getElementById('zoomedCertImg').src = '';
-				}, 300);
-			}
-		</script>
-
-		<section id="contact" class="py-16 border-t border-black/5 dark:border-white/[0.04]">
-			<div class="max-w-5xl mx-auto px-6">
-
-				<div class="text-center mb-10 reveal">
-					<p class="section-label mb-2.5">Let's Connect</p>
-					<h2 class="font-display text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-3">
-						Get
-						In Touch</h2>
-					<p class="text-slate-500 text-sm max-w-md mx-auto">Open to
-						Full-Stack Developer, Software Engineer, and Backend
-						Developer roles — let's talk web systems, databases,
-						or technical collaboration.
-					</p>
-				</div>
-
-				<div class="grid md:grid-cols-5 gap-8">
-
-					<div class="md:col-span-2 space-y-3 reveal">
-						<a href="mailto:richter.p.maya@gmail.com"
-							class="flex items-center gap-3.5 glass rounded-xl p-4 hover:border-brand-500/35 transition-colors group border border-transparent">
-							<div
-								class="w-9 h-9 bg-brand-100 dark:bg-brand-600/15 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
-								<i class="fas fa-envelope text-brand-600 dark:text-brand-400 text-xs"
-									aria-hidden="true"></i>
-							</div>
-							<div>
-								<p class="text-[10px] text-slate-500 mb-0.5">
-									Email</p>
-								<p class="text-sm text-slate-900 dark:text-white font-medium">
-									richter.p.maya@gmail.com</p>
-							</div>
-						</a>
-
-						<a href="tel:+639169824195"
-							class="flex items-center gap-3.5 glass rounded-xl p-4 hover:border-brand-500/35 transition-colors group border border-transparent">
-							<div
-								class="w-9 h-9 bg-brand-100 dark:bg-brand-600/15 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
-								<i class="fas fa-phone text-brand-600 dark:text-brand-400 text-xs"
-									aria-hidden="true"></i>
-							</div>
-							<div>
-								<p class="text-[10px] text-slate-500 mb-0.5">
-									Phone</p>
-								<p class="text-sm text-slate-900 dark:text-white font-medium">
-									+63 916 982 4195
-								</p>
-							</div>
-						</a>
-
-						<a href="https://github.com/nmrjustme" target="_blank" rel="noopener noreferrer"
-							class="flex items-center gap-3.5 glass rounded-xl p-4 hover:border-brand-500/35 transition-colors group border border-transparent">
-							<div
-								class="w-9 h-9 bg-brand-100 dark:bg-brand-600/15 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
-								<i class="fab fa-github text-brand-600 dark:text-brand-400 text-xs"
-									aria-hidden="true"></i>
-							</div>
-							<div>
-								<p class="text-[10px] text-slate-500 mb-0.5">
-									GitHub</p>
-								<p class="text-sm text-slate-900 dark:text-white font-medium">
-									github.com/nmrjustme</p>
-							</div>
-						</a>
-
-						<a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank"
-							rel="noopener noreferrer"
-							class="flex items-center gap-3.5 glass rounded-xl p-4 hover:border-brand-500/35 transition-colors group border border-transparent">
-							<div
-								class="w-9 h-9 bg-brand-100 dark:bg-brand-600/15 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
-								<i class="fab fa-linkedin-in text-brand-600 dark:text-brand-400 text-xs"
-									aria-hidden="true"></i>
-							</div>
-							<div>
-								<p class="text-[10px] text-slate-500 mb-0.5">
-									LinkedIn</p>
-								<p class="text-sm text-slate-900 dark:text-white font-medium">
-									Richter Mayandoc
-								</p>
-							</div>
-						</a>
-					</div>
-
-					<div class="md:col-span-3 reveal">
-						<form id="contactForm" class="glass rounded-xl p-6 space-y-4" novalidate>
-							<div class="hidden" aria-hidden="true">
-								<label for="company">Company</label>
-								<input type="text" id="company" name="company" tabindex="-1"
-									autocomplete="off" />
-							</div>
-
-							<div class="grid sm:grid-cols-2 gap-4">
-								<div>
-									<label for="name"
-										class="block text-[10px] text-slate-500 uppercase tracking-wider mb-1.5">Name</label>
-									<input id="name" name="name" type="text" placeholder="Your name" required
-										class="form-input w-full px-3.5 py-2.5 rounded-lg text-sm" />
-									<p class="field-error" id="nameError">
-										Please enter your
-										name.</p>
-								</div>
-								<div>
-									<label for="email"
-										class="block text-[10px] text-slate-500 uppercase tracking-wider mb-1.5">Email</label>
-									<input id="email" name="email" type="email" placeholder="your@email.com"
-										required class="form-input w-full px-3.5 py-2.5 rounded-lg text-sm" />
-									<p class="field-error" id="emailError">
-										Please enter a valid
-										email.</p>
-								</div>
-							</div>
-
-							<div>
-								<label for="subject"
-									class="block text-[10px] text-slate-500 uppercase tracking-wider mb-1.5">Subject</label>
-								<input id="subject" name="subject" type="text" placeholder="What's this about?"
-									required class="form-input w-full px-3.5 py-2.5 rounded-lg text-sm" />
-								<p class="field-error" id="subjectError">Please enter
-									a subject.</p>
-							</div>
-
-							<div>
-								<label for="message"
-									class="block text-[10px] text-slate-500 uppercase tracking-wider mb-1.5">Message</label>
-								<textarea id="message" name="message" rows="4"
-									placeholder="Tell me about your project or opportunity..." required
-									class="form-input w-full px-3.5 py-2.5 rounded-lg text-sm resize-none"></textarea>
-								<p class="field-error" id="messageError">Message
-									should be at least 10
-									characters.</p>
-							</div>
-
-							<button type="submit" id="submitBtn"
-								class="btn-primary w-full py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm rounded-xl transition-colors shadow-lg shadow-brand-600/20 flex items-center justify-center gap-2">
-								<span id="submitBtnText">Send
-									Message</span>
-								<i class="fas fa-paper-plane text-xs" id="submitBtnIcon" aria-hidden="true"></i>
-							</button>
-
-							<p id="formMsg" class="text-center text-xs hidden" role="status" aria-live="polite">
-							</p>
-						</form>
 					</div>
 
 				</div>
@@ -2043,47 +2152,22 @@
 
 	</main>
 
-	<footer class="border-t border-black/5 dark:border-white/[0.04] py-10">
-		<div class="max-w-6xl mx-auto px-6">
-			<div class="flex flex-col md:flex-row items-center justify-between gap-5">
-
-				<div class="text-center md:text-left">
-					<p class="font-display font-bold text-slate-900 dark:text-white text-base mb-0.5">
-						Richter
-						Mayandoc</p>
-					<p class="text-[11px] text-slate-500 dark:text-slate-600">Full-Stack
-						Developer · Software Engineer · Ilagan City,
-						PH</p>
-				</div>
-
-				<div class="flex gap-3">
-					<a href="https://github.com/nmrjustme" target="_blank" rel="noopener noreferrer"
-						aria-label="GitHub profile"
-						class="w-8 h-8 glass rounded-lg flex items-center justify-center text-slate-500 hover:text-slate-900 dark:hover:text-white transition-all hover:-translate-y-0.5 text-sm">
-						<i class="fab fa-github" aria-hidden="true"></i>
-					</a>
-					<a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank"
-						rel="noopener noreferrer" aria-label="LinkedIn profile"
-						class="w-8 h-8 glass rounded-lg flex items-center justify-center text-slate-500 hover:text-[#0A66C2] transition-all hover:-translate-y-0.5 text-sm">
-						<i class="fab fa-linkedin-in" aria-hidden="true"></i>
-					</a>
-					<a href="mailto:richter.p.maya@gmail.com" aria-label="Send email"
-						class="w-8 h-8 glass rounded-lg flex items-center justify-center text-slate-500 hover:text-red-500 dark:hover:text-red-400 transition-all hover:-translate-y-0.5 text-sm">
-						<i class="fas fa-envelope" aria-hidden="true"></i>
-					</a>
-				</div>
-
-				<p class="text-[11px] text-slate-500 dark:text-slate-700 tracking-wide">
-					&copy; 2026 Richter Mayandoc. Designed & built from scratch.
-				</p>
+	<footer>
+		<div class="container footer-inner">
+			<div>
+				<p class="footer-name">Richter Mayandoc</p>
+				<p class="footer-tag">Full-Stack Developer · Ilagan City, PH</p>
 			</div>
+			<div class="footer-social">
+				<a href="https://github.com/nmrjustme" target="_blank" rel="noopener noreferrer"
+					aria-label="GitHub"><i class="fab fa-github"></i></a>
+				<a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank"
+					rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+				<a href="mailto:richter.p.maya@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+			</div>
+			<p class="footer-copy">&copy; 2026 Richter Mayandoc</p>
 		</div>
 	</footer>
-
-	<button id="backToTop" aria-label="Back to top"
-		class="fixed bottom-6 right-6 z-50 w-10 h-10 glass rounded-xl flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:-translate-y-0.5 transition-all text-sm">
-		<i class="fas fa-arrow-up" aria-hidden="true"></i>
-	</button>
 
 	<script>
 		const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
@@ -2094,60 +2178,69 @@
 			emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 		}
 
-		/* Theme Toggle JS */
-		const themeToggleBtns = document.querySelectorAll('#themeToggle, #themeToggleMobile');
-		const htmlEl = document.documentElement;
-		const themeMeta = document.getElementById('theme-color-meta');
+		/* ---------- Theme toggle ---------- */
+		const root = document.documentElement;
+		const themeToggle = document.getElementById('themeToggle');
 
-		themeToggleBtns.forEach(btn => {
-			btn.addEventListener('click', () => {
-				htmlEl.classList.toggle('dark');
-				const isDark = htmlEl.classList.contains('dark');
-				localStorage.setItem('theme', isDark ? 'dark' : 'light');
-				themeMeta.setAttribute('content', isDark ? '#000000' : '#f8fafc');
+		function applyThemeLabel(theme) {
+			const next = theme === 'dark' ? 'light' : 'dark';
+			themeToggle.setAttribute('aria-label', `Switch to ${next} theme`);
+			themeToggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+		}
+		applyThemeLabel(root.getAttribute('data-theme') || 'light');
 
-				// Optional: Trigger a reflow for cert tab colors if needed
-				const activeBtnIndex = Array.from(document.querySelectorAll('.cert-btn')).findIndex(b => !b.classList.contains('bg-black/5') && !b.classList.contains('bg-white/[0.05]'));
-				if (typeof selectCert === 'function' && activeBtnIndex !== -1) {
-					// We just call selectCert on the currently active tab to refresh colors
-					const currentlyActive = Array.from(document.querySelectorAll('.cert-panel')).findIndex(p => !p.classList.contains('hidden'));
-					if (currentlyActive >= 0) selectCert(currentlyActive);
-				}
-			});
+		themeToggle.addEventListener('click', () => {
+			const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+			const next = current === 'dark' ? 'light' : 'dark';
+			root.setAttribute('data-theme', next);
+			try { localStorage.setItem('theme', next); } catch (e) { }
+			applyThemeLabel(next);
 		});
 
-		/* Nav scroll */
-		const navbar = document.getElementById('navbar');
-		const backToTop = document.getElementById('backToTop');
-		window.addEventListener('scroll', () => {
-			navbar.classList.toggle('scrolled', window.scrollY > 40);
-			backToTop.classList.toggle('show', window.scrollY > 400);
-		}, { passive: true });
-		backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+		// Follow system preference only if user hasn't explicitly chosen
+		if (window.matchMedia) {
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+				let saved = null;
+				try { saved = localStorage.getItem('theme'); } catch (err) { }
+				if (!saved) {
+					const next = e.matches ? 'dark' : 'light';
+					root.setAttribute('data-theme', next);
+					applyThemeLabel(next);
+				}
+			});
+		}
 
-		/* Mobile menu */
+		/* ---------- Nav scroll state ---------- */
+		const navbar = document.getElementById('navbar');
+		window.addEventListener('scroll', () => {
+			navbar.classList.toggle('scrolled', window.scrollY > 20);
+		}, { passive: true });
+
+		/* ---------- Mobile menu ---------- */
 		const menuBtn = document.getElementById('menuBtn');
 		const mobileMenu = document.getElementById('mobileMenu');
 		menuBtn.addEventListener('click', () => {
 			const isOpen = mobileMenu.classList.toggle('open');
 			menuBtn.setAttribute('aria-expanded', isOpen);
-			menuBtn.querySelector('i').className = isOpen ? 'fas fa-xmark text-lg' : 'fas fa-bars text-lg';
+			menuBtn.querySelector('i').className = isOpen ? 'fas fa-xmark' : 'fas fa-bars';
 		});
-		document.querySelectorAll('[data-close-menu]').forEach(link => {
+		document.querySelectorAll('[data-close]').forEach(link => {
 			link.addEventListener('click', () => {
 				mobileMenu.classList.remove('open');
 				menuBtn.setAttribute('aria-expanded', 'false');
-				menuBtn.querySelector('i').className = 'fas fa-bars text-lg';
+				menuBtn.querySelector('i').className = 'fas fa-bars';
 			});
 		});
 
-		/* Reveal on scroll */
+		/* ---------- Reveal on scroll ---------- */
 		const revealObserver = new IntersectionObserver((entries) => {
-			entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
-		}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+			entries.forEach(e => {
+				if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+			});
+		}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
 		document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-		/* Active nav link */
+		/* ---------- Active nav link ---------- */
 		const sections = document.querySelectorAll('main section[id]');
 		const navLinks = document.querySelectorAll('.nav-link');
 		const linkObserver = new IntersectionObserver((entries) => {
@@ -2158,32 +2251,10 @@
 					if (link) link.classList.add('active');
 				}
 			});
-		}, { threshold: 0.45 });
+		}, { threshold: 0.4 });
 		sections.forEach(s => linkObserver.observe(s));
 
-		/* Count-up */
-		const countEls = document.querySelectorAll('.count-up');
-		const countObserver = new IntersectionObserver((entries) => {
-			entries.forEach(entry => {
-				if (!entry.isIntersecting) return;
-				const el = entry.target;
-				const target = parseInt(el.dataset.target, 10);
-				const start = performance.now();
-				const duration = 1100;
-				function tick(now) {
-					const progress = Math.min((now - start) / duration, 1);
-					const eased = 1 - Math.pow(1 - progress, 3);
-					el.textContent = Math.round(eased * target);
-					if (progress < 1) requestAnimationFrame(tick);
-					else el.textContent = target;
-				}
-				requestAnimationFrame(tick);
-				countObserver.unobserve(el);
-			});
-		}, { threshold: 0.5 });
-		countEls.forEach(el => countObserver.observe(el));
-
-		/* Contact form */
+		/* ---------- Contact form ---------- */
 		const form = document.getElementById('contactForm');
 		const submitBtn = document.getElementById('submitBtn');
 		const submitBtnText = document.getElementById('submitBtnText');
@@ -2213,25 +2284,26 @@
 
 		function showFormMsg(text, type) {
 			formMsg.textContent = text;
-			formMsg.className = `text-center text-xs ${type === 'success' ? 'text-emerald-500 dark:text-accent-400' : 'text-red-500 dark:text-red-400'}`;
-			formMsg.classList.remove('hidden');
+			formMsg.style.color = type === 'success' ? 'var(--success)' : 'var(--danger)';
+			formMsg.classList.add('show');
 		}
 
 		function setSubmitting(on) {
 			submitBtn.disabled = on;
+			submitBtn.style.opacity = on ? '0.7' : '1';
 			submitBtnText.textContent = on ? 'Sending…' : 'Send Message';
 			const icon = document.getElementById('submitBtnIcon');
 			if (on) {
-				icon.outerHTML = '<span class="spinner" id="submitBtnIcon" aria-hidden="true"></span>';
+				icon.outerHTML = '<span class="spinner" id="submitBtnIcon"></span>';
 			} else {
-				document.getElementById('submitBtnIcon').outerHTML = '<i class="fas fa-paper-plane text-xs" id="submitBtnIcon" aria-hidden="true"></i>';
+				document.getElementById('submitBtnIcon').outerHTML = '<i class="fas fa-paper-plane" id="submitBtnIcon" style="font-size:12px;"></i>';
 			}
 		}
 
 		let lastSubmit = 0;
 		form.addEventListener('submit', async (e) => {
 			e.preventDefault();
-			formMsg.classList.add('hidden');
+			formMsg.classList.remove('show');
 
 			if (document.getElementById('company').value.trim() !== '') {
 				showFormMsg('✓ Thanks! Your message has been sent.', 'success');
