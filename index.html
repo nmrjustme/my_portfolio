@@ -1292,9 +1292,13 @@
 
 		.tech-logos-grid {
 			display: grid;
-			grid-template-columns: repeat(4, 1fr);
+			grid-template-columns: repeat(6, 1fr);
 			gap: 10px;
 			margin-bottom: 24px
+		}
+
+		.tech-logos-grid.support-grid {
+			grid-template-columns: repeat(6, 1fr)
 		}
 
 		.tech-logo-item {
@@ -1309,6 +1313,11 @@
 			cursor: default
 		}
 
+		.tech-logo-item:hover {
+			border-color: rgba(99, 102, 241, .35);
+			transform: translateY(-2px)
+		}
+
 		.tech-logo-item img {
 			width: 32px;
 			height: 32px;
@@ -1321,6 +1330,15 @@
 			color: var(--text-2);
 			text-align: center;
 			line-height: 1.2
+		}
+
+		/* Tech category label */
+		.tech-category-label {
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 10.5px;
+			color: var(--text-3);
+			margin-bottom: 14px;
+			letter-spacing: .04em
 		}
 
 		.certs-grid {
@@ -1566,6 +1584,8 @@
 			.section { padding-left: 34px; padding-right: 34px }
 			.ah-name { font-size: clamp(34px, 4vw, 42px) }
 			.process-step { padding: 0 8px }
+			.tech-logos-grid { grid-template-columns: repeat(4, 1fr) }
+			.tech-logos-grid.support-grid { grid-template-columns: repeat(4, 1fr) }
 		}
 
 		@media(max-width:1100px) {
@@ -1581,6 +1601,7 @@
 			.stats-row { grid-template-columns: repeat(3, minmax(0, 1fr)) }
 			.industries-grid { grid-template-columns: repeat(3, 1fr) }
 			.tech-logos-grid { grid-template-columns: repeat(3, 1fr) }
+			.tech-logos-grid.support-grid { grid-template-columns: repeat(3, 1fr) }
 		}
 
 		@media(max-width:768px) {
@@ -1611,6 +1632,8 @@
 			.proj-links { width: 100%; flex-wrap: wrap }
 			.plink.live { flex: 1; min-width: 110px }
 			.contact-grid { gap: 26px }
+			.tech-logos-grid { grid-template-columns: repeat(3, 1fr) }
+			.tech-logos-grid.support-grid { grid-template-columns: repeat(3, 1fr) }
 		}
 
 		@media(max-width:560px) {
@@ -1629,6 +1652,7 @@
 			.edu-card { padding: 18px }
 			.edu-header, .cert-card, .c-link { align-items: flex-start }
 			.tech-logos-grid { grid-template-columns: repeat(2, 1fr) }
+			.tech-logos-grid.support-grid { grid-template-columns: repeat(2, 1fr) }
 			.c-link { padding: 12px }
 			.c-link-val { font-size: 12px; word-break: break-word }
 			.ah-btn { width: 100%; justify-content: center; padding-right: 14px }
@@ -1655,13 +1679,7 @@
 	</div>
 	<div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
 
-	<!-- =====================================================================
-	     CASE STUDY MODAL — MT. CLARAMUEL / RESERVAMATE
-	     Content sourced from the official capstone manuscript:
-	     "ReservaMate: A Web-Based Reservation System with Multi-Payment
-	      Gateway Integration for Mt. Claramuel Resort"
-	      Richter P. Mayandoc & Edcel B. Yasay — ISU Ilagan, Dec 2025
-	====================================================================== -->
+	<!-- CASE STUDY MODAL — MT. CLARAMUEL / RESERVAMATE -->
 	<div class="cs-overlay" id="cs-claramuel" role="dialog" aria-modal="true" aria-labelledby="cs-claramuel-title">
 		<div class="cs-modal">
 			<div class="cs-header">
@@ -1690,7 +1708,7 @@
 					<div class="cs-section-title">What I Built — Five Core Modules</div>
 					<ul style="display:flex;flex-direction:column;gap:8px;padding-left:4px">
 						<li style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start"><span style="color:var(--accent);margin-top:2px">▸</span><span><strong style="color:var(--text)">Customer Booking Interface</strong> — real-time facility browsing with a scheduling tool per facility; guests select dates and guest types for accurate pricing. Reservations sync instantly to the DB to prevent concurrent double-bookings.</span></li>
-						<li style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start"><span style="color:var(--accent);margin-top:2px">▸</span><span><strong style="color:var(--text)">Multi-Payment Gateway</strong> — Maya Business integration supporting, e-wallet, and credit/debit cards. Automated real-time payment verification, instant digital receipts, and transaction records linked directly to bookings.</span></li>
+						<li style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start"><span style="color:var(--accent);margin-top:2px">▸</span><span><strong style="color:var(--text)">Multi-Payment Gateway</strong> — Maya Business integration supporting e-wallet, and credit/debit cards. Automated real-time payment verification, instant digital receipts, and transaction records linked directly to bookings.</span></li>
 						<li style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start"><span style="color:var(--accent);margin-top:2px">▸</span><span><strong style="color:var(--text)">Admin Dashboard</strong> — full CRUD for user and admin accounts, role-based access control (RBAC), booking oversight, and transaction monitoring from a central interface.</span></li>
 						<li style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start"><span style="color:var(--accent);margin-top:2px">▸</span><span><strong style="color:var(--text)">Staff Check-in / Check-out Module</strong> — real-time occupancy status updates so facility turnaround and room inventory are always accurate for incoming guests.</span></li>
 						<li style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start"><span style="color:var(--accent);margin-top:2px">▸</span><span><strong style="color:var(--text)">Financial Reporting Module</strong> — filterable revenue reports by month or year covering room reservations and facility accommodations, supporting data-driven pricing and seasonal planning decisions.</span></li>
@@ -1847,6 +1865,7 @@
 				<a href="#about" data-sec="about" class="active"><i class="fas fa-user"></i> About Me</a>
 				<a href="#process" data-sec="process"><i class="fas fa-route"></i> Process</a>
 				<a href="#projects" data-sec="projects"><i class="fas fa-code"></i> Projects</a>
+				<a href="#technologies" data-sec="technologies"><i class="fas fa-laptop-code"></i> Technologies</a>
 				<a href="#education" data-sec="education"><i class="fas fa-graduation-cap"></i> Education</a>
 				<a href="#contact" data-sec="contact"><i class="fas fa-envelope"></i> Contact</a>
 			</nav>
@@ -2224,6 +2243,76 @@
 				</div>
 			</section>
 
+			<!-- TECHNOLOGIES -->
+			<section class="section" id="technologies">
+				<div class="sec-eyebrow">Skills &amp; Stack</div>
+				<h2 class="sec-title">Technologies I Work With</h2>
+				<div class="sec-line"></div>
+				<p class="sec-sub">The tools I rely on to build, ship, and maintain production systems — split by the role they play.</p>
+
+				<div style="margin-bottom:36px">
+					<div class="tech-section-title">Core Stack</div>
+					<p class="tech-category-label">Languages, frameworks &amp; databases I use on almost every project</p>
+					<div class="tech-logos-grid">
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg" alt="Laravel" onerror="this.style.display='none'">
+							<span>Laravel</span>
+						</div>
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg" alt="PHP" onerror="this.style.display='none'">
+							<span>PHP</span>
+						</div>
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" onerror="this.style.display='none'">
+							<span>MySQL</span>
+						</div>
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" onerror="this.style.display='none'">
+							<span>JavaScript</span>
+						</div>
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" onerror="this.style.display='none'">
+							<span>TypeScript</span>
+						</div>
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server" onerror="this.style.display='none'">
+							<span>SQL Server</span>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<div class="tech-section-title">Support Stack</div>
+					<p class="tech-category-label">Tools, libraries &amp; platforms that complement my core work</p>
+					<div class="tech-logos-grid support-grid">
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" onerror="this.style.display='none'">
+							<span>React</span>
+						</div>
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" onerror="this.style.display='none'">
+							<span>Python</span>
+						</div>
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" onerror="this.style.display='none'">
+							<span>Django</span>
+						</div>
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" onerror="this.style.display='none'">
+							<span>Git</span>
+						</div>
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" onerror="this.style.display='none'" style="filter:var(--gh-filter)">
+							<span>GitHub</span>
+						</div>
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" onerror="this.style.display='none'">
+							<span>Figma</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
 			<!-- EDUCATION -->
 			<section class="section" id="education">
 				<div class="sec-eyebrow">Background</div>
@@ -2242,23 +2331,6 @@
 							</div>
 							<div class="edu-year"><i class="fas fa-calendar-alt"></i> 2022 – 2026</div>
 							<div class="edu-desc">Focused on software engineering, database systems, and web development. Graduated with hands-on project experience across multiple technology stacks and real-world deployments.</div>
-						</div>
-						<div style="margin-top:28px">
-							<div class="tech-section-title">Technologies I Work With</div>
-							<div class="tech-logos-grid">
-								<div class="tech-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg" alt="Laravel" onerror="this.style.display='none'"><span>Laravel</span></div>
-								<div class="tech-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg" alt="PHP" onerror="this.style.display='none'"><span>PHP</span></div>
-								<div class="tech-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" onerror="this.style.display='none'"><span>MySQL</span></div>
-								<div class="tech-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" onerror="this.style.display='none'"><span>JavaScript</span></div>
-								<div class="tech-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" onerror="this.style.display='none'"><span>TypeScript</span></div>
-								<div class="tech-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" onerror="this.style.display='none'"><span>React</span></div>
-								<div class="tech-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" onerror="this.style.display='none'"><span>Python</span></div>
-								<div class="tech-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" onerror="this.style.display='none'"><span>Django</span></div>
-								<div class="tech-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" onerror="this.style.display='none'"><span>Git</span></div>
-								<div class="tech-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" onerror="this.style.display='none'" style="filter:var(--gh-filter)"><span>GitHub</span></div>
-								<div class="tech-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" onerror="this.style.display='none'"><span>Figma</span></div>
-								<div class="tech-logo-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server" onerror="this.style.display='none'"><span>SQL Server</span></div>
-							</div>
 						</div>
 					</div>
 					<div>
