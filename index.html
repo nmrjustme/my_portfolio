@@ -259,8 +259,15 @@
 		}
 
 		@keyframes pulse {
-			0%, 100% { box-shadow: 0 0 0 3px rgba(34, 197, 94, .2) }
-			50% { box-shadow: 0 0 0 6px rgba(34, 197, 94, .08) }
+
+			0%,
+			100% {
+				box-shadow: 0 0 0 3px rgba(34, 197, 94, .2)
+			}
+
+			50% {
+				box-shadow: 0 0 0 6px rgba(34, 197, 94, .08)
+			}
 		}
 
 		.avail-text {
@@ -864,7 +871,7 @@
 		}
 
 		.proj-card {
-			background: var(--surface);
+			background: var(--surface2);
 			border: 1px solid var(--border);
 			overflow: hidden;
 			transition: transform .2s, box-shadow .2s, border-color .2s
@@ -1307,15 +1314,8 @@
 			align-items: center;
 			gap: 5px;
 			padding: 12px 8px;
-			background: var(--surface2);
-			border: 1px solid var(--border);
-			transition: border-color .15s, transform .15s;
+			background: var(--surface);
 			cursor: default
-		}
-
-		.tech-logo-item:hover {
-			border-color: rgba(99, 102, 241, .35);
-			transform: translateY(-2px)
 		}
 
 		.tech-logo-item img {
@@ -1581,91 +1581,333 @@
 		}
 
 		@media(max-width:1200px) {
-			.section { padding-left: 34px; padding-right: 34px }
-			.ah-name { font-size: clamp(34px, 4vw, 42px) }
-			.process-step { padding: 0 8px }
-			.tech-logos-grid { grid-template-columns: repeat(4, 1fr) }
-			.tech-logos-grid.support-grid { grid-template-columns: repeat(4, 1fr) }
+			.section {
+				padding-left: 34px;
+				padding-right: 34px
+			}
+
+			.ah-name {
+				font-size: clamp(34px, 4vw, 42px)
+			}
+
+			.process-step {
+				padding: 0 8px
+			}
+
+			.tech-logos-grid {
+				grid-template-columns: repeat(4, 1fr)
+			}
+
+			.tech-logos-grid.support-grid {
+				grid-template-columns: repeat(4, 1fr)
+			}
 		}
 
 		@media(max-width:1100px) {
-			.about-grid, .edu-cert-grid, .contact-grid { grid-template-columns: 1fr }
-			.about-hero { gap: 28px }
-			.process-grid { grid-template-columns: repeat(3, 1fr); gap: 22px }
-			.process-step:not(:last-child)::after { display: none }
+
+			.about-grid,
+			.edu-cert-grid,
+			.contact-grid {
+				grid-template-columns: 1fr
+			}
+
+			.about-hero {
+				gap: 28px
+			}
+
+			.process-grid {
+				grid-template-columns: repeat(3, 1fr);
+				gap: 22px
+			}
+
+			.process-step:not(:last-child)::after {
+				display: none
+			}
 		}
 
 		@media(max-width:960px) {
-			.projects-grid { grid-template-columns: 1fr }
-			.goals-grid { grid-template-columns: 1fr }
-			.stats-row { grid-template-columns: repeat(3, minmax(0, 1fr)) }
-			.industries-grid { grid-template-columns: repeat(3, 1fr) }
-			.tech-logos-grid { grid-template-columns: repeat(3, 1fr) }
-			.tech-logos-grid.support-grid { grid-template-columns: repeat(3, 1fr) }
+			.projects-grid {
+				grid-template-columns: 1fr
+			}
+
+			.goals-grid {
+				grid-template-columns: 1fr
+			}
+
+			.stats-row {
+				grid-template-columns: repeat(3, minmax(0, 1fr))
+			}
+
+			.industries-grid {
+				grid-template-columns: repeat(3, 1fr)
+			}
+
+			.tech-logos-grid {
+				grid-template-columns: repeat(3, 1fr)
+			}
+
+			.tech-logos-grid.support-grid {
+				grid-template-columns: repeat(3, 1fr)
+			}
 		}
 
 		@media(max-width:768px) {
-			.sidebar { transform: translateX(-100%); width: min(82vw, 270px); box-shadow: none }
-			.sidebar.open { transform: translateX(0); box-shadow: 18px 0 40px rgba(0,0,0,.22) }
-			.sidebar-backdrop { display: block }
-			.main { margin-left: 0; width: 100% }
-			.mobile-bar { display: flex }
-			.section { padding: 34px 20px }
-			.site-footer { padding: 18px 20px }
-			.about-hero { flex-direction: column-reverse; text-align: center; gap: 24px }
-			.ah-avatar { width: min(78vw, 230px); height: min(95vw, 285px); margin: 0 auto }
-			.ah-name { font-size: clamp(31px, 10vw, 42px) }
-			.ah-role { font-size: 15px }
-			.ah-tags, .ah-btns { justify-content: center }
-			.about-text { font-size: 13.5px }
-			.form-row { grid-template-columns: 1fr }
-			.cs-overlay { padding: 12px }
-			.cs-modal { max-height: 88vh; border-radius: 12px }
-			.cs-header, .cs-body { padding-left: 18px; padding-right: 18px }
-			.cs-metrics { grid-template-columns: 1fr }
-			.process-grid { grid-template-columns: 1fr; gap: 24px }
-			.process-step { text-align: left; display: grid; grid-template-columns: 48px 1fr; gap: 0 14px; padding: 0 }
-			.process-num { margin: 0; grid-row: span 2 }
-			.process-title { margin-top: 0 }
-			.process-desc { grid-column: 2 }
-			.proj-head { flex-direction: column; align-items: flex-start }
-			.proj-links { width: 100%; flex-wrap: wrap }
-			.plink.live { flex: 1; min-width: 110px }
-			.contact-grid { gap: 26px }
-			.tech-logos-grid { grid-template-columns: repeat(3, 1fr) }
-			.tech-logos-grid.support-grid { grid-template-columns: repeat(3, 1fr) }
+			.sidebar {
+				transform: translateX(-100%);
+				width: min(82vw, 270px);
+				box-shadow: none
+			}
+
+			.sidebar.open {
+				transform: translateX(0);
+				box-shadow: 18px 0 40px rgba(0, 0, 0, .22)
+			}
+
+			.sidebar-backdrop {
+				display: block
+			}
+
+			.main {
+				margin-left: 0;
+				width: 100%
+			}
+
+			.mobile-bar {
+				display: flex
+			}
+
+			.section {
+				padding: 34px 20px
+			}
+
+			.site-footer {
+				padding: 18px 20px
+			}
+
+			.about-hero {
+				flex-direction: column-reverse;
+				text-align: center;
+				gap: 24px
+			}
+
+			.ah-avatar {
+				width: min(78vw, 230px);
+				height: min(95vw, 285px);
+				margin: 0 auto
+			}
+
+			.ah-name {
+				font-size: clamp(31px, 10vw, 42px)
+			}
+
+			.ah-role {
+				font-size: 15px
+			}
+
+			.ah-tags,
+			.ah-btns {
+				justify-content: center
+			}
+
+			.about-text {
+				font-size: 13.5px
+			}
+
+			.form-row {
+				grid-template-columns: 1fr
+			}
+
+			.cs-overlay {
+				padding: 12px
+			}
+
+			.cs-modal {
+				max-height: 88vh;
+				border-radius: 12px
+			}
+
+			.cs-header,
+			.cs-body {
+				padding-left: 18px;
+				padding-right: 18px
+			}
+
+			.cs-metrics {
+				grid-template-columns: 1fr
+			}
+
+			.process-grid {
+				grid-template-columns: 1fr;
+				gap: 24px
+			}
+
+			.process-step {
+				text-align: left;
+				display: grid;
+				grid-template-columns: 48px 1fr;
+				gap: 0 14px;
+				padding: 0
+			}
+
+			.process-num {
+				margin: 0;
+				grid-row: span 2
+			}
+
+			.process-title {
+				margin-top: 0
+			}
+
+			.process-desc {
+				grid-column: 2
+			}
+
+			.proj-head {
+				flex-direction: column;
+				align-items: flex-start
+			}
+
+			.proj-links {
+				width: 100%;
+				flex-wrap: wrap
+			}
+
+			.plink.live {
+				flex: 1;
+				min-width: 110px
+			}
+
+			.contact-grid {
+				gap: 26px
+			}
+
+			.tech-logos-grid {
+				grid-template-columns: repeat(3, 1fr)
+			}
+
+			.tech-logos-grid.support-grid {
+				grid-template-columns: repeat(3, 1fr)
+			}
 		}
 
 		@media(max-width:560px) {
-			body { font-size: 13.5px }
-			.mobile-bar { padding: 10px 14px }
-			.section { padding: 30px 16px }
-			.sec-title { font-size: 21px }
-			.sec-sub { margin-bottom: 26px; font-size: 13px }
-			.stats-row { grid-template-columns: 1fr; gap: 10px }
-			.stat-card { padding: 16px 12px }
-			.industries-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) }
-			.industry-card { padding: 15px 8px }
-			.projects-grid { gap: 14px }
-			.proj-preview { height: 130px }
-			.proj-head, .proj-body { padding-left: 14px; padding-right: 14px }
-			.edu-card { padding: 18px }
-			.edu-header, .cert-card, .c-link { align-items: flex-start }
-			.tech-logos-grid { grid-template-columns: repeat(2, 1fr) }
-			.tech-logos-grid.support-grid { grid-template-columns: repeat(2, 1fr) }
-			.c-link { padding: 12px }
-			.c-link-val { font-size: 12px; word-break: break-word }
-			.ah-btn { width: 100%; justify-content: center; padding-right: 14px }
-			.cs-title { font-size: 15.5px }
-			.cs-metric-num { font-size: 19px }
+			body {
+				font-size: 13.5px
+			}
+
+			.mobile-bar {
+				padding: 10px 14px
+			}
+
+			.section {
+				padding: 30px 16px
+			}
+
+			.sec-title {
+				font-size: 21px
+			}
+
+			.sec-sub {
+				margin-bottom: 26px;
+				font-size: 13px
+			}
+
+			.stats-row {
+				grid-template-columns: 1fr;
+				gap: 10px
+			}
+
+			.stat-card {
+				padding: 16px 12px
+			}
+
+			.industries-grid {
+				grid-template-columns: repeat(2, minmax(0, 1fr))
+			}
+
+			.industry-card {
+				padding: 15px 8px
+			}
+
+			.projects-grid {
+				gap: 14px
+			}
+
+			.proj-preview {
+				height: 130px
+			}
+
+			.proj-head,
+			.proj-body {
+				padding-left: 14px;
+				padding-right: 14px
+			}
+
+			.edu-card {
+				padding: 18px
+			}
+
+			.edu-header,
+			.cert-card,
+			.c-link {
+				align-items: flex-start
+			}
+
+			.tech-logos-grid {
+				grid-template-columns: repeat(2, 1fr)
+			}
+
+			.tech-logos-grid.support-grid {
+				grid-template-columns: repeat(2, 1fr)
+			}
+
+			.c-link {
+				padding: 12px
+			}
+
+			.c-link-val {
+				font-size: 12px;
+				word-break: break-word
+			}
+
+			.ah-btn {
+				width: 100%;
+				justify-content: center;
+				padding-right: 14px
+			}
+
+			.cs-title {
+				font-size: 15.5px
+			}
+
+			.cs-metric-num {
+				font-size: 19px
+			}
 		}
 
 		@media(max-width:380px) {
-			.section { padding-left: 12px; padding-right: 12px }
-			.industries-grid, .tech-logos-grid { grid-template-columns: 1fr }
-			.ah-name { font-size: 28px }
-			.proj-preview { height: 112px }
-			.sb-avatar { width: 118px; height: 118px }
+			.section {
+				padding-left: 12px;
+				padding-right: 12px
+			}
+
+			.industries-grid,
+			.tech-logos-grid {
+				grid-template-columns: 1fr
+			}
+
+			.ah-name {
+				font-size: 28px
+			}
+
+			.proj-preview {
+				height: 112px
+			}
+
+			.sb-avatar {
+				width: 118px;
+				height: 118px
+			}
 		}
 	</style>
 </head>
@@ -1683,35 +1925,100 @@
 	<div class="cs-overlay" id="cs-claramuel" role="dialog" aria-modal="true" aria-labelledby="cs-claramuel-title">
 		<div class="cs-modal">
 			<div class="cs-header">
-				<div class="cs-title" id="cs-claramuel-title">Case Study — ReservaMate: Web-Based Reservation System for Mt. ClaRamuel Resort</div>
-				<button class="cs-close" onclick="closeCS('cs-claramuel')" aria-label="Close"><i class="fas fa-times"></i></button>
+				<div class="cs-title" id="cs-claramuel-title">Case Study — ReservaMate: Web-Based Reservation System
+					for Mt. ClaRamuel Resort</div>
+				<button class="cs-close" onclick="closeCS('cs-claramuel')" aria-label="Close"><i
+						class="fas fa-times"></i></button>
 			</div>
 			<div class="cs-body">
 
 				<div class="cs-section">
 					<div class="cs-section-title">Context</div>
-					<p class="cs-text">ReservaMate is my BS Information Technology capstone project, co-developed with Edcel B. Yasay at Isabela State University – Ilagan Campus (December 2025). It was built to production spec, deployed live at Mt. ClaRamuel Resort and Events Place, and formally evaluated by 51 respondents against the ISO/IEC 25010 Software Quality Model.</p>
+					<p class="cs-text">ReservaMate is my BS Information Technology capstone project, co-developed
+						with Edcel B. Yasay at Isabela State University – Ilagan Campus (December 2025). It was
+						built to production spec, deployed live at Mt. ClaRamuel Resort and Events Place, and
+						formally evaluated by 51 respondents against the ISO/IEC 25010 Software Quality Model.</p>
 				</div>
 
 				<div class="cs-section">
 					<div class="cs-section-title">The Problem</div>
-					<p class="cs-text">Mt. ClaRamuel Resort operated entirely on manual workflows: customers called, texted, or walked in to check availability; staff logged bookings in notebooks or spreadsheets; payments were collected in cash or bank transfer and stored separately from booking records. This produced four documented failure modes:</p>
+					<p class="cs-text">Mt. ClaRamuel Resort operated entirely on manual workflows: customers
+						called, texted, or walked in to check availability; staff logged bookings in notebooks or
+						spreadsheets; payments were collected in cash or bank transfer and stored separately from
+						booking records. This produced four documented failure modes:</p>
 					<ul style="margin-top:10px;display:flex;flex-direction:column;gap:7px;padding-left:4px">
-						<li style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start"><span style="color:#ef4444;margin-top:2px;font-size:10px">✕</span><span><strong style="color:var(--text)">Inconsistent data management</strong> — discrepancies between booking logs, payment records, and customer info regularly caused overbooking and scheduling conflicts.</span></li>
-						<li style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start"><span style="color:#ef4444;margin-top:2px;font-size:10px">✕</span><span><strong style="color:var(--text)">Manual payment tracking</strong> — no integrated system across cash, bank transfers, and mobile wallets led to delayed confirmations, lost receipts, and difficult financial reconciliation.</span></li>
-						<li style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start"><span style="color:#ef4444;margin-top:2px;font-size:10px">✕</span><span><strong style="color:var(--text)">Limited digital visibility</strong> — no online booking platform meant the resort missed customers who search and book digitally, falling behind competitors with digital infrastructure.</span></li>
-						<li style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start"><span style="color:#ef4444;margin-top:2px;font-size:10px">✕</span><span><strong style="color:var(--text)">Time-consuming report generation</strong> — staff manually compiled data from multiple sources, causing delays in financial decision-making and increasing accounting errors.</span></li>
+						<li
+							style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start">
+							<span style="color:#ef4444;margin-top:2px;font-size:10px">✕</span><span><strong
+									style="color:var(--text)">Inconsistent data management</strong> —
+								discrepancies between booking logs, payment records, and customer info regularly
+								caused overbooking and scheduling conflicts.</span>
+						</li>
+						<li
+							style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start">
+							<span style="color:#ef4444;margin-top:2px;font-size:10px">✕</span><span><strong
+									style="color:var(--text)">Manual payment tracking</strong> — no integrated
+								system across cash, bank transfers, and mobile wallets led to delayed
+								confirmations, lost receipts, and difficult financial reconciliation.</span>
+						</li>
+						<li
+							style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start">
+							<span style="color:#ef4444;margin-top:2px;font-size:10px">✕</span><span><strong
+									style="color:var(--text)">Limited digital visibility</strong> — no online
+								booking platform meant the resort missed customers who search and book
+								digitally, falling behind competitors with digital infrastructure.</span>
+						</li>
+						<li
+							style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start">
+							<span style="color:#ef4444;margin-top:2px;font-size:10px">✕</span><span><strong
+									style="color:var(--text)">Time-consuming report generation</strong> — staff
+								manually compiled data from multiple sources, causing delays in financial
+								decision-making and increasing accounting errors.</span>
+						</li>
 					</ul>
 				</div>
 
 				<div class="cs-section">
 					<div class="cs-section-title">What I Built — Five Core Modules</div>
 					<ul style="display:flex;flex-direction:column;gap:8px;padding-left:4px">
-						<li style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start"><span style="color:var(--accent);margin-top:2px">▸</span><span><strong style="color:var(--text)">Customer Booking Interface</strong> — real-time facility browsing with a scheduling tool per facility; guests select dates and guest types for accurate pricing. Reservations sync instantly to the DB to prevent concurrent double-bookings.</span></li>
-						<li style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start"><span style="color:var(--accent);margin-top:2px">▸</span><span><strong style="color:var(--text)">Multi-Payment Gateway</strong> — Maya Business integration supporting e-wallet, and credit/debit cards. Automated real-time payment verification, instant digital receipts, and transaction records linked directly to bookings.</span></li>
-						<li style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start"><span style="color:var(--accent);margin-top:2px">▸</span><span><strong style="color:var(--text)">Admin Dashboard</strong> — full CRUD for user and admin accounts, role-based access control (RBAC), booking oversight, and transaction monitoring from a central interface.</span></li>
-						<li style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start"><span style="color:var(--accent);margin-top:2px">▸</span><span><strong style="color:var(--text)">Staff Check-in / Check-out Module</strong> — real-time occupancy status updates so facility turnaround and room inventory are always accurate for incoming guests.</span></li>
-						<li style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start"><span style="color:var(--accent);margin-top:2px">▸</span><span><strong style="color:var(--text)">Financial Reporting Module</strong> — filterable revenue reports by month or year covering room reservations and facility accommodations, supporting data-driven pricing and seasonal planning decisions.</span></li>
+						<li
+							style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start">
+							<span style="color:var(--accent);margin-top:2px">▸</span><span><strong
+									style="color:var(--text)">Customer Booking Interface</strong> — real-time
+								facility browsing with a scheduling tool per facility; guests select dates and
+								guest types for accurate pricing. Reservations sync instantly to the DB to
+								prevent concurrent double-bookings.</span>
+						</li>
+						<li
+							style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start">
+							<span style="color:var(--accent);margin-top:2px">▸</span><span><strong
+									style="color:var(--text)">Multi-Payment Gateway</strong> — Maya Business
+								integration supporting e-wallet, and credit/debit cards. Automated real-time
+								payment verification, instant digital receipts, and transaction records linked
+								directly to bookings.</span>
+						</li>
+						<li
+							style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start">
+							<span style="color:var(--accent);margin-top:2px">▸</span><span><strong
+									style="color:var(--text)">Admin Dashboard</strong> — full CRUD for user and
+								admin accounts, role-based access control (RBAC), booking oversight, and
+								transaction monitoring from a central interface.</span>
+						</li>
+						<li
+							style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start">
+							<span style="color:var(--accent);margin-top:2px">▸</span><span><strong
+									style="color:var(--text)">Staff Check-in / Check-out Module</strong> —
+								real-time occupancy status updates so facility turnaround and room inventory are
+								always accurate for incoming guests.</span>
+						</li>
+						<li
+							style="font-size:12.5px;color:var(--text-2);display:flex;gap:8px;align-items:flex-start">
+							<span style="color:var(--accent);margin-top:2px">▸</span><span><strong
+									style="color:var(--text)">Financial Reporting Module</strong> — filterable
+								revenue reports by month or year covering room reservations and facility
+								accommodations, supporting data-driven pricing and seasonal planning
+								decisions.</span>
+						</li>
 					</ul>
 				</div>
 
@@ -1732,29 +2039,39 @@
 
 				<div class="cs-section">
 					<div class="cs-section-title">Evaluation — ISO/IEC 25010 Results</div>
-					<p class="cs-text" style="margin-bottom:10px">Evaluated by 51 respondents: 45 customers (88%), 3 resort staff (6%), and 3 IT specialists (6%). All 8 quality dimensions were covered. The system achieved a weighted grand mean of <strong style="color:var(--text)">4.30 (Strongly Agree)</strong> across Functional Suitability, Performance Efficiency, Compatibility, Usability, Reliability, Security, Maintainability, and Portability.</p>
+					<p class="cs-text" style="margin-bottom:10px">Evaluated by 51 respondents: 45 customers (88%),
+						3 resort staff (6%), and 3 IT specialists (6%). All 8 quality dimensions were covered. The
+						system achieved a weighted grand mean of <strong style="color:var(--text)">4.30 (Strongly
+							Agree)</strong> across Functional Suitability, Performance Efficiency, Compatibility,
+						Usability, Reliability, Security, Maintainability, and Portability.</p>
 					<div style="display:flex;flex-direction:column;gap:5px">
-						<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--surface2);border-radius:6px;font-size:12px">
+						<div
+							style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--surface2);border-radius:6px;font-size:12px">
 							<span style="color:var(--text-2)">Accommodation &amp; Facility Booking</span>
 							<span style="font-weight:700;color:var(--accent)">4.29 — Excellent</span>
 						</div>
-						<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--surface2);border-radius:6px;font-size:12px">
+						<div
+							style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--surface2);border-radius:6px;font-size:12px">
 							<span style="color:var(--text-2)">Pricing &amp; Billing Accuracy</span>
 							<span style="font-weight:700;color:var(--accent)">4.27 — Excellent</span>
 						</div>
-						<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--surface2);border-radius:6px;font-size:12px">
+						<div
+							style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--surface2);border-radius:6px;font-size:12px">
 							<span style="color:var(--text-2)">Payment Methods Gateway</span>
 							<span style="font-weight:700;color:var(--accent)">4.24 — Excellent</span>
 						</div>
-						<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--surface2);border-radius:6px;font-size:12px">
+						<div
+							style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--surface2);border-radius:6px;font-size:12px">
 							<span style="color:var(--text-2)">User Management</span>
 							<span style="font-weight:600;color:var(--text-2)">4.16 — Good</span>
 						</div>
-						<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--surface2);border-radius:6px;font-size:12px">
+						<div
+							style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--surface2);border-radius:6px;font-size:12px">
 							<span style="color:var(--text-2)">Check-in &amp; Check-out Management</span>
 							<span style="font-weight:600;color:var(--text-2)">4.16 — Good</span>
 						</div>
-						<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--surface2);border-radius:6px;font-size:12px">
+						<div
+							style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--surface2);border-radius:6px;font-size:12px">
 							<span style="color:var(--text-2)">User Registration</span>
 							<span style="font-weight:600;color:var(--text-2)">4.08 — Good</span>
 						</div>
@@ -1763,7 +2080,15 @@
 
 				<div class="cs-section">
 					<div class="cs-section-title">Key Technical Decisions</div>
-					<p class="cs-text">Laravel (PHP) was chosen for the backend due to its robust ORM, built-in authentication scaffolding, and mature ecosystem for rapid API development. MySQL handles relational booking data with query optimization for concurrent access. Maya Business was selected as the payment gateway because it natively supports Philippine e-wallets (Maya) — the dominant payment methods for the resort's local customer base. Security was implemented through password hashing, encrypted data storage, SSL encryption, and RBAC at the application layer. The iterative waterfall methodology structured development across six phases: requirements gathering, system design, security implementation, testing, deployment, and maintenance.</p>
+					<p class="cs-text">Laravel (PHP) was chosen for the backend due to its robust ORM, built-in
+						authentication scaffolding, and mature ecosystem for rapid API development. MySQL handles
+						relational booking data with query optimization for concurrent access. Maya Business was
+						selected as the payment gateway because it natively supports Philippine e-wallets (Maya) —
+						the dominant payment methods for the resort's local customer base. Security was
+						implemented through password hashing, encrypted data storage, SSL encryption, and RBAC at
+						the application layer. The iterative waterfall methodology structured development across
+						six phases: requirements gathering, system design, security implementation, testing,
+						deployment, and maintenance.</p>
 				</div>
 
 				<div class="cs-section">
@@ -1785,8 +2110,10 @@
 					<a href="https://mtclaramuelhotelresort.com/" target="_blank" rel="noopener" class="cs-btn">
 						<i class="fas fa-arrow-up-right-from-square" style="font-size:10px"></i> View Live Site
 					</a>
-					<span class="cs-btn" style="background:var(--surface2);color:var(--text-2);cursor:default;border-color:var(--border)">
-						<i class="fas fa-graduation-cap" style="font-size:10px"></i> BS IT Capstone — ISU Ilagan, Dec 2025
+					<span class="cs-btn"
+						style="background:var(--surface2);color:var(--text-2);cursor:default;border-color:var(--border)">
+						<i class="fas fa-graduation-cap" style="font-size:10px"></i> BS IT Capstone — ISU Ilagan,
+						Dec 2025
 					</span>
 				</div>
 
@@ -1799,16 +2126,23 @@
 		<div class="cs-modal">
 			<div class="cs-header">
 				<div class="cs-title" id="cs-cimc-title">Case Study — CIMC Patient Record Viewer</div>
-				<button class="cs-close" onclick="closeCS('cs-cimc')" aria-label="Close"><i class="fas fa-times"></i></button>
+				<button class="cs-close" onclick="closeCS('cs-cimc')" aria-label="Close"><i
+						class="fas fa-times"></i></button>
 			</div>
 			<div class="cs-body">
 				<div class="cs-section">
 					<div class="cs-section-title">The Problem</div>
-					<p class="cs-text">Hospital staff at CIMC were retrieving patient records from physical folders stored across multiple rooms. Finding a single patient's history could take 15–30 minutes, causing delays in urgent care situations and requiring a dedicated records clerk full-time.</p>
+					<p class="cs-text">Hospital staff at CIMC were retrieving patient records from physical folders
+						stored across multiple rooms. Finding a single patient's history could take 15–30 minutes,
+						causing delays in urgent care situations and requiring a dedicated records clerk
+						full-time.</p>
 				</div>
 				<div class="cs-section">
 					<div class="cs-section-title">What I Built</div>
-					<p class="cs-text">A digital archiving and search system that ingested decades of physical records into a secure SQL Server database. Features include full-text patient search by name, ID, or admission date, PDF document rendering and annotation, and role-based access to restrict sensitive data to authorised staff only.</p>
+					<p class="cs-text">A digital archiving and search system that ingested decades of physical
+						records into a secure SQL Server database. Features include full-text patient search by
+						name, ID, or admission date, PDF document rendering and annotation, and role-based access
+						to restrict sensitive data to authorised staff only.</p>
 				</div>
 				<div class="cs-metrics">
 					<div class="cs-metric">
@@ -1826,12 +2160,18 @@
 				</div>
 				<div class="cs-section">
 					<div class="cs-section-title">Key Technical Decisions</div>
-					<p class="cs-text">Used SQL Server to align with the hospital's existing IT infrastructure. Implemented full-text indexing on patient name and ID fields to keep search near-instant even at scale. PDF manipulation was handled server-side to avoid exposing raw file paths to the client.</p>
+					<p class="cs-text">Used SQL Server to align with the hospital's existing IT infrastructure.
+						Implemented full-text indexing on patient name and ID fields to keep search near-instant
+						even at scale. PDF manipulation was handled server-side to avoid exposing raw file paths
+						to the client.</p>
 				</div>
 				<div class="cs-section">
 					<div class="cs-section-title">Stack</div>
 					<div class="cs-tech-list">
-						<span class="tech-tag">Laravel</span><span class="tech-tag">SQL Server</span><span class="tech-tag">PHP</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Full-Text Search</span><span class="tech-tag">PDF Manipulation</span>
+						<span class="tech-tag">Laravel</span><span class="tech-tag">SQL Server</span><span
+							class="tech-tag">PHP</span><span class="tech-tag">TypeScript</span><span
+							class="tech-tag">Full-Text Search</span><span class="tech-tag">PDF
+							Manipulation</span>
 					</div>
 				</div>
 			</div>
@@ -1856,9 +2196,12 @@
 				</div>
 			</div>
 			<div class="sb-socials">
-				<a href="https://github.com/nmrjustme" target="_blank" rel="noopener" class="sb-soc" aria-label="GitHub"><i class="fab fa-github"></i></a>
-				<a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank" rel="noopener" class="sb-soc" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-				<a href="mailto:richter.p.maya@gmail.com" class="sb-soc" aria-label="Email"><i class="fas fa-envelope"></i></a>
+				<a href="https://github.com/nmrjustme" target="_blank" rel="noopener" class="sb-soc"
+					aria-label="GitHub"><i class="fab fa-github"></i></a>
+				<a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank" rel="noopener"
+					class="sb-soc" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+				<a href="mailto:richter.p.maya@gmail.com" class="sb-soc" aria-label="Email"><i
+						class="fas fa-envelope"></i></a>
 				<a href="tel:+639169824195" class="sb-soc" aria-label="Phone"><i class="fas fa-phone"></i></a>
 			</div>
 			<nav class="sb-nav" aria-label="Sections">
@@ -1877,7 +2220,8 @@
 				<i class="fas fa-paper-plane" style="margin-right:5px;font-size:10px"></i>Hire Me
 			</a>
 			<div class="sb-theme-toggle">
-				<span class="sb-theme-label" id="theme-label"><i class="fas fa-sun" style="margin-right:5px"></i>Light Mode</span>
+				<span class="sb-theme-label" id="theme-label"><i class="fas fa-sun"
+						style="margin-right:5px"></i>Light Mode</span>
 				<button class="toggle-pill" id="theme-toggle" aria-label="Toggle dark mode">
 					<span class="toggle-knob">🌙</span>
 				</button>
@@ -1904,9 +2248,12 @@
 						<div class="goals-block">
 							<div class="goals-title">What I'm looking for</div>
 							<div class="goals-grid">
-								<div class="goal-item"><i class="fas fa-check"></i><span>Permanent, Full-time or freelance full-stack roles (remote or Onsite)</span></div>
-								<div class="goal-item"><i class="fas fa-check"></i><span>Teams building real-world products in web, SaaS, or enterprise</span></div>
-								<div class="goal-item"><i class="fas fa-check"></i><span>Environments where I can grow into senior engineering responsibilities</span></div>
+								<div class="goal-item"><i class="fas fa-check"></i><span>Permanent, Full-time or
+										freelance full-stack roles (remote or Onsite)</span></div>
+								<div class="goal-item"><i class="fas fa-check"></i><span>Teams building
+										real-world products in web, SaaS, or enterprise</span></div>
+								<div class="goal-item"><i class="fas fa-check"></i><span>Environments where I
+										can grow into senior engineering responsibilities</span></div>
 							</div>
 						</div>
 						<div class="ah-btns">
@@ -1967,37 +2314,140 @@
 				<div class="sec-eyebrow">How I Work</div>
 				<h2 class="sec-title">From Discovery to Deployment</h2>
 				<div class="sec-line"></div>
-				<p class="sec-sub">A straightforward five-phase process I follow on every project, from the first conversation to a live, supported system.</p>
+				<p class="sec-sub">A straightforward five-phase process I follow on every project, from the first
+					conversation to a live, supported system.</p>
 
 				<div class="process-grid">
 					<div class="process-step">
 						<div class="process-num">01</div>
 						<div class="process-title">Discover</div>
-						<p class="process-desc">Define goals, understand users, and analyze the problem to prioritize what matters most.</p>
+						<p class="process-desc">Define goals, understand users, and analyze the problem to
+							prioritize what matters most.</p>
 					</div>
 					<div class="process-step">
 						<div class="process-num">02</div>
 						<div class="process-title">Design</div>
-						<p class="process-desc">Create intuitive user experiences and technical plans that align with business needs and ensure scalability.</p>
+						<p class="process-desc">Create intuitive user experiences and technical plans that align
+							with business needs and ensure scalability.</p>
 					</div>
 					<div class="process-step">
 						<div class="process-num">03</div>
 						<div class="process-title">Develop</div>
-						<p class="process-desc">Build clean, maintainable code and integrate core features through agile iterations and regular feedback.</p>
+						<p class="process-desc">Build clean, maintainable code and integrate core features through
+							agile iterations and regular feedback.</p>
 					</div>
 					<div class="process-step">
 						<div class="process-num">04</div>
 						<div class="process-title">Test &amp; Secure</div>
-						<p class="process-desc">Ensure quality, performance, and security through comprehensive testing and vulnerability assessments.</p>
+						<p class="process-desc">Ensure quality, performance, and security through comprehensive
+							testing and vulnerability assessments.</p>
 					</div>
 					<div class="process-step">
 						<div class="process-num">05</div>
 						<div class="process-title">Deploy</div>
-						<p class="process-desc">Release, monitor performance, and continuously improve based on user insights.</p>
+						<p class="process-desc">Release, monitor performance, and continuously improve based on
+							user insights.</p>
 					</div>
 				</div>
 			</section>
+			<!-- TECHNOLOGIES -->
+			<section class="section" id="technologies">
+				<div class="sec-eyebrow">Skills &amp; Stack</div>
+				<h2 class="sec-title">Technologies I Work With</h2>
+				<div class="sec-line"></div>
+				<p class="sec-sub">The tools I rely on to build, ship, and maintain production systems — split by
+					the role they play.</p>
 
+				<div style="margin-bottom:36px">
+					<div class="tech-section-title">Core Stack</div>
+					<div class="tech-logos-grid">
+
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg"
+								alt="PHP" onerror="this.style.display='none'">
+							<span>PHP</span>
+						</div>
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg"
+								alt="Laravel" onerror="this.style.display='none'">
+							<span>Laravel</span>
+						</div>
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+								alt="MySQL" onerror="this.style.display='none'">
+							<span>MySQL</span>
+						</div>
+
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+								alt="JavaScript" onerror="this.style.display='none'">
+							<span>JavaScript</span>
+						</div>
+
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+								alt="Python" onerror="this.style.display='none'">
+							<span>Python</span>
+						</div>
+
+						<!-- Tailwind CSS -->
+						<div class="tech-logo-item">
+							<img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg"
+								alt="Tailwind CSS" onerror="this.style.display='none'">
+							<span>Tailwind CSS</span>
+						</div>
+
+						<!-- Bootstrap -->
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
+								alt="Bootstrap" onerror="this.style.display='none'">
+							<span>Bootstrap</span>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<div class="tech-section-title">Support Stack</div>
+					<div class="tech-logos-grid support-grid">
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+								alt="React" onerror="this.style.display='none'">
+							<span>React</span>
+						</div>
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+								alt="TypeScript" onerror="this.style.display='none'">
+							<span>TypeScript</span>
+						</div>
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg"
+								alt="SQL Server" onerror="this.style.display='none'">
+							<span>SQL Server</span>
+						</div>
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg"
+								alt="Django" onerror="this.style.display='none'">
+							<span>Django</span>
+						</div>
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+								alt="Git" onerror="this.style.display='none'">
+							<span>Git</span>
+						</div>
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+								alt="GitHub" onerror="this.style.display='none'"
+								style="filter:var(--gh-filter)">
+							<span>GitHub</span>
+						</div>
+						<div class="tech-logo-item">
+							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+								alt="Figma" onerror="this.style.display='none'">
+							<span>Figma</span>
+						</div>
+					</div>
+				</div>
+			</section>
 			<!-- PROJECTS -->
 			<section class="section" id="projects">
 				<div class="sec-eyebrow">Featured Projects</div>
@@ -2009,7 +2459,8 @@
 					<!-- Mt. ClaRamuel / ReservaMate -->
 					<div class="proj-card">
 						<div class="proj-preview">
-							<svg width="100%" height="100%" viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
+							<svg width="100%" height="100%" viewBox="0 0 400 160"
+								xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
 								<rect width="400" height="160" fill="#f1f3f9" />
 								<rect width="400" height="22" fill="#e4e6ef" />
 								<circle cx="12" cy="11" r="4" fill="#fc5c65" />
@@ -2018,7 +2469,8 @@
 								<rect x="50" y="5" width="260" height="12" rx="4" fill="#fff" opacity=".7" />
 								<rect x="54" y="8" width="80" height="6" rx="2" fill="#8b90a7" opacity=".5" />
 								<rect x="0" y="22" width="400" height="60" fill="#6366f1" />
-								<rect x="20" y="34" width="140" height="10" rx="3" fill="rgba(255,255,255,.9)" />
+								<rect x="20" y="34" width="140" height="10" rx="3"
+									fill="rgba(255,255,255,.9)" />
 								<rect x="20" y="50" width="90" height="6" rx="2" fill="rgba(255,255,255,.5)" />
 								<rect x="20" y="62" width="60" height="14" rx="4" fill="#fff" />
 								<rect x="240" y="28" width="145" height="50" rx="6" fill="#fff" />
@@ -2039,31 +2491,42 @@
 								<rect x="266" y="126" width="50" height="5" rx="2" fill="#e4e6ef" />
 								<rect x="266" y="134" width="30" height="5" rx="2" fill="#6366f1" />
 							</svg>
-							<div class="proj-live-badge"><i class="fas fa-circle" style="font-size:5px"></i> Live</div>
+							<div class="proj-live-badge"><i class="fas fa-circle" style="font-size:5px"></i> Live
+							</div>
 						</div>
 						<div class="proj-head">
 							<div class="proj-title">ReservaMate — Mt. ClaRamuel Resort Reservation System</div>
 							<div class="proj-links">
-								<a href="https://mtclaramuelhotelresort.com/" target="_blank" rel="noopener" class="plink live"><i class="fas fa-arrow-up-right-from-square"></i> Live</a>
+								<a href="https://mtclaramuelhotelresort.com/" target="_blank" rel="noopener"
+									class="plink live"><i class="fas fa-arrow-up-right-from-square"></i>
+									Live</a>
 							</div>
 						</div>
 						<div class="proj-body">
-							<span class="proj-badge badge-live"><i class="fas fa-circle" style="font-size:5px"></i> Production · Capstone</span>
-							<p class="proj-desc">Full-stack hotel reservation platform with multi-payment gateway (Maya), RBAC, real-time booking, admin dashboard, and financial reporting. Evaluated 4.30/5 on ISO 25010.</p>
+							<span class="proj-badge badge-live"><i class="fas fa-circle"
+									style="font-size:5px"></i> Production · Capstone</span>
+							<p class="proj-desc">Full-stack hotel reservation platform with multi-payment gateway
+								(Maya), RBAC, real-time booking, admin dashboard, and financial reporting.
+								Evaluated 4.30/5 on ISO 25010.</p>
 							<div class="proj-techs">
-								<span class="tech-tag">Laravel</span><span class="tech-tag">MySQL</span><span class="tech-tag">Tailwind</span><span class="tech-tag">Maya API</span>
+								<span class="tech-tag">Laravel</span><span class="tech-tag">MySQL</span><span
+									class="tech-tag">Tailwind</span><span class="tech-tag">Maya API</span>
 							</div>
-							<div class="proj-result"><i class="fas fa-check-circle"></i><span>Eliminated overbooking, automated payment confirmations, and replaced manual ledger workflows for resort staff</span></div>
+							<div class="proj-result"><i class="fas fa-check-circle"></i><span>Eliminated
+									overbooking, automated payment confirmations, and replaced manual ledger
+									workflows for resort staff</span></div>
 						</div>
 						<div style="padding:0 18px 14px;display:flex;gap:8px">
-							<button class="cs-btn" onclick="openCS('cs-claramuel')"><i class="fas fa-book-open" style="font-size:10px"></i> Read Case Study</button>
+							<button class="cs-btn" onclick="openCS('cs-claramuel')"><i class="fas fa-book-open"
+									style="font-size:10px"></i> Read Case Study</button>
 						</div>
 					</div>
 
 					<!-- CIMC -->
 					<div class="proj-card">
 						<div class="proj-preview">
-							<svg width="100%" height="100%" viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
+							<svg width="100%" height="100%" viewBox="0 0 400 160"
+								xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
 								<rect width="400" height="160" fill="#f1f3f9" />
 								<rect width="400" height="22" fill="#e4e6ef" />
 								<circle cx="12" cy="11" r="4" fill="#fc5c65" />
@@ -2078,10 +2541,12 @@
 								<rect x="8" y="92" width="64" height="8" rx="3" fill="rgba(255,255,255,.08)" />
 								<rect x="88" y="28" width="300" height="16" rx="3" fill="#e4e6ef" />
 								<rect x="88" y="50" width="220" height="10" rx="3" fill="#f1f3f9" />
-								<rect x="88" y="66" width="200" height="16" rx="4" fill="#fff" stroke="#e4e6ef" stroke-width="1" />
+								<rect x="88" y="66" width="200" height="16" rx="4" fill="#fff" stroke="#e4e6ef"
+									stroke-width="1" />
 								<rect x="92" y="70" width="80" height="8" rx="2" fill="#8b90a7" opacity=".4" />
 								<rect x="295" y="66" width="50" height="16" rx="4" fill="#6366f1" />
-								<rect x="88" y="90" width="300" height="12" rx="2" fill="#6366f1" opacity=".15" />
+								<rect x="88" y="90" width="300" height="12" rx="2" fill="#6366f1"
+									opacity=".15" />
 								<rect x="92" y="94" width="40" height="5" rx="1" fill="#6366f1" opacity=".5" />
 								<rect x="145" y="94" width="60" height="5" rx="1" fill="#6366f1" opacity=".5" />
 								<rect x="88" y="106" width="300" height="12" rx="2" fill="#fff" />
@@ -2100,21 +2565,27 @@
 						</div>
 						<div class="proj-body">
 							<span class="proj-badge badge-ind">Healthcare</span>
-							<p class="proj-desc">Digital archiving system for hospital staff with advanced patient search, PDF manipulation, and secure health records management.</p>
+							<p class="proj-desc">Digital archiving system for hospital staff with advanced
+								patient search, PDF manipulation, and secure health records management.</p>
 							<div class="proj-techs">
-								<span class="tech-tag">Laravel</span><span class="tech-tag">SQL Server</span><span class="tech-tag">TypeScript</span>
+								<span class="tech-tag">Laravel</span><span class="tech-tag">SQL
+									Server</span><span class="tech-tag">TypeScript</span>
 							</div>
-							<div class="proj-result"><i class="fas fa-check-circle"></i><span>Retrieval time cut from <strong>15–30 min → under 30 seconds</strong> via full-text indexing</span></div>
+							<div class="proj-result"><i class="fas fa-check-circle"></i><span>Retrieval time cut
+									from <strong>15–30 min → under 30 seconds</strong> via full-text
+									indexing</span></div>
 						</div>
 						<div style="padding:0 18px 14px;display:flex;gap:8px">
-							<a href="https://github.com/nmrjustme" target="_blank" rel="noopener" class="cs-btn"><i class="fab fa-github" style="font-size:10px"></i> GitHub</a>
+							<a href="https://github.com/nmrjustme" target="_blank" rel="noopener"
+								class="cs-btn"><i class="fab fa-github" style="font-size:10px"></i> GitHub</a>
 						</div>
 					</div>
 
 					<!-- Credential Verification -->
 					<div class="proj-card">
 						<div class="proj-preview">
-							<svg width="100%" height="100%" viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
+							<svg width="100%" height="100%" viewBox="0 0 400 160"
+								xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
 								<rect width="400" height="160" fill="#f1f3f9" />
 								<rect width="400" height="22" fill="#e4e6ef" />
 								<circle cx="12" cy="11" r="4" fill="#fc5c65" />
@@ -2123,7 +2594,8 @@
 								<rect x="0" y="22" width="400" height="36" fill="#1a1d2e" />
 								<rect x="16" y="31" width="100" height="8" rx="3" fill="rgba(255,255,255,.8)" />
 								<rect x="300" y="29" width="60" height="14" rx="4" fill="#6366f1" />
-								<rect x="16" y="68" width="170" height="80" rx="6" fill="#fff" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="5,3" />
+								<rect x="16" y="68" width="170" height="80" rx="6" fill="#fff" stroke="#6366f1"
+									stroke-width="1.5" stroke-dasharray="5,3" />
 								<rect x="40" y="88" width="120" height="8" rx="3" fill="#e4e6ef" />
 								<rect x="55" y="102" width="90" height="6" rx="2" fill="#e4e6ef" />
 								<rect x="60" y="116" width="80" height="14" rx="4" fill="#6366f1" />
@@ -2141,30 +2613,38 @@
 						<div class="proj-head">
 							<div class="proj-title">Credential &amp; Academic Verification System</div>
 							<div class="proj-links">
-								<a href="https://github.com/nmrjustme" target="_blank" rel="noopener" class="plink gh" aria-label="GitHub"><i class="fab fa-github"></i></a>
+								<a href="https://github.com/nmrjustme" target="_blank" rel="noopener"
+									class="plink gh" aria-label="GitHub"><i class="fab fa-github"></i></a>
 							</div>
 						</div>
 						<div class="proj-body">
 							<span class="proj-badge badge-ind">Education</span>
-							<p class="proj-desc">Secure document-verification platform with automated validation workflows and tamper-proof audit reporting.</p>
+							<p class="proj-desc">Secure document-verification platform with automated validation
+								workflows and tamper-proof audit reporting.</p>
 							<div class="proj-techs">
-								<span class="tech-tag">Laravel</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Tailwind</span><span class="tech-tag">SQL Server</span>
+								<span class="tech-tag">Laravel</span><span
+									class="tech-tag">TypeScript</span><span
+									class="tech-tag">Tailwind</span><span class="tech-tag">SQL Server</span>
 							</div>
-							<div class="proj-result"><i class="fas fa-check-circle"></i><span>Fraudulent document submissions <strong>reduced significantly</strong> via audit trail logging</span></div>
+							<div class="proj-result"><i class="fas fa-check-circle"></i><span>Fraudulent document
+									submissions <strong>reduced significantly</strong> via audit trail
+									logging</span></div>
 						</div>
 					</div>
 
 					<!-- Abuan Booking -->
 					<div class="proj-card">
 						<div class="proj-preview">
-							<svg width="100%" height="100%" viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
+							<svg width="100%" height="100%" viewBox="0 0 400 160"
+								xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
 								<rect width="400" height="160" fill="#f1f3f9" />
 								<rect width="400" height="22" fill="#e4e6ef" />
 								<circle cx="12" cy="11" r="4" fill="#fc5c65" />
 								<circle cx="24" cy="11" r="4" fill="#fed330" />
 								<circle cx="36" cy="11" r="4" fill="#26de81" />
 								<rect x="0" y="22" width="400" height="48" fill="#4f46e5" />
-								<rect x="20" y="32" width="120" height="10" rx="3" fill="rgba(255,255,255,.9)" />
+								<rect x="20" y="32" width="120" height="10" rx="3"
+									fill="rgba(255,255,255,.9)" />
 								<rect x="20" y="48" width="80" height="6" rx="2" fill="rgba(255,255,255,.5)" />
 								<rect x="10" y="78" width="116" height="72" rx="4" fill="#fff" />
 								<rect x="10" y="78" width="116" height="32" rx="4" fill="#818cf8" />
@@ -2183,23 +2663,28 @@
 						<div class="proj-head">
 							<div class="proj-title">Abuan Booking System</div>
 							<div class="proj-links">
-								<a href="https://github.com/nmrjustme" target="_blank" rel="noopener" class="plink gh" aria-label="GitHub"><i class="fab fa-github"></i></a>
+								<a href="https://github.com/nmrjustme" target="_blank" rel="noopener"
+									class="plink gh" aria-label="GitHub"><i class="fab fa-github"></i></a>
 							</div>
 						</div>
 						<div class="proj-body">
 							<span class="proj-badge badge-ind">Facility</span>
-							<p class="proj-desc">Facility booking system with CRUD, secure authentication, admin panel, and role-based access control.</p>
+							<p class="proj-desc">Facility booking system with CRUD, secure authentication, admin
+								panel, and role-based access control.</p>
 							<div class="proj-techs">
-								<span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">HTML/CSS</span>
+								<span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span
+									class="tech-tag">HTML/CSS</span>
 							</div>
-							<div class="proj-result"><i class="fas fa-check-circle"></i><span>Strengthened secure access control with RBAC across all user roles</span></div>
+							<div class="proj-result"><i class="fas fa-check-circle"></i><span>Strengthened secure
+									access control with RBAC across all user roles</span></div>
 						</div>
 					</div>
 
 					<!-- Pageant Tabulation -->
 					<div class="proj-card">
 						<div class="proj-preview">
-							<svg width="100%" height="100%" viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
+							<svg width="100%" height="100%" viewBox="0 0 400 160"
+								xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
 								<rect width="400" height="160" fill="#1a1d2e" />
 								<rect width="400" height="22" fill="#0f1117" />
 								<circle cx="12" cy="11" r="4" fill="#fc5c65" />
@@ -2207,109 +2692,51 @@
 								<circle cx="36" cy="11" r="4" fill="#26de81" />
 								<rect x="10" y="30" width="380" height="20" rx="3" fill="#242840" />
 								<rect x="16" y="36" width="60" height="8" rx="2" fill="rgba(255,255,255,.6)" />
-								<rect x="340" y="34" width="40" height="12" rx="3" fill="#22c55e" opacity=".8" />
+								<rect x="340" y="34" width="40" height="12" rx="3" fill="#22c55e"
+									opacity=".8" />
 								<rect x="346" y="38" width="28" height="5" rx="2" fill="#fff" />
 								<rect x="10" y="56" width="380" height="24" rx="3" fill="#6366f1" />
 								<rect x="16" y="62" width="8" height="12" rx="2" fill="rgba(255,255,255,.5)" />
-								<rect x="32" y="62" width="120" height="12" rx="2" fill="rgba(255,255,255,.8)" />
-								<rect x="320" y="62" width="60" height="12" rx="2" fill="rgba(255,255,255,.9)" />
+								<rect x="32" y="62" width="120" height="12" rx="2"
+									fill="rgba(255,255,255,.8)" />
+								<rect x="320" y="62" width="60" height="12" rx="2"
+									fill="rgba(255,255,255,.9)" />
 								<rect x="10" y="84" width="380" height="22" rx="3" fill="#242840" />
 								<rect x="16" y="90" width="8" height="10" rx="2" fill="rgba(255,255,255,.3)" />
-								<rect x="32" y="90" width="100" height="10" rx="2" fill="rgba(255,255,255,.4)" />
-								<rect x="320" y="90" width="60" height="10" rx="2" fill="rgba(255,255,255,.5)" />
+								<rect x="32" y="90" width="100" height="10" rx="2"
+									fill="rgba(255,255,255,.4)" />
+								<rect x="320" y="90" width="60" height="10" rx="2"
+									fill="rgba(255,255,255,.5)" />
 								<rect x="10" y="110" width="380" height="22" rx="3" fill="#242840" />
 								<rect x="16" y="116" width="8" height="10" rx="2" fill="rgba(255,255,255,.3)" />
-								<rect x="32" y="116" width="110" height="10" rx="2" fill="rgba(255,255,255,.4)" />
-								<rect x="320" y="116" width="60" height="10" rx="2" fill="rgba(255,255,255,.5)" />
+								<rect x="32" y="116" width="110" height="10" rx="2"
+									fill="rgba(255,255,255,.4)" />
+								<rect x="320" y="116" width="60" height="10" rx="2"
+									fill="rgba(255,255,255,.5)" />
 								<rect x="10" y="136" width="380" height="22" rx="3" fill="#242840" />
 							</svg>
 						</div>
 						<div class="proj-head">
 							<div class="proj-title">Pageant Tabulation System</div>
 							<div class="proj-links">
-								<a href="https://github.com/nmrjustme" target="_blank" rel="noopener" class="plink gh" aria-label="GitHub"><i class="fab fa-github"></i></a>
+								<a href="https://github.com/nmrjustme" target="_blank" rel="noopener"
+									class="plink gh" aria-label="GitHub"><i class="fab fa-github"></i></a>
 							</div>
 						</div>
 						<div class="proj-body">
 							<span class="proj-badge badge-ind">Real-Time</span>
-							<p class="proj-desc">Live event scoring platform with concurrent score sync from multiple judges and automated leaderboard calculations.</p>
+							<p class="proj-desc">Live event scoring platform with concurrent score sync from
+								multiple judges and automated leaderboard calculations.</p>
 							<div class="proj-techs">
-								<span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">Bootstrap</span>
+								<span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span
+									class="tech-tag">Bootstrap</span>
 							</div>
-							<div class="proj-result"><i class="fas fa-check-circle"></i><span><strong>100% scoring accuracy</strong> maintained under high concurrency across simultaneous judge inputs</span></div>
+							<div class="proj-result"><i class="fas fa-check-circle"></i><span><strong>100%
+										scoring accuracy</strong> maintained under high concurrency across
+									simultaneous judge inputs</span></div>
 						</div>
 					</div>
 
-				</div>
-			</section>
-
-			<!-- TECHNOLOGIES -->
-			<section class="section" id="technologies">
-				<div class="sec-eyebrow">Skills &amp; Stack</div>
-				<h2 class="sec-title">Technologies I Work With</h2>
-				<div class="sec-line"></div>
-				<p class="sec-sub">The tools I rely on to build, ship, and maintain production systems — split by the role they play.</p>
-
-				<div style="margin-bottom:36px">
-					<div class="tech-section-title">Core Stack</div>
-					<p class="tech-category-label">Languages, frameworks &amp; databases I use on almost every project</p>
-					<div class="tech-logos-grid">
-						<div class="tech-logo-item">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg" alt="Laravel" onerror="this.style.display='none'">
-							<span>Laravel</span>
-						</div>
-						<div class="tech-logo-item">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg" alt="PHP" onerror="this.style.display='none'">
-							<span>PHP</span>
-						</div>
-						<div class="tech-logo-item">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" onerror="this.style.display='none'">
-							<span>MySQL</span>
-						</div>
-						<div class="tech-logo-item">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" onerror="this.style.display='none'">
-							<span>JavaScript</span>
-						</div>
-						<div class="tech-logo-item">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" onerror="this.style.display='none'">
-							<span>TypeScript</span>
-						</div>
-						<div class="tech-logo-item">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server" onerror="this.style.display='none'">
-							<span>SQL Server</span>
-						</div>
-					</div>
-				</div>
-
-				<div>
-					<div class="tech-section-title">Support Stack</div>
-					<p class="tech-category-label">Tools, libraries &amp; platforms that complement my core work</p>
-					<div class="tech-logos-grid support-grid">
-						<div class="tech-logo-item">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" onerror="this.style.display='none'">
-							<span>React</span>
-						</div>
-						<div class="tech-logo-item">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" onerror="this.style.display='none'">
-							<span>Python</span>
-						</div>
-						<div class="tech-logo-item">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" onerror="this.style.display='none'">
-							<span>Django</span>
-						</div>
-						<div class="tech-logo-item">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" onerror="this.style.display='none'">
-							<span>Git</span>
-						</div>
-						<div class="tech-logo-item">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" onerror="this.style.display='none'" style="filter:var(--gh-filter)">
-							<span>GitHub</span>
-						</div>
-						<div class="tech-logo-item">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" onerror="this.style.display='none'">
-							<span>Figma</span>
-						</div>
-					</div>
 				</div>
 			</section>
 
@@ -2318,7 +2745,8 @@
 				<div class="sec-eyebrow">Background</div>
 				<h2 class="sec-title">Education &amp; Certifications</h2>
 				<div class="sec-line"></div>
-				<p class="sec-sub">My academic foundation and recognised credentials.</p>
+				<p class="sec-sub">My academic background, professional certifications, and continuous commitment to
+					learning.</p>
 				<div class="edu-cert-grid">
 					<div>
 						<div class="edu-card">
@@ -2330,7 +2758,9 @@
 								</div>
 							</div>
 							<div class="edu-year"><i class="fas fa-calendar-alt"></i> 2022 – 2026</div>
-							<div class="edu-desc">Focused on software engineering, database systems, and web development. Graduated with hands-on project experience across multiple technology stacks and real-world deployments.</div>
+							<div class="edu-desc">Focused on software engineering, database systems, and web
+								development. Graduated with hands-on project experience across multiple
+								technology stacks and real-world deployments.</div>
 						</div>
 					</div>
 					<div>
@@ -2358,7 +2788,11 @@
 								</div>
 							</div>
 							<div class="cert-card">
-								<div class="cert-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" style="width:16px;height:16px" alt="Python" onerror="this.parentElement.innerHTML='<i class=\'fas fa-code\'></i>'"></div>
+								<div class="cert-icon"><img
+										src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+										style="width:16px;height:16px" alt="Python"
+										onerror="this.parentElement.innerHTML='<i class=\'fas fa-code\'></i>'">
+								</div>
 								<div>
 									<div class="cert-name">Python Programming</div>
 									<div class="cert-org">DICT Philippines</div>
@@ -2381,10 +2815,13 @@
 				<div class="sec-eyebrow">Get In Touch</div>
 				<h2 class="sec-title">Contact</h2>
 				<div class="sec-line"></div>
-				<p class="sec-sub">Open to permanent, full-time roles, freelance projects, and remote opportunities. I typically reply within a day.</p>
+				<p class="sec-sub">Open to permanent, full-time roles, freelance projects, and remote opportunities.
+					I typically reply within a day.</p>
 				<div class="contact-grid">
 					<div>
-						<p class="contact-intro">Whether it's a new project, a job opportunity, or just a quick question — feel free to reach out through any of the channels below or fill in the form.</p>
+						<p class="contact-intro">Whether it's a new project, a job opportunity, or just a quick
+							question — feel free to reach out through any of the channels below or fill in the
+							form.</p>
 						<div class="contact-links">
 							<a href="mailto:richter.p.maya@gmail.com" class="c-link">
 								<div class="c-link-icon"><i class="fas fa-envelope"></i></div>
@@ -2407,7 +2844,8 @@
 									<div class="c-link-val">github.com/nmrjustme</div>
 								</div>
 							</a>
-							<a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank" rel="noopener" class="c-link">
+							<a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank"
+								rel="noopener" class="c-link">
 								<div class="c-link-icon"><i class="fab fa-linkedin-in"></i></div>
 								<div>
 									<div class="c-link-label">LinkedIn</div>
@@ -2418,22 +2856,34 @@
 					</div>
 					<div>
 						<form id="contact-form" novalidate>
-							<div style="position:absolute;left:-9999px" aria-hidden="true"><input type="text" id="hp" tabindex="-1" autocomplete="off" /></div>
+							<div style="position:absolute;left:-9999px" aria-hidden="true"><input type="text"
+									id="hp" tabindex="-1" autocomplete="off" /></div>
 							<div class="form-row">
-								<div><label class="form-label" for="cf-name">Name</label><input class="form-input" id="cf-name" type="text" placeholder="Your name" required />
+								<div><label class="form-label" for="cf-name">Name</label><input
+										class="form-input" id="cf-name" type="text" placeholder="Your name"
+										required />
 									<p class="form-err" id="err-name">Please enter your name.</p>
 								</div>
-								<div><label class="form-label" for="cf-email">Email</label><input class="form-input" id="cf-email" type="email" placeholder="you@example.com" required />
+								<div><label class="form-label" for="cf-email">Email</label><input
+										class="form-input" id="cf-email" type="email"
+										placeholder="you@example.com" required />
 									<p class="form-err" id="err-email">Please enter a valid email.</p>
 								</div>
 							</div>
-							<div class="form-group"><label class="form-label" for="cf-subject">Subject</label><input class="form-input" id="cf-subject" type="text" placeholder="What's this about?" required />
+							<div class="form-group"><label class="form-label"
+									for="cf-subject">Subject</label><input class="form-input" id="cf-subject"
+									type="text" placeholder="What's this about?" required />
 								<p class="form-err" id="err-subject">Please enter a subject.</p>
 							</div>
-							<div class="form-group"><label class="form-label" for="cf-msg">Message</label><textarea class="form-input" id="cf-msg" placeholder="Tell me about your project or opportunity..." required></textarea>
+							<div class="form-group"><label class="form-label"
+									for="cf-msg">Message</label><textarea class="form-input" id="cf-msg"
+									placeholder="Tell me about your project or opportunity..."
+									required></textarea>
 								<p class="form-err" id="err-msg">Message must be at least 10 characters.</p>
 							</div>
-							<button type="submit" class="submit-btn" id="submit-btn"><span id="submit-txt">Send Message</span><i class="fas fa-paper-plane" style="font-size:11px"></i></button>
+							<button type="submit" class="submit-btn" id="submit-btn"><span id="submit-txt">Send
+									Message</span><i class="fas fa-paper-plane"
+									style="font-size:11px"></i></button>
 							<p id="form-msg" role="status"></p>
 						</form>
 					</div>
@@ -2529,4 +2979,5 @@
 		});
 	</script>
 </body>
+
 </html>
