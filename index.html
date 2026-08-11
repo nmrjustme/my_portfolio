@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 
 <head>
 <meta charset="UTF-8" />
@@ -7,629 +7,266 @@
 <title>Richter Mayandoc · Full-Stack Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
 :root{
-  --ink:#15171c; --ink-2:#4a4d57; --ink-3:#767a86; --ink-4:#a6a9b3;
-  --bg:#ffffff; --bg-soft:#f7f7f8; --line:#e6e7eb; --line-2:#d8dae0;
-  --accent:#2451e0; --accent-soft:#eef1fd;
-  --green:#1a8a4a; --green-soft:#eaf7ef;
-  --sans:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',monospace;
-  --maxw:840px;
-}
-[data-theme="dark"]{
-  --ink:#eceef2; --ink-2:#c2c5cf; --ink-3:#8b8f9c; --ink-4:#5b5e69;
-  --bg:#101115; --bg-soft:#17181d; --line:#26282f; --line-2:#33353d;
-  --accent:#6f8dff; --accent-soft:#1a2140;
-  --green:#39c579; --green-soft:#12271a;
+  --ink:#16181d; --ink-2:#50535c; --ink-3:#82858f;
+  --bg:#ffffff; --bg-soft:#f6f6f7; --line:#e5e6ea;
+  --accent:#2451e0;
+  --sans:'Inter',system-ui,sans-serif;
+  --maxw:720px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{font-family:var(--sans);font-size:15.5px;line-height:1.65;color:var(--ink);background:var(--bg);transition:background .2s,color .2s}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-size:16px;line-height:1.65;color:var(--ink);background:var(--bg)}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 ul{list-style:none}
 
-/* ── NAV ─────────────────────────────────────── */
-.nav{
-  position:sticky;top:0;z-index:50;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 24px;height:60px;
-  background:var(--bg);border-bottom:1px solid var(--line);
-}
-.nav-inner{max-width:var(--maxw);margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-family:var(--mono);font-weight:600;font-size:14px;letter-spacing:.02em;color:var(--ink)}
-.nav-links{display:flex;gap:26px}
-.nav-links a{font-size:13.5px;font-weight:500;color:var(--ink-3);transition:color .15s}
-.nav-links a:hover,.nav-links a.active{color:var(--ink)}
-.nav-right{display:flex;align-items:center;gap:14px}
-.theme-btn{
-  width:32px;height:32px;border-radius:7px;border:1px solid var(--line);background:var(--bg-soft);
-  display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink-2);font-size:12.5px
-}
-.nav-cta{
-  padding:8px 14px;border-radius:7px;background:var(--ink);color:var(--bg);
-  font-size:13px;font-weight:600;white-space:nowrap
-}
-[data-theme="dark"] .nav-cta{background:var(--accent);color:#0b0d12}
-.mobile-btn{display:none;width:32px;height:32px;border-radius:7px;border:1px solid var(--line);background:var(--bg-soft);align-items:center;justify-content:center;cursor:pointer;color:var(--ink-2)}
-.mobile-panel{display:none;position:fixed;inset:60px 0 0 0;background:var(--bg);z-index:49;padding:20px 24px;overflow-y:auto}
-.mobile-panel.open{display:block}
-.mobile-panel a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink-2);border-bottom:1px solid var(--line)}
-
-/* ── SHARED SECTION ─────────────────────────── */
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
-.section{padding:56px 24px;border-bottom:1px solid var(--line)}
+
+/* NAV */
+.nav{border-bottom:1px solid var(--line);padding:16px 0}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.nav-name{font-weight:700;font-size:15px}
+.nav-links{display:flex;gap:20px;flex-wrap:wrap}
+.nav-links a{font-size:13.5px;color:var(--ink-3);font-weight:500}
+.nav-links a:hover{color:var(--ink)}
+
+/* SECTIONS */
+.section{padding:48px 0;border-bottom:1px solid var(--line)}
 .section:last-of-type{border-bottom:none}
-.section-inner{max-width:var(--maxw);margin:0 auto}
-.eyebrow{
-  font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;
-  letter-spacing:.1em;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px
-}
-.eyebrow::before{content:'';width:16px;height:1px;background:var(--accent)}
-.title{font-size:26px;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin-bottom:8px}
-.sub{font-size:14px;color:var(--ink-3);max-width:560px;margin-bottom:30px;line-height:1.7}
+.label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:10px}
+h2{font-size:22px;font-weight:700;margin-bottom:20px}
+p{color:var(--ink-2);font-size:14.5px;line-height:1.8}
 
-/* ── HERO ────────────────────────────────────── */
-.hero{padding:64px 24px 48px}
-.hero-eyebrow{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
-.hero-name{font-size:clamp(32px,5.5vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1.1;color:var(--ink);margin-bottom:6px}
-.hero-role{font-size:15px;color:var(--ink-3);margin-bottom:22px}
-.hero-desc{font-size:15px;color:var(--ink-2);line-height:1.8;max-width:620px;margin-bottom:26px}
-.hero-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:8px;font-weight:600;font-size:13.5px;transition:all .15s}
-.btn-p{background:var(--ink);color:var(--bg)}
-.btn-p:hover{opacity:.85}
-[data-theme="dark"] .btn-p{background:var(--accent);color:#0b0d12}
-.btn-o{border:1px solid var(--line-2);color:var(--ink-2)}
-.btn-o:hover{border-color:var(--ink);color:var(--ink)}
-.hero-stats{display:flex;gap:0;border-top:1px solid var(--line);padding-top:24px}
-.h-stat{flex:1;padding-right:20px}
-.h-num{font-size:22px;font-weight:700;color:var(--ink)}
-.h-lbl{font-size:11.5px;color:var(--ink-3);margin-top:3px;font-family:var(--mono)}
-.hero-social{display:flex;gap:8px;margin-top:24px}
-.soc{width:34px;height:34px;border-radius:7px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink-3);font-size:13px;transition:all .15s}
-.soc:hover{border-color:var(--ink);color:var(--ink)}
+/* HERO */
+.hero{padding-top:56px}
+.hero h1{font-size:clamp(28px,5vw,38px);font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.hero-role{color:var(--ink-3);font-size:14.5px;margin-bottom:16px}
+.hero p{max-width:560px;margin-bottom:22px}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.btn{display:inline-block;padding:10px 18px;border-radius:6px;font-weight:600;font-size:13.5px}
+.btn-p{background:var(--ink);color:#fff}
+.btn-o{border:1px solid var(--line);color:var(--ink-2)}
+.hero-links{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-3)}
+.hero-links a:hover{color:var(--ink)}
+.stats{display:flex;gap:32px;margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+.stat b{display:block;font-size:18px}
+.stat span{font-size:11.5px;color:var(--ink-3)}
 
-/* ── ABOUT / PROCESS ─────────────────────────── */
-.about-text{font-size:14.5px;color:var(--ink-2);line-height:1.85;max-width:640px;margin-bottom:32px}
-.process-list{display:flex;flex-direction:column;gap:0;max-width:640px}
-.p-item{display:flex;gap:16px;padding:16px 0;border-top:1px solid var(--line)}
-.p-item:first-child{border-top:none}
-.p-num{font-family:var(--mono);font-size:12px;color:var(--accent);flex-shrink:0;width:22px;padding-top:2px}
-.p-title{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px}
-.p-desc{font-size:13px;color:var(--ink-3);line-height:1.6}
+/* LISTS (services) */
+.simple-list{display:flex;flex-direction:column;gap:16px}
+.simple-list li{display:flex;gap:10px;font-size:14px;color:var(--ink-2)}
+.simple-list b{color:var(--ink);font-weight:600}
 
-/* ── SERVICES ─────────────────────────────────── */
-.services{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.svc{border:1px solid var(--line);border-radius:10px;padding:20px}
-.svc-icon{width:34px;height:34px;border-radius:8px;background:var(--bg-soft);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink-2);font-size:13px;margin-bottom:14px}
-.svc-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px}
-.svc-desc{font-size:12.5px;color:var(--ink-3);line-height:1.65}
-
-/* ── SKILLS ───────────────────────────────────── */
-.skill-group{margin-bottom:22px}
-.skill-group:last-child{margin-bottom:0}
-.skill-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);margin-bottom:10px}
+/* SKILLS */
 .chip-row{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font-size:12.5px;font-weight:500;color:var(--ink-2);background:var(--bg-soft);border:1px solid var(--line);padding:6px 12px;border-radius:6px}
+.chip{font-size:13px;color:var(--ink-2);background:var(--bg-soft);border:1px solid var(--line);padding:5px 11px;border-radius:5px}
 
-/* ── PROJECTS ─────────────────────────────────── */
-.proj-list{display:flex;flex-direction:column;gap:16px}
-.proj{border:1px solid var(--line);border-radius:10px;padding:22px}
-.proj-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px}
-.proj-name{font-size:16px;font-weight:700;color:var(--ink)}
-.proj-badges{display:flex;gap:6px;flex-wrap:wrap}
-.badge{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.04em;padding:3px 8px;border-radius:4px}
-.badge-live{background:var(--green-soft);color:var(--green);border:1px solid var(--green)}
-.badge-ind{background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent)}
-.proj-desc{font-size:13.5px;color:var(--ink-2);line-height:1.75;margin-bottom:12px}
-.proj-row-label{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-4);margin-bottom:4px}
-.proj-block{margin-bottom:12px}
-.proj-block:last-of-type{margin-bottom:0}
-.proj-features{display:flex;flex-direction:column;gap:5px}
-.proj-features li{font-size:12.5px;color:var(--ink-2);line-height:1.6;display:flex;gap:7px}
-.proj-features li::before{content:'—';color:var(--ink-4);flex-shrink:0}
-.proj-techs{display:flex;flex-wrap:wrap;gap:5px}
-.tag{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);background:var(--bg-soft);border:1px solid var(--line);padding:2px 8px;border-radius:4px}
-.proj-result{font-size:12.5px;color:var(--ink-2);background:var(--bg-soft);border-radius:6px;padding:10px 12px;line-height:1.6;margin-top:12px}
-.proj-result strong{color:var(--ink)}
-.proj-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
-.proj-links{display:flex;gap:8px}
-.plink{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--ink-2);border:1px solid var(--line-2);padding:6px 12px;border-radius:6px;transition:all .15s}
-.plink:hover{border-color:var(--ink);color:var(--ink)}
-.proj details{margin-top:14px;border-top:1px solid var(--line);padding-top:14px}
-.proj summary{cursor:pointer;font-size:12.5px;font-weight:600;color:var(--accent);list-style:none}
-.proj summary::-webkit-details-marker{display:none}
-.proj summary::before{content:'+ ';font-weight:700}
-.proj details[open] summary::before{content:'– '}
-.cs-body{margin-top:14px;display:flex;flex-direction:column;gap:14px}
-.cs-sub-label{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-4);margin-bottom:5px}
-.cs-text{font-size:13px;color:var(--ink-2);line-height:1.75}
-.cs-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.cs-metric{background:var(--bg-soft);border:1px solid var(--line);border-radius:8px;padding:12px;text-align:center}
-.cs-metric-num{font-size:18px;font-weight:700;color:var(--ink)}
-.cs-metric-lbl{font-size:10px;color:var(--ink-3);font-family:var(--mono);margin-top:3px}
-.eval-rows{display:flex;flex-direction:column;gap:5px}
-.eval-row{display:flex;justify-content:space-between;font-size:12px;padding:6px 10px;background:var(--bg-soft);border-radius:5px}
-.eval-row span:last-child{font-weight:600;color:var(--ink)}
+/* PROJECTS */
+.proj{padding:24px 0;border-top:1px solid var(--line)}
+.proj:first-of-type{border-top:none;padding-top:0}
+.proj-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.proj-name{font-size:16px;font-weight:700}
+.proj-tag{font-size:11px;color:var(--accent);font-weight:600;text-transform:uppercase}
+.proj p{margin-bottom:8px}
+.proj-meta{font-size:13px;color:var(--ink-3);margin-bottom:6px}
+.proj-meta b{color:var(--ink-2);font-weight:600}
+.proj-result{font-size:13.5px;color:var(--ink-2);margin-top:8px}
+.proj-result b{color:var(--ink)}
+.proj-links{margin-top:10px;display:flex;gap:14px}
+.proj-links a{font-size:13px;font-weight:600;color:var(--accent)}
 
-/* ── EDUCATION / CERTS ────────────────────────── */
-.edu-card{border:1px solid var(--line);border-radius:10px;padding:22px;margin-bottom:24px}
-.edu-degree{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:3px}
-.edu-school{font-size:13px;color:var(--accent);font-weight:600;margin-bottom:6px}
-.edu-year{font-family:var(--mono);font-size:11px;color:var(--ink-4);margin-bottom:12px}
-.edu-desc{font-size:13px;color:var(--ink-3);line-height:1.7}
-.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.cert-card{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--bg-soft)}
-.cert-img-wrap{height:130px;overflow:hidden;background:var(--bg);border-bottom:1px solid var(--line);cursor:pointer}
-.cert-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center}
-.cert-info{padding:12px 14px}
-.cert-name{font-size:12.5px;font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:2px}
-.cert-org{font-size:11px;color:var(--ink-4)}
-.lightbox{position:fixed;inset:0;background:rgba(10,10,14,.85);z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .2s}
-.lightbox.open{opacity:1;pointer-events:all}
-.lightbox img{max-width:92vw;max-height:88vh;border-radius:6px}
-.lightbox-close{position:absolute;top:20px;right:24px;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+/* EDUCATION / CERTS */
+.edu-degree{font-weight:700;font-size:15px}
+.edu-school{color:var(--accent);font-size:13.5px;font-weight:600;margin:2px 0}
+.edu-year{color:var(--ink-3);font-size:12.5px;margin-bottom:10px}
+.certs{margin-top:24px;display:flex;flex-direction:column;gap:10px}
+.cert-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.cert-row:first-child{border-top:none}
+.cert-thumb{width:56px;height:56px;flex-shrink:0;border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.cert-thumb img{width:100%;height:100%;object-fit:cover}
+.cert-name{font-size:13.5px;font-weight:600}
+.cert-org{font-size:12px;color:var(--ink-3)}
+.cert-thumb a{display:block;width:100%;height:100%}
 
-/* ── CONTACT ──────────────────────────────────── */
-.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:start}
-.contact-text{font-size:13.5px;color:var(--ink-2);line-height:1.8;margin-bottom:22px}
-.c-links{display:flex;flex-direction:column;gap:8px}
-.c-link{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;transition:all .15s}
-.c-link:hover{border-color:var(--ink)}
-.c-icon{width:32px;height:32px;border-radius:7px;background:var(--bg-soft);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink-2);font-size:12.5px;flex-shrink:0}
-.c-label{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-4);margin-bottom:1px}
-.c-val{font-size:12.5px;font-weight:600;color:var(--ink)}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
-.form-group{margin-bottom:12px}
-.form-label{display:block;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin-bottom:5px}
-.form-input{width:100%;background:var(--bg-soft);border:1px solid var(--line-2);border-radius:7px;padding:10px 12px;font-family:var(--sans);font-size:13.5px;color:var(--ink);outline:none}
-.form-input::placeholder{color:var(--ink-4)}
-.form-input:focus{border-color:var(--accent)}
-.form-input.err{border-color:#d92d20}
-textarea.form-input{resize:vertical;min-height:100px}
-.form-err{font-size:11px;color:#d92d20;margin-top:4px;display:none}
+/* CONTACT */
+.c-links{display:flex;flex-direction:column;gap:6px;margin-bottom:24px}
+.c-links a{font-size:14px;color:var(--ink-2)}
+.c-links a:hover{color:var(--ink)}
+.c-links i{width:18px;color:var(--ink-3)}
+form{max-width:480px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.form-group{margin-bottom:10px}
+label{display:block;font-size:12px;color:var(--ink-3);margin-bottom:4px}
+input,textarea{width:100%;background:var(--bg-soft);border:1px solid var(--line);border-radius:6px;padding:9px 11px;font-family:var(--sans);font-size:13.5px;color:var(--ink);outline:none}
+input:focus,textarea:focus{border-color:var(--accent)}
+input.err,textarea.err{border-color:#d92d20}
+textarea{resize:vertical;min-height:90px}
+.form-err{font-size:11px;color:#d92d20;margin-top:3px;display:none}
 .form-err.show{display:block}
-.submit-btn{width:100%;padding:11px;margin-top:2px;background:var(--ink);color:var(--bg);font-family:var(--sans);font-weight:600;font-size:13.5px;border:none;border-radius:7px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
-[data-theme="dark"] .submit-btn{background:var(--accent);color:#0b0d12}
-.submit-btn:disabled{opacity:.5;cursor:not-allowed}
-#form-msg{font-size:12px;margin-top:9px;display:none}
+button[type=submit]{padding:10px 20px;background:var(--ink);color:#fff;font-family:var(--sans);font-weight:600;font-size:13.5px;border:none;border-radius:6px;cursor:pointer}
+button[type=submit]:disabled{opacity:.5;cursor:not-allowed}
+#form-msg{font-size:12.5px;margin-top:8px;display:none}
 #form-msg.show{display:block}
 
-/* ── FOOTER ───────────────────────────────────── */
-.site-footer{padding:22px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;max-width:var(--maxw);margin:0 auto}
-.footer-copy{font-size:12px;color:var(--ink-3)}
-.footer-links{display:flex;gap:16px}
-.footer-links a{font-size:12px;color:var(--ink-3)}
-.footer-links a:hover{color:var(--ink)}
+footer{padding:24px 0}
+footer p{font-size:12.5px;color:var(--ink-3)}
 
-/* ── RESPONSIVE ───────────────────────────────── */
-@media (max-width:760px){
-  .nav-links{display:none}
-  .mobile-btn{display:flex}
-  .services{grid-template-columns:1fr}
-  .contact-grid{grid-template-columns:1fr}
+@media (max-width:600px){
   .form-row{grid-template-columns:1fr}
-  .certs-grid{grid-template-columns:1fr 1fr}
-  .cs-metrics{grid-template-columns:1fr 1fr}
-  .hero-stats{flex-direction:column;gap:14px}
-  .h-stat{padding-right:0}
-}
-@media (max-width:480px){
-  .certs-grid{grid-template-columns:1fr}
+  .stats{gap:22px}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <div class="nav">
-  <div class="nav-inner">
-    <a href="#home" class="nav-logo">Richter Mayandoc</a>
-    <nav class="nav-links" aria-label="Sections">
+  <div class="wrap">
+    <a href="#home" class="nav-name">Richter Mayandoc</a>
+    <nav class="nav-links">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </nav>
-    <div class="nav-right">
-      <button class="theme-btn" id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
-      <a href="#contact" class="nav-cta">Contact</a>
-      <button class="mobile-btn" id="mobile-btn" aria-label="Menu"><i class="fas fa-bars"></i></button>
-    </div>
   </div>
-</div>
-<div class="mobile-panel" id="mobile-panel">
-  <a href="#about">About</a>
-  <a href="#skills">Skills</a>
-  <a href="#projects">Projects</a>
-  <a href="#education">Education</a>
-  <a href="#contact">Contact</a>
 </div>
 
 <!-- HERO -->
-<section class="hero" id="home">
-  <div class="section-inner">
-    <div class="hero-eyebrow">Full-Stack Developer</div>
-    <h1 class="hero-name">Richter Mayandoc</h1>
-    <p class="hero-role">BS Information Technology — Isabela State University, Ilagan Campus</p>
-    <div class="hero-btns">
-      <a href="#projects" class="btn btn-p"><i class="fas fa-folder-open" style="font-size:12px"></i> View Projects</a>
-      <a href="#contact" class="btn btn-o"><i class="fas fa-paper-plane" style="font-size:12px"></i> Let's Talk</a>
-    </div>
-    <div class="hero-stats">
-      <div class="h-stat"><div class="h-num">3+</div><div class="h-lbl">YEARS BUILDING</div></div>
-      <div class="h-stat"><div class="h-num">4+</div><div class="h-lbl">SYSTEMS SHIPPED</div></div>
-      <div class="h-stat"><div class="h-num">July 2026</div><div class="h-lbl">EXPECTED GRADUATION</div></div>
-    </div>
-    <div class="hero-social">
-      <a href="https://github.com/nmrjustme" target="_blank" rel="noopener" class="soc" aria-label="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank" rel="noopener" class="soc" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      <a href="mailto:richter.p.maya@gmail.com" class="soc" aria-label="Email"><i class="fas fa-envelope"></i></a>
-      <a href="tel:+639169824195" class="soc" aria-label="Phone"><i class="fas fa-phone"></i></a>
-    </div>
+<section class="hero wrap" id="home">
+  <h1>Richter Mayandoc</h1>
+  <p class="hero-role">Full-Stack Developer · BS Information Technology, Isabela State University — Ilagan Campus</p>
+  <p>I build practical, backend-focused web systems that help businesses manage operations, improve customer experience, and support day-to-day workflows — covering database design, system logic, integrations, and deployment.</p>
+  <div class="hero-btns">
+    <a href="#projects" class="btn btn-p">View Projects</a>
+    <a href="#contact" class="btn btn-o">Contact Me</a>
+  </div>
+  <div class="hero-links">
+    <a href="https://github.com/nmrjustme" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:richter.p.maya@gmail.com">Email</a>
+    <a href="tel:+639169824195">+63 916 982 4195</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>3+</b><span>Years building</span></div>
+    <div class="stat"><b>4+</b><span>Systems shipped</span></div>
+    <div class="stat"><b>July 2026</b><span>Expected graduation</span></div>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section class="section" id="about">
-  <div class="section-inner">
-    <div class="eyebrow">About</div>
-    <h2 class="title">Turning business needs into working systems</h2>
-    <p class="about-text">My goal is to turn business needs into reliable digital solutions that are easy to use,
-      scalable, and useful in real operations. I focus on systems that support sales, workflows, daily management,
-      automation, and long-term business growth — across both frontend and backend, with a particular focus on
-      backend architecture and database design.</p>
-
-    <div class="skill-label" style="margin-bottom:14px">How I work</div>
-    <div class="process-list">
-      <div class="p-item">
-        <div class="p-num">01</div>
-        <div><div class="p-title">Discover the problem</div><div class="p-desc">Understand the business need and identify the core problem to solve.</div></div>
-      </div>
-      <div class="p-item">
-        <div class="p-num">02</div>
-        <div><div class="p-title">Design the architecture</div><div class="p-desc">Plan the system structure, features, and workflows.</div></div>
-      </div>
-      <div class="p-item">
-        <div class="p-num">03</div>
-        <div><div class="p-title">Implementation</div><div class="p-desc">Develop the system and set up automations, integrations, and workflows.</div></div>
-      </div>
-      <div class="p-item">
-        <div class="p-num">04</div>
-        <div><div class="p-title">Testing and launch</div><div class="p-desc">Launch the system, provide support, and make improvements to keep it working properly.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="section" id="services">
-  <div class="section-inner">
-    <div class="eyebrow">What I Offer</div>
-    <h2 class="title">Services</h2>
-    <p class="sub">Where I focus my development work.</p>
-    <div class="services">
-      <div class="svc">
-        <div class="svc-icon"><i class="fas fa-globe"></i></div>
-        <div class="svc-title">Custom Web Applications</div>
-        <p class="svc-desc">Web applications that help businesses organize operations, improve customer experience, and streamline workflows.</p>
-      </div>
-      <div class="svc">
-        <div class="svc-icon"><i class="fas fa-credit-card"></i></div>
-        <div class="svc-title">Payment &amp; API Integration</div>
-        <p class="svc-desc">Connecting business systems with payment platforms and third-party APIs for faster, more reliable transactions.</p>
-      </div>
-      <div class="svc">
-        <div class="svc-icon"><i class="fas fa-user-shield"></i></div>
-        <div class="svc-title">Admin Dashboards &amp; Access Control</div>
-        <p class="svc-desc">Secure dashboards for managing users, tracking activity, generating reports, and supporting decisions.</p>
-      </div>
-    </div>
+  <div class="wrap">
+    <div class="label">About</div>
+    <h2>What I focus on</h2>
+    <p style="margin-bottom:20px">My goal is to turn business needs into reliable digital solutions that are easy to use, scalable, and useful in real operations — supporting sales, workflows, daily management, automation, and long-term growth, with a particular focus on backend architecture and database design.</p>
+    <ul class="simple-list">
+      <li><b>Custom web applications</b> — systems that help organize operations and streamline workflows.</li>
+      <li><b>Payment &amp; API integration</b> — connecting business systems to payment platforms and third-party APIs.</li>
+      <li><b>Admin dashboards &amp; access control</b> — secure tools for managing users, activity, and reports.</li>
+    </ul>
   </div>
 </section>
 
 <!-- SKILLS -->
 <section class="section" id="skills">
-  <div class="section-inner">
-    <div class="eyebrow">Skills &amp; Stack</div>
-    <h2 class="title">Technologies I ship with</h2>
-    <p class="sub">Tools I've used in production.</p>
-    <div class="skill-group">
-      <div class="skill-label">Core stack</div>
-      <div class="chip-row">
-        <span class="chip">PHP</span><span class="chip">Laravel</span><span class="chip">MySQL</span>
-        <span class="chip">JavaScript</span><span class="chip">Python</span><span class="chip">Tailwind CSS</span>
-        <span class="chip">Bootstrap</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-label">Extended toolkit</div>
-      <div class="chip-row">
-        <span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">SQL Server</span>
-        <span class="chip">Django</span><span class="chip">Git</span><span class="chip">GitHub</span>
-        <span class="chip">Figma</span>
-      </div>
+  <div class="wrap">
+    <div class="label">Skills</div>
+    <h2>Technologies I use</h2>
+    <div class="chip-row">
+      <span class="chip">PHP</span><span class="chip">Laravel</span><span class="chip">MySQL</span>
+      <span class="chip">JavaScript</span><span class="chip">Python</span><span class="chip">Tailwind CSS</span>
+      <span class="chip">Bootstrap</span><span class="chip">React</span><span class="chip">TypeScript</span>
+      <span class="chip">SQL Server</span><span class="chip">Django</span><span class="chip">Git</span>
+      <span class="chip">GitHub</span><span class="chip">Figma</span>
     </div>
   </div>
 </section>
 
 <!-- PROJECTS -->
 <section class="section" id="projects">
-  <div class="section-inner">
-    <div class="eyebrow">Selected Work</div>
-    <h2 class="title">Projects</h2>
-    <p class="sub">Real systems built for real operations.</p>
+  <div class="wrap">
+    <div class="label">Projects</div>
+    <h2>Selected work</h2>
 
-    <div class="proj-list">
-
-      <!-- ReservaMate -->
-      <div class="proj">
-        <div class="proj-top">
-          <div class="proj-name">ReservaMate — Mt. ClaRamuel Resort</div>
-          <div class="proj-badges"><span class="badge badge-live">Live</span><span class="badge badge-ind">Capstone</span></div>
-        </div>
-        <p class="proj-desc">Full-stack hotel reservation platform built to replace paper notebooks and phone
-          bookings, which caused chronic double-bookings, lost payment records, and heavy manual admin work.</p>
-
-        <div class="proj-block">
-          <div class="proj-row-label">My contribution</div>
-          <p class="cs-text">Co-developed as my BS IT capstone project (with Edcel B. Yasay, ISU Ilagan, December 2025) — full-stack build covering the booking engine, payment integration, and admin dashboard.</p>
-        </div>
-
-        <div class="proj-block">
-          <div class="proj-row-label">Key features</div>
-          <ul class="proj-features">
-            <li>Real-time, concurrent-safe booking engine that prevents double-bookings</li>
-            <li>Multi-payment gateway (Maya Business) covering e-wallets, credit and debit cards with automated receipts</li>
-            <li>Admin dashboard with role-based access control for staff tiers</li>
-            <li>Check-in / check-out module with real-time occupancy updates</li>
-            <li>Filterable financial reports by month or year across room types</li>
-          </ul>
-        </div>
-
-        <div class="proj-block">
-          <div class="proj-row-label">Technologies</div>
-          <div class="proj-techs">
-            <span class="tag">Laravel 10</span><span class="tag">PHP</span><span class="tag">MySQL</span>
-            <span class="tag">Tailwind CSS</span><span class="tag">JavaScript</span><span class="tag">Maya Business API</span>
-            <span class="tag">RBAC</span><span class="tag">SSL</span>
-          </div>
-        </div>
-
-        <div class="proj-result"><strong>Result:</strong> Eliminated overbooking, automated payment confirmations, and replaced a manual ledger that caused weekly reconciliation errors.</div>
-
-        <details>
-          <summary>Full case study — evaluation results &amp; technical decisions</summary>
-          <div class="cs-body">
-            <div class="cs-metrics">
-              <div class="cs-metric"><div class="cs-metric-num">4.30</div><div class="cs-metric-lbl">ISO 25010 GRAND MEAN</div></div>
-              <div class="cs-metric"><div class="cs-metric-num">4.22</div><div class="cs-metric-lbl">FUNCTIONALITY SCORE</div></div>
-              <div class="cs-metric"><div class="cs-metric-num">51/51</div><div class="cs-metric-lbl">RESPONDENTS — 100%</div></div>
-            </div>
-            <div>
-              <div class="cs-sub-label">ISO/IEC 25010 evaluation</div>
-              <p class="cs-text" style="margin-bottom:10px">Formally evaluated by 45 customers, 3 resort staff, and 3 IT specialists across all 8 quality dimensions. Grand mean: 4.30 — Strongly Agree.</p>
-              <div class="eval-rows">
-                <div class="eval-row"><span>Accommodation &amp; Facility Booking</span><span>4.29 — Excellent</span></div>
-                <div class="eval-row"><span>Pricing &amp; Billing Accuracy</span><span>4.27 — Excellent</span></div>
-                <div class="eval-row"><span>Payment Gateway</span><span>4.24 — Excellent</span></div>
-                <div class="eval-row"><span>User Management</span><span>4.16 — Good</span></div>
-                <div class="eval-row"><span>Check-in &amp; Check-out</span><span>4.16 — Good</span></div>
-              </div>
-            </div>
-            <div>
-              <div class="cs-sub-label">Technical decisions</div>
-              <p class="cs-text">Laravel's ORM and authentication scaffolding sped up development while keeping the codebase maintainable. MySQL handles concurrency-safe writes for simultaneous bookings. Maya Business was chosen for native support of Philippine e-wallets, the dominant payment method for the resort's local customers. Security is layered across application-level RBAC, password hashing, SSL, and encrypted data storage.</p>
-            </div>
-          </div>
-        </details>
-
-        <div class="proj-footer">
-          <div class="proj-links">
-            <a href="https://mtclaramuelhotelresort.com/" target="_blank" rel="noopener" class="plink"><i class="fas fa-arrow-up-right-from-square" style="font-size:10px"></i> Live Site</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- CIMC -->
-      <div class="proj">
-        <div class="proj-top">
-          <div class="proj-name">CIMC Patient Record Viewer</div>
-          <div class="proj-badges"><span class="badge badge-ind">Healthcare</span></div>
-        </div>
-        <p class="proj-desc">Digital archiving and search system for a hospital, replacing physical record folders
-          stored across multiple rooms that took 15–30 minutes per record to locate.</p>
-
-        <div class="proj-block">
-          <div class="proj-row-label">My contribution</div>
-          <p class="cs-text">Designed and built the full system — digitizing decades of physical records into a secure database with search, rendering, and access control.</p>
-        </div>
-
-        <div class="proj-block">
-          <div class="proj-row-label">Key features</div>
-          <ul class="proj-features">
-            <li>Search by patient name, ID, or admission date with full-text indexing</li>
-            <li>Server-side PDF document rendering and annotation</li>
-            <li>Role-based access control restricting sensitive data to authorized staff</li>
-          </ul>
-        </div>
-
-        <div class="proj-block">
-          <div class="proj-row-label">Technologies</div>
-          <div class="proj-techs">
-            <span class="tag">Laravel</span><span class="tag">SQL Server</span><span class="tag">PHP</span>
-            <span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Full-Text Search</span>
-            <span class="tag">RBAC</span>
-          </div>
-        </div>
-
-        <div class="proj-result"><strong>Result:</strong> Record retrieval dropped from 15–30 minutes to under 30 seconds via full-text indexing on a decades-old dataset.</div>
-
-        <details>
-          <summary>Full case study — technical decisions</summary>
-          <div class="cs-body">
-            <div class="cs-metrics">
-              <div class="cs-metric"><div class="cs-metric-num">&lt;30s</div><div class="cs-metric-lbl">NEW RETRIEVAL TIME</div></div>
-              <div class="cs-metric"><div class="cs-metric-num">15–30m</div><div class="cs-metric-lbl">PREVIOUS RETRIEVAL TIME</div></div>
-              <div class="cs-metric"><div class="cs-metric-num">RBAC</div><div class="cs-metric-lbl">SECURED ACCESS TIERS</div></div>
-            </div>
-            <div>
-              <div class="cs-sub-label">Technical decisions</div>
-              <p class="cs-text">SQL Server was chosen to align with the hospital's existing IT infrastructure. Full-text indexing on name and patient ID fields keeps search near-instant as the dataset grows. PDF rendering is handled server-side to avoid exposing raw file paths to the client — an important constraint for regulated medical data.</p>
-            </div>
-          </div>
-        </details>
-
-        <div class="proj-footer">
-          <div class="proj-links">
-            <a href="https://github.com/nmrjustme" target="_blank" rel="noopener" class="plink"><i class="fab fa-github"></i> GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Credential Verification -->
-      <div class="proj">
-        <div class="proj-top">
-          <div class="proj-name">Credential &amp; Academic Verification System</div>
-          <div class="proj-badges"><span class="badge badge-ind">Education</span></div>
-        </div>
-        <p class="proj-desc">Secure document verification platform built for an educational institution dealing with fraudulent submissions.</p>
-
-        <div class="proj-block">
-          <div class="proj-row-label">My contribution</div>
-          <p class="cs-text">Designed and built the verification workflow, validation logic, and audit trail reporting.</p>
-        </div>
-
-        <div class="proj-block">
-          <div class="proj-row-label">Key features</div>
-          <ul class="proj-features">
-            <li>Automated document validation workflows</li>
-            <li>Tamper-proof audit trail reporting</li>
-          </ul>
-        </div>
-
-        <div class="proj-block">
-          <div class="proj-row-label">Technologies</div>
-          <div class="proj-techs">
-            <span class="tag">Laravel</span><span class="tag">TypeScript</span><span class="tag">React</span>
-            <span class="tag">Tailwind CSS</span><span class="tag">SQL Server</span>
-          </div>
-        </div>
-
-        <div class="proj-result"><strong>Result:</strong> Fraudulent document submissions reduced significantly through comprehensive audit trail logging and automated verification checks.</div>
-
-        <div class="proj-footer">
-          <div class="proj-links">
-            <a href="https://github.com/nmrjustme" target="_blank" rel="noopener" class="plink"><i class="fab fa-github"></i> GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Pageant Tabulation -->
-      <div class="proj">
-        <div class="proj-top">
-          <div class="proj-name">Pageant Tabulation System</div>
-          <div class="proj-badges"><span class="badge badge-ind">Real-Time</span></div>
-        </div>
-        <p class="proj-desc">Live event scoring platform built to replace spreadsheets and manual tallying at a real event.</p>
-
-        <div class="proj-block">
-          <div class="proj-row-label">My contribution</div>
-          <p class="cs-text">Designed and built concurrent score ingestion from multiple judges with automated leaderboard calculation.</p>
-        </div>
-
-        <div class="proj-block">
-          <div class="proj-row-label">Key features</div>
-          <ul class="proj-features">
-            <li>Concurrent score ingestion from multiple judges</li>
-            <li>Automated, real-time leaderboard calculation</li>
-          </ul>
-        </div>
-
-        <div class="proj-block">
-          <div class="proj-row-label">Technologies</div>
-          <div class="proj-techs">
-            <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span>
-          </div>
-        </div>
-
-        <div class="proj-result"><strong>Result:</strong> 100% scoring accuracy under simultaneous multi-judge input — no race conditions, no manual recounts.</div>
-
-        <div class="proj-footer">
-          <div class="proj-links">
-            <a href="https://github.com/nmrjustme" target="_blank" rel="noopener" class="plink"><i class="fab fa-github"></i> GitHub</a>
-          </div>
-        </div>
-      </div>
-
+    <div class="proj">
+      <div class="proj-top"><span class="proj-name">ReservaMate — Mt. ClaRamuel Resort</span><span class="proj-tag">Capstone · Live</span></div>
+      <p>Full-stack hotel reservation platform built to replace paper notebooks and phone bookings, which caused double-bookings, lost payment records, and heavy manual admin work.</p>
+      <div class="proj-meta"><b>Contribution:</b> Co-developed as BS IT capstone (with Edcel B. Yasay) — booking engine, payment integration, and admin dashboard.</div>
+      <div class="proj-meta"><b>Features:</b> Real-time booking engine, Maya Business payment gateway, RBAC admin dashboard, check-in/out module, financial reports.</div>
+      <div class="proj-meta"><b>Tech:</b> Laravel 10, PHP, MySQL, Tailwind CSS, JavaScript, Maya Business API, RBAC, SSL.</div>
+      <div class="proj-result"><b>Result:</b> Evaluated 4.30/5 (ISO/IEC 25010) by 51 respondents. Eliminated overbooking and manual ledger errors.</div>
+      <div class="proj-links"><a href="https://mtclaramuelhotelresort.com/" target="_blank" rel="noopener">Live Site →</a></div>
     </div>
+
+    <div class="proj">
+      <div class="proj-top"><span class="proj-name">CIMC Patient Record Viewer</span><span class="proj-tag">Healthcare</span></div>
+      <p>Digital archiving and search system for a hospital, replacing physical record folders that took 15–30 minutes per record to locate.</p>
+      <div class="proj-meta"><b>Contribution:</b> Designed and built the full system — digitized records, search, rendering, and access control.</div>
+      <div class="proj-meta"><b>Features:</b> Full-text search by name/ID/date, server-side PDF rendering, role-based access control.</div>
+      <div class="proj-meta"><b>Tech:</b> Laravel, SQL Server, PHP, TypeScript, React.</div>
+      <div class="proj-result"><b>Result:</b> Retrieval time dropped from 15–30 minutes to under 30 seconds.</div>
+      <div class="proj-links"><a href="https://github.com/nmrjustme" target="_blank" rel="noopener">GitHub →</a></div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-top"><span class="proj-name">Credential &amp; Academic Verification System</span><span class="proj-tag">Education</span></div>
+      <p>Secure document verification platform built for an educational institution dealing with fraudulent submissions.</p>
+      <div class="proj-meta"><b>Contribution:</b> Designed and built the verification workflow, validation logic, and audit trail reporting.</div>
+      <div class="proj-meta"><b>Features:</b> Automated document validation, tamper-proof audit trail.</div>
+      <div class="proj-meta"><b>Tech:</b> Laravel, TypeScript, React, Tailwind CSS, SQL Server.</div>
+      <div class="proj-result"><b>Result:</b> Fraudulent submissions reduced significantly via audit logging and automated checks.</div>
+      <div class="proj-links"><a href="https://github.com/nmrjustme" target="_blank" rel="noopener">GitHub →</a></div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-top"><span class="proj-name">Pageant Tabulation System</span><span class="proj-tag">Real-Time</span></div>
+      <p>Live event scoring platform built to replace spreadsheets and manual tallying at a real event.</p>
+      <div class="proj-meta"><b>Contribution:</b> Designed and built concurrent score ingestion and automated leaderboard calculation.</div>
+      <div class="proj-meta"><b>Features:</b> Multi-judge concurrent scoring, real-time leaderboard.</div>
+      <div class="proj-meta"><b>Tech:</b> PHP, MySQL, Bootstrap.</div>
+      <div class="proj-result"><b>Result:</b> 100% scoring accuracy under simultaneous multi-judge input — no manual recounts.</div>
+      <div class="proj-links"><a href="https://github.com/nmrjustme" target="_blank" rel="noopener">GitHub →</a></div>
+    </div>
+
   </div>
 </section>
 
 <!-- EDUCATION -->
 <section class="section" id="education">
-  <div class="section-inner">
-    <div class="eyebrow">Background</div>
-    <h2 class="title">Education &amp; Certifications</h2>
+  <div class="wrap">
+    <div class="label">Education</div>
+    <h2>Background &amp; certifications</h2>
+    <div class="edu-degree">Bachelor of Science in Information Technology</div>
+    <div class="edu-school">Isabela State University — Ilagan Campus</div>
+    <div class="edu-year">2022 – 2026</div>
+    <p>Focused on software development, database management, web technologies, networking, and practical IT solutions — designing, developing, and maintaining systems that solve real-world problems.</p>
 
-    <div class="edu-card">
-      <div class="edu-degree">Bachelor of Science in Information Technology</div>
-      <div class="edu-school">Isabela State University — Ilagan Campus</div>
-      <div class="edu-year">2022 – 2026</div>
-      <p class="edu-desc">Focused on software development, database management, web technologies, networking, and practical IT solutions — designing, developing, and maintaining systems that solve real-world problems.</p>
-    </div>
-
-    <div class="skill-label" style="margin-bottom:14px">Certifications</div>
-    <div class="certs-grid">
-      <div class="cert-card">
-        <div class="cert-img-wrap" onclick="openLightbox('certificate/it_specialist_db.jpg')">
-          <img src="certificate/it_specialist_db.jpg" alt="IT Specialist — Database certificate" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:var(--ink-4);font-size:12px\'>Certificate image</div>'">
-        </div>
-        <div class="cert-info">
-          <div class="cert-name">IT Specialist — Database</div>
-          <div class="cert-org">Certiport / Pearson VUE</div>
-        </div>
+    <div class="certs">
+      <div class="cert-row">
+        <div class="cert-thumb"><a href="certificate/it_specialist_db.jpg" target="_blank"><img src="certificate/it_specialist_db.jpg" alt="IT Specialist — Database certificate" onerror="this.parentElement.parentElement.querySelector('.cert-thumb').style.display='none'"></a></div>
+        <div><div class="cert-name">IT Specialist — Database</div><div class="cert-org">Certiport / Pearson VUE</div></div>
       </div>
-      <div class="cert-card">
-        <div class="cert-img-wrap" onclick="openLightbox('certificate/relational_db.png')">
-          <img src="certificate/relational_db.png" alt="Relational Database Design certificate" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:var(--ink-4);font-size:12px\'>Certificate image</div>'">
-        </div>
-        <div class="cert-info">
-          <div class="cert-name">Relational Database Design</div>
-          <div class="cert-org">Database Certification</div>
-        </div>
+      <div class="cert-row">
+        <div class="cert-thumb"><a href="certificate/relational_db.png" target="_blank"><img src="certificate/relational_db.png" alt="Relational Database Design certificate" onerror="this.parentElement.parentElement.querySelector('.cert-thumb').style.display='none'"></a></div>
+        <div><div class="cert-name">Relational Database Design</div><div class="cert-org">Database Certification</div></div>
       </div>
-      <div class="cert-card">
-        <div class="cert-img-wrap" onclick="openLightbox('certificate/sql_foundation.png')">
-          <img src="certificate/sql_foundation.png" alt="SQL Foundations certificate" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:var(--ink-4);font-size:12px\'>Certificate image</div>'">
-        </div>
-        <div class="cert-info">
-          <div class="cert-name">SQL Foundations</div>
-          <div class="cert-org">SQL Certification</div>
-        </div>
+      <div class="cert-row">
+        <div class="cert-thumb"><a href="certificate/sql_foundation.png" target="_blank"><img src="certificate/sql_foundation.png" alt="SQL Foundations certificate" onerror="this.parentElement.parentElement.querySelector('.cert-thumb').style.display='none'"></a></div>
+        <div><div class="cert-name">SQL Foundations</div><div class="cert-org">SQL Certification</div></div>
       </div>
-      <div class="cert-card">
-        <div class="cert-img-wrap" onclick="openLightbox('certificate/dict.jpg')">
-          <img src="certificate/dict.jpg" alt="Python Programming certificate" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:var(--ink-4);font-size:12px\'>Certificate image</div>'">
-        </div>
-        <div class="cert-info">
-          <div class="cert-name">Python Programming</div>
-          <div class="cert-org">DICT Philippines</div>
-        </div>
+      <div class="cert-row">
+        <div class="cert-thumb"><a href="certificate/dict.jpg" target="_blank"><img src="certificate/dict.jpg" alt="Python Programming certificate" onerror="this.parentElement.parentElement.querySelector('.cert-thumb').style.display='none'"></a></div>
+        <div><div class="cert-name">Python Programming</div><div class="cert-org">DICT Philippines</div></div>
       </div>
-      <div class="cert-card">
-        <div class="cert-img-wrap" onclick="openLightbox('certificate/inter_conference.jpg')">
-          <img src="certificate/inter_conference.jpg" alt="International Research Presenter certificate" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:var(--ink-4);font-size:12px\'>Certificate image</div>'">
-        </div>
-        <div class="cert-info">
-          <div class="cert-name">International Research Presenter</div>
-          <div class="cert-org">Academic Conference</div>
-        </div>
+      <div class="cert-row">
+        <div class="cert-thumb"><a href="certificate/inter_conference.jpg" target="_blank"><img src="certificate/inter_conference.jpg" alt="International Research Presenter certificate" onerror="this.parentElement.parentElement.querySelector('.cert-thumb').style.display='none'"></a></div>
+        <div><div class="cert-name">International Research Presenter</div><div class="cert-org">Academic Conference</div></div>
       </div>
     </div>
   </div>
@@ -637,131 +274,54 @@ textarea.form-input{resize:vertical;min-height:100px}
 
 <!-- CONTACT -->
 <section class="section" id="contact">
-  <div class="section-inner">
-    <div class="eyebrow">Get in Touch</div>
-    <h2 class="title">Let's build your next solution</h2>
-    <p class="sub">Open to permanent roles, freelance projects, and remote opportunities.</p>
-    <div class="contact-grid">
-      <div>
-        <p class="contact-text">Whether you need a full product built from scratch, an existing system extended, or an integration that finally works — reach out through any channel below or fill in the form.</p>
-        <div class="c-links">
-          <a href="mailto:richter.p.maya@gmail.com" class="c-link">
-            <div class="c-icon"><i class="fas fa-envelope"></i></div>
-            <div><div class="c-label">Email</div><div class="c-val">richter.p.maya@gmail.com</div></div>
-          </a>
-          <a href="tel:+639169824195" class="c-link">
-            <div class="c-icon"><i class="fas fa-phone"></i></div>
-            <div><div class="c-label">Phone</div><div class="c-val">+63 916 982 4195</div></div>
-          </a>
-          <a href="https://github.com/nmrjustme" target="_blank" rel="noopener" class="c-link">
-            <div class="c-icon"><i class="fab fa-github"></i></div>
-            <div><div class="c-label">GitHub</div><div class="c-val">github.com/nmrjustme</div></div>
-          </a>
-          <a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank" rel="noopener" class="c-link">
-            <div class="c-icon"><i class="fab fa-linkedin-in"></i></div>
-            <div><div class="c-label">LinkedIn</div><div class="c-val">Richter P. Mayandoc</div></div>
-          </a>
+  <div class="wrap">
+    <div class="label">Contact</div>
+    <h2>Let's build your next solution</h2>
+    <p style="margin-bottom:20px">Open to permanent roles, freelance projects, and remote opportunities.</p>
+    <div class="c-links">
+      <a href="mailto:richter.p.maya@gmail.com"><i class="fas fa-envelope"></i> richter.p.maya@gmail.com</a>
+      <a href="tel:+639169824195"><i class="fas fa-phone"></i> +63 916 982 4195</a>
+      <a href="https://github.com/nmrjustme" target="_blank" rel="noopener"><i class="fab fa-github"></i> github.com/nmrjustme</a>
+      <a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i> Richter P. Mayandoc</a>
+    </div>
+
+    <form id="contact-form" novalidate>
+      <div style="position:absolute;left:-9999px" aria-hidden="true"><input type="text" id="hp" tabindex="-1" autocomplete="off" /></div>
+      <div class="form-row">
+        <div>
+          <label for="cf-name">Name</label>
+          <input id="cf-name" type="text" placeholder="Your name" required />
+          <p class="form-err" id="err-name">Please enter your name.</p>
+        </div>
+        <div>
+          <label for="cf-email">Email</label>
+          <input id="cf-email" type="email" placeholder="you@example.com" required />
+          <p class="form-err" id="err-email">Please enter a valid email.</p>
         </div>
       </div>
-      <div>
-        <form id="contact-form" novalidate>
-          <div style="position:absolute;left:-9999px" aria-hidden="true"><input type="text" id="hp" tabindex="-1" autocomplete="off" /></div>
-          <div class="form-row">
-            <div>
-              <label class="form-label" for="cf-name">Name</label>
-              <input class="form-input" id="cf-name" type="text" placeholder="Your name" required />
-              <p class="form-err" id="err-name">Please enter your name.</p>
-            </div>
-            <div>
-              <label class="form-label" for="cf-email">Email</label>
-              <input class="form-input" id="cf-email" type="email" placeholder="you@example.com" required />
-              <p class="form-err" id="err-email">Please enter a valid email.</p>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="cf-subject">Subject</label>
-            <input class="form-input" id="cf-subject" type="text" placeholder="What's this about?" required />
-            <p class="form-err" id="err-subject">Please enter a subject.</p>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="cf-msg">Message</label>
-            <textarea class="form-input" id="cf-msg" placeholder="Tell me about your project or opportunity..." required></textarea>
-            <p class="form-err" id="err-msg">Message must be at least 10 characters.</p>
-          </div>
-          <button type="submit" class="submit-btn" id="submit-btn">
-            <span id="submit-txt">Send Message</span>
-            <i class="fas fa-paper-plane" style="font-size:12px"></i>
-          </button>
-          <p id="form-msg" role="status"></p>
-        </form>
+      <div class="form-group">
+        <label for="cf-subject">Subject</label>
+        <input id="cf-subject" type="text" placeholder="What's this about?" required />
+        <p class="form-err" id="err-subject">Please enter a subject.</p>
       </div>
-    </div>
+      <div class="form-group">
+        <label for="cf-msg">Message</label>
+        <textarea id="cf-msg" placeholder="Tell me about your project or opportunity..." required></textarea>
+        <p class="form-err" id="err-msg">Message must be at least 10 characters.</p>
+      </div>
+      <button type="submit" id="submit-btn">
+        <span id="submit-txt">Send Message</span>
+      </button>
+      <p id="form-msg" role="status"></p>
+    </form>
   </div>
 </section>
 
-<footer class="site-footer">
-  <p class="footer-copy">© 2026 Richter Mayandoc · Full-Stack Developer · Ilagan City, Philippines</p>
-  <div class="footer-links">
-    <a href="https://github.com/nmrjustme" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="mailto:richter.p.maya@gmail.com">Email</a>
-  </div>
+<footer class="wrap">
+  <p>© 2026 Richter Mayandoc · Full-Stack Developer · Ilagan City, Philippines</p>
 </footer>
 
-<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-  <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close"><i class="fas fa-times"></i></button>
-  <img id="lightbox-img" src="" alt="Certificate" />
-</div>
-
 <script>
-/* THEME */
-const root = document.documentElement;
-const themeBtn = document.getElementById('theme-toggle');
-function setTheme(dark){
-  root.dataset.theme = dark ? 'dark' : 'light';
-  themeBtn.innerHTML = dark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-  localStorage.setItem('rm-theme', dark ? 'dark' : 'light');
-}
-const saved = localStorage.getItem('rm-theme');
-const prefersDark = window.matchMedia('(prefers-color-scheme:dark)').matches;
-setTheme(saved ? saved === 'dark' : prefersDark);
-themeBtn.addEventListener('click', () => setTheme(root.dataset.theme !== 'dark'));
-
-/* MOBILE NAV */
-const mobileBtn = document.getElementById('mobile-btn');
-const mobilePanel = document.getElementById('mobile-panel');
-mobileBtn.addEventListener('click', () => mobilePanel.classList.toggle('open'));
-mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobilePanel.classList.remove('open')));
-
-/* ACTIVE NAV */
-const secs = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-const io = new IntersectionObserver(entries => {
-  entries.forEach(en => {
-    if (en.isIntersecting) {
-      navLinks.forEach(l => l.classList.remove('active'));
-      const a = document.querySelector(`.nav-links a[href="#${en.target.id}"]`);
-      if (a) a.classList.add('active');
-    }
-  });
-}, { rootMargin: '-30% 0px -60% 0px' });
-secs.forEach(s => io.observe(s));
-
-/* CERT LIGHTBOX */
-function openLightbox(src){
-  document.getElementById('lightbox-img').src = src;
-  document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeLightbox(e){
-  if (e.target.id === 'lightbox' || e.target.closest('.lightbox-close')) {
-    document.getElementById('lightbox').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow=''; } });
-
-/* FORM */
 const EJPK = 'YOUR_PUBLIC_KEY', EJSI = 'YOUR_SERVICE_ID', EJTI = 'YOUR_TEMPLATE_ID';
 if (window.emailjs && EJPK !== 'YOUR_PUBLIC_KEY') emailjs.init({ publicKey: EJPK });
 const F = {
