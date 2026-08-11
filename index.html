@@ -2,2893 +2,796 @@
 <html lang="en" data-theme="light">
 
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
-	<title>Richter Mayandoc · Full-Stack Developer</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"
-		rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-	<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-	<style>
-		:root {
-			--ink: #0a0c12;
-			--ink-2: #3a3d4d;
-			--ink-3: #6b6f82;
-			--ink-4: #a8abbe;
-			--paper: #f7f7f5;
-			--white: #ffffff;
-			--surface: #ffffff;
-			--surface-2: #f4f4f1;
-			--border: rgba(10, 12, 18, .08);
-			--border-2: rgba(10, 12, 18, .14);
-			--accent: #1a1a2e;
-			--gold: #c9a84c;
-			--gold-light: rgba(201, 168, 76, .12);
-			--gold-border: rgba(201, 168, 76, .28);
-			--green: #22c55e;
-			--red: #ef4444;
-			--mono: 'JetBrains Mono', monospace;
-			--serif: 'DM Serif Display', Georgia, serif;
-			--sans: 'Inter', system-ui, sans-serif;
-			--sidebar-w: 280px;
-			--transition: .22s cubic-bezier(.4, 0, .2, 1);
-		}
-
-		[data-theme="dark"] {
-			--ink: #eeeef0;
-			--ink-2: #b0b3c6;
-			--ink-3: #6b6f82;
-			--ink-4: #3a3d4d;
-			--paper: #0d0e14;
-			--white: #161820;
-			--surface: #1a1c24;
-			--surface-2: #20222d;
-			--border: rgba(255, 255, 255, .07);
-			--border-2: rgba(255, 255, 255, .12);
-			--accent: #e8e8f2;
-			--gold: #d4a853;
-			--gold-light: rgba(212, 168, 83, .1);
-			--gold-border: rgba(212, 168, 83, .25);
-		}
-
-		*,
-		*::before,
-		*::after {
-			box-sizing: border-box;
-			margin: 0;
-			padding: 0
-		}
-
-		html {
-			scroll-behavior: smooth;
-			-webkit-font-smoothing: antialiased
-		}
-
-		body {
-			font-family: var(--sans);
-			font-size: 15px;
-			line-height: 1.65;
-			color: var(--ink);
-			background: var(--paper);
-			overflow-x: hidden;
-			transition: background var(--transition), color var(--transition)
-		}
-
-		a {
-			color: inherit;
-			text-decoration: none
-		}
-
-		img {
-			display: block;
-			max-width: 100%
-		}
-
-		/* ── LAYOUT ─────────────────────────────────────────── */
-		.layout {
-			display: flex;
-			min-height: 100vh;
-			align-items: flex-start
-		}
-
-		.main {
-			margin-left: var(--sidebar-w);
-			flex: 1;
-			min-width: 0;
-			/* prevent flex blowout */
-		}
-
-		/* ── SIDEBAR ────────────────────────────────────────── */
-		.sidebar {
-			width: var(--sidebar-w);
-			min-height: 100vh;
-			background: var(--white);
-			border-right: 1px solid var(--border);
-			position: fixed;
-			top: 0;
-			left: 0;
-			display: flex;
-			flex-direction: column;
-			overflow-y: auto;
-			z-index: 100;
-			transition: background var(--transition), border-color var(--transition), transform .3s
-		}
-
-		.sb-top {
-			padding: 36px 24px 28px;
-			border-bottom: 1px solid var(--border);
-			text-align: center;
-		}
-
-		.sb-avatar-wrap {
-			width: 96px;
-			height: 96px;
-			margin: 0 auto 16px;
-			border-radius: 50%;
-			overflow: hidden;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-shrink: 0;
-			/* Prevents the circle from squishing */
-			background: var(--surface-2);
-			/* Adds a subtle placeholder background */
-		}
-
-
-		.sb-avatar-wrap img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			object-position: top center;
-			/* Keeps the face centered instead of defaulting to center-center */
-			display: block;
-		}
-
-		.sb-initials {
-			width: 100%;
-			/* Changed from fixed 96px to dynamically fill the wrapper */
-			height: 100%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			background: var(--ink);
-			/* Adaptive theme background */
-			color: var(--paper);
-			/* Adaptive theme text color */
-			font-size: 32px;
-			font-weight: 700;
-		}
-
-
-		.sb-name {
-			font-size: 16px;
-			font-weight: 700;
-			letter-spacing: -.02em;
-			color: var(--ink);
-			margin-bottom: 3px
-		}
-
-		.sb-role {
-			font-size: 12px;
-			color: var(--ink-3);
-			font-weight: 400;
-			margin-bottom: 16px
-		}
-
-		.sb-avail {
-			display: inline-flex;
-			align-items: center;
-			gap: 6px;
-			font-size: 11px;
-			font-weight: 600;
-			font-family: var(--mono);
-			color: #15803d;
-			background: rgba(22, 163, 74, .08);
-			border: 1px solid rgba(22, 163, 74, .2);
-			padding: 4px 10px;
-			border-radius: 99px;
-			letter-spacing: .02em;
-			text-transform: uppercase
-		}
-
-		[data-theme="dark"] .sb-avail {
-			color: #4ade80;
-			background: rgba(74, 222, 128, .08);
-			border-color: rgba(74, 222, 128, .2)
-		}
-
-		.avail-dot {
-			width: 6px;
-			height: 6px;
-			border-radius: 50%;
-			background: #22c55e;
-			animation: pulse 2s infinite
-		}
-
-		@keyframes pulse {
-
-			0%,
-			100% {
-				box-shadow: 0 0 0 3px rgba(34, 197, 94, .2)
-			}
-
-			50% {
-				box-shadow: 0 0 0 6px rgba(34, 197, 94, .06)
-			}
-		}
-
-		.sb-socials {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			gap: 10px;
-			margin-top: 18px;
-		}
-
-		.sb-soc {
-			width: 36px;
-			height: 36px;
-			border-radius: 50%;
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			color: var(--text);
-			background: var(--surface);
-			border: 1px solid var(--border);
-			text-decoration: none;
-			transition: 0.2s ease;
-		}
-
-		.sb-soc:hover {
-			background: var(--ink);
-			color: var(--paper);
-			border-color: var(--ink);
-			transform: translateY(-1px)
-		}
-
-		.sb-nav {
-			padding: 16px 0;
-			flex: 1
-		}
-
-		.sb-nav a {
-			display: flex;
-			align-items: center;
-			gap: 10px;
-			padding: 10px 24px;
-			font-size: 13px;
-			font-weight: 500;
-			color: var(--ink-3);
-			border-left: 2px solid transparent;
-			transition: all var(--transition)
-		}
-
-		.sb-nav a i {
-			width: 16px;
-			text-align: center;
-			font-size: 12px;
-			flex-shrink: 0;
-			transition: color var(--transition)
-		}
-
-		.sb-nav a:hover,
-		.sb-nav a.active {
-			color: var(--ink);
-			border-left-color: var(--gold);
-			background: var(--gold-light)
-		}
-
-		.sb-nav a:hover i,
-		.sb-nav a.active i {
-			color: var(--gold)
-		}
-
-		.sb-cta {
-			margin: 0 16px 16px
-		}
-
-		.hire-btn {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 7px;
-			width: 100%;
-			padding: 11px 10px;
-			background: var(--ink);
-			color: var(--paper);
-			border-radius: 8px;
-			font-weight: 600;
-			font-size: 13px;
-			transition: all var(--transition)
-		}
-
-		.hire-btn:hover {
-			opacity: .85;
-			transform: translateY(-1px)
-		}
-
-		[data-theme="dark"] .hire-btn {
-			background: var(--gold);
-			color: #0a0c12
-		}
-
-		.sb-theme {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			margin: 0 16px 24px;
-			padding: 8px 12px;
-			background: var(--surface-2);
-			border: 1px solid var(--border);
-			border-radius: 8px
-		}
-
-		.sb-theme-label {
-			font-size: 11.5px;
-			font-weight: 500;
-			color: var(--ink-3)
-		}
-
-		.toggle-pill {
-			width: 40px;
-			height: 21px;
-			border-radius: 99px;
-			background: var(--border-2);
-			border: none;
-			cursor: pointer;
-			position: relative;
-			transition: background var(--transition);
-			flex-shrink: 0
-		}
-
-		.toggle-pill.on {
-			background: var(--gold)
-		}
-
-		.toggle-knob {
-			position: absolute;
-			top: 2.5px;
-			left: 2.5px;
-			width: 16px;
-			height: 16px;
-			border-radius: 50%;
-			background: #fff;
-			transition: transform var(--transition);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-size: 8px
-		}
-
-		.toggle-pill.on .toggle-knob {
-			transform: translateX(19px)
-		}
-
-		/* ── MOBILE BAR ─────────────────────────────────────── */
-		.mobile-bar {
-			display: none;
-			align-items: center;
-			justify-content: space-between;
-			padding: 0 18px;
-			height: 52px;
-			background: var(--white);
-			border-bottom: 1px solid var(--border);
-			position: sticky;
-			top: 0;
-			z-index: 99;
-			/* just below sidebar (100) but above everything else */
-		}
-
-		.mobile-logo {
-			font-family: var(--serif);
-			font-size: 20px;
-			color: var(--ink);
-			font-style: italic
-		}
-
-		.mobile-menu-btn {
-			width: 36px;
-			height: 36px;
-			border-radius: 8px;
-			background: var(--surface-2);
-			border: 1px solid var(--border-2);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			color: var(--ink-2);
-			font-size: 14px;
-			cursor: pointer
-		}
-
-		.sidebar-backdrop {
-			display: none;
-			position: fixed;
-			inset: 0;
-			background: rgba(10, 12, 18, .5);
-			z-index: 95;
-			opacity: 0;
-			pointer-events: none;
-			transition: opacity .25s
-		}
-
-		.sidebar-backdrop.show {
-			opacity: 1;
-			pointer-events: auto
-		}
-
-		/* ── SECTION BASE ───────────────────────────────────── */
-		.section {
-			width: 100%;
-			padding: clamp(52px, 7vw, 88px) clamp(28px, 5vw, 64px);
-			background: var(--paper);
-			transition: background var(--transition)
-		}
-
-		.section:nth-child(even) {
-			background: var(--white)
-		}
-
-		.section:nth-child(even) .stat-card,
-		.section:nth-child(even) .result-row,
-		.section:nth-child(even) .tech-item {
-			background: var(--surface-2)
-		}
-
-		/* ── SECTION HEADER ─────────────────────────────────── */
-		.sec-label {
-			display: inline-flex;
-			align-items: center;
-			gap: 6px;
-			font-family: var(--mono);
-			font-size: 10.5px;
-			font-weight: 500;
-			text-transform: uppercase;
-			letter-spacing: .14em;
-			color: var(--gold);
-			margin-bottom: 14px
-		}
-
-		.sec-label::before {
-			content: '';
-			width: 20px;
-			height: 1px;
-			background: var(--gold)
-		}
-
-		.sec-title {
-			font-family: var(--serif);
-			font-size: clamp(30px, 4vw, 48px);
-			color: var(--ink);
-			line-height: 1.1;
-			letter-spacing: -.02em;
-			margin-bottom: 12px
-		}
-
-		.sec-title em {
-			font-style: italic;
-			color: var(--gold)
-		}
-
-		.sec-sub {
-			font-size: 15px;
-			color: var(--ink-2);
-			max-width: 560px;
-			line-height: 1.75;
-			margin-bottom: 40px
-		}
-
-		/* ── HERO ───────────────────────────────────────────── */
-		.hero {
-			padding: clamp(56px, 9vw, 108px) clamp(28px, 5vw, 64px) clamp(48px, 7vw, 80px);
-			background: var(--paper)
-		}
-
-		.hero-inner {
-			display: flex;
-			gap: 56px;
-			align-items: center;
-			/* max-width: 960px; */
-			margin: 0 auto;
-		}
-
-		.hero-eyebrow {
-			display: inline-flex;
-			align-items: center;
-			gap: 8px;
-			font-family: var(--mono);
-			font-size: 11px;
-			font-weight: 500;
-			letter-spacing: .12em;
-			text-transform: uppercase;
-			color: var(--gold);
-			margin-bottom: 20px
-		}
-
-		.hero-eyebrow span {
-			width: 28px;
-			height: 1px;
-			background: var(--gold);
-			display: inline-block
-		}
-
-		.hero-name {
-			font-family: var(--serif);
-			font-size: clamp(40px, 6.5vw, 72px);
-			color: var(--ink);
-			line-height: 1.05;
-			letter-spacing: -.03em;
-			margin-bottom: 10px
-		}
-
-		.hero-name em {
-			font-style: italic;
-			color: var(--gold)
-		}
-
-		.hero-role {
-			font-size: clamp(15px, 2.2vw, 20px);
-			font-weight: 300;
-			color: var(--ink-2);
-			margin-bottom: 24px;
-			letter-spacing: -.01em
-		}
-
-		.hero-desc {
-			font-size: 15px;
-			color: var(--ink-2);
-			line-height: 1.8;
-			margin-bottom: 20px
-		}
-
-		.hero-desc:last-of-type {
-			margin-bottom: 32px
-		}
-
-		.hero-btns {
-			display: flex;
-			gap: 12px;
-			flex-wrap: wrap;
-			align-items: center
-		}
-
-		.btn-primary {
-			display: inline-flex;
-			align-items: center;
-			gap: 8px;
-			padding: 13px 24px;
-			border-radius: 8px;
-			background: var(--ink);
-			color: var(--paper);
-			font-weight: 600;
-			font-size: 14px;
-			transition: all var(--transition);
-			white-space: nowrap
-		}
-
-		.btn-primary:hover {
-			transform: translateY(-2px);
-			opacity: .88
-		}
-
-		.btn-outline {
-			display: inline-flex;
-			align-items: center;
-			gap: 8px;
-			padding: 12px 22px;
-			border-radius: 8px;
-			border: 1px solid var(--border-2);
-			color: var(--ink-2);
-			font-weight: 500;
-			font-size: 14px;
-			transition: all var(--transition);
-			white-space: nowrap
-		}
-
-		.btn-outline:hover {
-			border-color: var(--ink);
-			color: var(--ink);
-			transform: translateY(-1px)
-		}
-
-		.hero-avatar {
-			width: 280px;
-			height: 360px;
-			overflow: hidden;
-			flex-shrink: 0;
-			margin-top: 6px;
-		}
-
-
-		.hero-avatar img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			object-position: top center;
-			display: block
-		}
-
-		.hero-initials {
-			width: 100%;
-			height: 100%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-size: 32px;
-			font-weight: 700;
-			color: var(--ink-3)
-		}
-
-		/* Hero metrics — symmetric padding model */
-		.hero-metrics {
-			display: flex;
-			gap: 0;
-			max-width: 960px;
-			/* Matches the hero-inner width */
-			margin: 48px auto 0;
-			/* Centers horizontally while keeping your 48px top margin */
-			border-top: 1px solid var(--border);
-			padding-top: 32px;
-		}
-
-		.h-metric {
-			flex: 1;
-			padding: 0 32px;
-			border-right: 1px solid var(--border)
-		}
-
-		.h-metric:first-child {
-			padding-left: 0
-		}
-
-		.h-metric:last-child {
-			border-right: none;
-			padding-right: 0
-		}
-
-		.h-num {
-			font-family: var(--serif);
-			font-size: 36px;
-			color: var(--ink);
-			line-height: 1
-		}
-
-		.h-lbl {
-			font-size: 11.5px;
-			color: var(--ink-3);
-			margin-top: 5px;
-			font-family: var(--mono);
-			text-transform: uppercase;
-			letter-spacing: .06em
-		}
-
-		/* ── VALUE PROP BAND ────────────────────────────────── */
-		.value-band {
-			background: var(--ink);
-			color: var(--paper);
-			padding: clamp(36px, 5vw, 56px) clamp(28px, 5vw, 64px)
-		}
-
-		[data-theme="dark"] .value-band {
-			background: var(--surface-2);
-			border-top: 1px solid var(--border);
-			border-bottom: 1px solid var(--border)
-		}
-
-		.value-grid {
-			display: grid;
-			grid-template-columns: repeat(3, 1fr);
-			gap: 36px
-		}
-
-		.value-item {
-			display: flex;
-			align-items: flex-start;
-			gap: 14px
-		}
-
-		.value-icon {
-			width: 36px;
-			height: 36px;
-			border-radius: 8px;
-			background: rgba(201, 168, 76, .15);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			color: var(--gold);
-			font-size: 14px;
-			flex-shrink: 0;
-			margin-top: 2px
-		}
-
-		.value-title {
-			font-size: 14px;
-			font-weight: 600;
-			margin-bottom: 5px;
-			color: #fff
-		}
-
-		[data-theme="dark"] .value-title {
-			color: var(--ink)
-		}
-
-		.value-desc {
-			font-size: 13px;
-			color: rgba(255, 255, 255, .55);
-			line-height: 1.65
-		}
-
-		[data-theme="dark"] .value-desc {
-			color: var(--ink-3)
-		}
-
-		/* ── SERVICES ───────────────────────────────────────── */
-		.services-grid {
-			display: grid;
-			grid-template-columns: repeat(3, 1fr);
-			gap: 16px;
-			align-items: stretch
-		}
-
-		.service-card {
-			background: var(--surface);
-			border: 1px solid var(--border);
-			padding: 28px 24px;
-			position: relative;
-			overflow: hidden;
-			display: flex;
-			flex-direction: column
-		}
-
-		.service-card::before {
-			content: '';
-			position: absolute;
-			inset: 0;
-			background: var(--gold-light);
-			opacity: 0;
-		}
-
-		.sc-icon {
-			width: 44px;
-			height: 44px;
-			border-radius: 10px;
-			border: 1px solid var(--border-2);
-			background: var(--surface-2);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			color: var(--ink-2);
-			font-size: 16px;
-			margin-bottom: 18px;
-			position: relative;
-			z-index: 1;
-			flex-shrink: 0
-		}
-
-		.sc-title {
-			font-size: 15px;
-			font-weight: 700;
-			color: var(--ink);
-			margin-bottom: 10px;
-			line-height: 1.3;
-			position: relative;
-			z-index: 1
-		}
-
-		.sc-desc {
-			font-size: 13px;
-			color: var(--ink-3);
-			line-height: 1.7;
-			margin-bottom: 0;
-			position: relative;
-			z-index: 1;
-			flex: 1
-		}
-
-		.sc-tags {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 4px;
-			padding-top: 14px;
-			border-top: 1px solid var(--border);
-			position: relative;
-			z-index: 1;
-			margin-top: auto
-		}
-
-		.tag {
-			font-family: var(--mono);
-			font-size: 10px;
-			color: var(--ink-3);
-			background: var(--surface-2);
-			border: 1px solid var(--border);
-			padding: 2px 8px;
-			border-radius: 4px;
-			white-space: nowrap
-		}
-
-		/* ── PROCESS ────────────────────────────────────────── */
-		.process-track {
-			display: flex;
-			flex-direction: column;
-			gap: 0;
-			max-width: 680px
-		}
-
-		.process-item {
-			display: grid;
-			grid-template-columns: 48px 1fr;
-			gap: 0 24px;
-			position: relative;
-			padding-bottom: 36px
-		}
-
-		.process-item:last-child {
-			padding-bottom: 0
-		}
-
-		/* Connecting line rendered via a pseudo on the num-wrap */
-		.pi-num-wrap {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			position: relative
-		}
-
-		.pi-num {
-			width: 48px;
-			height: 48px;
-			border-radius: 50%;
-			border: 1px solid var(--border-2);
-			background: var(--white);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-family: var(--mono);
-			font-size: 12px;
-			font-weight: 500;
-			color: var(--gold);
-			flex-shrink: 0;
-			position: relative;
-			z-index: 1;
-			transition: all var(--transition)
-		}
-
-
-		/* Vertical connector using ::after on pi-num-wrap */
-		.process-item:not(:last-child) .pi-num-wrap::after {
-			content: '';
-			flex: 1;
-			width: 1px;
-			background: var(--border-2);
-			margin-top: 8px;
-			min-height: 20px
-		}
-
-		.pi-line {
-			/* kept for markup compatibility, replaced by pseudo above */
-			display: none
-		}
-
-		.pi-body {
-			padding-top: 12px
-		}
-
-		.pi-title {
-			font-size: 15px;
-			font-weight: 700;
-			color: var(--ink);
-			margin-bottom: 8px
-		}
-
-		.pi-desc {
-			font-size: 13.5px;
-			color: var(--ink-3);
-			line-height: 1.75
-		}
-
-		.pi-deliverable {
-			display: inline-flex;
-			align-items: center;
-			gap: 6px;
-			font-family: var(--mono);
-			font-size: 10.5px;
-			color: var(--gold);
-			background: var(--gold-light);
-			border: 1px solid var(--gold-border);
-			padding: 3px 10px;
-			border-radius: 4px;
-			margin-top: 10px
-		}
-
-		/* ── TECHNOLOGIES ───────────────────────────────────── */
-		.tech-block {
-			margin-bottom: 36px
-		}
-
-		.tech-block:last-child {
-			margin-bottom: 0
-		}
-
-		.tech-block-label {
-			font-family: var(--mono);
-			font-size: 10.5px;
-			text-transform: uppercase;
-			letter-spacing: .1em;
-			color: var(--ink-3);
-			margin-bottom: 14px
-		}
-
-		.tech-grid {
-			display: grid;
-			grid-template-columns: repeat(6, 1fr);
-			gap: 10px
-		}
-
-		.tech-item {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			gap: 8px;
-			padding: 16px 8px;
-			background: var(--white);
-			border: 1px solid var(--border);
-			transition: all var(--transition);
-			cursor: default;
-			min-height: 80px
-		}
-
-		.tech-item img {
-			width: 28px;
-			height: 28px;
-			object-fit: contain;
-			flex-shrink: 0
-		}
-
-		.tech-item span {
-			font-size: 11px;
-			font-weight: 500;
-			color: var(--ink-3);
-			text-align: center;
-			line-height: 1.2
-		}
-
-		/* ── PROJECTS ───────────────────────────────────────── */
-		.projects-grid {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 20px;
-			align-items: start
-		}
-
-		.proj-card {
-			background: var(--white);
-			border: 1px solid var(--border);
-			overflow: hidden;
-			transition: all var(--transition);
-			display: flex;
-			flex-direction: column
-		}
-
-		.proj-preview {
-			height: 168px;
-			overflow: hidden;
-			position: relative;
-			background: var(--surface-2);
-			border-bottom: 1px solid var(--border);
-			flex-shrink: 0
-		}
-
-		.proj-preview svg {
-			position: absolute;
-			inset: 0;
-			width: 100%;
-			height: 100%
-		}
-
-		.proj-badge-wrap {
-			position: absolute;
-			top: 10px;
-			left: 12px;
-			display: flex;
-			gap: 5px;
-			z-index: 1
-		}
-
-		.pbadge {
-			display: inline-flex;
-			align-items: center;
-			gap: 4px;
-			font-family: var(--mono);
-			font-size: 9.5px;
-			font-weight: 500;
-			text-transform: uppercase;
-			letter-spacing: .06em;
-			padding: 3px 8px;
-			border-radius: 4px
-		}
-
-		.pbadge-live {
-			background: rgba(22, 163, 74, .12);
-			color: #15803d;
-			border: 1px solid rgba(22, 163, 74, .2)
-		}
-
-		[data-theme="dark"] .pbadge-live {
-			background: rgba(74, 222, 128, .1);
-			color: #4ade80;
-			border-color: rgba(74, 222, 128, .2)
-		}
-
-		.pbadge-ind {
-			background: var(--gold-light);
-			color: var(--gold);
-			border: 1px solid var(--gold-border)
-		}
-
-		.proj-body {
-			padding: 22px 22px 22px;
-			display: flex;
-			flex-direction: column;
-			flex: 1
-		}
-
-		.proj-header {
-			display: flex;
-			align-items: flex-start;
-			justify-content: space-between;
-			gap: 10px;
-			margin-bottom: 10px
-		}
-
-		.proj-title {
-			font-size: 15px;
-			font-weight: 700;
-			color: var(--ink);
-			line-height: 1.3
-		}
-
-		.proj-links {
-			display: flex;
-			gap: 5px;
-			flex-shrink: 0;
-			align-items: center
-		}
-
-		.plink {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 28px;
-			height: 28px;
-			border-radius: 6px;
-			border: 1px solid var(--border-2);
-			color: var(--ink-3);
-			font-size: 11px;
-			transition: all var(--transition)
-		}
-
-		.plink:hover {
-			border-color: var(--gold);
-			color: var(--gold)
-		}
-
-		.plink.live {
-			width: auto;
-			padding: 0 10px;
-			gap: 5px;
-			background: var(--ink);
-			color: var(--paper);
-			border-color: var(--ink);
-			font-size: 11px;
-			font-weight: 600;
-			height: 28px
-		}
-
-		.plink.live:hover {
-			background: var(--gold);
-			border-color: var(--gold);
-			color: #000
-		}
-
-		.proj-desc {
-			font-size: 13px;
-			color: var(--ink-3);
-			line-height: 1.7;
-			margin-bottom: 12px;
-			flex: 1
-		}
-
-		.proj-techs {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 4px;
-			margin-bottom: 12px
-		}
-
-		.proj-result {
-			display: flex;
-			align-items: flex-start;
-			gap: 7px;
-			padding: 10px 12px;
-			background: var(--surface-2);
-			border-radius: 6px;
-			font-size: 12.5px;
-			color: var(--ink-2);
-			margin-bottom: 14px;
-			line-height: 1.55
-		}
-
-		.proj-result i {
-			color: var(--green);
-			font-size: 10px;
-			margin-top: 3px;
-			flex-shrink: 0
-		}
-
-		.proj-result strong {
-			color: var(--ink);
-			font-weight: 600
-		}
-
-		.cs-trigger {
-			display: inline-flex;
-			align-items: center;
-			gap: 6px;
-			font-size: 12.5px;
-			font-weight: 600;
-			color: var(--gold);
-			background: var(--gold-light);
-			border: 1px solid var(--gold-border);
-			padding: 7px 14px;
-			border-radius: 6px;
-			cursor: pointer;
-			transition: all var(--transition);
-			align-self: flex-start
-		}
-
-		.cs-trigger:hover {
-			background: rgba(201, 168, 76, .2)
-		}
-
-		/* ── CASE STUDY MODAL ───────────────────────────────── */
-		.cs-overlay {
-			position: fixed;
-			inset: 0;
-			background: rgba(10, 12, 18, .6);
-			z-index: 200;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			padding: 24px;
-			opacity: 0;
-			pointer-events: none;
-			transition: opacity .2s
-		}
-
-		.cs-overlay.open {
-			opacity: 1;
-			pointer-events: all
-		}
-
-		.cs-modal {
-			background: var(--white);
-			border: 1px solid var(--border);
-			border-radius: 16px;
-			width: 100%;
-			max-width: 700px;
-			max-height: 86vh;
-			overflow-y: auto;
-			transform: translateY(20px);
-			transition: transform .2s
-		}
-
-		.cs-overlay.open .cs-modal {
-			transform: translateY(0)
-		}
-
-		.cs-head {
-			padding: 24px 28px 20px;
-			border-bottom: 1px solid var(--border);
-			display: flex;
-			align-items: flex-start;
-			justify-content: space-between;
-			gap: 16px;
-			position: sticky;
-			top: 0;
-			background: var(--white);
-			z-index: 1
-		}
-
-		.cs-head-title {
-			font-size: 18px;
-			font-weight: 700;
-			color: var(--ink);
-			line-height: 1.35;
-			font-family: var(--serif)
-		}
-
-		.cs-close {
-			width: 32px;
-			height: 32px;
-			border-radius: 8px;
-			border: 1px solid var(--border-2);
-			background: var(--surface-2);
-			cursor: pointer;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			color: var(--ink-3);
-			font-size: 14px;
-			flex-shrink: 0;
-			transition: all var(--transition)
-		}
-
-		.cs-close:hover {
-			border-color: var(--ink);
-			color: var(--ink)
-		}
-
-		.cs-body {
-			padding: 24px 28px
-		}
-
-		.cs-section {
-			margin-bottom: 24px
-		}
-
-		.cs-section-label {
-			font-family: var(--mono);
-			font-size: 10px;
-			text-transform: uppercase;
-			letter-spacing: .12em;
-			color: var(--gold);
-			font-weight: 500;
-			margin-bottom: 10px
-		}
-
-		.cs-text {
-			font-size: 14px;
-			color: var(--ink-2);
-			line-height: 1.85
-		}
-
-		.cs-metrics {
-			display: grid;
-			grid-template-columns: repeat(3, 1fr);
-			gap: 12px;
-			margin: 18px 0
-		}
-
-		.cs-metric {
-			background: var(--surface-2);
-			border: 1px solid var(--border);
-			border-radius: 10px;
-			padding: 16px 14px;
-			text-align: center
-		}
-
-		.cs-metric-num {
-			font-family: var(--serif);
-			font-size: 26px;
-			color: var(--ink);
-			line-height: 1;
-			margin-bottom: 4px
-		}
-
-		.cs-metric-lbl {
-			font-size: 10px;
-			color: var(--ink-3);
-			font-family: var(--mono);
-			text-transform: uppercase;
-			letter-spacing: .06em
-		}
-
-		.cs-tech-list {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 5px;
-			margin-top: 8px
-		}
-
-		/* ── EDUCATION ──────────────────────────────────────── */
-		.edu-grid {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 32px;
-			align-items: start
-		}
-
-		.edu-card {
-			background: var(--white);
-			border: 1px solid var(--border);
-			border-radius: 12px;
-			padding: 28px
-		}
-
-		.edu-icon-wrap {
-			width: 52px;
-			height: 52px;
-			border-radius: 12px;
-			background: var(--surface-2);
-			border: 1px solid var(--border);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			color: var(--ink-3);
-			font-size: 20px;
-			margin-bottom: 18px;
-			flex-shrink: 0
-		}
-
-		.edu-degree {
-			font-size: 15.5px;
-			font-weight: 700;
-			color: var(--ink);
-			line-height: 1.3;
-			margin-bottom: 4px
-		}
-
-		.edu-school {
-			font-size: 13px;
-			color: var(--gold);
-			font-weight: 600;
-			margin-bottom: 10px
-		}
-
-		.edu-year {
-			font-family: var(--mono);
-			font-size: 11px;
-			color: var(--ink-4);
-			margin-bottom: 14px
-		}
-
-		.edu-desc {
-			font-size: 13px;
-			color: var(--ink-3);
-			line-height: 1.75
-		}
-
-		.certs-list {
-			display: flex;
-			flex-direction: column;
-			gap: 10px
-		}
-
-		.cert-item {
-			display: flex;
-			align-items: center;
-			gap: 12px;
-			padding: 14px 16px;
-			background: var(--white);
-			border: 1px solid var(--border);
-			border-radius: 10px;
-			transition: all var(--transition)
-		}
-
-		.cert-icon {
-			width: 36px;
-			height: 36px;
-			border-radius: 8px;
-			background: var(--surface-2);
-			border: 1px solid var(--border);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			color: var(--ink-3);
-			font-size: 13px;
-			flex-shrink: 0
-		}
-
-		.cert-name {
-			font-size: 13px;
-			font-weight: 600;
-			color: var(--ink);
-			margin-bottom: 2px
-		}
-
-		.cert-org {
-			font-size: 11.5px;
-			color: var(--ink-4)
-		}
-
-		/* ── CONTACT ────────────────────────────────────────── */
-		.contact-grid {
-			display: grid;
-			grid-template-columns: 1fr 1.15fr;
-			gap: 48px;
-			align-items: start
-		}
-
-		.contact-text {
-			font-size: 14.5px;
-			color: var(--ink-2);
-			line-height: 1.8;
-			margin-bottom: 24px
-		}
-
-		.contact-links {
-			display: flex;
-			flex-direction: column;
-			gap: 10px
-		}
-
-		.c-link {
-			display: flex;
-			align-items: center;
-			gap: 14px;
-			padding: 13px 16px;
-			background: var(--white);
-			border: 1px solid var(--border);
-			border-radius: 10px;
-			transition: all var(--transition)
-		}
-
-		.c-link:hover {
-			border-color: var(--gold-border);
-			transform: translateX(4px)
-		}
-
-		.c-link-icon {
-			width: 38px;
-			height: 38px;
-			border-radius: 9px;
-			background: var(--surface-2);
-			border: 1px solid var(--border);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			color: var(--ink-3);
-			font-size: 14px;
-			flex-shrink: 0
-		}
-
-		.c-link-label {
-			font-family: var(--mono);
-			font-size: 10px;
-			text-transform: uppercase;
-			letter-spacing: .06em;
-			color: var(--ink-4);
-			margin-bottom: 2px
-		}
-
-		.c-link-val {
-			font-size: 13px;
-			font-weight: 600;
-			color: var(--ink)
-		}
-
-		/* ── FORM ───────────────────────────────────────────── */
-		.form-group {
-			margin-bottom: 14px
-		}
-
-		.form-row {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 12px;
-			margin-bottom: 14px
-		}
-
-		.form-label {
-			display: block;
-			font-family: var(--mono);
-			font-size: 10px;
-			text-transform: uppercase;
-			letter-spacing: .06em;
-			color: var(--ink-3);
-			margin-bottom: 5px
-		}
-
-		.form-input {
-			width: 100%;
-			background: var(--surface-2);
-			border: 1px solid var(--border-2);
-			border-radius: 8px;
-			padding: 10px 14px;
-			font-family: var(--sans);
-			font-size: 14px;
-			color: var(--ink);
-			outline: none;
-			transition: all var(--transition)
-		}
-
-		.form-input::placeholder {
-			color: var(--ink-4)
-		}
-
-		.form-input:focus {
-			border-color: var(--gold);
-			box-shadow: 0 0 0 3px var(--gold-light);
-			background: var(--white)
-		}
-
-		.form-input.err {
-			border-color: var(--red)
-		}
-
-		textarea.form-input {
-			resize: vertical;
-			min-height: 120px
-		}
-
-		.form-err {
-			font-size: 11.5px;
-			color: var(--red);
-			margin-top: 4px;
-			display: none
-		}
-
-		.form-err.show {
-			display: block
-		}
-
-		.submit-btn {
-			width: 100%;
-			padding: 12px;
-			margin-top: 4px;
-			background: var(--ink);
-			color: var(--paper);
-			font-family: var(--sans);
-			font-weight: 600;
-			font-size: 14px;
-			border: none;
-			border-radius: 8px;
-			cursor: pointer;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 8px;
-			transition: all var(--transition)
-		}
-
-		.submit-btn:hover {
-			opacity: .87;
-			transform: translateY(-1px)
-		}
-
-		.submit-btn:disabled {
-			opacity: .5;
-			cursor: not-allowed;
-			transform: none
-		}
-
-		#form-msg {
-			font-size: 12.5px;
-			margin-top: 10px;
-			display: none
-		}
-
-		#form-msg.show {
-			display: block
-		}
-
-		/* ── CTA BAND ───────────────────────────────────────── */
-		.cta-band {
-			padding: clamp(52px, 7vw, 80px) clamp(28px, 5vw, 64px);
-			background: var(--ink);
-			text-align: center
-		}
-
-		[data-theme="dark"] .cta-band {
-			background: var(--surface-2);
-			border-top: 1px solid var(--border)
-		}
-
-		.cta-label {
-			font-family: var(--mono);
-			font-size: 11px;
-			text-transform: uppercase;
-			letter-spacing: .14em;
-			color: var(--gold);
-			margin-bottom: 16px
-		}
-
-		.cta-headline {
-			font-family: var(--serif);
-			font-size: clamp(30px, 4.5vw, 52px);
-			color: #fff;
-			line-height: 1.1;
-			margin-bottom: 14px
-		}
-
-		[data-theme="dark"] .cta-headline {
-			color: var(--ink)
-		}
-
-		.cta-headline em {
-			font-style: italic;
-			color: var(--gold)
-		}
-
-		.cta-sub {
-			font-size: 15px;
-			color: rgba(255, 255, 255, .55);
-			max-width: 500px;
-			margin: 0 auto 36px;
-			line-height: 1.75
-		}
-
-		[data-theme="dark"] .cta-sub {
-			color: var(--ink-3)
-		}
-
-		.cta-btns {
-			display: flex;
-			justify-content: center;
-			gap: 12px;
-			flex-wrap: wrap;
-			align-items: center
-		}
-
-		.cta-btn-p {
-			display: inline-flex;
-			align-items: center;
-			gap: 8px;
-			padding: 13px 28px;
-			border-radius: 8px;
-			background: var(--gold);
-			color: #0a0c12;
-			font-weight: 700;
-			font-size: 14px;
-			transition: all var(--transition);
-			white-space: nowrap
-		}
-
-		.cta-btn-p:hover {
-			opacity: .9;
-			transform: translateY(-2px)
-		}
-
-		.cta-btn-o {
-			display: inline-flex;
-			align-items: center;
-			gap: 8px;
-			padding: 12px 24px;
-			border-radius: 8px;
-			border: 1px solid rgba(255, 255, 255, .2);
-			color: rgba(255, 255, 255, .75);
-			font-weight: 500;
-			font-size: 14px;
-			transition: all var(--transition);
-			white-space: nowrap
-		}
-
-		.cta-btn-o:hover {
-			border-color: rgba(255, 255, 255, .5);
-			color: #fff
-		}
-
-		[data-theme="dark"] .cta-btn-o {
-			border-color: var(--border-2);
-			color: var(--ink-2)
-		}
-
-		[data-theme="dark"] .cta-btn-o:hover {
-			border-color: var(--ink);
-			color: var(--ink)
-		}
-
-		/* ── FOOTER ─────────────────────────────────────────── */
-		.site-footer {
-			padding: 20px clamp(20px, 5vw, 64px);
-			background: var(--white);
-			border-top: 1px solid var(--border);
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			flex-wrap: wrap;
-			gap: 12px;
-			transition: background var(--transition)
-		}
-
-		.footer-copy {
-			font-size: 12.5px;
-			color: var(--ink-3)
-		}
-
-		.footer-copy strong {
-			color: var(--gold);
-			font-weight: 600
-		}
-
-		.footer-links {
-			display: flex;
-			gap: 16px;
-			flex-wrap: wrap
-		}
-
-		.footer-links a {
-			font-size: 12.5px;
-			color: var(--ink-3);
-			transition: color var(--transition)
-		}
-
-		.footer-links a:hover {
-			color: var(--ink)
-		}
-
-		/* ── REVEAL ANIMATIONS ──────────────────────────────── */
-		.reveal {
-			opacity: 0;
-			transform: translateY(20px);
-			transition: opacity .55s cubic-bezier(.4, 0, .2, 1), transform .55s cubic-bezier(.4, 0, .2, 1)
-		}
-
-		.reveal.in {
-			opacity: 1;
-			transform: translateY(0)
-		}
-
-		.reveal-d1 {
-			transition-delay: .1s
-		}
-
-		.reveal-d2 {
-			transition-delay: .18s
-		}
-
-		.reveal-d3 {
-			transition-delay: .26s
-		}
-
-		/* ── RESPONSIVE: 1100px ─────────────────────────────── */
-		@media (max-width: 1100px) {
-			.services-grid {
-				grid-template-columns: 1fr 1fr
-			}
-
-			.tech-grid {
-				grid-template-columns: repeat(4, 1fr)
-			}
-
-			.edu-grid {
-				grid-template-columns: 1fr
-			}
-
-			.contact-grid {
-				grid-template-columns: 1fr
-			}
-
-			.contact-grid>div:first-child {
-				max-width: 560px
-			}
-		}
-
-		/* ── RESPONSIVE: 900px ──────────────────────────────── */
-		@media (max-width: 900px) {
-			.hero-inner {
-				grid-template-columns: 1fr
-			}
-
-			.hero-avatar {
-				display: none
-			}
-
-			.value-grid {
-				grid-template-columns: 1fr 1fr;
-				gap: 24px
-			}
-
-			.projects-grid {
-				grid-template-columns: 1fr
-			}
-
-			/* Hero metrics: stack vertically on narrow viewport */
-			.hero-metrics {
-				flex-direction: column;
-				gap: 0;
-				padding-top: 28px
-			}
-
-			.h-metric {
-				padding: 16px 0;
-				border-right: none;
-				border-bottom: 1px solid var(--border)
-			}
-
-			.h-metric:first-child {
-				padding-top: 0
-			}
-
-			.h-metric:last-child {
-				border-bottom: none;
-				padding-bottom: 0
-			}
-
-			.cs-metrics {
-				grid-template-columns: 1fr 1fr
-			}
-		}
-
-		/* ── RESPONSIVE: 768px ──────────────────────────────── */
-		@media (max-width: 768px) {
-			.sidebar {
-				transform: translateX(-100%);
-				width: min(82vw, 280px)
-			}
-
-			.sidebar.open {
-				transform: translateX(0);
-				box-shadow: 20px 0 60px rgba(0, 0, 0, .18)
-			}
-
-			.sidebar-backdrop {
-				display: block
-			}
-
-			.main {
-				margin-left: 0
-			}
-
-			.mobile-bar {
-				display: flex
-			}
-
-			.section {
-				padding: 40px 20px
-			}
-
-			.hero {
-				padding: 32px 20px 40px
-			}
-
-			.value-band {
-				padding: 32px 20px
-			}
-
-			.cta-band {
-				padding: 48px 20px
-			}
-
-			.services-grid {
-				grid-template-columns: 1fr
-			}
-
-			.tech-grid {
-				grid-template-columns: repeat(3, 1fr)
-			}
-
-			.edu-grid {
-				grid-template-columns: 1fr
-			}
-
-			.form-row {
-				grid-template-columns: 1fr
-			}
-
-			.value-grid {
-				grid-template-columns: 1fr;
-				gap: 20px
-			}
-
-			.process-track {
-				max-width: 100%
-			}
-
-			.hero-desc {
-				max-width: 100%
-			}
-		}
-
-		/* ── RESPONSIVE: 500px ──────────────────────────────── */
-		@media (max-width: 500px) {
-			.tech-grid {
-				grid-template-columns: repeat(3, 1fr)
-			}
-
-			.cs-metrics {
-				grid-template-columns: 1fr
-			}
-
-			.cs-modal {
-				max-height: 92vh;
-				border-radius: 12px
-			}
-
-			.cs-head,
-			.cs-body {
-				padding-left: 18px;
-				padding-right: 18px
-			}
-
-			.hero-btns {
-				flex-direction: column;
-				align-items: flex-start
-			}
-
-			.hero-btns a {
-				width: 100%;
-				justify-content: center
-			}
-
-			.cta-btns {
-				flex-direction: column;
-				align-items: stretch
-			}
-
-			.cta-btn-p,
-			.cta-btn-o {
-				justify-content: center
-			}
-		}
-
-		/* ── RESPONSIVE: 380px ──────────────────────────────── */
-		@media (max-width: 380px) {
-			.tech-grid {
-				grid-template-columns: repeat(2, 1fr)
-			}
-
-			.h-num {
-				font-size: 30px
-			}
-		}
-	</style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Richter Mayandoc · Full-Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+:root{
+  --ink:#15171c; --ink-2:#4a4d57; --ink-3:#767a86; --ink-4:#a6a9b3;
+  --bg:#ffffff; --bg-soft:#f7f7f8; --line:#e6e7eb; --line-2:#d8dae0;
+  --accent:#2451e0; --accent-soft:#eef1fd;
+  --green:#1a8a4a; --green-soft:#eaf7ef;
+  --sans:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',monospace;
+  --maxw:840px;
+}
+[data-theme="dark"]{
+  --ink:#eceef2; --ink-2:#c2c5cf; --ink-3:#8b8f9c; --ink-4:#5b5e69;
+  --bg:#101115; --bg-soft:#17181d; --line:#26282f; --line-2:#33353d;
+  --accent:#6f8dff; --accent-soft:#1a2140;
+  --green:#39c579; --green-soft:#12271a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--sans);font-size:15.5px;line-height:1.65;color:var(--ink);background:var(--bg);transition:background .2s,color .2s}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+ul{list-style:none}
+
+/* ── NAV ─────────────────────────────────────── */
+.nav{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;height:60px;
+  background:var(--bg);border-bottom:1px solid var(--line);
+}
+.nav-inner{max-width:var(--maxw);margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--mono);font-weight:600;font-size:14px;letter-spacing:.02em;color:var(--ink)}
+.nav-links{display:flex;gap:26px}
+.nav-links a{font-size:13.5px;font-weight:500;color:var(--ink-3);transition:color .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:14px}
+.theme-btn{
+  width:32px;height:32px;border-radius:7px;border:1px solid var(--line);background:var(--bg-soft);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink-2);font-size:12.5px
+}
+.nav-cta{
+  padding:8px 14px;border-radius:7px;background:var(--ink);color:var(--bg);
+  font-size:13px;font-weight:600;white-space:nowrap
+}
+[data-theme="dark"] .nav-cta{background:var(--accent);color:#0b0d12}
+.mobile-btn{display:none;width:32px;height:32px;border-radius:7px;border:1px solid var(--line);background:var(--bg-soft);align-items:center;justify-content:center;cursor:pointer;color:var(--ink-2)}
+.mobile-panel{display:none;position:fixed;inset:60px 0 0 0;background:var(--bg);z-index:49;padding:20px 24px;overflow-y:auto}
+.mobile-panel.open{display:block}
+.mobile-panel a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink-2);border-bottom:1px solid var(--line)}
+
+/* ── SHARED SECTION ─────────────────────────── */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.section{padding:56px 24px;border-bottom:1px solid var(--line)}
+.section:last-of-type{border-bottom:none}
+.section-inner{max-width:var(--maxw);margin:0 auto}
+.eyebrow{
+  font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px
+}
+.eyebrow::before{content:'';width:16px;height:1px;background:var(--accent)}
+.title{font-size:26px;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin-bottom:8px}
+.sub{font-size:14px;color:var(--ink-3);max-width:560px;margin-bottom:30px;line-height:1.7}
+
+/* ── HERO ────────────────────────────────────── */
+.hero{padding:64px 24px 48px}
+.hero-eyebrow{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.hero-name{font-size:clamp(32px,5.5vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1.1;color:var(--ink);margin-bottom:6px}
+.hero-role{font-size:15px;color:var(--ink-3);margin-bottom:22px}
+.hero-desc{font-size:15px;color:var(--ink-2);line-height:1.8;max-width:620px;margin-bottom:26px}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:8px;font-weight:600;font-size:13.5px;transition:all .15s}
+.btn-p{background:var(--ink);color:var(--bg)}
+.btn-p:hover{opacity:.85}
+[data-theme="dark"] .btn-p{background:var(--accent);color:#0b0d12}
+.btn-o{border:1px solid var(--line-2);color:var(--ink-2)}
+.btn-o:hover{border-color:var(--ink);color:var(--ink)}
+.hero-stats{display:flex;gap:0;border-top:1px solid var(--line);padding-top:24px}
+.h-stat{flex:1;padding-right:20px}
+.h-num{font-size:22px;font-weight:700;color:var(--ink)}
+.h-lbl{font-size:11.5px;color:var(--ink-3);margin-top:3px;font-family:var(--mono)}
+.hero-social{display:flex;gap:8px;margin-top:24px}
+.soc{width:34px;height:34px;border-radius:7px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink-3);font-size:13px;transition:all .15s}
+.soc:hover{border-color:var(--ink);color:var(--ink)}
+
+/* ── ABOUT / PROCESS ─────────────────────────── */
+.about-text{font-size:14.5px;color:var(--ink-2);line-height:1.85;max-width:640px;margin-bottom:32px}
+.process-list{display:flex;flex-direction:column;gap:0;max-width:640px}
+.p-item{display:flex;gap:16px;padding:16px 0;border-top:1px solid var(--line)}
+.p-item:first-child{border-top:none}
+.p-num{font-family:var(--mono);font-size:12px;color:var(--accent);flex-shrink:0;width:22px;padding-top:2px}
+.p-title{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.p-desc{font-size:13px;color:var(--ink-3);line-height:1.6}
+
+/* ── SERVICES ─────────────────────────────────── */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.svc{border:1px solid var(--line);border-radius:10px;padding:20px}
+.svc-icon{width:34px;height:34px;border-radius:8px;background:var(--bg-soft);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink-2);font-size:13px;margin-bottom:14px}
+.svc-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.svc-desc{font-size:12.5px;color:var(--ink-3);line-height:1.65}
+
+/* ── SKILLS ───────────────────────────────────── */
+.skill-group{margin-bottom:22px}
+.skill-group:last-child{margin-bottom:0}
+.skill-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);margin-bottom:10px}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:12.5px;font-weight:500;color:var(--ink-2);background:var(--bg-soft);border:1px solid var(--line);padding:6px 12px;border-radius:6px}
+
+/* ── PROJECTS ─────────────────────────────────── */
+.proj-list{display:flex;flex-direction:column;gap:16px}
+.proj{border:1px solid var(--line);border-radius:10px;padding:22px}
+.proj-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px}
+.proj-name{font-size:16px;font-weight:700;color:var(--ink)}
+.proj-badges{display:flex;gap:6px;flex-wrap:wrap}
+.badge{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.04em;padding:3px 8px;border-radius:4px}
+.badge-live{background:var(--green-soft);color:var(--green);border:1px solid var(--green)}
+.badge-ind{background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent)}
+.proj-desc{font-size:13.5px;color:var(--ink-2);line-height:1.75;margin-bottom:12px}
+.proj-row-label{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-4);margin-bottom:4px}
+.proj-block{margin-bottom:12px}
+.proj-block:last-of-type{margin-bottom:0}
+.proj-features{display:flex;flex-direction:column;gap:5px}
+.proj-features li{font-size:12.5px;color:var(--ink-2);line-height:1.6;display:flex;gap:7px}
+.proj-features li::before{content:'—';color:var(--ink-4);flex-shrink:0}
+.proj-techs{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);background:var(--bg-soft);border:1px solid var(--line);padding:2px 8px;border-radius:4px}
+.proj-result{font-size:12.5px;color:var(--ink-2);background:var(--bg-soft);border-radius:6px;padding:10px 12px;line-height:1.6;margin-top:12px}
+.proj-result strong{color:var(--ink)}
+.proj-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.proj-links{display:flex;gap:8px}
+.plink{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--ink-2);border:1px solid var(--line-2);padding:6px 12px;border-radius:6px;transition:all .15s}
+.plink:hover{border-color:var(--ink);color:var(--ink)}
+.proj details{margin-top:14px;border-top:1px solid var(--line);padding-top:14px}
+.proj summary{cursor:pointer;font-size:12.5px;font-weight:600;color:var(--accent);list-style:none}
+.proj summary::-webkit-details-marker{display:none}
+.proj summary::before{content:'+ ';font-weight:700}
+.proj details[open] summary::before{content:'– '}
+.cs-body{margin-top:14px;display:flex;flex-direction:column;gap:14px}
+.cs-sub-label{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-4);margin-bottom:5px}
+.cs-text{font-size:13px;color:var(--ink-2);line-height:1.75}
+.cs-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cs-metric{background:var(--bg-soft);border:1px solid var(--line);border-radius:8px;padding:12px;text-align:center}
+.cs-metric-num{font-size:18px;font-weight:700;color:var(--ink)}
+.cs-metric-lbl{font-size:10px;color:var(--ink-3);font-family:var(--mono);margin-top:3px}
+.eval-rows{display:flex;flex-direction:column;gap:5px}
+.eval-row{display:flex;justify-content:space-between;font-size:12px;padding:6px 10px;background:var(--bg-soft);border-radius:5px}
+.eval-row span:last-child{font-weight:600;color:var(--ink)}
+
+/* ── EDUCATION / CERTS ────────────────────────── */
+.edu-card{border:1px solid var(--line);border-radius:10px;padding:22px;margin-bottom:24px}
+.edu-degree{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.edu-school{font-size:13px;color:var(--accent);font-weight:600;margin-bottom:6px}
+.edu-year{font-family:var(--mono);font-size:11px;color:var(--ink-4);margin-bottom:12px}
+.edu-desc{font-size:13px;color:var(--ink-3);line-height:1.7}
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cert-card{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--bg-soft)}
+.cert-img-wrap{height:130px;overflow:hidden;background:var(--bg);border-bottom:1px solid var(--line);cursor:pointer}
+.cert-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.cert-info{padding:12px 14px}
+.cert-name{font-size:12.5px;font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:2px}
+.cert-org{font-size:11px;color:var(--ink-4)}
+.lightbox{position:fixed;inset:0;background:rgba(10,10,14,.85);z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .2s}
+.lightbox.open{opacity:1;pointer-events:all}
+.lightbox img{max-width:92vw;max-height:88vh;border-radius:6px}
+.lightbox-close{position:absolute;top:20px;right:24px;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+
+/* ── CONTACT ──────────────────────────────────── */
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:start}
+.contact-text{font-size:13.5px;color:var(--ink-2);line-height:1.8;margin-bottom:22px}
+.c-links{display:flex;flex-direction:column;gap:8px}
+.c-link{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;transition:all .15s}
+.c-link:hover{border-color:var(--ink)}
+.c-icon{width:32px;height:32px;border-radius:7px;background:var(--bg-soft);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink-2);font-size:12.5px;flex-shrink:0}
+.c-label{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-4);margin-bottom:1px}
+.c-val{font-size:12.5px;font-weight:600;color:var(--ink)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.form-group{margin-bottom:12px}
+.form-label{display:block;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin-bottom:5px}
+.form-input{width:100%;background:var(--bg-soft);border:1px solid var(--line-2);border-radius:7px;padding:10px 12px;font-family:var(--sans);font-size:13.5px;color:var(--ink);outline:none}
+.form-input::placeholder{color:var(--ink-4)}
+.form-input:focus{border-color:var(--accent)}
+.form-input.err{border-color:#d92d20}
+textarea.form-input{resize:vertical;min-height:100px}
+.form-err{font-size:11px;color:#d92d20;margin-top:4px;display:none}
+.form-err.show{display:block}
+.submit-btn{width:100%;padding:11px;margin-top:2px;background:var(--ink);color:var(--bg);font-family:var(--sans);font-weight:600;font-size:13.5px;border:none;border-radius:7px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+[data-theme="dark"] .submit-btn{background:var(--accent);color:#0b0d12}
+.submit-btn:disabled{opacity:.5;cursor:not-allowed}
+#form-msg{font-size:12px;margin-top:9px;display:none}
+#form-msg.show{display:block}
+
+/* ── FOOTER ───────────────────────────────────── */
+.site-footer{padding:22px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;max-width:var(--maxw);margin:0 auto}
+.footer-copy{font-size:12px;color:var(--ink-3)}
+.footer-links{display:flex;gap:16px}
+.footer-links a{font-size:12px;color:var(--ink-3)}
+.footer-links a:hover{color:var(--ink)}
+
+/* ── RESPONSIVE ───────────────────────────────── */
+@media (max-width:760px){
+  .nav-links{display:none}
+  .mobile-btn{display:flex}
+  .services{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .certs-grid{grid-template-columns:1fr 1fr}
+  .cs-metrics{grid-template-columns:1fr 1fr}
+  .hero-stats{flex-direction:column;gap:14px}
+  .h-stat{padding-right:0}
+}
+@media (max-width:480px){
+  .certs-grid{grid-template-columns:1fr}
+}
+</style>
 </head>
-
 <body>
 
-	<!-- MOBILE BAR -->
-	<div class="mobile-bar">
-		<button class="mobile-menu-btn" id="menu-btn" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
-		<span class="mobile-logo">RM</span>
-	</div>
-	<div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">Richter Mayandoc</a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <button class="theme-btn" id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <a href="#contact" class="nav-cta">Contact</a>
+      <button class="mobile-btn" id="mobile-btn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+</div>
+<div class="mobile-panel" id="mobile-panel">
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#education">Education</a>
+  <a href="#contact">Contact</a>
+</div>
 
-	<!-- CASE STUDY: MT. CLARAMUEL -->
-	<div class="cs-overlay" id="cs-claramuel" role="dialog" aria-modal="true">
-		<div class="cs-modal">
-			<div class="cs-head">
-				<div class="cs-head-title">ReservaMate — Mt. ClaRamuel Resort Reservation System</div>
-				<button class="cs-close" onclick="closeCS('cs-claramuel')"><i class="fas fa-times"></i></button>
-			</div>
-			<div class="cs-body">
-				<div class="cs-section">
-					<div class="cs-section-label">Business Problem</div>
-					<p class="cs-text">Mt. ClaRamuel Resort was running on paper notebooks and phone calls. Staff
-						logged bookings in spreadsheets, collected payments in cash or bank transfer, and
-						reconciled everything manually at day's end. This produced chronic double-bookings, lost
-						payment records, and a full-time admin burden — while competitors with digital presence
-						were capturing online customers the resort couldn't reach.</p>
-				</div>
-				<div class="cs-section">
-					<div class="cs-section-label">Solution Delivered</div>
-					<p class="cs-text">ReservaMate is a production-grade reservation platform co-built with Edcel
-						B. Yasay for my BS IT capstone (ISU Ilagan, December 2025). Five core modules replaced the
-						manual workflow entirely.</p>
-					<ul style="margin-top:12px;display:flex;flex-direction:column;gap:8px;padding-left:4px">
-						<li
-							style="font-size:13.5px;color:var(--ink-2);display:flex;gap:8px;align-items:flex-start">
-							<span style="color:var(--gold);margin-top:3px">▸</span><span><strong
-									style="color:var(--ink)">Real-time booking engine</strong> —
-								concurrent-safe scheduling that prevents double-bookings as guests transact
-								simultaneously.</span>
-						</li>
-						<li
-							style="font-size:13.5px;color:var(--ink-2);display:flex;gap:8px;align-items:flex-start">
-							<span style="color:var(--gold);margin-top:3px">▸</span><span><strong
-									style="color:var(--ink)">Multi-payment gateway</strong> — Maya Business
-								integration covering e-wallets, credit and debit cards with automated receipts
-								and transaction records linked directly to bookings.</span>
-						</li>
-						<li
-							style="font-size:13.5px;color:var(--ink-2);display:flex;gap:8px;align-items:flex-start">
-							<span style="color:var(--gold);margin-top:3px">▸</span><span><strong
-									style="color:var(--ink)">Admin dashboard with RBAC</strong> — role-gated
-								access for staff tiers, full booking oversight, transaction monitoring, and user
-								management.</span>
-						</li>
-						<li
-							style="font-size:13.5px;color:var(--ink-2);display:flex;gap:8px;align-items:flex-start">
-							<span style="color:var(--gold);margin-top:3px">▸</span><span><strong
-									style="color:var(--ink)">Check-in / check-out module</strong> — real-time
-								occupancy updates so facility turnaround stays accurate for incoming
-								guests.</span>
-						</li>
-						<li
-							style="font-size:13.5px;color:var(--ink-2);display:flex;gap:8px;align-items:flex-start">
-							<span style="color:var(--gold);margin-top:3px">▸</span><span><strong
-									style="color:var(--ink)">Financial reporting</strong> — filterable revenue
-								reports by month or year across room types, replacing the manual ledger
-								entirely.</span>
-						</li>
-					</ul>
-				</div>
-				<div class="cs-metrics">
-					<div class="cs-metric">
-						<div class="cs-metric-num">4.30</div>
-						<div class="cs-metric-lbl">ISO 25010 Grand Mean</div>
-					</div>
-					<div class="cs-metric">
-						<div class="cs-metric-num">4.22</div>
-						<div class="cs-metric-lbl">Functionality Score</div>
-					</div>
-					<div class="cs-metric">
-						<div class="cs-metric-num">51/51</div>
-						<div class="cs-metric-lbl">Respondents — 100%</div>
-					</div>
-				</div>
-				<div class="cs-section">
-					<div class="cs-section-label">Evaluation Results — ISO/IEC 25010</div>
-					<p class="cs-text" style="margin-bottom:12px">Formally evaluated by 45 customers, 3 resort
-						staff, and 3 IT specialists across all 8 quality dimensions. Grand mean: <strong
-							style="color:var(--ink)">4.30 — Strongly Agree.</strong></p>
-					<div style="display:flex;flex-direction:column;gap:6px">
-						<div
-							style="display:flex;justify-content:space-between;padding:7px 12px;background:var(--surface-2);border-radius:6px;font-size:12.5px">
-							<span style="color:var(--ink-2)">Accommodation &amp; Facility Booking</span><span
-								style="color:var(--gold);font-weight:600">4.29 — Excellent</span>
-						</div>
-						<div
-							style="display:flex;justify-content:space-between;padding:7px 12px;background:var(--surface-2);border-radius:6px;font-size:12.5px">
-							<span style="color:var(--ink-2)">Pricing &amp; Billing Accuracy</span><span
-								style="color:var(--gold);font-weight:600">4.27 — Excellent</span>
-						</div>
-						<div
-							style="display:flex;justify-content:space-between;padding:7px 12px;background:var(--surface-2);border-radius:6px;font-size:12.5px">
-							<span style="color:var(--ink-2)">Payment Gateway</span><span
-								style="color:var(--gold);font-weight:600">4.24 — Excellent</span>
-						</div>
-						<div
-							style="display:flex;justify-content:space-between;padding:7px 12px;background:var(--surface-2);border-radius:6px;font-size:12.5px">
-							<span style="color:var(--ink-2)">User Management</span><span
-								style="color:var(--ink-3);font-weight:600">4.16 — Good</span>
-						</div>
-						<div
-							style="display:flex;justify-content:space-between;padding:7px 12px;background:var(--surface-2);border-radius:6px;font-size:12.5px">
-							<span style="color:var(--ink-2)">Check-in &amp; Check-out</span><span
-								style="color:var(--ink-3);font-weight:600">4.16 — Good</span>
-						</div>
-					</div>
-				</div>
-				<div class="cs-section">
-					<div class="cs-section-label">Key Technical Decisions</div>
-					<p class="cs-text">Laravel's ORM and authentication scaffolding accelerated development while
-						keeping the codebase maintainable. MySQL with concurrency-safe writes handles simultaneous
-						bookings without race conditions. Maya Business was chosen specifically because it
-						supports Philippine e-wallets natively — the dominant payment method for the resort's
-						local customer base. Security was layered: RBAC at the application layer, password
-						hashing, SSL, and encrypted data storage.</p>
-				</div>
-				<div class="cs-section">
-					<div class="cs-section-label">Stack</div>
-					<div class="cs-tech-list">
-						<span class="tag">Laravel 10</span><span class="tag">PHP</span><span
-							class="tag">MySQL</span><span class="tag">Tailwind CSS</span><span
-							class="tag">JavaScript</span><span class="tag">Maya Business API</span><span
-							class="tag">RBAC</span><span class="tag">SSL</span>
-					</div>
-				</div>
-				<div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
-					<a href="https://mtclaramuelhotelresort.com/" target="_blank" rel="noopener"
-						class="cs-trigger"><i class="fas fa-arrow-up-right-from-square"
-							style="font-size:10px"></i> View Live Site</a>
-					<span class="cs-trigger"
-						style="cursor:default;color:var(--ink-3);background:var(--surface-2);border-color:var(--border)"><i
-							class="fas fa-graduation-cap" style="font-size:10px"></i> BS IT Capstone · ISU
-						Ilagan, Dec 2025</span>
-				</div>
-			</div>
-		</div>
-	</div>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="section-inner">
+    <div class="hero-eyebrow">Full-Stack Developer</div>
+    <h1 class="hero-name">Richter Mayandoc</h1>
+    <p class="hero-role">BS Information Technology — Isabela State University, Ilagan Campus</p>
+    <p class="hero-desc">I build practical, backend-focused web systems that help businesses manage operations,
+      improve customer experience, and support day-to-day workflows — covering database design, system logic,
+      integrations, and deployment.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-p"><i class="fas fa-folder-open" style="font-size:12px"></i> View Projects</a>
+      <a href="#contact" class="btn btn-o"><i class="fas fa-paper-plane" style="font-size:12px"></i> Let's Talk</a>
+    </div>
+    <div class="hero-stats">
+      <div class="h-stat"><div class="h-num">3+</div><div class="h-lbl">YEARS BUILDING</div></div>
+      <div class="h-stat"><div class="h-num">4+</div><div class="h-lbl">SYSTEMS SHIPPED</div></div>
+      <div class="h-stat"><div class="h-num">July 2026</div><div class="h-lbl">EXPECTED GRADUATION</div></div>
+    </div>
+    <div class="hero-social">
+      <a href="https://github.com/nmrjustme" target="_blank" rel="noopener" class="soc" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank" rel="noopener" class="soc" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="mailto:richter.p.maya@gmail.com" class="soc" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <a href="tel:+639169824195" class="soc" aria-label="Phone"><i class="fas fa-phone"></i></a>
+    </div>
+  </div>
+</section>
 
-	<!-- CASE STUDY: CIMC -->
-	<div class="cs-overlay" id="cs-cimc" role="dialog" aria-modal="true">
-		<div class="cs-modal">
-			<div class="cs-head">
-				<div class="cs-head-title">CIMC Patient Record Viewer</div>
-				<button class="cs-close" onclick="closeCS('cs-cimc')"><i class="fas fa-times"></i></button>
-			</div>
-			<div class="cs-body">
-				<div class="cs-section">
-					<div class="cs-section-label">Business Problem</div>
-					<p class="cs-text">Hospital staff at CIMC retrieved patient records from physical folders
-						stored across multiple rooms. A single patient's history could take 15–30 minutes to
-						locate — an unacceptable delay in urgent care situations and a full-time burden on a
-						dedicated records clerk.</p>
-				</div>
-				<div class="cs-section">
-					<div class="cs-section-label">Solution Delivered</div>
-					<p class="cs-text">A digital archiving and search system that digitized decades of physical
-						records into a secure SQL Server database. Staff can now search by patient name, ID, or
-						admission date and retrieve a complete record in under 30 seconds. The system includes PDF
-						document rendering, annotation, and role-based access control to restrict sensitive data
-						to authorized staff only.</p>
-				</div>
-				<div class="cs-metrics">
-					<div class="cs-metric">
-						<div class="cs-metric-num">&lt;30s</div>
-						<div class="cs-metric-lbl">New retrieval time</div>
-					</div>
-					<div class="cs-metric">
-						<div class="cs-metric-num">15–30m</div>
-						<div class="cs-metric-lbl">Previous retrieval time</div>
-					</div>
-					<div class="cs-metric">
-						<div class="cs-metric-num">RBAC</div>
-						<div class="cs-metric-lbl">Secured access tiers</div>
-					</div>
-				</div>
-				<div class="cs-section">
-					<div class="cs-section-label">Key Technical Decisions</div>
-					<p class="cs-text">SQL Server was chosen to align with the hospital's existing IT
-						infrastructure. Full-text indexing on name and patient ID fields keeps search near-instant
-						even as the dataset grows. PDF rendering is handled server-side to avoid exposing raw file
-						paths to the client — an important security constraint for regulated medical data.</p>
-				</div>
-				<div class="cs-section">
-					<div class="cs-section-label">Stack</div>
-					<div class="cs-tech-list">
-						<span class="tag">Laravel</span><span class="tag">SQL Server</span><span
-							class="tag">PHP</span><span class="tag">TypeScript</span><span class="tag">Full-Text
-							Search</span><span class="tag">PDF Manipulation</span><span class="tag">RBAC</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="eyebrow">About</div>
+    <h2 class="title">Turning business needs into working systems</h2>
+    <p class="about-text">My goal is to turn business needs into reliable digital solutions that are easy to use,
+      scalable, and useful in real operations. I focus on systems that support sales, workflows, daily management,
+      automation, and long-term business growth — across both frontend and backend, with a particular focus on
+      backend architecture and database design.</p>
 
-	<div class="layout">
+    <div class="skill-label" style="margin-bottom:14px">How I work</div>
+    <div class="process-list">
+      <div class="p-item">
+        <div class="p-num">01</div>
+        <div><div class="p-title">Discover the problem</div><div class="p-desc">Understand the business need and identify the core problem to solve.</div></div>
+      </div>
+      <div class="p-item">
+        <div class="p-num">02</div>
+        <div><div class="p-title">Design the architecture</div><div class="p-desc">Plan the system structure, features, and workflows.</div></div>
+      </div>
+      <div class="p-item">
+        <div class="p-num">03</div>
+        <div><div class="p-title">Implementation</div><div class="p-desc">Develop the system and set up automations, integrations, and workflows.</div></div>
+      </div>
+      <div class="p-item">
+        <div class="p-num">04</div>
+        <div><div class="p-title">Testing and launch</div><div class="p-desc">Launch the system, provide support, and make improvements to keep it working properly.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-		<!-- SIDEBAR -->
-		<aside class="sidebar" id="sidebar">
-			<div class="sb-top">
-				<div class="sb-avatar-wrap">
-					<img src="my_profile.png" alt="Richter Mayandoc"
-						onerror="this.parentElement.innerHTML='<div class=\'sb-initials\'>RM</div>'" />
-				</div>
-				<div class="sb-name">Richter Mayandoc</div>
-				<div class="sb-socials">
-					<a href="https://github.com/nmrjustme" target="_blank" rel="noopener" class="sb-soc"
-						aria-label="GitHub"><i class="fab fa-github"></i></a>
-					<a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank"
-						rel="noopener" class="sb-soc" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-					<a href="mailto:richter.p.maya@gmail.com" class="sb-soc" aria-label="Email"><i
-							class="fas fa-envelope"></i></a>
-					<a href="tel:+639169824195" class="sb-soc" aria-label="Phone"><i class="fas fa-phone"></i></a>
-				</div>
-			</div>
-			<nav class="sb-nav" aria-label="Sections">
-				<a href="#home" data-sec="home" class="active"><i class="fas fa-home"></i> About</a>
-				<a href="#services" data-sec="services"><i class="fas fa-toolbox"></i> Services</a>
-				<a href="#process" data-sec="process"><i class="fas fa-route"></i> How I Work</a>
-				<a href="#technologies" data-sec="technologies"><i class="fas fa-laptop-code"></i> Technologies</a>
-				<a href="#projects" data-sec="projects"><i class="fas fa-code"></i> Case Studies</a>
-				<a href="#education" data-sec="education"><i class="fas fa-graduation-cap"></i> Education</a>
-				<a href="#contact" data-sec="contact"><i class="fas fa-envelope"></i> Contact</a>
-			</nav>
-			<div class="sb-cta">
-				<a href="mailto:richter.p.maya@gmail.com" class="hire-btn">
-					<i class="fas fa-paper-plane" style="font-size:11px"></i> Let's Work Together
-				</a>
-			</div>
-			<div class="sb-theme">
-				<span class="sb-theme-label" id="theme-label"><i class="fas fa-sun"
-						style="margin-right:5px"></i>Light</span>
-				<button class="toggle-pill" id="theme-toggle" aria-label="Toggle dark mode">
-					<span class="toggle-knob">🌙</span>
-				</button>
-			</div>
-		</aside>
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-inner">
+    <div class="eyebrow">What I Offer</div>
+    <h2 class="title">Services</h2>
+    <p class="sub">Where I focus my development work.</p>
+    <div class="services">
+      <div class="svc">
+        <div class="svc-icon"><i class="fas fa-globe"></i></div>
+        <div class="svc-title">Custom Web Applications</div>
+        <p class="svc-desc">Web applications that help businesses organize operations, improve customer experience, and streamline workflows.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-icon"><i class="fas fa-credit-card"></i></div>
+        <div class="svc-title">Payment &amp; API Integration</div>
+        <p class="svc-desc">Connecting business systems with payment platforms and third-party APIs for faster, more reliable transactions.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-icon"><i class="fas fa-user-shield"></i></div>
+        <div class="svc-title">Admin Dashboards &amp; Access Control</div>
+        <p class="svc-desc">Secure dashboards for managing users, tracking activity, generating reports, and supporting decisions.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-		<main class="main">
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="section-inner">
+    <div class="eyebrow">Skills &amp; Stack</div>
+    <h2 class="title">Technologies I ship with</h2>
+    <p class="sub">Tools I've used in production.</p>
+    <div class="skill-group">
+      <div class="skill-label">Core stack</div>
+      <div class="chip-row">
+        <span class="chip">PHP</span><span class="chip">Laravel</span><span class="chip">MySQL</span>
+        <span class="chip">JavaScript</span><span class="chip">Python</span><span class="chip">Tailwind CSS</span>
+        <span class="chip">Bootstrap</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-label">Extended toolkit</div>
+      <div class="chip-row">
+        <span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">SQL Server</span>
+        <span class="chip">Django</span><span class="chip">Git</span><span class="chip">GitHub</span>
+        <span class="chip">Figma</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-			<!-- HERO -->
-			<section class="section hero" id="home">
-				<div class="hero-inner">
-					<div>
-						<div class="hero-eyebrow reveal"><span></span>Full-Stack Developer</div>
-						<h1 class="hero-name reveal reveal-d1">Richter<em> Mayandoc</em>
-						</h1>
-						<p class="hero-desc reveal reveal-d3">I build practical web-based systems that help
-							businesses manage operations, improve customer experience, and support day-to-day
-							workflows.
-							My work covers both frontend and backend development, including user interfaces,
-							database
-							design, system logic, integrations, and deployment.
-						</p>
-						<p class="hero-desc reveal reveal-d3">
-							My goal is to turn business needs into reliable digital solutions that are easy to
-							use, scalable, and useful in real operations. I focus on creating systems that
-							support sales, workflows, daily management, automation, and long-term business
-							growth.</p>
-						<div class="hero-btns reveal">
-							<a href="#projects" class="btn-primary"><i class="fas fa-folder-open"
-									style="font-size:12px"></i> View Case Studies</a>
-							<a href="#contact" class="btn-outline"><i class="fas fa-paper-plane"
-									style="font-size:12px"></i> Let's Talk</a>
-						</div>
-					</div>
-					<div class="hero-avatar">
-						<img src="profile_2.png" alt="Richter Mayandoc"
-							onerror="this.parentElement.innerHTML='<div class=\'hero-initials\'>RM</div>'" />
-					</div>
-				</div>
-				<div class="hero-metrics reveal">
-					<div class="h-metric">
-						<div class="h-num">3+</div>
-						<div class="h-lbl">Years building</div>
-					</div>
-					<div class="h-metric">
-						<div class="h-num">4+</div>
-						<div class="h-lbl">Systems shipped</div>
-					</div>
-					<div class="h-metric">
-						<div class="h-num">July 2026</div>
-						<div class="h-lbl">BSIT Expected Graduation</div>
-					</div>
-				</div>
-			</section>
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="section-inner">
+    <div class="eyebrow">Selected Work</div>
+    <h2 class="title">Projects</h2>
+    <p class="sub">Real systems built for real operations.</p>
 
-			<!-- SERVICES -->
-			<section class="section" id="services">
-				<div class="sec-label">What I Offer</div>
-				<h2 class="sec-title reveal">Services for <em>growing businesses</em></h2><br>
-				<div class="services-grid">
-					<div class="service-card reveal">
-						<div class="sc-icon"><i class="fas fa-globe"></i></div>
-						<div class="sc-title">Custom Web Application Development</div>
-						<p class="sc-desc">Developed custom web applications which can assist businesses to
-							organize their operations, enhance customer experience, and facilitate workflow
-							processes.</p>
-					</div>
-					<div class="service-card reveal reveal-d1">
-						<div class="sc-icon"><i class="fas fa-credit-card"></i></div>
-						<div class="sc-title">Payment &amp; API Integration</div>
-						<p class="sc-desc">I connect business systems with payment platforms, third-party
-							services, and APIs to make transactions and processes faster and more reliable.</p>
-					</div>
-					<div class="service-card reveal reveal-d2">
-						<div class="sc-icon"><i class="fas fa-user-shield"></i></div>
-						<div class="sc-title">Admin Dashboards &amp; Access Control</div>
-						<p class="sc-desc">Secure dashboards for managing users, tracking business activity,
-							generating reports, and analyzing important data for better decisions.</p>
-					</div>
-				</div>
-			</section>
+    <div class="proj-list">
 
-			<!-- PROCESS -->
-			<section class="section" id="process">
-				<div class="sec-label">How I Work</div>
-				<h2 class="sec-title reveal">From first conversation <em>to live system</em></h2><br>
-				<div class="process-track">
-					<div class="process-item reveal">
-						<div class="pi-num-wrap">
-							<div class="pi-num">01</div>
-							<div class="pi-line"></div>
-						</div>
-						<div class="pi-body">
-							<div class="pi-title">Discover your problem</div>
-							<p class="pi-desc">Understanding your business needs and identifying the main problem
-								to solve.</p>
-						</div>
-					</div>
+      <!-- ReservaMate -->
+      <div class="proj">
+        <div class="proj-top">
+          <div class="proj-name">ReservaMate — Mt. ClaRamuel Resort</div>
+          <div class="proj-badges"><span class="badge badge-live">Live</span><span class="badge badge-ind">Capstone</span></div>
+        </div>
+        <p class="proj-desc">Full-stack hotel reservation platform built to replace paper notebooks and phone
+          bookings, which caused chronic double-bookings, lost payment records, and heavy manual admin work.</p>
 
-					<div class="process-item reveal">
-						<div class="pi-num-wrap">
-							<div class="pi-num">02</div>
-							<div class="pi-line"></div>
-						</div>
-						<div class="pi-body">
-							<div class="pi-title">Design the architecture</div>
-							<p class="pi-desc">Planning the system structure, features, and workflows.</p>
-						</div>
-					</div>
+        <div class="proj-block">
+          <div class="proj-row-label">My contribution</div>
+          <p class="cs-text">Co-developed as my BS IT capstone project (with Edcel B. Yasay, ISU Ilagan, December 2025) — full-stack build covering the booking engine, payment integration, and admin dashboard.</p>
+        </div>
 
-					<div class="process-item reveal">
-						<div class="pi-num-wrap">
-							<div class="pi-num">03</div>
-							<div class="pi-line"></div>
-						</div>
-						<div class="pi-body">
-							<div class="pi-title">Implementation</div>
-							<p class="pi-desc">Developing the system and setting up automations, integrations,
-								and workflows.</p>
-						</div>
-					</div>
+        <div class="proj-block">
+          <div class="proj-row-label">Key features</div>
+          <ul class="proj-features">
+            <li>Real-time, concurrent-safe booking engine that prevents double-bookings</li>
+            <li>Multi-payment gateway (Maya Business) covering e-wallets, credit and debit cards with automated receipts</li>
+            <li>Admin dashboard with role-based access control for staff tiers</li>
+            <li>Check-in / check-out module with real-time occupancy updates</li>
+            <li>Filterable financial reports by month or year across room types</li>
+          </ul>
+        </div>
 
-					<div class="process-item reveal">
-						<div class="pi-num-wrap">
-							<div class="pi-num">04</div>
-						</div>
-						<div class="pi-body">
-							<div class="pi-title">Testing and Launch</div>
-							<p class="pi-desc">Launching the system, providing support, and making improvements
-								to keep it working properly.</p>
-						</div>
-					</div>
-				</div>
-			</section>
+        <div class="proj-block">
+          <div class="proj-row-label">Technologies</div>
+          <div class="proj-techs">
+            <span class="tag">Laravel 10</span><span class="tag">PHP</span><span class="tag">MySQL</span>
+            <span class="tag">Tailwind CSS</span><span class="tag">JavaScript</span><span class="tag">Maya Business API</span>
+            <span class="tag">RBAC</span><span class="tag">SSL</span>
+          </div>
+        </div>
 
-			<!-- TECHNOLOGIES -->
-			<section class="section" id="technologies">
-				<div class="sec-label">Skills &amp; Stack</div>
-				<h2 class="sec-title reveal">Technologies I <em>ship with</em></h2>
-				<p class="sec-sub reveal">Tools I've used in production.</p>
-				<div class="tech-block reveal">
-					<div class="tech-block-label">Core stack</div>
-					<div class="tech-grid">
-						<div class="tech-item"><img
-								src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg"
-								alt="PHP" onerror="this.style.display='none'"><span>PHP</span></div>
-						<div class="tech-item"><img
-								src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg"
-								alt="Laravel" onerror="this.style.display='none'"><span>Laravel</span></div>
-						<div class="tech-item"><img
-								src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-								alt="MySQL" onerror="this.style.display='none'"><span>MySQL</span></div>
-						<div class="tech-item"><img
-								src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-								alt="JavaScript" onerror="this.style.display='none'"><span>JavaScript</span>
-						</div>
-						<div class="tech-item"><img
-								src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-								alt="Python" onerror="this.style.display='none'"><span>Python</span></div>
-						<div class="tech-item"><img
-								src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg"
-								alt="Tailwind CSS" onerror="this.style.display='none'"><span>Tailwind</span>
-						</div>
-						<div class="tech-item"><img
-								src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
-								alt="Bootstrap" onerror="this.style.display='none'"><span>Bootstrap</span></div>
-					</div>
-				</div>
-				<div class="tech-block reveal">
-					<div class="tech-block-label">Extended toolkit</div>
-					<div class="tech-grid">
-						<div class="tech-item"><img
-								src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-								alt="React" onerror="this.style.display='none'"><span>React</span></div>
-						<div class="tech-item"><img
-								src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-								alt="TypeScript" onerror="this.style.display='none'"><span>TypeScript</span>
-						</div>
-						<div class="tech-item"><img
-								src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg"
-								alt="SQL Server" onerror="this.style.display='none'"><span>SQL Server</span>
-						</div>
-						<div class="tech-item"><img
-								src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg"
-								alt="Django" onerror="this.style.display='none'"><span>Django</span></div>
-						<div class="tech-item"><img
-								src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-								alt="Git" onerror="this.style.display='none'"><span>Git</span></div>
-						<div class="tech-item"><img
-								src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-								alt="GitHub" onerror="this.style.display='none'"
-								id="gh-logo"><span>GitHub</span></div>
-						<div class="tech-item"><img
-								src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
-								alt="Figma" onerror="this.style.display='none'"><span>Figma</span></div>
-					</div>
-				</div>
-			</section>
+        <div class="proj-result"><strong>Result:</strong> Eliminated overbooking, automated payment confirmations, and replaced a manual ledger that caused weekly reconciliation errors.</div>
 
-			<!-- CASE STUDIES / PROJECTS -->
-			<section class="section" id="projects">
-				<div class="sec-label">Selected Work</div>
-				<h2 class="sec-title reveal">Case studies — <em>real results</em></h2><br>
-				<div class="projects-grid">
+        <details>
+          <summary>Full case study — evaluation results &amp; technical decisions</summary>
+          <div class="cs-body">
+            <div class="cs-metrics">
+              <div class="cs-metric"><div class="cs-metric-num">4.30</div><div class="cs-metric-lbl">ISO 25010 GRAND MEAN</div></div>
+              <div class="cs-metric"><div class="cs-metric-num">4.22</div><div class="cs-metric-lbl">FUNCTIONALITY SCORE</div></div>
+              <div class="cs-metric"><div class="cs-metric-num">51/51</div><div class="cs-metric-lbl">RESPONDENTS — 100%</div></div>
+            </div>
+            <div>
+              <div class="cs-sub-label">ISO/IEC 25010 evaluation</div>
+              <p class="cs-text" style="margin-bottom:10px">Formally evaluated by 45 customers, 3 resort staff, and 3 IT specialists across all 8 quality dimensions. Grand mean: 4.30 — Strongly Agree.</p>
+              <div class="eval-rows">
+                <div class="eval-row"><span>Accommodation &amp; Facility Booking</span><span>4.29 — Excellent</span></div>
+                <div class="eval-row"><span>Pricing &amp; Billing Accuracy</span><span>4.27 — Excellent</span></div>
+                <div class="eval-row"><span>Payment Gateway</span><span>4.24 — Excellent</span></div>
+                <div class="eval-row"><span>User Management</span><span>4.16 — Good</span></div>
+                <div class="eval-row"><span>Check-in &amp; Check-out</span><span>4.16 — Good</span></div>
+              </div>
+            </div>
+            <div>
+              <div class="cs-sub-label">Technical decisions</div>
+              <p class="cs-text">Laravel's ORM and authentication scaffolding sped up development while keeping the codebase maintainable. MySQL handles concurrency-safe writes for simultaneous bookings. Maya Business was chosen for native support of Philippine e-wallets, the dominant payment method for the resort's local customers. Security is layered across application-level RBAC, password hashing, SSL, and encrypted data storage.</p>
+            </div>
+          </div>
+        </details>
 
-					<!-- ReservaMate -->
-					<div class="proj-card reveal">
-						<div class="proj-preview">
-							<svg viewBox="0 0 400 168" xmlns="http://www.w3.org/2000/svg">
-								<rect width="400" height="168" fill="#f4f4f1" />
-								<rect width="400" height="22" fill="#e8e8e4" />
-								<circle cx="13" cy="11" r="4" fill="#ff6b6b" />
-								<circle cx="25" cy="11" r="4" fill="#ffd93d" />
-								<circle cx="37" cy="11" r="4" fill="#6bcb77" />
-								<rect x="52" y="5" width="260" height="12" rx="3" fill="#fff" opacity=".7" />
-								<rect x="0" y="22" width="400" height="58" fill="#1a1a2e" />
-								<rect x="20" y="34" width="150" height="11" rx="3"
-									fill="rgba(255,255,255,.9)" />
-								<rect x="20" y="51" width="95" height="6" rx="2" fill="rgba(255,255,255,.45)" />
-								<rect x="20" y="63" width="64" height="14" rx="4" fill="#c9a84c" />
-								<rect x="246" y="26" width="144" height="52" rx="6" fill="#fff" opacity=".97" />
-								<rect x="255" y="35" width="55" height="8" rx="2" fill="#e8e8e4" />
-								<rect x="316" y="35" width="55" height="8" rx="2" fill="#e8e8e4" />
-								<rect x="255" y="50" width="126" height="18" rx="4" fill="#1a1a2e" />
-								<rect x="10" y="90" width="118" height="68" rx="5" fill="#fff" />
-								<rect x="10" y="90" width="118" height="28" rx="5" fill="#c9a84c"
-									opacity=".65" />
-								<rect x="16" y="126" width="55" height="5" rx="2" fill="#e8e8e4" />
-								<rect x="16" y="136" width="36" height="10" rx="3" fill="#1a1a2e" />
-								<rect x="140" y="90" width="118" height="68" rx="5" fill="#fff" />
-								<rect x="140" y="90" width="118" height="28" rx="5" fill="#8b90b0"
-									opacity=".6" />
-								<rect x="146" y="126" width="55" height="5" rx="2" fill="#e8e8e4" />
-								<rect x="146" y="136" width="36" height="10" rx="3" fill="#1a1a2e" />
-								<rect x="270" y="90" width="120" height="68" rx="5" fill="#fff" />
-								<rect x="270" y="90" width="120" height="28" rx="5" fill="#1a1a2e" />
-								<rect x="276" y="126" width="55" height="5" rx="2" fill="#e8e8e4" />
-								<rect x="276" y="136" width="36" height="10" rx="3" fill="#c9a84c" />
-							</svg>
-							<div class="proj-badge-wrap">
-								<span class="pbadge pbadge-live"><i class="fas fa-circle"
-										style="font-size:5px"></i> Live</span>
-								<span class="pbadge pbadge-ind">Capstone</span>
-							</div>
-						</div>
-						<div class="proj-body">
-							<div class="proj-header">
-								<div class="proj-title">ReservaMate — Mt. ClaRamuel Resort</div>
-								<div class="proj-links">
-									<a href="https://mtclaramuelhotelresort.com/" target="_blank"
-										rel="noopener" class="plink live"><i
-											class="fas fa-arrow-up-right-from-square"
-											style="font-size:9px"></i> Live</a>
-								</div>
-							</div>
-							<p class="proj-desc">Full-stack hotel reservation platform replacing manual notebooks
-								and phone bookings. Multi-payment gateway, real-time booking, admin dashboard,
-								and financial reporting — evaluated 4.30/5 on ISO/IEC 25010 by 51 respondents.
-							</p>
-							<div class="proj-techs"><span class="tag">Laravel 10</span><span
-									class="tag">MySQL</span><span class="tag">Tailwind</span><span
-									class="tag">Maya API</span><span class="tag">RBAC</span></div>
-							<div class="proj-result"><i class="fas fa-check-circle"></i><span>Eliminated
-									overbooking, automated payment confirmations, and replaced a manual ledger
-									that caused weekly reconciliation errors</span></div>
-							<button class="cs-trigger" onclick="openCS('cs-claramuel')"><i
-									class="fas fa-book-open" style="font-size:10px"></i> Read Case
-								Study</button>
-						</div>
-					</div>
+        <div class="proj-footer">
+          <div class="proj-links">
+            <a href="https://mtclaramuelhotelresort.com/" target="_blank" rel="noopener" class="plink"><i class="fas fa-arrow-up-right-from-square" style="font-size:10px"></i> Live Site</a>
+          </div>
+        </div>
+      </div>
 
-					<!-- CIMC -->
-					<div class="proj-card reveal reveal-d1">
-						<div class="proj-preview">
-							<svg viewBox="0 0 400 168" xmlns="http://www.w3.org/2000/svg">
-								<rect width="400" height="168" fill="#f4f4f1" />
-								<rect width="400" height="22" fill="#e8e8e4" />
-								<circle cx="13" cy="11" r="4" fill="#ff6b6b" />
-								<circle cx="25" cy="11" r="4" fill="#ffd93d" />
-								<circle cx="37" cy="11" r="4" fill="#6bcb77" />
-								<rect x="52" y="5" width="260" height="12" rx="3" fill="#fff" opacity=".7" />
-								<rect x="0" y="22" width="82" height="146" fill="#1a1a2e" />
-								<rect x="9" y="35" width="65" height="8" rx="3" fill="rgba(255,255,255,.12)" />
-								<rect x="9" y="50" width="65" height="8" rx="3" fill="#c9a84c" opacity=".7" />
-								<rect x="9" y="65" width="65" height="8" rx="3" fill="rgba(255,255,255,.07)" />
-								<rect x="9" y="80" width="65" height="8" rx="3" fill="rgba(255,255,255,.07)" />
-								<rect x="9" y="95" width="65" height="8" rx="3" fill="rgba(255,255,255,.07)" />
-								<rect x="90" y="28" width="300" height="16" rx="3" fill="#e8e8e4" />
-								<rect x="90" y="50" width="220" height="10" rx="3" fill="#f4f4f1" />
-								<rect x="90" y="66" width="205" height="17" rx="4" fill="#fff" stroke="#e8e8e4"
-									stroke-width="1" />
-								<rect x="95" y="71" width="80" height="7" rx="2" fill="#b0b3c6" opacity=".5" />
-								<rect x="298" y="66" width="52" height="17" rx="4" fill="#1a1a2e" />
-								<rect x="90" y="90" width="300" height="13" rx="2" fill="#c9a84c"
-									opacity=".1" />
-								<rect x="95" y="95" width="42" height="5" rx="1" fill="#c9a84c" opacity=".6" />
-								<rect x="148" y="95" width="62" height="5" rx="1" fill="#c9a84c" opacity=".4" />
-								<rect x="90" y="107" width="300" height="13" rx="2" fill="#fff" />
-								<rect x="95" y="112" width="42" height="4" rx="1" fill="#b0b3c6" />
-								<rect x="148" y="112" width="62" height="4" rx="1" fill="#b0b3c6" />
-								<rect x="90" y="124" width="300" height="13" rx="2" fill="#f4f4f1" />
-								<rect x="95" y="129" width="42" height="4" rx="1" fill="#b0b3c6" />
-								<rect x="148" y="129" width="62" height="4" rx="1" fill="#b0b3c6" />
-								<rect x="90" y="141" width="300" height="13" rx="2" fill="#fff" />
-								<rect x="95" y="146" width="42" height="4" rx="1" fill="#b0b3c6" />
-								<rect x="148" y="146" width="62" height="4" rx="1" fill="#22c55e"
-									opacity=".7" />
-							</svg>
-							<div class="proj-badge-wrap">
-								<span class="pbadge pbadge-ind">Healthcare</span>
-							</div>
-						</div>
-						<div class="proj-body">
-							<div class="proj-header">
-								<div class="proj-title">CIMC Patient Record Viewer</div>
-								<div class="proj-links">
-									<a href="https://github.com/nmrjustme" target="_blank" rel="noopener"
-										class="plink" aria-label="GitHub"><i class="fab fa-github"></i></a>
-								</div>
-							</div>
-							<p class="proj-desc">Digital archiving system for a hospital replacing physical
-								record folders. Full-text patient search by name, ID, or admission date with PDF
-								rendering and role-gated access for clinical staff.</p>
-							<div class="proj-techs"><span class="tag">Laravel</span><span class="tag">SQL
-									Server</span><span class="tag">PHP</span><span
-									class="tag">TypeScript</span><span class="tag">React</span>
-							</div>
-							<div class="proj-result"><i class="fas fa-check-circle"></i><span>Record retrieval
-									dropped from <strong>15–30 minutes to under 30 seconds</strong> via
-									full-text indexing on a decades-old dataset</span></div>
-							<button class="cs-trigger" onclick="openCS('cs-cimc')"><i class="fas fa-book-open"
-									style="font-size:10px"></i> Read Case Study</button>
-						</div>
-					</div>
+      <!-- CIMC -->
+      <div class="proj">
+        <div class="proj-top">
+          <div class="proj-name">CIMC Patient Record Viewer</div>
+          <div class="proj-badges"><span class="badge badge-ind">Healthcare</span></div>
+        </div>
+        <p class="proj-desc">Digital archiving and search system for a hospital, replacing physical record folders
+          stored across multiple rooms that took 15–30 minutes per record to locate.</p>
 
-					<!-- Credential Verification -->
-					<div class="proj-card reveal">
-						<div class="proj-preview">
-							<svg viewBox="0 0 400 168" xmlns="http://www.w3.org/2000/svg">
-								<rect width="400" height="168" fill="#f4f4f1" />
-								<rect width="400" height="22" fill="#e8e8e4" />
-								<circle cx="13" cy="11" r="4" fill="#ff6b6b" />
-								<circle cx="25" cy="11" r="4" fill="#ffd93d" />
-								<circle cx="37" cy="11" r="4" fill="#6bcb77" />
-								<rect x="0" y="22" width="400" height="36" fill="#1a1a2e" />
-								<rect x="18" y="31" width="105" height="9" rx="3" fill="rgba(255,255,255,.8)" />
-								<rect x="296" y="29" width="64" height="16" rx="4" fill="#c9a84c" />
-								<rect x="18" y="70" width="172" height="88" rx="6" fill="#fff" stroke="#c9a84c"
-									stroke-width="1.5" stroke-dasharray="5,3" />
-								<rect x="44" y="90" width="122" height="8" rx="3" fill="#e8e8e4" />
-								<rect x="60" y="104" width="90" height="7" rx="2" fill="#e8e8e4" />
-								<rect x="62" y="120" width="84" height="16" rx="5" fill="#1a1a2e" />
-								<rect x="74" y="125" width="60" height="6" rx="2" fill="rgba(255,255,255,.7)" />
-								<rect x="204" y="70" width="186" height="88" rx="6" fill="#fff" />
-								<rect x="214" y="80" width="84" height="7" rx="2" fill="#e8e8e4" />
-								<rect x="214" y="93" width="166" height="1" fill="#e8e8e4" />
-								<rect x="214" y="101" width="52" height="6" rx="2" fill="#b0b3c6" />
-								<rect x="278" y="101" width="82" height="6" rx="2" fill="#1a1a2e" />
-								<rect x="214" y="114" width="52" height="6" rx="2" fill="#b0b3c6" />
-								<rect x="278" y="114" width="82" height="6" rx="2" fill="#22c55e"
-									opacity=".8" />
-								<rect x="214" y="127" width="52" height="6" rx="2" fill="#b0b3c6" />
-								<rect x="278" y="127" width="62" height="6" rx="2" fill="#1a1a2e" />
-							</svg>
-							<div class="proj-badge-wrap">
-								<span class="pbadge pbadge-ind">Education</span>
-							</div>
-						</div>
-						<div class="proj-body">
-							<div class="proj-header">
-								<div class="proj-title">Credential &amp; Academic Verification System</div>
-								<div class="proj-links">
-									<a href="https://github.com/nmrjustme" target="_blank" rel="noopener"
-										class="plink" aria-label="GitHub"><i class="fab fa-github"></i></a>
-								</div>
-							</div>
-							<p class="proj-desc">Secure document verification platform with automated validation
-								workflows and tamper-proof audit trail reporting — built for an educational
-								institution dealing with fraudulent submissions.</p>
-							<div class="proj-techs"><span class="tag">Laravel</span><span
-									class="tag">TypeScript</span><span class="tag">React</span><span
-									class="tag">Tailwind</span><span class="tag">SQL Server</span></div>
-							<div class="proj-result"><i class="fas fa-check-circle"></i><span>Fraudulent document
-									submissions <strong>reduced significantly</strong> via comprehensive audit
-									trail logging and automated verification checks</span></div>
-						</div>
-					</div>
+        <div class="proj-block">
+          <div class="proj-row-label">My contribution</div>
+          <p class="cs-text">Designed and built the full system — digitizing decades of physical records into a secure database with search, rendering, and access control.</p>
+        </div>
 
-					<!-- Pageant Tabulation -->
-					<div class="proj-card reveal reveal-d1">
-						<div class="proj-preview">
-							<svg viewBox="0 0 400 168" xmlns="http://www.w3.org/2000/svg">
-								<rect width="400" height="168" fill="#1a1a2e" />
-								<rect width="400" height="22" fill="#0d0e14" />
-								<circle cx="13" cy="11" r="4" fill="#ff6b6b" />
-								<circle cx="25" cy="11" r="4" fill="#ffd93d" />
-								<circle cx="37" cy="11" r="4" fill="#6bcb77" />
-								<rect x="12" y="32" width="376" height="20" rx="3" fill="#242840" />
-								<rect x="18" y="38" width="65" height="8" rx="2" fill="rgba(255,255,255,.6)" />
-								<rect x="330" y="36" width="48" height="12" rx="3" fill="#22c55e"
-									opacity=".75" />
-								<rect x="12" y="59" width="376" height="24" rx="3" fill="#c9a84c"
-									opacity=".2" />
-								<rect x="18" y="65" width="10" height="12" rx="2" fill="rgba(255,255,255,.5)" />
-								<rect x="34" y="65" width="124" height="12" rx="2"
-									fill="rgba(255,255,255,.8)" />
-								<rect x="310" y="65" width="68" height="12" rx="2"
-									fill="rgba(255,255,255,.9)" />
-								<rect x="12" y="87" width="376" height="22" rx="3" fill="#242840" />
-								<rect x="18" y="93" width="10" height="10" rx="2"
-									fill="rgba(255,255,255,.25)" />
-								<rect x="34" y="93" width="104" height="10" rx="2"
-									fill="rgba(255,255,255,.35)" />
-								<rect x="310" y="93" width="68" height="10" rx="2"
-									fill="rgba(255,255,255,.45)" />
-								<rect x="12" y="113" width="376" height="22" rx="3" fill="#242840" />
-								<rect x="18" y="119" width="10" height="10" rx="2"
-									fill="rgba(255,255,255,.25)" />
-								<rect x="34" y="119" width="114" height="10" rx="2"
-									fill="rgba(255,255,255,.3)" />
-								<rect x="310" y="119" width="68" height="10" rx="2"
-									fill="rgba(255,255,255,.4)" />
-								<rect x="12" y="139" width="376" height="22" rx="3" fill="#242840" />
-							</svg>
-							<div class="proj-badge-wrap">
-								<span class="pbadge pbadge-ind">Real-Time</span>
-							</div>
-						</div>
-						<div class="proj-body">
-							<div class="proj-header">
-								<div class="proj-title">Pageant Tabulation System</div>
-								<div class="proj-links">
-									<a href="https://github.com/nmrjustme" target="_blank" rel="noopener"
-										class="plink" aria-label="GitHub"><i class="fab fa-github"></i></a>
-								</div>
-							</div>
-							<p class="proj-desc">Live event scoring platform with concurrent score ingestion from
-								multiple judges and automated leaderboard calculation — replacing spreadsheets
-								and manual tallying at a real event.</p>
-							<div class="proj-techs"><span class="tag">PHP</span><span
-									class="tag">MySQL</span><span class="tag">Bootstrap</span></div>
-							<div class="proj-result"><i class="fas fa-check-circle"></i><span><strong>100%
-										scoring accuracy</strong> under simultaneous multi-judge input — no
-									race conditions, no manual recounts</span></div>
-						</div>
-					</div>
+        <div class="proj-block">
+          <div class="proj-row-label">Key features</div>
+          <ul class="proj-features">
+            <li>Search by patient name, ID, or admission date with full-text indexing</li>
+            <li>Server-side PDF document rendering and annotation</li>
+            <li>Role-based access control restricting sensitive data to authorized staff</li>
+          </ul>
+        </div>
 
-				</div>
-			</section>
+        <div class="proj-block">
+          <div class="proj-row-label">Technologies</div>
+          <div class="proj-techs">
+            <span class="tag">Laravel</span><span class="tag">SQL Server</span><span class="tag">PHP</span>
+            <span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Full-Text Search</span>
+            <span class="tag">RBAC</span>
+          </div>
+        </div>
 
-			<!-- EDUCATION -->
-			<section class="section" id="education">
-				<div class="sec-label">Background</div>
-				<h2 class="sec-title reveal">Education &amp; <em>Certifications</em></h2><br>
-				<div class="edu-grid">
-					<div class="edu-card reveal">
-						<div class="edu-icon-wrap"><i class="fas fa-university"></i></div>
-						<div class="edu-degree">Bachelor of Science in Information Technology</div>
-						<div class="edu-school">Isabela State University — Ilagan Campus</div>
-						<div class="edu-year"><i class="fas fa-calendar-alt" style="margin-right:5px"></i>2022 –
-							2026</div>
-						<p class="edu-desc">Focused on software development, database management, web
-							technologies, networking, and practical IT solutions. Built a strong foundation in
-							designing, developing, and maintaining systems that solve real-world problems.</p>
-					</div>
-					<div class="reveal reveal-d1">
-						<div
-							style="font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-3);margin-bottom:18px">
-							Certifications</div>
-						<div class="certs-list">
-							<div class="cert-item">
-								<div class="cert-icon"><i class="fas fa-database"></i></div>
-								<div>
-									<div class="cert-name">IT Specialist — Database</div>
-									<div class="cert-org">Certiport / Pearson VUE</div>
-								</div>
-							</div>
-							<div class="cert-item">
-								<div class="cert-icon"><i class="fas fa-project-diagram"></i></div>
-								<div>
-									<div class="cert-name">Relational Database Design</div>
-									<div class="cert-org">Database Certification</div>
-								</div>
-							</div>
-							<div class="cert-item">
-								<div class="cert-icon"><i class="fas fa-table"></i></div>
-								<div>
-									<div class="cert-name">SQL Foundations</div>
-									<div class="cert-org">SQL Certification</div>
-								</div>
-							</div>
-							<div class="cert-item">
-								<div class="cert-icon"><img
-										src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-										style="width:15px;height:15px" alt=""
-										onerror="this.parentElement.innerHTML='<i class=\'fas fa-code\'></i>'">
-								</div>
-								<div>
-									<div class="cert-name">Python Programming</div>
-									<div class="cert-org">DICT Philippines</div>
-								</div>
-							</div>
-							<div class="cert-item">
-								<div class="cert-icon"><i class="fas fa-globe"></i></div>
-								<div>
-									<div class="cert-name">International Research Presenter</div>
-									<div class="cert-org">Academic Conference</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+        <div class="proj-result"><strong>Result:</strong> Record retrieval dropped from 15–30 minutes to under 30 seconds via full-text indexing on a decades-old dataset.</div>
 
-			<!-- CTA BAND -->
-			<div class="cta-band">
-				<div class="cta-label"><i class="fas fa-circle" style="font-size:6px;margin-right:6px"></i>Let's
-					build something together</div>
-				<h2 class="cta-headline">Ready to <em>transform</em><br>your business?</h2>
-				<p class="cta-sub">Whether it's automating a manual workflow, building a new platform, or
-					modernizing a legacy system — let's talk about what's possible.</p>
-				<div class="cta-btns">
-					<a href="#contact" class="cta-btn-p"><i class="fas fa-paper-plane" style="font-size:12px"></i>
-						Start a conversation</a>
-					<a href="#projects" class="cta-btn-o"><i class="fas fa-folder-open" style="font-size:12px"></i>
-						View case studies</a>
-				</div>
-			</div>
+        <details>
+          <summary>Full case study — technical decisions</summary>
+          <div class="cs-body">
+            <div class="cs-metrics">
+              <div class="cs-metric"><div class="cs-metric-num">&lt;30s</div><div class="cs-metric-lbl">NEW RETRIEVAL TIME</div></div>
+              <div class="cs-metric"><div class="cs-metric-num">15–30m</div><div class="cs-metric-lbl">PREVIOUS RETRIEVAL TIME</div></div>
+              <div class="cs-metric"><div class="cs-metric-num">RBAC</div><div class="cs-metric-lbl">SECURED ACCESS TIERS</div></div>
+            </div>
+            <div>
+              <div class="cs-sub-label">Technical decisions</div>
+              <p class="cs-text">SQL Server was chosen to align with the hospital's existing IT infrastructure. Full-text indexing on name and patient ID fields keeps search near-instant as the dataset grows. PDF rendering is handled server-side to avoid exposing raw file paths to the client — an important constraint for regulated medical data.</p>
+            </div>
+          </div>
+        </details>
 
-			<!-- CONTACT -->
-			<section class="section" id="contact">
-				<div class="sec-label">Get in Touch</div>
-				<h2 class="sec-title reveal">Let's build your <em>next solution</em></h2>
-				<p class="sec-sub reveal">Open to permanent roles, freelance projects, and remote opportunities.</p>
-				<div class="contact-grid">
-					<div class="reveal">
-						<p class="contact-text">Whether you need a full product built from scratch, an existing
-							system extended, or an integration that finally works — I'm here. Reach out through
-							any channel below or fill in the form.</p>
-						<div class="contact-links">
-							<a href="mailto:richter.p.maya@gmail.com" class="c-link">
-								<div class="c-link-icon"><i class="fas fa-envelope"></i></div>
-								<div>
-									<div class="c-link-label">Email</div>
-									<div class="c-link-val">richter.p.maya@gmail.com</div>
-								</div>
-							</a>
-							<a href="tel:+639169824195" class="c-link">
-								<div class="c-link-icon"><i class="fas fa-phone"></i></div>
-								<div>
-									<div class="c-link-label">Phone</div>
-									<div class="c-link-val">+63 916 982 4195</div>
-								</div>
-							</a>
-							<a href="https://github.com/nmrjustme" target="_blank" rel="noopener" class="c-link">
-								<div class="c-link-icon"><i class="fab fa-github"></i></div>
-								<div>
-									<div class="c-link-label">GitHub</div>
-									<div class="c-link-val">github.com/nmrjustme</div>
-								</div>
-							</a>
-							<a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank"
-								rel="noopener" class="c-link">
-								<div class="c-link-icon"><i class="fab fa-linkedin-in"></i></div>
-								<div>
-									<div class="c-link-label">LinkedIn</div>
-									<div class="c-link-val">Richter P. Mayandoc</div>
-								</div>
-							</a>
-						</div>
-					</div>
-					<div class="reveal reveal-d1">
-						<form id="contact-form" novalidate>
-							<div style="position:absolute;left:-9999px" aria-hidden="true"><input type="text"
-									id="hp" tabindex="-1" autocomplete="off" /></div>
-							<div class="form-row">
-								<div>
-									<label class="form-label" for="cf-name">Name</label>
-									<input class="form-input" id="cf-name" type="text" placeholder="Your name"
-										required />
-									<p class="form-err" id="err-name">Please enter your name.</p>
-								</div>
-								<div>
-									<label class="form-label" for="cf-email">Email</label>
-									<input class="form-input" id="cf-email" type="email"
-										placeholder="you@example.com" required />
-									<p class="form-err" id="err-email">Please enter a valid email.</p>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="form-label" for="cf-subject">Subject</label>
-								<input class="form-input" id="cf-subject" type="text"
-									placeholder="What's this about?" required />
-								<p class="form-err" id="err-subject">Please enter a subject.</p>
-							</div>
-							<div class="form-group">
-								<label class="form-label" for="cf-msg">Message</label>
-								<textarea class="form-input" id="cf-msg"
-									placeholder="Tell me about your project or opportunity..."
-									required></textarea>
-								<p class="form-err" id="err-msg">Message must be at least 10 characters.</p>
-							</div>
-							<button type="submit" class="submit-btn" id="submit-btn">
-								<span id="submit-txt">Send Message</span>
-								<i class="fas fa-paper-plane" style="font-size:12px"></i>
-							</button>
-							<p id="form-msg" role="status"></p>
-						</form>
-					</div>
-				</div>
-			</section>
+        <div class="proj-footer">
+          <div class="proj-links">
+            <a href="https://github.com/nmrjustme" target="_blank" rel="noopener" class="plink"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+        </div>
+      </div>
 
-			<footer class="site-footer">
-				<p class="footer-copy">© 2026 <strong>Richter Mayandoc</strong> · Full-Stack Developer · Ilagan
-					City, Philippines</p>
-				<div class="footer-links">
-					<a href="https://github.com/nmrjustme" target="_blank" rel="noopener">GitHub</a>
-					<a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank"
-						rel="noopener">LinkedIn</a>
-					<a href="mailto:richter.p.maya@gmail.com">Email</a>
-				</div>
-			</footer>
-		</main>
-	</div>
+      <!-- Credential Verification -->
+      <div class="proj">
+        <div class="proj-top">
+          <div class="proj-name">Credential &amp; Academic Verification System</div>
+          <div class="proj-badges"><span class="badge badge-ind">Education</span></div>
+        </div>
+        <p class="proj-desc">Secure document verification platform built for an educational institution dealing with fraudulent submissions.</p>
 
-	<script>
-		/* THEME */
-		function applyGhFilter() {
-			const dark = document.documentElement.dataset.theme === 'dark';
-			const gh = document.getElementById('gh-logo');
-			if (gh) gh.style.filter = dark ? 'invert(1)' : 'none';
-		}
-		const root = document.documentElement;
-		const pill = document.getElementById('theme-toggle');
-		const label = document.getElementById('theme-label');
-		function setTheme(dark) {
-			root.dataset.theme = dark ? 'dark' : 'light';
-			pill.classList.toggle('on', dark);
-			label.innerHTML = dark ? '<i class="fas fa-moon" style="margin-right:5px"></i>Dark' : '<i class="fas fa-sun" style="margin-right:5px"></i>Light';
-			pill.querySelector('.toggle-knob').textContent = dark ? '☀️' : '🌙';
-			localStorage.setItem('rm-theme', dark ? 'dark' : 'light');
-			applyGhFilter();
-		}
-		const saved = localStorage.getItem('rm-theme');
-		const prefersDark = window.matchMedia('(prefers-color-scheme:dark)').matches;
-		setTheme(saved ? saved === 'dark' : prefersDark);
-		pill.addEventListener('click', () => setTheme(root.dataset.theme !== 'dark'));
+        <div class="proj-block">
+          <div class="proj-row-label">My contribution</div>
+          <p class="cs-text">Designed and built the verification workflow, validation logic, and audit trail reporting.</p>
+        </div>
 
-		/* MOBILE SIDEBAR */
-		const menuBtn = document.getElementById('menu-btn');
-		const sidebar = document.getElementById('sidebar');
-		const backdrop = document.getElementById('sidebar-backdrop');
-		function toggleSidebar(force) {
-			const open = typeof force === 'boolean' ? force : !sidebar.classList.contains('open');
-			sidebar.classList.toggle('open', open);
-			backdrop.classList.toggle('show', open);
-			document.body.style.overflow = open ? 'hidden' : '';
-		}
-		menuBtn.addEventListener('click', () => toggleSidebar());
-		backdrop.addEventListener('click', () => toggleSidebar(false));
-		document.querySelectorAll('.sb-nav a').forEach(a => a.addEventListener('click', () => toggleSidebar(false)));
-		window.addEventListener('resize', () => { if (window.innerWidth > 768) toggleSidebar(false) });
+        <div class="proj-block">
+          <div class="proj-row-label">Key features</div>
+          <ul class="proj-features">
+            <li>Automated document validation workflows</li>
+            <li>Tamper-proof audit trail reporting</li>
+          </ul>
+        </div>
 
-		/* ACTIVE NAV */
-		const secs = document.querySelectorAll('section[id],div[id]');
-		const navLinks = document.querySelectorAll('.sb-nav a[data-sec]');
-		const io = new IntersectionObserver(entries => {
-			entries.forEach(en => {
-				if (en.isIntersecting) {
-					navLinks.forEach(l => l.classList.remove('active'));
-					const a = document.querySelector(`.sb-nav a[data-sec="${en.target.id}"]`);
-					if (a) a.classList.add('active');
-				}
-			});
-		}, { rootMargin: '-25% 0px -65% 0px' });
-		secs.forEach(s => io.observe(s));
+        <div class="proj-block">
+          <div class="proj-row-label">Technologies</div>
+          <div class="proj-techs">
+            <span class="tag">Laravel</span><span class="tag">TypeScript</span><span class="tag">React</span>
+            <span class="tag">Tailwind CSS</span><span class="tag">SQL Server</span>
+          </div>
+        </div>
 
-		/* REVEAL */
-		const revealEls = document.querySelectorAll('.reveal');
-		const revealObs = new IntersectionObserver(entries => {
-			entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); revealObs.unobserve(en.target) } });
-		}, { threshold: .12 });
-		revealEls.forEach(el => revealObs.observe(el));
+        <div class="proj-result"><strong>Result:</strong> Fraudulent document submissions reduced significantly through comprehensive audit trail logging and automated verification checks.</div>
 
-		/* MODALS */
-		function openCS(id) { document.getElementById(id).classList.add('open'); document.body.style.overflow = 'hidden' }
-		function closeCS(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow = '' }
-		document.querySelectorAll('.cs-overlay').forEach(el => {
-			el.addEventListener('click', e => { if (e.target === el) closeCS(el.id) });
-		});
-		document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.cs-overlay.open').forEach(el => closeCS(el.id)) });
+        <div class="proj-footer">
+          <div class="proj-links">
+            <a href="https://github.com/nmrjustme" target="_blank" rel="noopener" class="plink"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+        </div>
+      </div>
 
-		/* FORM */
-		const EJPK = 'YOUR_PUBLIC_KEY', EJSI = 'YOUR_SERVICE_ID', EJTI = 'YOUR_TEMPLATE_ID';
-		if (window.emailjs && EJPK !== 'YOUR_PUBLIC_KEY') emailjs.init({ publicKey: EJPK });
-		const F = {
-			name: { el: document.getElementById('cf-name'), err: document.getElementById('err-name'), ok: v => v.trim().length > 0 },
-			email: { el: document.getElementById('cf-email'), err: document.getElementById('err-email'), ok: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
-			subject: { el: document.getElementById('cf-subject'), err: document.getElementById('err-subject'), ok: v => v.trim().length > 0 },
-			msg: { el: document.getElementById('cf-msg'), err: document.getElementById('err-msg'), ok: v => v.trim().length >= 10 }
-		};
-		function vf(k) { const f = F[k], v = f.ok(f.el.value); f.el.classList.toggle('err', !v); f.err.classList.toggle('show', !v); return v }
-		Object.keys(F).forEach(k => { F[k].el.addEventListener('blur', () => vf(k)); F[k].el.addEventListener('input', () => { if (F[k].el.classList.contains('err')) vf(k) }) });
-		const fmsg = document.getElementById('form-msg');
-		function sm(t, ok) { fmsg.textContent = t; fmsg.style.color = ok ? '#22c55e' : '#ef4444'; fmsg.classList.add('show') }
-		let ls = 0;
-		document.getElementById('contact-form').addEventListener('submit', async e => {
-			e.preventDefault(); fmsg.classList.remove('show');
-			if (document.getElementById('hp').value.trim()) { sm('✓ Sent!', true); e.target.reset(); return }
-			if (!Object.keys(F).every(vf)) { sm('Please fix the highlighted fields.', false); return }
-			if (Date.now() - ls < 30000) { sm('Please wait before sending again.', false); return }
-			const btn = document.getElementById('submit-btn'), txt = document.getElementById('submit-txt');
-			btn.disabled = true; txt.textContent = 'Sending…';
-			const p = { from_name: F.name.el.value.trim(), from_email: F.email.el.value.trim(), subject: F.subject.el.value.trim(), message: F.msg.el.value.trim() };
-			try {
-				if (window.emailjs && EJPK !== 'YOUR_PUBLIC_KEY') { await emailjs.send(EJSI, EJTI, p); sm("✓ Sent! I'll reply within a day.", true); e.target.reset(); ls = Date.now() }
-				else { window.location.href = `mailto:richter.p.maya@gmail.com?subject=${encodeURIComponent(p.subject)}&body=${encodeURIComponent(`Name: ${p.from_name}\nEmail: ${p.from_email}\n\n${p.message}`)}`; sm('✓ Opening email client…', true); e.target.reset(); ls = Date.now() }
-			} catch { sm('Something went wrong. Email richter.p.maya@gmail.com directly.', false) }
-			finally { btn.disabled = false; txt.textContent = 'Send Message' }
-		});
-	</script>
+      <!-- Pageant Tabulation -->
+      <div class="proj">
+        <div class="proj-top">
+          <div class="proj-name">Pageant Tabulation System</div>
+          <div class="proj-badges"><span class="badge badge-ind">Real-Time</span></div>
+        </div>
+        <p class="proj-desc">Live event scoring platform built to replace spreadsheets and manual tallying at a real event.</p>
+
+        <div class="proj-block">
+          <div class="proj-row-label">My contribution</div>
+          <p class="cs-text">Designed and built concurrent score ingestion from multiple judges with automated leaderboard calculation.</p>
+        </div>
+
+        <div class="proj-block">
+          <div class="proj-row-label">Key features</div>
+          <ul class="proj-features">
+            <li>Concurrent score ingestion from multiple judges</li>
+            <li>Automated, real-time leaderboard calculation</li>
+          </ul>
+        </div>
+
+        <div class="proj-block">
+          <div class="proj-row-label">Technologies</div>
+          <div class="proj-techs">
+            <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span>
+          </div>
+        </div>
+
+        <div class="proj-result"><strong>Result:</strong> 100% scoring accuracy under simultaneous multi-judge input — no race conditions, no manual recounts.</div>
+
+        <div class="proj-footer">
+          <div class="proj-links">
+            <a href="https://github.com/nmrjustme" target="_blank" rel="noopener" class="plink"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section" id="education">
+  <div class="section-inner">
+    <div class="eyebrow">Background</div>
+    <h2 class="title">Education &amp; Certifications</h2>
+
+    <div class="edu-card">
+      <div class="edu-degree">Bachelor of Science in Information Technology</div>
+      <div class="edu-school">Isabela State University — Ilagan Campus</div>
+      <div class="edu-year">2022 – 2026</div>
+      <p class="edu-desc">Focused on software development, database management, web technologies, networking, and practical IT solutions — designing, developing, and maintaining systems that solve real-world problems.</p>
+    </div>
+
+    <div class="skill-label" style="margin-bottom:14px">Certifications</div>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-img-wrap" onclick="openLightbox('certificate/it_specialist_db.jpg')">
+          <img src="certificate/it_specialist_db.jpg" alt="IT Specialist — Database certificate" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:var(--ink-4);font-size:12px\'>Certificate image</div>'">
+        </div>
+        <div class="cert-info">
+          <div class="cert-name">IT Specialist — Database</div>
+          <div class="cert-org">Certiport / Pearson VUE</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-img-wrap" onclick="openLightbox('certificate/relational_db.png')">
+          <img src="certificate/relational_db.png" alt="Relational Database Design certificate" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:var(--ink-4);font-size:12px\'>Certificate image</div>'">
+        </div>
+        <div class="cert-info">
+          <div class="cert-name">Relational Database Design</div>
+          <div class="cert-org">Database Certification</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-img-wrap" onclick="openLightbox('certificate/sql_foundation.png')">
+          <img src="certificate/sql_foundation.png" alt="SQL Foundations certificate" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:var(--ink-4);font-size:12px\'>Certificate image</div>'">
+        </div>
+        <div class="cert-info">
+          <div class="cert-name">SQL Foundations</div>
+          <div class="cert-org">SQL Certification</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-img-wrap" onclick="openLightbox('certificate/dict.jpg')">
+          <img src="certificate/dict.jpg" alt="Python Programming certificate" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:var(--ink-4);font-size:12px\'>Certificate image</div>'">
+        </div>
+        <div class="cert-info">
+          <div class="cert-name">Python Programming</div>
+          <div class="cert-org">DICT Philippines</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-img-wrap" onclick="openLightbox('certificate/inter_conference.jpg')">
+          <img src="certificate/inter_conference.jpg" alt="International Research Presenter certificate" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:var(--ink-4);font-size:12px\'>Certificate image</div>'">
+        </div>
+        <div class="cert-info">
+          <div class="cert-name">International Research Presenter</div>
+          <div class="cert-org">Academic Conference</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="section-inner">
+    <div class="eyebrow">Get in Touch</div>
+    <h2 class="title">Let's build your next solution</h2>
+    <p class="sub">Open to permanent roles, freelance projects, and remote opportunities.</p>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-text">Whether you need a full product built from scratch, an existing system extended, or an integration that finally works — reach out through any channel below or fill in the form.</p>
+        <div class="c-links">
+          <a href="mailto:richter.p.maya@gmail.com" class="c-link">
+            <div class="c-icon"><i class="fas fa-envelope"></i></div>
+            <div><div class="c-label">Email</div><div class="c-val">richter.p.maya@gmail.com</div></div>
+          </a>
+          <a href="tel:+639169824195" class="c-link">
+            <div class="c-icon"><i class="fas fa-phone"></i></div>
+            <div><div class="c-label">Phone</div><div class="c-val">+63 916 982 4195</div></div>
+          </a>
+          <a href="https://github.com/nmrjustme" target="_blank" rel="noopener" class="c-link">
+            <div class="c-icon"><i class="fab fa-github"></i></div>
+            <div><div class="c-label">GitHub</div><div class="c-val">github.com/nmrjustme</div></div>
+          </a>
+          <a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank" rel="noopener" class="c-link">
+            <div class="c-icon"><i class="fab fa-linkedin-in"></i></div>
+            <div><div class="c-label">LinkedIn</div><div class="c-val">Richter P. Mayandoc</div></div>
+          </a>
+        </div>
+      </div>
+      <div>
+        <form id="contact-form" novalidate>
+          <div style="position:absolute;left:-9999px" aria-hidden="true"><input type="text" id="hp" tabindex="-1" autocomplete="off" /></div>
+          <div class="form-row">
+            <div>
+              <label class="form-label" for="cf-name">Name</label>
+              <input class="form-input" id="cf-name" type="text" placeholder="Your name" required />
+              <p class="form-err" id="err-name">Please enter your name.</p>
+            </div>
+            <div>
+              <label class="form-label" for="cf-email">Email</label>
+              <input class="form-input" id="cf-email" type="email" placeholder="you@example.com" required />
+              <p class="form-err" id="err-email">Please enter a valid email.</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-subject">Subject</label>
+            <input class="form-input" id="cf-subject" type="text" placeholder="What's this about?" required />
+            <p class="form-err" id="err-subject">Please enter a subject.</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-msg">Message</label>
+            <textarea class="form-input" id="cf-msg" placeholder="Tell me about your project or opportunity..." required></textarea>
+            <p class="form-err" id="err-msg">Message must be at least 10 characters.</p>
+          </div>
+          <button type="submit" class="submit-btn" id="submit-btn">
+            <span id="submit-txt">Send Message</span>
+            <i class="fas fa-paper-plane" style="font-size:12px"></i>
+          </button>
+          <p id="form-msg" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p class="footer-copy">© 2026 Richter Mayandoc · Full-Stack Developer · Ilagan City, Philippines</p>
+  <div class="footer-links">
+    <a href="https://github.com/nmrjustme" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/richter-p-mayandoc-113510262" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:richter.p.maya@gmail.com">Email</a>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close"><i class="fas fa-times"></i></button>
+  <img id="lightbox-img" src="" alt="Certificate" />
+</div>
+
+<script>
+/* THEME */
+const root = document.documentElement;
+const themeBtn = document.getElementById('theme-toggle');
+function setTheme(dark){
+  root.dataset.theme = dark ? 'dark' : 'light';
+  themeBtn.innerHTML = dark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+  localStorage.setItem('rm-theme', dark ? 'dark' : 'light');
+}
+const saved = localStorage.getItem('rm-theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme:dark)').matches;
+setTheme(saved ? saved === 'dark' : prefersDark);
+themeBtn.addEventListener('click', () => setTheme(root.dataset.theme !== 'dark'));
+
+/* MOBILE NAV */
+const mobileBtn = document.getElementById('mobile-btn');
+const mobilePanel = document.getElementById('mobile-panel');
+mobileBtn.addEventListener('click', () => mobilePanel.classList.toggle('open'));
+mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobilePanel.classList.remove('open')));
+
+/* ACTIVE NAV */
+const secs = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const a = document.querySelector(`.nav-links a[href="#${en.target.id}"]`);
+      if (a) a.classList.add('active');
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+secs.forEach(s => io.observe(s));
+
+/* CERT LIGHTBOX */
+function openLightbox(src){
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e){
+  if (e.target.id === 'lightbox' || e.target.closest('.lightbox-close')) {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow=''; } });
+
+/* FORM */
+const EJPK = 'YOUR_PUBLIC_KEY', EJSI = 'YOUR_SERVICE_ID', EJTI = 'YOUR_TEMPLATE_ID';
+if (window.emailjs && EJPK !== 'YOUR_PUBLIC_KEY') emailjs.init({ publicKey: EJPK });
+const F = {
+  name: { el: document.getElementById('cf-name'), err: document.getElementById('err-name'), ok: v => v.trim().length > 0 },
+  email: { el: document.getElementById('cf-email'), err: document.getElementById('err-email'), ok: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
+  subject: { el: document.getElementById('cf-subject'), err: document.getElementById('err-subject'), ok: v => v.trim().length > 0 },
+  msg: { el: document.getElementById('cf-msg'), err: document.getElementById('err-msg'), ok: v => v.trim().length >= 10 }
+};
+function vf(k){ const f=F[k], v=f.ok(f.el.value); f.el.classList.toggle('err', !v); f.err.classList.toggle('show', !v); return v }
+Object.keys(F).forEach(k => { F[k].el.addEventListener('blur', () => vf(k)); F[k].el.addEventListener('input', () => { if (F[k].el.classList.contains('err')) vf(k) }) });
+const fmsg = document.getElementById('form-msg');
+function sm(t, ok){ fmsg.textContent=t; fmsg.style.color = ok ? '#1a8a4a' : '#d92d20'; fmsg.classList.add('show') }
+let ls = 0;
+document.getElementById('contact-form').addEventListener('submit', async e => {
+  e.preventDefault(); fmsg.classList.remove('show');
+  if (document.getElementById('hp').value.trim()) { sm('✓ Sent!', true); e.target.reset(); return }
+  if (!Object.keys(F).every(vf)) { sm('Please fix the highlighted fields.', false); return }
+  if (Date.now() - ls < 30000) { sm('Please wait before sending again.', false); return }
+  const btn = document.getElementById('submit-btn'), txt = document.getElementById('submit-txt');
+  btn.disabled = true; txt.textContent = 'Sending…';
+  const p = { from_name: F.name.el.value.trim(), from_email: F.email.el.value.trim(), subject: F.subject.el.value.trim(), message: F.msg.el.value.trim() };
+  try {
+    if (window.emailjs && EJPK !== 'YOUR_PUBLIC_KEY') { await emailjs.send(EJSI, EJTI, p); sm("✓ Sent! I'll reply within a day.", true); e.target.reset(); ls = Date.now() }
+    else { window.location.href = `mailto:richter.p.maya@gmail.com?subject=${encodeURIComponent(p.subject)}&body=${encodeURIComponent(`Name: ${p.from_name}\nEmail: ${p.from_email}\n\n${p.message}`)}`; sm('✓ Opening email client…', true); e.target.reset(); ls = Date.now() }
+  } catch { sm('Something went wrong. Email richter.p.maya@gmail.com directly.', false) }
+  finally { btn.disabled = false; txt.textContent = 'Send Message' }
+});
+</script>
 </body>
-
 </html>
