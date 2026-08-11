@@ -26,6 +26,7 @@ img{display:block;max-width:100%}
 ul{list-style:none}
 
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.wrap-wide{max-width:1080px;margin:0 auto;padding:0 24px}
 
 /* NAV */
 .nav{border-bottom:1px solid var(--line);padding:16px 0}
@@ -67,18 +68,27 @@ p{color:var(--ink-2);font-size:14.5px;line-height:1.8}
 .chip{font-size:13px;color:var(--ink-2);background:var(--bg-soft);border:1px solid var(--line);padding:5px 11px;border-radius:5px}
 
 /* PROJECTS */
-.proj{padding:24px 0;border-top:1px solid var(--line)}
-.proj:first-of-type{border-top:none;padding-top:0}
-.proj-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:6px}
-.proj-name{font-size:16px;font-weight:700}
-.proj-tag{font-size:11px;color:var(--accent);font-weight:600;text-transform:uppercase}
-.proj p{margin-bottom:8px}
-.proj-meta{font-size:13px;color:var(--ink-3);margin-bottom:6px}
+.projects-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.proj-card{border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.proj-img{width:100%;aspect-ratio:4/3;background:var(--bg-soft);overflow:hidden}
+.proj-img img{width:100%;height:100%;object-fit:cover}
+.proj-body{padding:14px;display:flex;flex-direction:column;flex:1}
+.proj-name{font-size:14px;font-weight:700;margin-bottom:5px;line-height:1.3}
+.proj-tag{font-size:10px;color:var(--accent);font-weight:600;text-transform:uppercase;margin-bottom:6px;display:block}
+.proj-short{font-size:12.5px;color:var(--ink-2);line-height:1.6;margin-bottom:12px;flex:1}
+.proj-btn{display:inline-block;font-size:12px;font-weight:600;color:var(--ink);border:1px solid var(--line);padding:7px 0;border-radius:6px;text-align:center}
+.proj-btn:hover{border-color:var(--ink)}
+.proj-card details{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+.proj-card summary{cursor:pointer;font-size:11.5px;font-weight:600;color:var(--ink-3);list-style:none}
+.proj-card summary::-webkit-details-marker{display:none}
+.proj-card summary::before{content:'+ Details'}
+.proj-card details[open] summary::before{content:'– Details'}
+.proj-meta{font-size:12px;color:var(--ink-3);margin-top:8px;line-height:1.6}
 .proj-meta b{color:var(--ink-2);font-weight:600}
-.proj-result{font-size:13.5px;color:var(--ink-2);margin-top:8px}
+.proj-result{font-size:12px;color:var(--ink-2);margin-top:8px;line-height:1.6}
 .proj-result b{color:var(--ink)}
-.proj-links{margin-top:10px;display:flex;gap:14px}
-.proj-links a{font-size:13px;font-weight:600;color:var(--accent)}
+@media (max-width:960px){.projects-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.projects-grid{grid-template-columns:1fr}}
 
 /* EDUCATION / CERTS */
 .edu-degree{font-weight:700;font-size:15px}
@@ -190,50 +200,81 @@ footer p{font-size:12.5px;color:var(--ink-3)}
 
 <!-- PROJECTS -->
 <section class="section" id="projects">
-  <div class="wrap">
+  <div class="wrap-wide">
     <div class="label">Projects</div>
     <h2>Selected work</h2>
 
-    <div class="proj">
-      <div class="proj-top"><span class="proj-name">ReservaMate — Mt. ClaRamuel Resort</span><span class="proj-tag">Capstone · Live</span></div>
-      <p>Full-stack hotel reservation platform built to replace paper notebooks and phone bookings, which caused double-bookings, lost payment records, and heavy manual admin work.</p>
-      <div class="proj-meta"><b>Contribution:</b> Co-developed as BS IT capstone (with Edcel B. Yasay) — booking engine, payment integration, and admin dashboard.</div>
-      <div class="proj-meta"><b>Features:</b> Real-time booking engine, Maya Business payment gateway, RBAC admin dashboard, check-in/out module, financial reports.</div>
-      <div class="proj-meta"><b>Tech:</b> Laravel 10, PHP, MySQL, Tailwind CSS, JavaScript, Maya Business API, RBAC, SSL.</div>
-      <div class="proj-result"><b>Result:</b> Evaluated 4.30/5 (ISO/IEC 25010) by 51 respondents. Eliminated overbooking and manual ledger errors.</div>
-      <div class="proj-links"><a href="https://mtclaramuelhotelresort.com/" target="_blank" rel="noopener">Live Site →</a></div>
-    </div>
+    <div class="projects-grid">
 
-    <div class="proj">
-      <div class="proj-top"><span class="proj-name">CIMC Patient Record Viewer</span><span class="proj-tag">Healthcare</span></div>
-      <p>Digital archiving and search system for a hospital, replacing physical record folders that took 15–30 minutes per record to locate.</p>
-      <div class="proj-meta"><b>Contribution:</b> Designed and built the full system — digitized records, search, rendering, and access control.</div>
-      <div class="proj-meta"><b>Features:</b> Full-text search by name/ID/date, server-side PDF rendering, role-based access control.</div>
-      <div class="proj-meta"><b>Tech:</b> Laravel, SQL Server, PHP, TypeScript, React.</div>
-      <div class="proj-result"><b>Result:</b> Retrieval time dropped from 15–30 minutes to under 30 seconds.</div>
-      <div class="proj-links"><a href="https://github.com/nmrjustme" target="_blank" rel="noopener">GitHub →</a></div>
-    </div>
+      <div class="proj-card">
+        <div class="proj-img"><img src="projects/mtclaramuel.png" alt="ReservaMate — Mt. ClaRamuel Resort reservation system"></div>
+        <div class="proj-body">
+          <span class="proj-tag">Capstone · Live</span>
+          <div class="proj-name">ReservaMate — Mt. ClaRamuel Resort</div>
+          <p class="proj-short">Full-stack hotel booking platform with real-time reservations, payments, and an admin dashboard.</p>
+          <a href="https://mtclaramuelhotelresort.com/" target="_blank" rel="noopener" class="proj-btn">View Project</a>
+          <details>
+            <summary></summary>
+            <div class="proj-meta"><b>Contribution:</b> Co-developed as BS IT capstone (with Edcel B. Yasay) — booking engine, payment integration, and admin dashboard.</div>
+            <div class="proj-meta"><b>Features:</b> Real-time booking engine, Maya Business payment gateway, RBAC admin dashboard, check-in/out module, financial reports.</div>
+            <div class="proj-meta"><b>Tech:</b> Laravel 10, PHP, MySQL, Tailwind CSS, JavaScript, Maya Business API, RBAC, SSL.</div>
+            <div class="proj-result"><b>Result:</b> Evaluated 4.30/5 (ISO/IEC 25010) by 51 respondents. Eliminated overbooking and manual ledger errors.</div>
+          </details>
+        </div>
+      </div>
 
-    <div class="proj">
-      <div class="proj-top"><span class="proj-name">Credential &amp; Academic Verification System</span><span class="proj-tag">Education</span></div>
-      <p>Secure document verification platform built for an educational institution dealing with fraudulent submissions.</p>
-      <div class="proj-meta"><b>Contribution:</b> Designed and built the verification workflow, validation logic, and audit trail reporting.</div>
-      <div class="proj-meta"><b>Features:</b> Automated document validation, tamper-proof audit trail.</div>
-      <div class="proj-meta"><b>Tech:</b> Laravel, TypeScript, React, Tailwind CSS, SQL Server.</div>
-      <div class="proj-result"><b>Result:</b> Fraudulent submissions reduced significantly via audit logging and automated checks.</div>
-      <div class="proj-links"><a href="https://github.com/nmrjustme" target="_blank" rel="noopener">GitHub →</a></div>
-    </div>
+      <div class="proj-card">
+        <div class="proj-img"><img src="projects/cimc_viewer.png" alt="CIMC Patient Record Viewer"></div>
+        <div class="proj-body">
+          <span class="proj-tag">Healthcare</span>
+          <div class="proj-name">CIMC Patient Record Viewer</div>
+          <p class="proj-short">Digital patient record system replacing paper files, cutting retrieval time to under 30 seconds.</p>
+          <a href="https://github.com/nmrjustme" target="_blank" rel="noopener" class="proj-btn">GitHub</a>
+          <details>
+            <summary></summary>
+            <div class="proj-meta"><b>Contribution:</b> Designed and built the full system — digitized records, search, rendering, and access control.</div>
+            <div class="proj-meta"><b>Features:</b> Full-text search by name/ID/date, server-side PDF rendering, role-based access control.</div>
+            <div class="proj-meta"><b>Tech:</b> Laravel, SQL Server, PHP, TypeScript, React.</div>
+            <div class="proj-result"><b>Result:</b> Retrieval time dropped from 15–30 minutes to under 30 seconds.</div>
+          </details>
+        </div>
+      </div>
 
-    <div class="proj">
-      <div class="proj-top"><span class="proj-name">Pageant Tabulation System</span><span class="proj-tag">Real-Time</span></div>
-      <p>Live event scoring platform built to replace spreadsheets and manual tallying at a real event.</p>
-      <div class="proj-meta"><b>Contribution:</b> Designed and built concurrent score ingestion and automated leaderboard calculation.</div>
-      <div class="proj-meta"><b>Features:</b> Multi-judge concurrent scoring, real-time leaderboard.</div>
-      <div class="proj-meta"><b>Tech:</b> PHP, MySQL, Bootstrap.</div>
-      <div class="proj-result"><b>Result:</b> 100% scoring accuracy under simultaneous multi-judge input — no manual recounts.</div>
-      <div class="proj-links"><a href="https://github.com/nmrjustme" target="_blank" rel="noopener">GitHub →</a></div>
-    </div>
+      <div class="proj-card">
+        <div class="proj-img"><img src="projects/credential.png" alt="Credential & Academic Verification System"></div>
+        <div class="proj-body">
+          <span class="proj-tag">Education</span>
+          <div class="proj-name">Credential &amp; Academic Verification System</div>
+          <p class="proj-short">Secure document verification platform with automated validation and audit trails.</p>
+          <a href="https://github.com/nmrjustme" target="_blank" rel="noopener" class="proj-btn">GitHub</a>
+          <details>
+            <summary></summary>
+            <div class="proj-meta"><b>Contribution:</b> Designed and built the verification workflow, validation logic, and audit trail reporting.</div>
+            <div class="proj-meta"><b>Features:</b> Automated document validation, tamper-proof audit trail.</div>
+            <div class="proj-meta"><b>Tech:</b> Laravel, TypeScript, React, Tailwind CSS, SQL Server.</div>
+            <div class="proj-result"><b>Result:</b> Fraudulent submissions reduced significantly via audit logging and automated checks.</div>
+          </details>
+        </div>
+      </div>
 
+      <div class="proj-card">
+        <div class="proj-img"><img src="projects/tabulation.png" alt="Pageant Tabulation System"></div>
+        <div class="proj-body">
+          <span class="proj-tag">Real-Time</span>
+          <div class="proj-name">Pageant Tabulation System</div>
+          <p class="proj-short">Real-time event scoring system with concurrent multi-judge input and live leaderboards.</p>
+          <a href="https://github.com/nmrjustme" target="_blank" rel="noopener" class="proj-btn">GitHub</a>
+          <details>
+            <summary></summary>
+            <div class="proj-meta"><b>Contribution:</b> Designed and built concurrent score ingestion and automated leaderboard calculation.</div>
+            <div class="proj-meta"><b>Features:</b> Multi-judge concurrent scoring, real-time leaderboard.</div>
+            <div class="proj-meta"><b>Tech:</b> PHP, MySQL, Bootstrap.</div>
+            <div class="proj-result"><b>Result:</b> 100% scoring accuracy under simultaneous multi-judge input — no manual recounts.</div>
+          </details>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
